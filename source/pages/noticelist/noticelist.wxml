@@ -1,0 +1,12 @@
+<!--pages/noticelist/noticelist.wxml-->
+<navigator url='/pages/noticeinfo/noticeinfo' class='padding-40 bg-white margin-bottom-10'>
+<view class='txt-black txt-bold'>通知标题通知标题通知标题通知</view>
+<view class='txt-gray h6 margin-top-10'>2018-08-01 12:02</view>
+<view class='h5 margin-top-10'>内容：导读部分内容</view>
+</navigator>
+
+<navigator url='/pages/noticeinfo/noticeinfo' class='padding-40 bg-white margin-bottom-10'>
+<view class='txt-black txt-bold'>通知标题通知标题通知标题通知</view>
+<view class='txt-gray h6 margin-top-10'>2018-08-01 12:02</view>
+<view class='h5 margin-top-10'>内容：导读部分内容</view>
+</navigator>

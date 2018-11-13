@@ -11,13 +11,39 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
+    this.Base.setMyData({
+      allshow:1
+    });
+    var statelist=["所有发布","报名中","运输中","未开始"];
+    this.Base.setMyData({
+      statelist
+    });
+    this.Base.setMyData({state:0})
   }
   onMyShow() {
     var that = this;
+    
+  }
+  bindall(e){
+    console.log(e);
+    this.Base.setMyData({ allshow: 1, mineshow: 1 });
+  }
+  bindmine(e) {
+    console.log(e);
+    this.Base.setMyData({ allshow: 2, mineshow: 2 });
+  }
+ 
+  bindpickerstate(e){
+    this.Base.setMyData({
+      state: e.detail.value
+    });
   }
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
+body.bindall = content.bindall;
+body.bindmine = content.bindmine; 
+body.bindpickerstate = content.bindpickerstate; 
 Page(body)

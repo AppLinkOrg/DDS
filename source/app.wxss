@@ -98,6 +98,7 @@ view,navigator,input,text,textarea{
 .bg-white{
   background: white;
 }
+
 .bg-primary{
   background: #2699EC;
 }
@@ -110,6 +111,9 @@ view,navigator,input,text,textarea{
 .bg-orange{
 
   background: #FBC02D;
+}
+.bg-bck_ble{
+  background:#353A4D; 
 }
 .white_primary{
   background: #2699EC;
@@ -129,7 +133,7 @@ view,navigator,input,text,textarea{
   color:white;
 }
 .txt-gray{
-  color:#84817E;
+  color:rgb(150, 149, 148);
 }
 .txt-blue{
   color:#3c78d8;
@@ -146,6 +150,10 @@ view,navigator,input,text,textarea{
 }
 .txt-orange{
   color:orange;
+}
+.txt-gray_white{
+  color: rgb(211, 211, 211);
+  
 }
 .txt-bold{
   font-weight: bolder;
@@ -212,6 +220,9 @@ button[type=primary]{
   
   background-color: #2699EC;
 }
+button[type=bak_ble]{
+  background-color: #4C556E;
+}
 button.button-hover[type=primary]{
   
   background-color: rgba(0, 162, 231, 0.856);
@@ -276,8 +287,14 @@ button[disabled][type=primary] {
 .padding-top-20{
   padding-top: 20rpx;
 }
+.padding-top-40{
+  padding-top: 40rpx;
+}
 .padding-top-50{
   padding-top: 50rpx;
+}
+.padding-top-60{
+  padding-top: 60rpx;
 }
 .padding-top-70{
   padding-top: 70rpx;
@@ -314,6 +331,9 @@ button[disabled][type=primary] {
 }
 .margin-20{
   margin:20rpx;
+}
+.margin-30{
+  margin:30rpx;
 }
 .margin-40{
   margin:40rpx;
