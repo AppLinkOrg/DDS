@@ -1,12 +1,18 @@
 {
   "pages":[
+    "pages/driver/driver",
+   "pages/wd/wd",
+    
+    
+    "pages/xq/xq",
     "pages/home/home",
     "pages/auth/auth"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "enablePullDownRefresh": true,
-    "navigationBarBackgroundColor": "white",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor":"#353A4D",
+    
+    "navigationBarTextStyle": "withe"
   }
 }
