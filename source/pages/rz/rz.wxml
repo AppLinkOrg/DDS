@@ -1,0 +1,48 @@
+
+<scroll-view scroll-y="true" >
+
+<view  class="flex-wrap flex-center">
+<view  class="margin-30" style='margin:30rpx;color:#BBBBBB ' >姓名</view>
+<view class="flex-row flex-center" style='justify-content:center'>
+
+<input placeholder="请输入姓名" style='border:1px solid #D5D5D5; height:90rpx; width:95%;'></input>
+
+</view>
+
+</view>
+
+<view>
+<view  class="margin-30" style='margin:30rpx;color:#BBBBBB ' >身份证号</view>
+<view class="flex-row flex-center" style='justify-content:center'>
+
+<input placeholder="请输入身份证号" style='border:1px solid #D5D5D5; height:90rpx; width:95%;'></input>
+
+</view>
+
+</view>
+
+<view>
+
+<view  class="margin-30" style='margin:30rpx;color:#BBBBBB ' >身份证照片</view>
+<view class="flex-row flex-center" style='justify-content:center'>
+
+<input placeholder="+上传行驶证照片" style='border:1px solid #D5D5D5; height:300rpx; width:95%;text-align:center;'></input>
+
+</view>
+
+</view>
+<view>
+
+<view  class="margin-30" style='margin:30rpx;color:#BBBBBB ' >驾驶证照片</view>
+<view class="flex-row flex-center" style='justify-content:center'>
+
+<input placeholder="+上传驾驶证照片" style='border:1px solid #D5D5D5; height:300rpx; width:95%;text-align:center;'></input>
+
+</view>
+
+</view>
+</scroll-view>
+<view class="h4 bm " style='margin-top:20rpx'
+  id="anniu" >确定</view>
+
+

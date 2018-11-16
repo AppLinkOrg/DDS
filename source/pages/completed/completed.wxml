@@ -1,0 +1,111 @@
+ <navigator    url='/pages/xq1/xq1?cats=[{{item.id}}]' class="nr1  flex-center flex-wrap margin-top-20" >
+    <view class="asd flex-1  " style='width:95%'>
+      <view  class="flex-center flex-row margin-top-20" >
+        <view class="margin-left-20  "><image class='icon-15 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image></view>
+         <view class="margin-left-20 h4 flex-1 "style='color:#222222' >东强煤焦</view>
+         <view class="margin-right-20" style='color:#BBBBBB '>任务编号:123</view>
+        
+      </view>
+<view class=' flex-center margin-top-20  flex-row '>
+        <view class="flex-1 flex-row flex-bottom" style='justify-content:center'>
+        <view class=" " style='font-size:98rpx !important; color:#4B69BB' >80</view>
+        <view class="">元/吨</view>
+        </view>
+         <view class="flex-1  flex-row flex-bottom  flex-center " style='text-algin:center;justify-content:center' >
+              <view class='margin-left-30'  style='font-size:70rpx !important; color:#F9B725;'>3300 </view>   
+              <view>元</view>        
+        </view>
+      
+        </view >
+        <view class=' flex-center  margin-top-20    flex-row ' style='width:100%;  margin-bottom:30rpx;'>
+        <view class="flex-1 h4-5 flex-row  " style='justify-content:center'>预计收入</view>
+        <view class="flex-1  flex-row  h4-5" style='color:#BBBBBB;justify-content:center;'>总收入</view>
+       
+        </view>
+     
+
+    </view>
+    <view class="asd flex-1"  style='width:95%'>   
+
+    </view>
+    <view class="asd flex-1" style=' width:95%'>
+    <view class="flex-wrap"  style=' margin-bottom:30rpx'  >
+    <view class="flex-row margin-top:10" >
+    <view class="margin-left-20  " id="z1"style='margin-top:15rpx'></view>
+    <view class="margin-left-20">太原高新区电子数xxxxxxxx公司</view>
+    </view> 
+    
+      <view class="flex-row" >
+    <view class="margin-left-20 " id="z2" style='margin-top:30rpx' ></view>
+    <view class="margin-left-20 margin-top-10">内蒙古xxxxxxxx公司</view>
+    </view>
+       <view  class="margin-left-30 h5 margin-top-10" style='color:#BBBBBB ; margin-left:60rpx'>总里程2051公里</view>
+       </view>
+    
+    </view>
+<view class="asd flex-1" style='width:95%'>
+    <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
+      <view class="margin-left-20">
+        <image class='icon-17' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
+      </view>
+      <view class="flex-1 margin-left-20">货运类型</view>
+      <view class="margin-right-20" style='color:#BBBBBB'>精煤</view>
+    </view>
+  </view>
+  </navigator>
+<!--第二-->
+   <navigator    url='/pages/xq1/xq1?cats=[{{item.id}}]' class="nr1  flex-center flex-wrap margin-top-20" >
+    <view class="asd flex-1  " style='width:95%'>
+      <view  class="flex-center flex-row margin-top-20" >
+        <view class="margin-left-20  "><image class='icon-15 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image></view>
+         <view class="margin-left-20 h4 flex-1 "style='color:#222222' >柳林东强煤焦</view>
+         <view class="margin-right-20" style='color:#BBBBBB '>任务编号:123</view>
+        
+      </view>
+<view class=' flex-center margin-top-20  flex-row '>
+        <view class="flex-1 flex-row flex-bottom" style='justify-content:center'>
+        <view class=" " style='font-size:98rpx !important; color:#4B69BB' >100</view>
+        <view class="">元/吨</view>
+        </view>
+         <view class="flex-1  flex-row flex-bottom  flex-center " style='text-algin:center;justify-content:center' >
+              <view class='margin-left-30'  style='font-size:70rpx !important; color:#F9B725;'>3300 </view>   
+              <view>元</view>        
+        </view>
+      
+        </view >
+        <view class=' flex-center  margin-top-20    flex-row ' style='width:100%;  margin-bottom:30rpx;'>
+        <view class="flex-1 h4-5 flex-row  " style='justify-content:center'>预计收入</view>
+        <view class="flex-1  flex-row  h4-5" style='color:#BBBBBB;justify-content:center;'>总收入</view>
+       
+        </view>
+     
+
+    </view>
+    <view class="asd flex-1"  style='width:95%'>   
+
+    </view>
+    <view class="asd flex-1" style=' width:95%'>
+    <view class="flex-wrap"  style=' margin-bottom:30rpx'  >
+    <view class="flex-row margin-top:10" >
+    <view class="margin-left-20  " id="z1"style='margin-top:15rpx'></view>
+    <view class="margin-left-20">太原高新区电子数xxxxxxxx公司</view>
+    </view> 
+     
+      <view class="flex-row" >
+    <view class="margin-left-20 " id="z2" style='margin-top:30rpx' ></view>
+    <view class="margin-left-20 margin-top-10">内蒙古xxxxxxxx公司</view>
+    </view>
+       <view  class="margin-left-30 h5 margin-top-10" style='color:#BBBBBB ; margin-left:60rpx'>总里程2051公里</view>
+       </view>
+    
+    </view>
+<view class="asd flex-1" style='width:95%'>
+    <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
+      <view class="margin-left-20">
+        <image class='icon-17' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
+      </view>
+      <view class="flex-1 margin-left-20">货运类型</view>
+      <view class="margin-right-20" style='color:#BBBBBB'>精煤</view>
+    </view>
+  </view>
+  </navigator>

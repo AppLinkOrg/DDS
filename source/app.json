@@ -1,9 +1,17 @@
 {
   "pages":[
+
     "pages/driver/driver",
-   "pages/wd/wd",
-    
-    
+    "pages/phone/phone",
+ 
+    "pages/maps/maps",
+  "pages/completed/completed", 
+    "pages/rz/rz",
+    "pages/wd/wd",
+  "pages/vehicle/vehicle",
+  "pages/Addvehicle/Addvehicle",
+    "pages/ weighing/weighing",
+    "pages/xq1/xq1",
     "pages/xq/xq",
     "pages/home/home",
     "pages/auth/auth"

@@ -1,0 +1,76 @@
+<view class="flex-wrap ">
+  <view class="flex-row flex-center  asd  " style='padding-top:30rpx;padding-bottom:30rpx '>
+    <view class="flex-3" style='margin:30rpx'>
+      <image class=' icon-100  avatar  ' src='{{uploadpath}}resource/{{res.car_pic}}'> </image>
+      <navigator url='/pages/rz/rz?cats=[{{item.id}}]' id="rz" style=' '>已认证</navigator>
+    </view>
+    <view class="flex-4 flex-wrap">
+      <view class="h4">晓</view>
+      <view class="h4">18636645558</view>
+
+    </view>
+  </view>
+  <view class="margin-top-20">
+    <view class="asd margin-top-30 ">
+
+      <navigator url='/pages/vehicle/vehicle?cats=[{{item.id}}]' class="flex-row  " style=' padding-top:30rpx;padding-bottom:30rpx'>
+        <view class="margin-left-20">
+          <image class='icon-17' src='{{uploadpath}}resource/{{res.huoche}}'></image>
+        </view>
+        <view class="flex-1 margin-left-20">我的车辆</view>
+        <view class="margin-right-20" style='color:#BBBBBB'>
+          <image class='icon-17' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
+        </view>
+      </navigator>
+
+
+    </view>
+    
+    <view class="asd flex-1">
+      <navigator url='/pages/completed/completed?cats=[{{item.id}}]' class="flex-row " style=' padding-top:30rpx;padding-bottom:30rpx'>
+        <view class="margin-left-20">
+          <image class='icon-17' src='{{uploadpath}}resource/{{res.commontask}}'></image>
+        </view>
+        <view class="flex-1 margin-left-20">我的任务</view>
+        <view class="margin-right-20" style='color:#BBBBBB'>
+          <image class='icon-17' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
+        </view>
+      
+    </navigator>
+    </view>
+    <view class="asd flex-1">
+      <navigator url='/pages/xq1/xq1?cats=[{{item.id}}]' class="flex-row  " style=' padding-top:30rpx;padding-bottom:30rpx'>
+        <view class="margin-left-20">
+          <image class='icon-17' src='{{uploadpath}}resource/{{res.dianhua}}'></image>
+        </view>
+        <view class="flex-1 margin-left-20">修改手机号</view>
+        <view class="margin-right-20" style='color:#BBBBBB'>
+          <image class='icon-17' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
+        </view>
+      </navigator>
+    </view>
+    <!-- <view class="asd flex-1">
+      <navigator url='/pages/completed/completed?cats=[{{item.id}}]' class="flex-row  " style='padding-top:30rpx;padding-bottom:30rpx'>
+        <view class="margin-left-20">
+          <image class='icon-17' src='{{uploadpath}}resource/{{res.taskhistory}}'></image>
+        </view>
+        <view class="flex-1 margin-left-20">已完成</view>
+        <view class="margin-right-20" style='color:#BBBBBB'>
+          <image class='icon-17' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
+        </view>
+      </navigator>
+    </view> -->
+    <view class="asd flex-1">
+      <navigator url='/pages/xq1/xq1?cats=[{{item.id}}]' class="flex-row " style=' padding-top:30rpx;padding-bottom:30rpx'>
+        <view class="margin-left-20">
+          <image class='icon-17' src='{{uploadpath}}resource/{{res.enterprise}}'></image>
+        </view>
+        <view class="flex-1 margin-left-20">关于我们</view>
+        <view class="margin-right-20" style='color:#BBBBBB'>
+          <image class='icon-17' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
+        </view>
+      </navigator>
+    </view>
+
+  </view>
+</view>
