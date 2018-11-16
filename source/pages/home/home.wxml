@@ -33,7 +33,7 @@
       <view class='h5'>报名截止时间：</view>
       <view class='h5'>{{item.enroll_deadline}}</view>
     </view>
-    <view class='text-center txt-red h5 signup margin-top-20'>{{item.release_status_name}}</view>
+    <view class='text-center txt-red h5 signup margin-top-20'>{{item.status_name}}</view>
   </view>
   <view class='flex-row flex-center margin-top-20'>
     <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
@@ -95,7 +95,7 @@
       <view class='h5'>报名截止时间：</view>
       <view class='h5'>{{item.enroll_deadline}}</view>
     </view>
-    <view class='text-center txt-red h5 signup margin-top-20'>{{item.release_status_name}}</view>
+    <view class='text-center txt-red h5 signup margin-top-20'>{{item.status_name}}</view>
   </view>
   <view class='flex-row flex-center margin-top-20'>
     <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>

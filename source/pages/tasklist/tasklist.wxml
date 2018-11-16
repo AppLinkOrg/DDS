@@ -7,7 +7,7 @@
         <view class='h5'>报名截止时间：</view>
         <view class='h5'>{{orderinfo.enroll_deadline}}</view>
       </view>
-      <view class='text-center txt-red h5 signup margin-top-20'>{{orderinfo.release_status_name}}</view>
+      <view class='text-center txt-red h5 signup margin-top-20'>{{orderinfo.status_name}}</view>
     </view>
 
     <view class='flex-row flex-center margin-top-20'>
@@ -104,7 +104,7 @@
     <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
     <image class='icon-20' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
     <view class='txt-gray h5 flex-1 margin-left-20'>货运类型</view>
-    <view class='h5 txt-black'>{{orderinfo.stufftype_name}}</view>
+    <view class='h5 txt-black'>{{orderinfo.stuff_type_id}}</view>
     </view>
 
     <view class='flex-row flex-center flex-1 padding-40   bor_btm'>

@@ -36,28 +36,32 @@ class Content extends AppBase {
     var goodslist = this.Base.getMyData().goodslist;
     this.Base.setMyData({
       goods_idx: e.detail.value,
-      goods_id: goodslist[e.detail.value].id
+      goods_id: goodslist[e.detail.value].id,
+      goodstype:goodslist[e.detail.value].name
     });
   }
   bindenroll(e) {
     var enrolllist = this.Base.getMyData().memberlist;
     this.Base.setMyData({
       enroll_idx: e.detail.value,
-      enroll_id: enrolllist[e.detail.value].id
+      enroll_id: enrolllist[e.detail.value].id,
+      elcontact: enrolllist[e.detail.value].name
     });
   }
   bindstartcontact(e) {
     var startcontactlist = this.Base.getMyData().memberlist;
     this.Base.setMyData({
       startcontact_idx: e.detail.value,
-      startcontact_id: startcontactlist[e.detail.value].id
+      startcontact_id: startcontactlist[e.detail.value].id,
+      stcontact: startcontactlist[e.detail.value].name
     });
   }
   bindendcontact(e) {
     var endcontactlist = this.Base.getMyData().memberlist;
     this.Base.setMyData({
       endcontact_idx: e.detail.value,
-      endcontact_id: endcontactlist[e.detail.value].id
+      endcontact_id: endcontactlist[e.detail.value].id,
+      edcontact: endcontactlist[e.detail.value].name
     });
   }
   bindstartdate(e){
@@ -106,13 +110,13 @@ class Content extends AppBase {
     })
   }
 
-  binddt(e) {
-    var date = e.detail.value;
-    console.log(date);
-    this.Base.setMyData({
-      date: e.detail.value
-    })
-  }
+  // binddt(e) {
+  //   var date = e.detail.value;
+  //   console.log(date);
+  //   this.Base.setMyData({
+  //     date: e.detail.value
+  //   })
+  // }
    bindrelease(e){
      var orderapi = new OrderApi();
      orderapi.create({}, (create) => {
@@ -125,7 +129,7 @@ class Content extends AppBase {
       this.Base.setMyData({
         scdate: e.detail.value
       })
-  } 
+  }
   startcontacttime(e) {
     var sctime = e.detail.value;
     console.log(sctime);
@@ -196,6 +200,13 @@ class Content extends AppBase {
     this.Base.setMyData({
       tstcost: e.detail.value
     })
+  } 
+  carnumber(e) {
+    var carnum = e.detail.value;
+    console.log(carnum);
+    this.Base.setMyData({
+      carnum: e.detail.value
+    })
   }
   enrollcontact(e) {
     var elcontact = e.detail.value;
@@ -228,97 +239,100 @@ class Content extends AppBase {
 
 
 
- confirm(e) {
-  // var data = e.detail.value;
-    // if (data.startcontactdate == "") {
-    //   this.Base.info("请选择报名开始日期");
-    //   return;
-    // }
-    // if (data.startcontacttime == "") {
+  confirm(e) {
+    var data = e.detail.value;
+    if (data.scdate == "") {
+      this.Base.info("请选择报名开始日期");
+      return;
+    }
+    // if (data.sctime == "") {
     //   this.Base.info("请选择报名开始时间");
     //   return;
     // }
-    // if (data.endcontactdate == "") {
-    //   this.Base.info("请选择报名截止日期");
-    //   return;
-    // }
-    // if (data.endcontacttime == "") {
+    if (data.ecdate == "") {
+      this.Base.info("请选择报名截止日期");
+      return;
+    }
+    // if (data.ectime == "") {
     //   this.Base.info("请选择报名截止时间");
     //   return;
     // }
-    // if (data.starttransportdate == "") {
-    //   this.Base.info("请选择运输开始日期");
-    //   return;
-    // }
-    // if (data.starttransporttime == "") {
+    if (data.stpdate == "") {
+      this.Base.info("请选择运输开始日期");
+      return;
+    }
+    // if (data.stptime == "") {
     //   this.Base.info("请选择运输开始时间");
     //   return;
     // }
-    // if (data.endtransportdate == "") {
-    //   this.Base.info("请选择运输结束日期");
-    //   return;
-    // }
-    // if (data.goodsweight == "") {
-    //   this.Base.info("请输入货物吨数");
-    //   return;
-    // }
-    // if (data.goodstype == "") {
-    //   this.Base.info("请选择货运类型");
-    //   return;
-    // }
-    // if (data.cost == "") {
-    //   this.Base.info("请输入运输费用");
-    //   return;
-    // }
-    // if (data.enrollcontact == "") {
-    //   this.Base.info("请选择报名联系人");
-    //   return;
-    // }
-    // if (data.startcontact == "") {
-    //   this.Base.info("请选择起点联系人");
-    //   return;
-    // }
-    // if (data.endcontact == "") {
-    //   this.Base.info("请选择终点联系人");
-    //   return;
-  // }
-    var scdate = this.Base.getMyData().scdate;
+    if (data.etpdate == "") {
+      this.Base.info("请选择运输结束日期");
+      return;
+    }
+    if (data.carnumber == "") {
+      this.Base.info("请输入车辆数目");
+      return;
+    }
+    if (data.gdsweight == "") {
+      this.Base.info("请输入货物吨数");
+      return;
+    }
+    if (data.gdstype == "") {
+      this.Base.info("请选择货运类型");
+      return;
+    }
+    if (data.tstcost == "") {
+      this.Base.info("请输入运输费用");
+      return;
+    }
+    if (data.elcontact == "") {
+      this.Base.info("请选择报名联系人");
+      return;
+    }
+    if (data.stcontact == "") {
+      this.Base.info("请选择起点联系人");
+      return;
+    }
+    if (data.edcontact == "") {
+      this.Base.info("请选择终点联系人");
+      return;
+    }
+    var startdate = this.Base.getMyData().startdate;
     var sctime = this.Base.getMyData().sctime;
-    var ecdate = this.Base.getMyData().ecdate;
+    var enddate = this.Base.getMyData().enddate;
     var ectime = this.Base.getMyData().ectime;
-    var stpdate = this.Base.getMyData().stpdate;
+    var tstdate = this.Base.getMyData().tstdate; 
+    var carnum = this.Base.getMyData().carnum;
     var stptime = this.Base.getMyData().stptime;
-    var etpdate = this.Base.getMyData().etpdate;
+    var tstenddate = this.Base.getMyData().tstenddate;
     var etptime = this.Base.getMyData().etptime;
     var gdsweight = this.Base.getMyData().gdsweight;
-    var gdstype = this.Base.getMyData().gdstype;
+    var goodstype = this.Base.getMyData().goodstype;
     var tstcost = this.Base.getMyData().tstcost;
     var elcontact = this.Base.getMyData().elcontact;
     var stcontact = this.Base.getMyData().stcontact;
     var edcontact = this.Base.getMyData().edcontact;
     var remark = this.Base.getMyData().remark;
-
-    var that = this;
     var orderapi = new OrderApi();
     orderapi.create({
-      release_status:"A",
-      enroll_start: "1999-1-1",
-      enroll_deadline: "2000-2-2",
-      start_time: "1999-1-1",
-      end_time: "1999-1-1",
-      weight: "1",
-      stuff_type_id: "1",
-      unitprice: "1",
-      enroll_contact: "1",
-      start_contact: "1",
-      end_contact: "1",
-      remark: "1"
+      status:"A",
+      enroll_start: startdate,
+      enroll_deadline: enddate,
+      start_time: tstdate,
+      end_time: tstenddate,
+      weight: gdsweight,
+      carcount: carnum,
+      stuff_type_id: goodstype,
+      unitprice: tstcost,
+      enroll_contact: elcontact,
+      start_contact: stcontact,
+      end_contact: edcontact,
+      remark: remark
     }, (create) => {
       // wx.reLaunch({
       //   url: '/pages/home/home'
       // })
-    });
-
+    })
   }
 
 }
@@ -354,5 +368,6 @@ body.enrollcontact = content.enrollcontact;
 body.startcontact = content.startcontact;
 body.endcontact = content.endcontact;
 body.bindremark = content.bindremark; 
-body.confirm = content.confirm;
+body.confirm = content.confirm; 
+body.carnumber = content.carnumber;
 Page(body)

@@ -18,7 +18,7 @@
         <view class='flex-row flex-column flex-1' style=''>
           <view class='txt-black'>报名开始:</view>
           <picker mode='date' bindchange="bindstartdate" start='{{today}}'>
-            <input placeholder-style="font-size:35rpx;" bindinput='startcontactdate' name='startcontactdate' class='h3 txt-black margin-top-10  text-center' disabled='true' placeholder='请选择开始日期' value='{{startdate}}'></input>
+            <input placeholder-style="font-size:35rpx;" bindinput='startcontactdate' name='scdate' class='h3 txt-black margin-top-10  text-center' disabled='true' placeholder='请选择开始日期' value='{{startdate}}'></input>
           </picker>
           <view class='flex-row flex-center margin-top-20'>
             <!-- <view class='h5'>周三</view> -->
@@ -31,7 +31,7 @@
         <view class='flex-row flex-column flex-1' style=''>
           <view class='txt-black'>报名截止:</view>
           <picker mode='date' bindchange="bindenddate" start='{{today}}'>
-            <input placeholder-style="font-size:35rpx;" bindinput='endcontactdate' name='endcontactdate' class='h3 txt-black margin-top-10  text-center' disabled='true' placeholder='请选择截止日期' value='{{enddate}}'></input>
+            <input placeholder-style="font-size:35rpx;" bindinput='endcontactdate' name='ecdate' class='h3 txt-black margin-top-10  text-center' disabled='true' placeholder='请选择截止日期' value='{{enddate}}'></input>
           </picker>
           <view class='flex-row flex-center margin-top-20'>
             <!-- <view class='h5'>周四</view> -->
@@ -73,7 +73,7 @@
         <view class='flex-row flex-column flex-1' style=''>
           <view class='txt-black'>运输开始:</view>
           <picker mode='date' bindchange="tst_startdate" start='{{today}}'>
-            <input placeholder-style="font-size:28rpx;" bindinput='starttransportdate' name='starttransportdate' class='h3 txt-black margin-top-10  text-center' disabled='true' placeholder='请选择开始日期' value='{{tstdate}}'></input>
+            <input placeholder-style="font-size:28rpx;" bindinput='starttransportdate' name='stpdate' class='h3 txt-black margin-top-10  text-center' disabled='true' placeholder='请选择开始日期' value='{{tstdate}}'></input>
           </picker>
           <view class='flex-row flex-center margin-top-20'>
             <!-- <view class='h5'>周三</view> -->
@@ -94,7 +94,7 @@
         <view class='flex-row flex-column flex-1' style=''>
           <view class='txt-black'>运输截止:</view>
           <picker mode='date' bindchange="tst_enddate" start='{{today}}'>
-            <input placeholder-style="font-size:28rpx;" bindinput='endtransportdate' name='endtransportdate' class='h3 txt-black margin-top-10  text-center' disabled='true' placeholder='请选择截止日期' value='{{tstenddate}}'></input>
+            <input placeholder-style="font-size:28rpx;" bindinput='endtransportdate' name='etpdate' class='h3 txt-black margin-top-10  text-center' disabled='true' placeholder='请选择截止日期' value='{{tstenddate}}'></input>
           </picker>
           <view class='flex-row flex-center margin-top-20'>
             <!-- <view class='h5'>周四</view> -->
@@ -135,14 +135,20 @@
       <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
         <image class='icon-20' src='{{uploadpath}}resource/{{res.driver}}'></image>
         <view class='txt-black h5   margin-left-20'>货物重量</view>
-        <input placeholder='请输入货物吨数' bindinput='goodsweight' name='goodsweight' class='h5 text-right flex-1' type='number'></input>
+        <input placeholder='请输入货物吨数' bindinput='goodsweight' name='gdsweight' class='h5 text-right flex-1' type='number'></input>
+      </view>
+
+      <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
+        <image class='icon-20' src='{{uploadpath}}resource/{{res.driver}}'></image>
+        <view class='txt-black h5   margin-left-20'>车辆数目</view>
+        <input placeholder='请输入车辆数目' bindinput='carnumber' name='carnumber' class='h5 text-right flex-1' type='number'></input>
       </view>
 
       <picker range='{{goodslist}}' bindchange='bindgoods' range-key='name'>
         <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
           <view class='txt-black h5 flex-1  margin-left-20'>货运类型</view>
-          <input class='h5 txt-black text-right' disabled='false' bindinput='goodstype' name='goodstype' placeholder='请选择货运类型' value='{{goodslist[goods_idx].name}}'></input>
+          <input class='h5 txt-black text-right' disabled='false' bindinput='goodstype' name='gdstype' placeholder='请选择货运类型' value='{{goodslist[goods_idx].name}}'></input>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
         </view>
       </picker>
@@ -150,14 +156,14 @@
       <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
         <image class='icon-20' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
         <view class='txt-black h5   margin-left-20'>运输费用</view>
-        <input placeholder='请输入每吨价格' bindinput='cost' name='cost' class='h5 text-right txt-black flex-1' type='number'></input>
+        <input placeholder='请输入每吨价格' bindinput='cost' name='tstcost' class='h5 text-right txt-black flex-1' type='number'></input>
       </view>
 
       <picker range='{{memberlist}}' bindchange='bindenroll' range-key='name'>
         <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.enterprise}}'></image>
           <view class='txt-black h5 flex-1  margin-left-20'>报名联系人</view>
-          <input class='h5 txt-black text-right' disabled='false' bindinput='enrollcontact' name='enrollcontact' placeholder='请选择报名联系人' value='{{memberlist[enroll_idx].name}}'></input>
+          <input class='h5 txt-black text-right' disabled='false' bindinput='enrollcontact' name='elcontact' placeholder='请选择报名联系人' value='{{memberlist[enroll_idx].name}}'></input>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
         </view>
       </picker>
@@ -166,7 +172,7 @@
         <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
           <view class='txt-black h5 flex-1  margin-left-20'>起点联系人</view>
-          <input class='h5 txt-black text-right' disabled='false' bindinput='startcontact' name='startcontact' placeholder='请选择起点联系人' value='{{memberlist[startcontact_idx].name}}'></input>
+          <input class='h5 txt-black text-right' disabled='false' bindinput='startcontact' name='stcontact' placeholder='请选择起点联系人' value='{{memberlist[startcontact_idx].name}}'></input>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
         </view>
       </picker>
@@ -175,7 +181,7 @@
         <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
           <view class='txt-black h5 flex-1  margin-left-20'>终点联系人</view>
-          <input class='h5 txt-black text-right' disabled='false' bindinput='endcontact' name='endcontact' placeholder='请选择终点联系人' value='{{memberlist[endcontact_idx].name}}'></input>
+          <input class='h5 txt-black text-right' disabled='false' bindinput='endcontact' name='edcontact' placeholder='请选择终点联系人' value='{{memberlist[endcontact_idx].name}}'></input>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
         </view>
       </picker>
