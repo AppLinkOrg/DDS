@@ -20,10 +20,16 @@ class Content extends AppBase {
       url: '/pages/home/home',
     })
   }
+  bindtodriver(e){
+    wx.reLaunch({
+      url: '/pages/driver/driver',
+    })
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow; 
-body.bindtohome = content.bindtohome;
+body.bindtohome = content.bindtohome; 
+body.bindtodriver = content.bindtodriver; 
 Page(body)

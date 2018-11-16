@@ -10,7 +10,9 @@ class Content extends AppBase {
   onLoad(options) {
     this.Base.Page = this;
     //options.id=5;
-    
+    this.Base.setMyData({
+      
+    })
 
     this.setData({
       array: ['所有', '离我最近', '费用最高' ],
