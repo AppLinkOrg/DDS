@@ -1,6 +1,8 @@
 {
   "pages":[
     "pages/usercategory/usercategory",
+    "pages/weighing/weighing",
+    "pages/driver/driver",
     "pages/release/release",
     "pages/phone/phone",
     "pages/maps/maps",

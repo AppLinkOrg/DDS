@@ -22,7 +22,7 @@
     </view>
   </view>
   <!--新任务区域-->
-  <navigator     wx:for="{{list}}" v:if="{{ietm.release_status_name}}" wx:key='k'  url='/pages/xq/xq?cats=[{{item.id}}]' class="nr1  flex-center flex-wrap margin-top-20" hidden='{{tab!=0}}'>
+  <navigator     wx:for="{{list}}" wx:key='k'  url='/pages/xq/xq?cats=[{{item.id}}]' class="nr1  flex-center flex-wrap margin-top-20" hidden='{{tab!=0}}'>
     <view class="asd flex-1  " style='width:95%'>
       <view  class="flex-center flex-row margin-top-20" >
         <view class="margin-left-20  "><image class='icon-15 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image></view>
@@ -257,7 +257,7 @@
         <view class="" style='margin:30rpx'>报名资料</view>
         <view class="flex-row  flex-center">
           <view class='margin-left-20'>
-          <image class='icon' src='{{uploadpath}}resource/{{res.huoche}}'></image>
+          <image class='icon-17' src='{{uploadpath}}resource/{{res.huoche}}'></image>
           </view>
           <view class="flex-1 margin-left-20">货运吨数</view>
           <view class="margin-right-20">
@@ -266,7 +266,7 @@
         </view>
         <navigator    url='/pages/vehicle/vehicle?cats=[{{item.id}}]'  class="flex-row  margin-top-10 flex-center" >
            <view class='margin-left-20'>
-          <image class='icon' src='{{uploadpath}}resource/{{res.huanche}}'></image>
+          <image class='icon-17' src='{{uploadpath}}resource/{{res.huanche}}'></image>
           </view>
           <view class="flex-1  margin-left-20   ">选择车辆</view>
           <view class="flex-row  flex-center  margin-right-20">
