@@ -1,7 +1,8 @@
 {
   "pages":[
-
-    "pages/driver/driver",
+    "pages/usercategory/usercategory",
+    "pages/release/release",
+    
     "pages/phone/phone",
  
     "pages/maps/maps",
@@ -14,13 +15,46 @@
     "pages/xq1/xq1",
     "pages/xq/xq",
     "pages/home/home",
+    "pages/driverlist/driverlist",
+    "pages/tasklist/tasklist",
+    "pages/mine/mine",
+    "pages/taskhistory/taskhistory",
+    "pages/noticeinfo/noticeinfo",
+    "pages/noticelist/noticelist",
+    "pages/agreement/agreement",
     "pages/auth/auth"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "enablePullDownRefresh": true,
-    "navigationBarBackgroundColor":"#353A4D",
-    
-    "navigationBarTextStyle": "withe"
+    "navigationBarBackgroundColor": "#353A4D",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#4C556E",
+    "borderStyle": "#4C556E",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "text": "主页",
+        "pagePath": "pages/home/home",
+        "iconPath": "images/icons/b-a.png",
+        "selectedIconPath": "images/icons/b.png"
+      },
+      {
+        "text": "发布",
+        "pagePath": "pages/release/release",
+        "iconPath": "images/icons/c-a.png",
+        "selectedIconPath": "images/icons/c.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/mine/mine",
+        "iconPath": "images/icons/a-a.png",
+        "selectedIconPath": "images/icons/a.png"
+      }
+    ]
   }
+  
 }

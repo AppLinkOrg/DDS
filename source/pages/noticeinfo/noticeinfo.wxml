@@ -1,0 +1,7 @@
+<!--pages/noticeinfo/noticeinfo.wxml-->
+<view class='flex-row flex-column padding-40'>
+<view class='txt-black txt-bold'>通知标题</view>
+<text class='margin-top-20 h5' >内容：爱神的箭阿里山可见度克拉斯考虑到克拉斯按时大苏打实打实大苏打爱神的箭阿里山可见度克拉斯考虑到克拉斯按时大苏打实打实大苏打爱神的箭阿里山可见度克拉斯考虑到克拉斯按时大苏苏打实打实大苏打爱神的箭阿里山可见度克拉斯考虑到克拉斯按时大苏打实打实大苏打爱神的箭阿里山可见度克拉斯考虑到克拉斯按时大苏打实打实大苏打</text>
+
+</view>
+<view class='text-right padding-40 h5 margin-right-20 txt-gray'>2018-08-01 12:08</view>

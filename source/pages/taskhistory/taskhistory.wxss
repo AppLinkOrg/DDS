@@ -1,6 +1,7 @@
+/* pages/taskhistory/taskhistory.wxss */
 Page{
-  padding-top:230rpx;
-  margin-bottom: 100rpx;
+  padding-top:40rpx;
+  margin-bottom: 80rpx;
 }
 .icon{
   width: 50rpx;

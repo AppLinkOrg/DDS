@@ -1,1 +1,146 @@
-home
+<view class='top'>
+  <view class='flex-row flex-center bg-bck_ble'>
+    <view class='flex-1 text-center padding-20 txt-gray_white {{allshow==1?"txt-white":""}}' bindtap='bindall'>所有发布</view>
+    <view class='flex-1 text-center padding-20 txt-gray_white {{mineshow==2?"txt-white":""}}' bindtap='bindmine'>我的发布</view>
+  </view>
+
+  <view class='flex-row flex-center padding-20 bg-white'>
+    <view class='flex-1 h5 txt-black'>共有1条任务</view>
+    <picker class='' bindchange='bindpickerstate' range='{{statelist}}'>
+      <view class='flex-row flex-center'>
+        <view class='h5 '>{{statelist[state]}}</view>
+        <view class='margin-left-20'>
+          <image class='icon_lower' src='{{uploadpath}}resource/{{res.lowericon}}'></image>
+        </view>
+      </view>
+    </picker>
+  </view>
+
+  <navigator url='/pages/noticelist/noticelist' class='padding-20 bg-gray flex-row flex-center'>
+    <view>
+      <image class='icon' src='{{uploadpath}}resource/{{res.gonggao}}'></image>
+    </view>
+    <view class='bg-white h5 padding-10 margin-left-20 txt-gray' style='border-radius:10rpx;width:86%'>关于xxx的通知</view>
+  </navigator>
+</view>
+
+<view  hidden='{{allshow!="1"}}'>
+ <navigator url='/pages/tasklist/tasklist?id={{item.id}}&mineshow=1' wx:for='{{list}}' wx:key='k' class='mid margin-top-60 margin-bottom-40' >
+  
+  <view class='flex-row flex-column  '>
+
+    <view class='flex-row flex-center margin-top-20'>
+      <view class='h5'>报名截止时间：</view>
+      <view class='h5'>{{item.enroll_deadline}}</view>
+    </view>
+    <view class='text-center txt-red h5 signup margin-top-20'>{{item.release_status_name}}</view>
+  </view>
+  <view class='flex-row flex-center margin-top-20'>
+    <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
+      <view class='flex-row '>
+        <view class='font-left'>2</view>
+        <view class='font-mid padding-top-40 margin-left-10'>/{{item.carcount}}</view>
+        <view class='txt-bold padding-top-60 margin-left-10'>辆</view>
+      </view>
+    </view>
+
+    <view class='flex-row flex-column flex-1 '>
+      <view class='flex-row '>
+        <view class='font-right'>{{item.unitprice}}</view>
+        <view class='txt-bold padding-top-60 margin-left-10'>元/吨</view>
+      </view>
+    </view>
+  </view>
+  <view class='flex-row flex-center padding-10 ' style='border-bottom:1rpx solid #CFCECF'>
+    <view class='flex-1 text-center font-bottom margin-bottom-10'>已报名</view>
+    <view class='flex-1 text-center font-bottom margin-bottom-10'>预计运费</view>
+  </view>
+  <view class='padding-20'>
+    <view class='flex-row  margin-top-20'>
+      <view>
+        <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
+      </view>
+      <view class='flex-row column margin-left-20'>
+      <view class='h5 txt-gray'>始发地</view>
+      <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.startaddress}}</view>
+      </view>
+    </view>
+    <view class='flex-row  margin-top-20'>
+      <view>
+        <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
+      </view>
+      <view class='flex-row column margin-left-20'>
+      <view class='h5 txt-gray'>目的地</view>
+      <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.targetaddress}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='flex-row flex-center padding-20'>
+    <view class='txt-gray h5'>全程</view>
+    <view class='h4'>{{item.milestone}}</view>
+    <view class=' h5'>公里</view>
+  </view>
+ </navigator>
+
+ 
+</view>
+
+
+<view  hidden='{{mineshow!="2"}}'>
+ <navigator url='/pages/tasklist/tasklist?id={{item.id}}&mineshow=2' wx:for='{{minelist}}' wx:key='k' class='mid margin-top-60 margin-bottom-40' >
+  
+  <view class='flex-row flex-column  '>
+
+    <view class='flex-row flex-center margin-top-20'>
+      <view class='h5'>报名截止时间：</view>
+      <view class='h5'>{{item.enroll_deadline}}</view>
+    </view>
+    <view class='text-center txt-red h5 signup margin-top-20'>{{item.release_status_name}}</view>
+  </view>
+  <view class='flex-row flex-center margin-top-20'>
+    <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
+      <view class='flex-row '>
+        <view class='font-left'>2</view>
+        <view class='font-mid padding-top-40 margin-left-10'>/{{item.carcount}}</view>
+        <view class='txt-bold padding-top-60 margin-left-10'>辆</view>
+      </view>
+    </view>
+
+    <view class='flex-row flex-column flex-1 '>
+      <view class='flex-row '>
+        <view class='font-right'>{{item.unitprice}}</view>
+        <view class='txt-bold padding-top-60 margin-left-10'>元/吨</view>
+      </view>
+    </view>
+  </view>
+  <view class='flex-row flex-center padding-10 ' style='border-bottom:1rpx solid #CFCECF'>
+    <view class='flex-1 text-center font-bottom margin-bottom-10'>已报名</view>
+    <view class='flex-1 text-center font-bottom margin-bottom-10'>预计运费</view>
+  </view>
+  <view class='padding-20'>
+    <view class='flex-row  margin-top-20'>
+      <view>
+        <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
+      </view>
+      <view class='flex-row column margin-left-20'>
+      <view class='h5 txt-gray'>始发地</view>
+      <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.startaddress}}</view>
+      </view>
+    </view>
+    <view class='flex-row  margin-top-20'>
+      <view>
+        <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
+      </view>
+      <view class='flex-row column margin-left-20'>
+      <view class='h5 txt-gray'>目的地</view>
+      <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.targetaddress}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='flex-row flex-center padding-20'>
+    <view class='txt-gray h5'>全程</view>
+    <view class='h4'>{{item.milestone}}</view>
+    <view class=' h5'>公里</view>
+  </view>
+ </navigator>
+</view> 
