@@ -1,6 +1,6 @@
-/* pages/release/release.wxss */
+/* pages/tasklist/tasklist.wxss */
 Page{
-  padding-bottom: 300rpx;
+  padding-bottom: 100rpx;
 }
 .icon{
   width: 50rpx;
@@ -69,7 +69,7 @@ background: #CFCECF;
 }
 .cancel_btn{
   position: fixed;
-  z-index: 90;
+  z-index: 1;
   width: 100%;
   bottom: 0;
   height:100rpx; 

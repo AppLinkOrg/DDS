@@ -1,9 +1,12 @@
 {
   "pages":[
-    "pages/usercategory/usercategory",
     "pages/release/release",
-    "pages/mine/mine",
+    "pages/usercategory/usercategory",
     "pages/home/home",
+    "pages/driverlist/driverlist",
+    "pages/tasklist/tasklist",
+    "pages/mine/mine",
+    "pages/taskhistory/taskhistory",
     "pages/noticeinfo/noticeinfo",
     "pages/noticelist/noticelist",
     "pages/agreement/agreement",
@@ -29,7 +32,7 @@
       },
       {
         "text": "发布",
-        "pagePath": "pages/mine/mine",
+        "pagePath": "pages/release/release",
         "iconPath": "images/icons/c-a.png",
         "selectedIconPath": "images/icons/c.png"
       },

@@ -2,6 +2,7 @@
 import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api.js";
+import { OrderApi } from "../../apis/order.api.js";
 
 class Content extends AppBase {
   constructor() {
@@ -14,15 +15,21 @@ class Content extends AppBase {
     this.Base.setMyData({
       allshow:1
     });
-    var statelist=["所有发布","报名中","运输中","未开始"];
-    this.Base.setMyData({
-      statelist
-    });
+     var statelist=["所有发布","报名中","运输中","未开始"];
+     this.Base.setMyData({
+       statelist
+     });
     this.Base.setMyData({state:0})
   }
   onMyShow() {
     var that = this;
-    
+    var orderapi = new OrderApi();
+    orderapi.list({ }, (list) => {
+      this.Base.setMyData({ list });
+    });
+    orderapi.list({member_id:1}, (minelist) => {
+      this.Base.setMyData({ minelist });
+    });
   }
   bindall(e){
     console.log(e);
@@ -34,6 +41,11 @@ class Content extends AppBase {
   }
  
   bindpickerstate(e){
+    // var list = this.Base.getMyData().list;
+    // this.Base.setMyData({
+    //   state_idx: e.detail.value,
+    //   state_id: list[e.detail.value].id
+    // });
     this.Base.setMyData({
       state: e.detail.value
     });

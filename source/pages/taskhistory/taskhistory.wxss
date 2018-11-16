@@ -1,6 +1,7 @@
-/* pages/release/release.wxss */
+/* pages/taskhistory/taskhistory.wxss */
 Page{
-  padding-bottom: 300rpx;
+  padding-top:40rpx;
+  margin-bottom: 80rpx;
 }
 .icon{
   width: 50rpx;
@@ -14,14 +15,10 @@ Page{
 width: 30rpx;
 height: 25rpx;
 }
-/* .txt-white{
+.txt-white{
   color: white;
   border-bottom: 4rpx  solid white;
   border-bottom-width: thick;
-} */
-.goto_icon{
-  width: 190rpx;
-  height: 20rpx;
 }
 .signup{
 width:170rpx;
@@ -36,7 +33,12 @@ border-radius:50rpx;
   box-shadow:1rpx 2rpx 25rpx 2rpx rgb(173, 173, 173);
   border-radius: 10rpx;
 }
-
+.top{
+  position: fixed;
+  top:0px;
+  z-index: 1;
+  width: 100%;
+}
 .line{
 background: #CFCECF;
 }
@@ -64,22 +66,3 @@ background: #CFCECF;
   color: rgb(177, 174, 174);
   font-family: fantasy;
 }
-.bor_btm{
-  border-bottom:1rpx solid #CFCECF;
-}
-.cancel_btn{
-  position: fixed;
-  z-index: 90;
-  width: 100%;
-  bottom: 0;
-  height:100rpx; 
-  line-height: 100rpx;
-}
-
-/* .hover_cancel_btn{
-  position: fixed;
-  z-index: 1;
-  width: 100%;
-  bottom: 0;
-  
-} */

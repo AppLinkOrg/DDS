@@ -1,4 +1,4 @@
-// pages/mine/mine.js
+// pages/taskhistory/taskhistory.js
 import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api.js";
@@ -14,7 +14,9 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
-    
+    wx.setNavigationBarTitle({
+      title: '历史任务',
+    });
   }
 }
 var content = new Content();

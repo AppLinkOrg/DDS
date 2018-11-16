@@ -9,7 +9,6 @@
     <picker class='' bindchange='bindpickerstate' range='{{statelist}}'>
       <view class='flex-row flex-center'>
         <view class='h5 '>{{statelist[state]}}</view>
-
         <view class='margin-left-20'>
           <image class='icon_lower' src='{{uploadpath}}resource/{{res.lowericon}}'></image>
         </view>
@@ -25,29 +24,29 @@
   </navigator>
 </view>
 
-<view hidden='{{allshow!="1"}}'>
- <view class='mid margin-top-60 margin-bottom-40' >
+<view  hidden='{{allshow!="1"}}'>
+ <navigator url='/pages/tasklist/tasklist?id={{item.id}}&mineshow=1' wx:for='{{list}}' wx:key='k' class='mid margin-top-60 margin-bottom-40' >
   
   <view class='flex-row flex-column  '>
 
     <view class='flex-row flex-center margin-top-20'>
       <view class='h5'>报名截止时间：</view>
-      <view class='h5'>2018/07/31 17:50</view>
+      <view class='h5'>{{item.enroll_deadline}}</view>
     </view>
-    <view class='text-center txt-red h5 signup margin-top-20'>报名中</view>
+    <view class='text-center txt-red h5 signup margin-top-20'>{{item.release_status_name}}</view>
   </view>
   <view class='flex-row flex-center margin-top-20'>
     <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
       <view class='flex-row '>
         <view class='font-left'>2</view>
-        <view class='font-mid padding-top-40 margin-left-10'>/100</view>
+        <view class='font-mid padding-top-40 margin-left-10'>/{{item.carcount}}</view>
         <view class='txt-bold padding-top-60 margin-left-10'>辆</view>
       </view>
     </view>
 
     <view class='flex-row flex-column flex-1 '>
       <view class='flex-row '>
-        <view class='font-right'>100</view>
+        <view class='font-right'>{{item.unitprice}}</view>
         <view class='txt-bold padding-top-60 margin-left-10'>元/吨</view>
       </view>
     </view>
@@ -61,126 +60,87 @@
       <view>
         <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
       </view>
-      <view class='margin-left-20 h5 txt-gray' style='width:600rpx;'>山西大土河焦化责任有限公司</view>
+      <view class='flex-row column margin-left-20'>
+      <view class='h5 txt-gray'>始发地</view>
+      <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.startaddress}}</view>
+      </view>
     </view>
     <view class='flex-row  margin-top-20'>
       <view>
         <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
       </view>
-      <view class='margin-left-20 h5 txt-gray' style='width:600rpx;'>山西鑫飞能源投资集团有限公司安全技术培训中心</view>
+      <view class='flex-row column margin-left-20'>
+      <view class='h5 txt-gray'>目的地</view>
+      <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.targetaddress}}</view>
+      </view>
     </view>
   </view>
   <view class='flex-row flex-center padding-20'>
     <view class='txt-gray h5'>全程</view>
-    <view class='h4'>214</view>
+    <view class='h4'>{{item.milestone}}</view>
     <view class=' h5'>公里</view>
   </view>
- </view>
- <view class='mid margin-top-60 margin-bottom-40' >
-  
-  <view class='flex-row flex-column  '>
+ </navigator>
 
-    <view class='flex-row flex-center margin-top-20'>
-      <view class='h5'>报名截止时间：</view>
-      <view class='h5'>2018/07/31 17:50</view>
-    </view>
-    <view class='text-center txt-red h5 signup margin-top-20'>报名中</view>
-  </view>
-  <view class='flex-row flex-center margin-top-20'>
-    <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
-      <view class='flex-row '>
-        <view class='font-left'>2</view>
-        <view class='font-mid padding-top-40 margin-left-10'>/100</view>
-        <view class='txt-bold padding-top-60 margin-left-10'>辆</view>
-      </view>
-    </view>
-
-    <view class='flex-row flex-column flex-1 '>
-      <view class='flex-row '>
-        <view class='font-right'>100</view>
-        <view class='txt-bold padding-top-60 margin-left-10'>元/吨</view>
-      </view>
-    </view>
-  </view>
-  <view class='flex-row flex-center padding-10 ' style='border-bottom:1rpx solid #CFCECF'>
-    <view class='flex-1 text-center font-bottom margin-bottom-10'>已报名</view>
-    <view class='flex-1 text-center font-bottom margin-bottom-10'>预计运费</view>
-  </view>
-  <view class='padding-20'>
-    <view class='flex-row  margin-top-20'>
-      <view>
-        <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
-      </view>
-      <view class='margin-left-20 h5 txt-gray' style='width:600rpx;'>山西大土河焦化责任有限公司</view>
-    </view>
-    <view class='flex-row  margin-top-20'>
-      <view>
-        <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
-      </view>
-      <view class='margin-left-20 h5 txt-gray' style='width:600rpx;'>山西鑫飞能源投资集团有限公司安全技术培训中心</view>
-    </view>
-  </view>
-  <view class='flex-row flex-center padding-20'>
-    <view class='txt-gray h5'>全程</view>
-    <view class='h4'>214</view>
-    <view class=' h5'>公里</view>
-  </view>
- </view>
+ 
 </view>
 
 
-<view hidden='{{mineshow!="2"}}'>
- <view class='mid margin-top-60 margin-bottom-40' >
+<view  hidden='{{mineshow!="2"}}'>
+ <navigator url='/pages/tasklist/tasklist?id={{item.id}}&mineshow=2' wx:for='{{minelist}}' wx:key='k' class='mid margin-top-60 margin-bottom-40' >
+  
   <view class='flex-row flex-column  '>
 
     <view class='flex-row flex-center margin-top-20'>
       <view class='h5'>报名截止时间：</view>
-      <view class='h5'>2018/10/31 15:50</view>
+      <view class='h5'>{{item.enroll_deadline}}</view>
     </view>
-    <view class='text-center txt-red h5 signup margin-top-20'>运输中</view>
+    <view class='text-center txt-red h5 signup margin-top-20'>{{item.release_status_name}}</view>
   </view>
-
   <view class='flex-row flex-center margin-top-20'>
     <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
       <view class='flex-row '>
         <view class='font-left'>2</view>
-        <view class='font-mid padding-top-40 margin-left-10'>/100</view>
+        <view class='font-mid padding-top-40 margin-left-10'>/{{item.carcount}}</view>
         <view class='txt-bold padding-top-60 margin-left-10'>辆</view>
       </view>
     </view>
 
     <view class='flex-row flex-column flex-1 '>
       <view class='flex-row '>
-        <view class='font-right'>100</view>
+        <view class='font-right'>{{item.unitprice}}</view>
         <view class='txt-bold padding-top-60 margin-left-10'>元/吨</view>
       </view>
     </view>
   </view>
-
   <view class='flex-row flex-center padding-10 ' style='border-bottom:1rpx solid #CFCECF'>
     <view class='flex-1 text-center font-bottom margin-bottom-10'>已报名</view>
     <view class='flex-1 text-center font-bottom margin-bottom-10'>预计运费</view>
   </view>
-
   <view class='padding-20'>
     <view class='flex-row  margin-top-20'>
       <view>
         <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
       </view>
-      <view class='margin-left-20 h5 txt-gray' style='width:600rpx;'>美国加利福尼亚州圣克拉拉县山景市</view>
+      <view class='flex-row column margin-left-20'>
+      <view class='h5 txt-gray'>始发地</view>
+      <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.startaddress}}</view>
+      </view>
     </view>
     <view class='flex-row  margin-top-20'>
       <view>
         <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
       </view>
-      <view class='margin-left-20 h5 txt-gray' style='width:600rpx;'>美国加利福尼亚州库比蒂诺市</view>
+      <view class='flex-row column margin-left-20'>
+      <view class='h5 txt-gray'>目的地</view>
+      <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.targetaddress}}</view>
+      </view>
     </view>
   </view>
-
   <view class='flex-row flex-center padding-20'>
     <view class='txt-gray h5'>全程</view>
-    <view class='h4'>214</view>
+    <view class='h4'>{{item.milestone}}</view>
     <view class=' h5'>公里</view>
   </view>
- </view>
+ </navigator>
 </view> 
