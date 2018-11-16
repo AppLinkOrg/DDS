@@ -1,17 +1,16 @@
 {
   "pages":[
     "pages/usercategory/usercategory",
+    "pages/weighing/weighing",
+    "pages/driver/driver",
     "pages/release/release",
-    
     "pages/phone/phone",
- 
     "pages/maps/maps",
-  "pages/completed/completed", 
+    "pages/completed/completed", 
     "pages/rz/rz",
     "pages/wd/wd",
-  "pages/vehicle/vehicle",
-  "pages/Addvehicle/Addvehicle",
-    "pages/ weighing/weighing",
+    "pages/vehicle/vehicle",
+    "pages/Addvehicle/Addvehicle",
     "pages/xq1/xq1",
     "pages/xq/xq",
     "pages/home/home",

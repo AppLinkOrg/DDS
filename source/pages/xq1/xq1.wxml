@@ -120,7 +120,7 @@
 
       <navigator  
         url='/pages/ weighing/weighing?cats=[{{item.id}}]' class="margin-right-20" style='color:#BBBBBB'>
-       <image class='icon' src='{{uploadpath}}resource/{{res.tianjia}}'></image>
+       <image class='icon-17' src='{{uploadpath}}resource/{{res.tianjia}}'></image>
       
       </navigator >
     </view>

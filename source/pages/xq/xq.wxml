@@ -123,7 +123,7 @@
         <view class="" style='margin:30rpx'>报名资料</view>
         <view class="flex-row  flex-center">
           <view class='margin-left-20'>
-          <image class='icon' src='{{uploadpath}}resource/{{res.huoche}}'></image>
+          <image class='icon-17' src='{{uploadpath}}resource/{{res.huoche}}'></image>
           </view>
           <view class="flex-1 margin-left-20">货运吨数</view>
           <view>
@@ -132,7 +132,7 @@
         </view>
         <navigator    url='/pages/vehicle/vehicle?cats=[{{item.id}}]'  class="flex-row  margin-top-10 flex-center" >
            <view class='margin-left-20'>
-          <image class='icon' src='{{uploadpath}}resource/{{res.huanche}}'></image>
+          <image class='icon-17' src='{{uploadpath}}resource/{{res.huanche}}'></image>
           </view>
           <view class="flex-1  margin-left-20   ">选择车辆</view>
           <view class="flex-row  flex-center  margin-right-20">
