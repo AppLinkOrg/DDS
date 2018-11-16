@@ -16,7 +16,7 @@
 <view class='txt-black h5 txt-bold'>17608463082</view>
 </navigator>
 
-<navigator class='flex-row flex-center padding-30 bg-white hig_btm'>
+<navigator url='/pages/commontasks/commontasks' class='flex-row flex-center padding-30 bg-white hig_btm'>
 <image class='icon-20' src='{{uploadpath}}resource/{{res.commontask}}'></image>
 <view class='txt-black txt-bold margin-left-20 h5 flex-1'>常用任务</view>
 <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
@@ -28,7 +28,7 @@
 <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>
 
-<navigator class='flex-row flex-center padding-30 bg-white bor_btm'>
+<navigator url='/pages/team/team' class='flex-row flex-center padding-30 bg-white bor_btm'>
 <image class='icon-20' src='{{uploadpath}}resource/{{res.team}}'></image>
 <view class='txt-black txt-bold margin-left-20 h5 flex-1'>团队成员</view>
 <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
@@ -40,7 +40,7 @@
 <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>
 
-<navigator class='flex-row flex-center padding-30 bg-white '>
+<navigator url='/pages/aboutus/aboutus' class='flex-row flex-center padding-30 bg-white '>
 <image class='icon-20' src='{{uploadpath}}resource/{{res.aboutus}}'></image>
 <view class='txt-black txt-bold margin-left-20 h5 flex-1'>关于我们</view>
 <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>

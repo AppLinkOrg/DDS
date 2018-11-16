@@ -1,11 +1,11 @@
 <view class='top'>
-  <view class='flex-row flex-center bg-bck_ble'>
-    <view class='flex-1 text-center padding-20 txt-gray_white {{allshow==1?"txt-white":""}}' bindtap='bindall'>所有发布</view>
+  <view class='flex-row flex-center bg-bck_ble' >
+    <view class='flex-1 text-center padding-20 txt-gray_white {{allshow==1?"txt-white":""}}'  bindtap='bindall'>所有发布</view>
     <view class='flex-1 text-center padding-20 txt-gray_white {{mineshow==2?"txt-white":""}}' bindtap='bindmine'>我的发布</view>
   </view>
 
   <view class='flex-row flex-center padding-20 bg-white'>
-    <view class='flex-1 h5 txt-black'>共有1条任务</view>
+    <view class='flex-1 h5 txt-black'>共有 {{list.length}} 条任务</view>
     <picker class='' bindchange='bindpickerstate' range='{{statelist}}'>
       <view class='flex-row flex-center'>
         <view class='h5 '>{{statelist[state]}}</view>

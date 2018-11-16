@@ -1,6 +1,12 @@
 {
   "pages":[
+    "pages/home/home",
     "pages/usercategory/usercategory",
+    "pages/commontasks/commontasks",
+    "pages/mine/mine",
+    "pages/addmembers/addmembers",
+    "pages/team/team",
+    "pages/aboutus/aboutus",
     "pages/weighing/weighing",
     "pages/driver/driver",
     "pages/release/release",
@@ -13,10 +19,8 @@
     "pages/Addvehicle/Addvehicle",
     "pages/xq1/xq1",
     "pages/xq/xq",
-    "pages/home/home",
     "pages/driverlist/driverlist",
     "pages/tasklist/tasklist",
-    "pages/mine/mine",
     "pages/taskhistory/taskhistory",
     "pages/noticeinfo/noticeinfo",
     "pages/noticelist/noticelist",
