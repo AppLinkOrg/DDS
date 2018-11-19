@@ -51,18 +51,18 @@
           <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
           <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>装车地址</view>
         </view>
-        <navigator class='h4 txt-black padding-top-10 padding-left-30 text-center' bindtap='openRoute'>
-        <input disabled='false' placeholder='请选择详细地址' value='{{item.title}}'></input>
+        <navigator class='h4 txt-black padding-top-10 padding-left-30 text-center' >
+        <input  placeholder='请输入详细地址' bindinput='startaddress' name='startaddress'></input>
         </navigator>
       </view>
-
+<!-- bindtap='openRoute' -->
       <view class='flex-row column margin-left-20 margin-top-20'>
         <view class='flex-row flex-center '>
           <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
           <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>目的地址</view>
         </view>
-        <navigator class='h4 txt-black padding-top-10 padding-left-30 text-center' bindtap='openRoute'>
-        <input disabled='false' placeholder='请选择详细地址' value='{{item.title}}'></input>
+        <navigator class='h4 txt-black padding-top-10 padding-left-30 text-center'>
+        <input  placeholder='请输入详细地址' bindinput='endaddress' name='endaddress'></input>
         
         </navigator>
       </view>
