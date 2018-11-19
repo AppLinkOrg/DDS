@@ -1,0 +1,14 @@
+/* pages/aboutus/aboutus.wxss */
+Page{
+  background: #f3f2f8;
+  padding-top:30rpx;
+  padding-bottom: 30rpx;
+}
+.border-radius{
+ border-radius: 10rpx;
+ box-shadow: 0rpx 10rpx 25rpx #bebdbd;
+}
+.icon_top{
+  width: 400rpx;
+  height: 200rpx;
+}

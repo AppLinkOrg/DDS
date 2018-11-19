@@ -24,7 +24,7 @@
     </view>
   </view>
   <!--新任务区域-->
-  <navigator wx:for="{{list}}" wx:for-index="idx" wx:key='k' url='/pages/xq/xq?id={{item.id}}' class="nr1  flex-center flex-wrap margin-top" hidden='{{tab!=0}}' wx:if="{{item.status_name=='报名中'}}">
+  <navigator wx:for="{{list}}" wx:for-index="idx" wx:key='k' url='/pages/orderdetails/orderdetails?id={{item.id}}&&openid={{UserInfo.openid}}' class="nr1  flex-center flex-wrap margin-top" hidden='{{tab!=0}}' wx:if="{{item.status_name=='报名中'}}">
     <view class="asd flex-1  " style='width:95%'>
       <view class="flex-center flex-row margin-top-20">
         <view class="margin-left-20  ">
@@ -103,7 +103,7 @@
 
   </navigator>
   <!--待完成区域-->
-  <navigator url='/pages/xq1/xq1?cats=[{{item.id}}]' class="nr1  flex-center flex-wrap margin-top" hidden='{{tab!=2}}'>
+  <navigator wx:for="{{list1}}" wx:for-index="idx" wx:key='k' url='/pages/xq1/xq1?cats=[{{item.id}}]' class="nr1  flex-center flex-wrap margin-top" hidden='{{tab!=2}}' wx:if="{{item.status_name=='待完成'}}"  >
     <view class="asd flex-1  " style='width:95%'>
       <view class="flex-center flex-row margin-top-20">
         <view class="margin-left-20  ">
@@ -169,25 +169,44 @@
 
   </navigator>
   <!--已报名区域-->
-  <view class="nr1  flex-center flex-wrap margin-top" hidden='{{tab!=1}}'>
-
-
-
-
+  <navigator wx:for="{{list1}}" wx:for-index="idx" wx:key='k' url='/pages/apply/apply?id={{item.id}}&&openid={{UserInfo.openid}}'        class="nr1  flex-center              flex-wrap margin-top" hidden='{{tab!=1}}' wx:if="{{item.status_name=='已报名'}}">
     <view class="asd flex-1  " style='width:95%'>
-      <view class="flex-center flex-row margin-top-20" style='justify-content:center'>
+      <view class="flex-center flex-row margin-top-20">
         <view class="margin-left-20  ">
-          <image class='icon-15' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
+          <image class='icon-15 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
-        <view class="margin-left-10 h4  " style='color:#222222'>搞活经济</view>
+        <view class="margin-left-20 h4 flex-1 " style='color:#222222'>东强煤焦</view>
+        <view class="margin-right-20" style='color:#BBBBBB '>任务编号:123</view>
 
       </view>
 
-      <view style=' margin-bottom:30rpx ' class="flex-center flex-row margin-top-20">
+      <view style=' margin-bottom:30rpx ;margin-top:30rpx ' class="flex-center flex-row ">
+        <view class="margin-left-20  ">
+          <image class='icon-15 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
+        </view>
+        <view class="margin-left-20 flex-1 " style='color:#BBBBBB'>运输时间</view>
+        <view class="margin-left-20 margin-right-20 " style='color:red'>07/25 13:49 - 07/26 13:49</view>
+      </view>
 
-        <view class="margin-left-20  " style='color:#BBBBBB'>运输时间:</view>
-        <view class="margin-left-20 flex-1 ">07/27 16:21</view>
-        <view class="margin-left-20  margin-right-20">07/28 16:21</view>
+    </view>
+
+
+
+    <view class="asd flex-1" style='width:95%'>
+      <view class=' flex-center margin-top-20  flex-row '>
+        <view class="flex-1 flex-row flex-bottom">
+          <view class="margin-left-20 " style='font-size:98rpx !important; color:#4B69BB'>80</view>
+          <view class="">元/吨</view>
+        </view>
+        <view class="flex-1  flex-center  " style='text-algin:center'>
+          <view class='margin-left-30' style='font-size:70rpx !important; color:#F9B725'>00:00:00 </view>
+        </view>
+
+      </view>
+      <view class=' flex-center margin-top-20   flex-row ' style='width:100%;  margin-bottom:30rpx'>
+        <view class="flex-1 h4-5 " style='margin-left:60rpx'>预计收入</view>
+        <view class="flex-1  margin-left-30 h4-5" style='color:#BBBBBB '>报名结束还剩下</view>
+
       </view>
 
     </view>
@@ -195,109 +214,26 @@
 
     <view class="asd flex-1" style=' width:95%'>
       <view class="flex-wrap" style=' margin-bottom:30rpx'>
-
-        <view class="" style=''>
-          <view class="flex-row flex-center margin-top:10">
-            <view class="flex-row column flex-1">
-              <view class='flex-row flex-center'>
-                <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
-                <view class="margin-left-20">太原高新区电子数xxxxxxxx公司</view>
-              </view>
-              <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>总里程666公里</view>
-            </view>
-
-            <view style='width:90rpx;  border-left:1px dotted #919191;display:flex;justify-content: center'>
-              <image class='icon-30' src='{{uploadpath}}resource/{{res.daohan}} '></image>
-            </view>
-
-          </view>
-
-
-
+        <view class="flex-row margin-top:10">
+          <view class="margin-left-20  " id="z1" style='margin-top:15rpx'></view>
+          <view class="margin-left-20">太原高新区电子数xxxxxxxx公司</view>
         </view>
-
-        <view class="" style=''>
-          <view class="flex-row flex-center margin-top:10">
-            <view class="flex-row column flex-1">
-              <view class='flex-row flex-center'>
-                <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.green}}'></image>
-                <view class="margin-left-20">创享天地xxxxxxxx公司</view>
-              </view>
-              <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>起点距您206公里</view>
-            </view>
-
-            <view style='width:90rpx;  border-left:1px dotted #919191;display:flex;justify-content: center'>
-              <image class='icon-30' src='{{uploadpath}}resource/{{res.daohan}} '></image>
-            </view>
-
-          </view>
-
-
-
+        <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>起点距您206公里</view>
+        <view class="flex-row">
+          <view class="margin-left-20 " id="z2" style='margin-top:30rpx'></view>
+          <view class="margin-left-20 margin-top-10">内蒙古xxxxxxxx公司</view>
         </view>
+        <view class="margin-left-30 h5 margin-top-10" style='color:#BBBBBB ; margin-left:60rpx'>总里程2051公里</view>
       </view>
 
     </view>
 
 
-    <view class="asd flex-1" style='width:95%'>
-      <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
-        <view class="margin-left-20">
-          <image class='icon-17' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
-        </view>
-        <view class="flex-1 margin-left-20">货运类型</view>
-        <view class="margin-right-20" style='color:#BBBBBB'>精煤</view>
-      </view>
-    </view>
-    <view class="asd flex-1" style='width:95%'>
-      <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
-        <view class="margin-left-20">
-          <image class='icon-17' src='{{uploadpath}}resource/{{res.dianhua}}'></image>
-        </view>
-        <view class="flex-1 margin-left-20">联系电话</view>
-        <view class="margin-right-20" style='color:#BBBBBB'>13033454643</view>
-      </view>
-    </view>
-    <view class="asd flex-1" style='width:95%'>
-      <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
-        <view class="margin-left-20">
-          <image class='icon-17' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
-        </view>
-        <view class="flex-1 margin-left-20">备注</view>
-        <view class="margin-right-20" style='color:#BBBBBB'>22</view>
-      </view>
-      <view>
-        <view class="flex-wrap">
-          <view class="" style='margin:30rpx'>报名资料</view>
-          <view class="flex-row  flex-center">
-            <view class='margin-left-20'>
-              <image class='icon-17' src='{{uploadpath}}resource/{{res.huoche}}'></image>
-            </view>
-            <view class="flex-1 margin-left-20">货运吨数</view>
-            <view class="margin-right-20">
-              100吨
-            </view>
-          </view>
-          <navigator url='/pages/vehicle/vehicle?cats=[{{item.id}}]' class="flex-row  margin-top-10 flex-center">
-            <view class='margin-left-20'>
-              <image class='icon-17' src='{{uploadpath}}resource/{{res.huanche}}'></image>
-            </view>
-            <view class="flex-1  margin-left-20   ">选择车辆</view>
-            <view class="flex-row  flex-center  margin-right-20">
-              <view>晋A 123456</view>
 
 
 
-            </view>
-          </navigator>
-          <view class="h4 bm" style='margin-top:118rpx' id="anniu">取消报名</view>
-        </view>
-      </view>
-    </view>
 
-
-
-  </view>
+  </navigator>
 
 
 </view>

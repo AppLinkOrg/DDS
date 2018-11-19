@@ -1,8 +1,7 @@
-// pages/taskhistory/taskhistory.js
+// pages/commontasks/commontasks.js
 import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api.js";
-import { OrderApi } from "../../apis/order.api.js";
 
 class Content extends AppBase {
   constructor() {
@@ -16,11 +15,7 @@ class Content extends AppBase {
   onMyShow() {
     var that = this;
     wx.setNavigationBarTitle({
-      title: '历史任务',
-    });
-    var orderapi=new OrderApi();
-    orderapi.list({status:"E"}, (list) => {
-      this.Base.setMyData({ list });
+      title: '常用任务',
     });
   }
 }

@@ -1,0 +1,12 @@
+<!--pages/team/team.wxml-->
+<view class='flex-row flex-column'>
+<view class='flex-row flex-center margin-40 padding-40 mid' style='width:500rpx;' wx:for='{{memberlist}}' wx:key='k'>
+<image class='icon-40' src='{{uploadpath}}resource/{{res.enterprise}}'></image>
+<view class='flex-row column margin-left-40'>
+<view class='txt-black'>姓名：{{item.name}}</view>
+<view class='txt-primary margin-top-10' bindtap='phoneCall' id='{{item.member_phone}}'>联系电话：{{item.member_phone}}</view>
+</view>
+</view>
+
+<navigator url='/pages/addmembers/addmembers' class='add'><image class='icon-75' src='{{uploadpath}}resource/{{res.insert_icon}}'></image></navigator>
+</view>

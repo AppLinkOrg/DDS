@@ -33,25 +33,25 @@
     </view>
 
     <view class='padding-40 bor_btm'>
-      
-      
-        <view class='flex-row column margin-left-20 '>
-          <view class='flex-row flex-center '>
-          <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
-          <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>装车地址</view> 
-          </view>
-          <view class='h4 txt-black padding-top-10 padding-left-30'>{{orderinfo.startaddress}}</view>
-        </view>
 
-     
-      
-      <view class='flex-row column margin-left-20 margin-top-20'>
-          <view class='flex-row flex-center '>
-          <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
-          <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>目的地址</view> 
-          </view>
-          <view class='h4 txt-black padding-top-10 padding-left-30'>{{orderinfo.targetaddress}}</view>
+
+      <view class='flex-row column margin-left-20 '>
+        <view class='flex-row flex-center '>
+          <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
+          <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>装车地址</view>
         </view>
+        <view class='h4 txt-black padding-top-10 padding-left-30'>{{orderinfo.startaddress}}</view>
+      </view>
+
+
+
+      <view class='flex-row column margin-left-20 margin-top-20'>
+        <view class='flex-row flex-center '>
+          <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
+          <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>目的地址</view>
+        </view>
+        <view class='h4 txt-black padding-top-10 padding-left-30'>{{orderinfo.targetaddress}}</view>
+      </view>
     </view>
 
     <view class='bor_btm padding-40'>
@@ -86,59 +86,58 @@
       </view>
 
     </view>
-    
-   <view class='flex-row column'>
 
-    <navigator url='/pages/driverlist/driverlist' hidden='{{orderinfo.member_id!="1"}}' wx:if='{{mineshow=="2"}}' class='flex-row flex-center flex-1 padding-40   bor_btm'>
-    <image class='icon-20' src='{{uploadpath}}resource/{{res.driver}}'></image>
-    <view class='txt-gray h5 flex-1 margin-left-20'>司机列表</view>
-    <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
-    </navigator>
+    <view class='flex-row column'>
 
-    <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-    <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
-    <view class='txt-gray h5 flex-1 margin-left-20'>地图</view>
-    <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
-    </view>
-    
-    <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-    <image class='icon-20' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
-    <view class='txt-gray h5 flex-1 margin-left-20'>货运类型</view>
-    <view class='h5 txt-black'>{{orderinfo.stuff_type_id}}</view>
+      <navigator url='/pages/driverlist/driverlist' hidden='{{orderinfo.member_id!="1"}}' wx:if='{{mineshow=="2"}}' class='flex-row flex-center flex-1 padding-40   bor_btm'>
+        <image class='icon-20' src='{{uploadpath}}resource/{{res.driver}}'></image>
+        <view class='txt-gray h5 flex-1 margin-left-20'>司机列表</view>
+        <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
+      </navigator>
+
+      <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
+        <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
+        <view class='txt-gray h5 flex-1 margin-left-20'>地图</view>
+        <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
+      </view>
+
+      <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
+        <image class='icon-20' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
+        <view class='txt-gray h5 flex-1 margin-left-20'>货运类型</view>
+        <view class='h5 txt-black'>{{orderinfo.stuff_type_id}}</view>
+      </view>
+
+      <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
+        <image class='icon-20' src='{{uploadpath}}resource/{{res.enterprise}}'></image>
+        <view class='txt-black h5 flex-1 margin-left-20'>{{orderinfo.enroll_contact}}</view>
+        <image class='icon-20' src='{{uploadpath}}resource/{{res.phone_icon}}'></image>
+      </view>
+
+      <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
+        <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
+        <view class='txt-black h5 flex-1 margin-left-20'>{{orderinfo.start_contact}}</view>
+        <image class='icon-20' src='{{uploadpath}}resource/{{res.phone_icon}}'></image>
+      </view>
+
+      <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
+        <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
+        <view class='txt-black h5 flex-1 margin-left-20'>{{orderinfo.end_contact}}</view>
+        <image class='icon-20' src='{{uploadpath}}resource/{{res.phone_icon}}'></image>
+      </view>
+
+      <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
+        <image class='icon-20' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
+        <view class='txt-gray h5 flex-1 margin-left-20'>备注</view>
+        <view class='txt-black h5'>{{orderinfo.remark}}</view>
+      </view>
+
     </view>
 
-    <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-    <image class='icon-20' src='{{uploadpath}}resource/{{res.enterprise}}'></image>
-    <view class='txt-black h5 flex-1 margin-left-20'>{{orderinfo.enroll_contact}}</view>
-    <image class='icon-20' src='{{uploadpath}}resource/{{res.phone_icon}}'></image>
-    </view>
 
-    <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-    <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
-    <view class='txt-black h5 flex-1 margin-left-20'>{{orderinfo.start_contact}}</view>
-    <image class='icon-20' src='{{uploadpath}}resource/{{res.phone_icon}}'></image>
-    </view>
-    
-    <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-    <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
-    <view class='txt-black h5 flex-1 margin-left-20'>{{orderinfo.end_contact}}</view>
-    <image class='icon-20' src='{{uploadpath}}resource/{{res.phone_icon}}'></image>
-    </view>
-
-    <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-    <image class='icon-20' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
-    <view class='txt-gray h5 flex-1 margin-left-20'>备注</view>
-    <view class='txt-black h5'>{{orderinfo.remark}}</view>
-    </view>
-
-    </view>
-
-    
 
   </view>
-  
+
 </view>
 
 <navigator class='cancel_btn bg-bck_ble txt-white text-center'>取消本次任务</navigator>
 <!-- <button type='bak_ble' hover-class='txt-white' class='txt-white cancel_btn'>取消本次任务</button> -->
-

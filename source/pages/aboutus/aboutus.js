@@ -1,4 +1,4 @@
-// pages/taskhistory/taskhistory.js
+// pages/aboutus/aboutus.js
 import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api.js";
@@ -16,12 +16,12 @@ class Content extends AppBase {
   onMyShow() {
     var that = this;
     wx.setNavigationBarTitle({
-      title: '历史任务',
-    });
+      title: "关于我们",
+    })
     var orderapi=new OrderApi();
-    orderapi.list({status:"E"}, (list) => {
-      this.Base.setMyData({ list });
-    });
+    orderapi.aboutus({orderby:'r_main.seq'},(abouts)=>{
+      this.Base.setMyData({ abouts})
+    })
   }
 }
 var content = new Content();

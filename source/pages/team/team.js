@@ -1,4 +1,4 @@
-// pages/taskhistory/taskhistory.js
+// pages/team/team.js
 import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api.js";
@@ -12,15 +12,20 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
+    var orderapi = new OrderApi();
+    orderapi.goodslist({}, (goodslist) => {
+      this.Base.setMyData({ goodslist });
+    });
+    
   }
   onMyShow() {
     var that = this;
     wx.setNavigationBarTitle({
-      title: '历史任务',
+      title: '团队成员',
     });
-    var orderapi=new OrderApi();
-    orderapi.list({status:"E"}, (list) => {
-      this.Base.setMyData({ list });
+    var orderapi = new OrderApi();
+    orderapi.memberlist({}, (memberlist) => {
+      this.Base.setMyData({ memberlist });
     });
   }
 }

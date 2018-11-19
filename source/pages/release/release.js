@@ -335,6 +335,20 @@ class Content extends AppBase {
     })
   }
 
+  openRoute() {
+    var route = this.Base.getMyData().route;
+    if (route != undefined) {
+      wx.navigateTo({
+        url: '/pages/route/route?callbackid=route&route=' + JSON.stringify(route),
+      })
+    } else {
+
+      wx.navigateTo({
+        url: '/pages/route/route?callbackid=route',
+      })
+    }
+  }
+
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -370,4 +384,5 @@ body.endcontact = content.endcontact;
 body.bindremark = content.bindremark; 
 body.confirm = content.confirm; 
 body.carnumber = content.carnumber;
+body.openRoute = content.openRoute;
 Page(body)

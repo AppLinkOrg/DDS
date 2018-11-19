@@ -1,24 +1,36 @@
 {
   "pages": [
-      "pages/driver/driver",
+  "pages/driver/driver",
     "pages/certificate/certificate",
     "pages/usercategory/usercategory",
+"pages/apply/apply",
     "pages/Addvehicle/Addvehicle",
     "pages/vehicle/vehicle",
     "pages/youke/youke",
-    "pages/weighing/weighing",
+    
+    
+
+    "pages/home/home",
+    "pages/taskhistory/taskhistory",
     "pages/release/release",
+    "pages/route/route",
+    "pages/addressselect/addressselect",
+    "pages/commontasks/commontasks",
+    "pages/mine/mine",
+    "pages/addmembers/addmembers",
+    "pages/team/team",
+    "pages/aboutus/aboutus",
+    "pages/weighing/weighing",
+   
+
     "pages/phone/phone",
     "pages/maps/maps",
     "pages/completed/completed",
     "pages/my/my",
     "pages/xq1/xq1",
-    "pages/xq/xq",
-    "pages/home/home",
+    "pages/orderdetails/orderdetails",
     "pages/driverlist/driverlist",
     "pages/tasklist/tasklist",
-    "pages/mine/mine",
-    "pages/taskhistory/taskhistory",
     "pages/noticeinfo/noticeinfo",
     "pages/noticelist/noticelist",
     "pages/agreement/agreement",

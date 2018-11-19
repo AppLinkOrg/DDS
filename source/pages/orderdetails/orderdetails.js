@@ -123,9 +123,43 @@ class Content extends AppBase {
 
     });
   }
+  tonnage(e) {
+    var tonnage = e.detail.value;
+
+    this.Base.setMyData({
+      tonnage: e.detail.value
+    })
+  }
+  confirm(e) {
+    
+    var data = e.detail.value;
+    
+    if (data.tonnage == "") {
+      this.Base.info("请输入客运吨数");
+      return;
+    }
+   
+    var tonnage = this.Base.getMyData().tonnage;
+    var openid = this.Base.options.openid;
+    var orderid = this.Base.options.id;
+    var vehicle="晋A·123456";
+    var that = this;
+    var orderapi = new OrderApi();
+    orderapi.addapply({
+      status: "I",
+      orderid:orderid,
+      tonnage: tonnage,
+      vehicle: vehicle,
+      openid:openid
+    }, (addvehicle) => {
+
+    });
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
+body.tonnage = content.tonnage;
+body.confirm = content.confirm;
 Page(body)

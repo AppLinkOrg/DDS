@@ -23,5 +23,5 @@ Page{
   font-size: 100rpx;
   font-weight:bold;
   color: #26C48B;
-  font-family: fantasy;
+  
 }

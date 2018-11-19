@@ -40,6 +40,6 @@
       </view>
       
     </view>
-    <button form-type='submit' class="h4 txt-white" type='bak_ble' >确定</button>
+    <button form-type='submit' class="h4 txt-white bm" id="anniu" type='bak_ble' >确定</button>
   </form>
 </view>
