@@ -1,7 +1,11 @@
 {
   "pages":[
-    "pages/home/home",
     "pages/usercategory/usercategory",
+    "pages/home/home",
+    "pages/taskhistory/taskhistory",
+    "pages/release/release",
+    "pages/route/route",
+    "pages/addressselect/addressselect",
     "pages/commontasks/commontasks",
     "pages/mine/mine",
     "pages/addmembers/addmembers",
@@ -9,7 +13,6 @@
     "pages/aboutus/aboutus",
     "pages/weighing/weighing",
     "pages/driver/driver",
-    "pages/release/release",
     "pages/phone/phone",
     "pages/maps/maps",
     "pages/completed/completed", 
@@ -21,7 +24,6 @@
     "pages/xq/xq",
     "pages/driverlist/driverlist",
     "pages/tasklist/tasklist",
-    "pages/taskhistory/taskhistory",
     "pages/noticeinfo/noticeinfo",
     "pages/noticelist/noticelist",
     "pages/agreement/agreement",

@@ -27,7 +27,8 @@ class Content extends AppBase {
     orderapi.list({ }, (list) => {
       this.Base.setMyData({ list });
     });
-    orderapi.list({member_id:1}, (minelist) => {
+    var UserInfo=this.Base.getMyData().UserInfo;
+    orderapi.list({ member_id_name:UserInfo.nickName}, (minelist) => {
       this.Base.setMyData({ minelist });
     });
   }

@@ -30,6 +30,10 @@ class Content extends AppBase {
       this.Base.info("请输入成员联系电话");
       return;
     }
+    if (data.addmobile.length != '11') {
+      this.Base.info("请正确输入联系电话");
+      return;
+    }
     var name=this.Base.getMyData().name;
     var mobile = this.Base.getMyData().mobile;
     var that=this;

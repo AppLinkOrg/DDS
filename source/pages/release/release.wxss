@@ -70,11 +70,21 @@ background: #CFCECF;
 .cancel_btn{
   position: fixed;
   z-index: 90;
-  width: 100%;
+  width: 95%;
   bottom: 0;
   height:100rpx; 
   line-height: 100rpx;
   opacity: 0.8;
+}
+
+checkbox .wx-checkbox-input {
+  width: 30rpx;
+  height: 30rpx;
+
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: rgb(163, 205, 245);
+  
 }
 
 /* .hover_cancel_btn{

@@ -4,7 +4,7 @@
     <view class='flex-1 text-center padding-20 txt-gray_white {{mineshow==2?"txt-white":""}}' bindtap='bindmine'>我的发布</view>
   </view>
 
-  <view class='flex-row flex-center padding-20 bg-white'>
+  <view class='flex-row flex-center padding-20 bg-white'  hidden='{{allshow!="1"}}'>
     <view class='flex-1 h5 txt-black'>共有 {{list.length}} 条任务</view>
     <picker class='' bindchange='bindpickerstate' range='{{statelist}}'>
       <view class='flex-row flex-center'>
@@ -15,6 +15,19 @@
       </view>
     </picker>
   </view>
+  
+  <view class='flex-row flex-center padding-20 bg-white' hidden='{{mineshow!="2"}}'>
+    <view class='flex-1 h5 txt-black'>共有 {{minelist.length}} 条任务</view>
+    <picker class='' bindchange='bindpickerstate' range='{{statelist}}'>
+      <view class='flex-row flex-center'>
+        <view class='h5 '>{{statelist[state]}}</view>
+        <view class='margin-left-20'>
+          <image class='icon_lower' src='{{uploadpath}}resource/{{res.lowericon}}'></image>
+        </view>
+      </view>
+    </picker>
+  </view>
+
 
   <navigator url='/pages/noticelist/noticelist' class='padding-20 bg-gray flex-row flex-center'>
     <view>

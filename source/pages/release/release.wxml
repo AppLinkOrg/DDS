@@ -51,7 +51,9 @@
           <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
           <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>装车地址</view>
         </view>
-        <navigator class='h4 txt-black padding-top-10 padding-left-30 text-center'>选择详细地址</navigator>
+        <navigator class='h4 txt-black padding-top-10 padding-left-30 text-center' bindtap='openRoute'>
+        <input disabled='false' placeholder='请选择详细地址' value='{{item.title}}'></input>
+        </navigator>
       </view>
 
       <view class='flex-row column margin-left-20 margin-top-20'>
@@ -59,7 +61,10 @@
           <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
           <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>目的地址</view>
         </view>
-        <navigator class='h4 txt-black padding-top-10 padding-left-30 text-center'>选择详细地址</navigator>
+        <navigator class='h4 txt-black padding-top-10 padding-left-30 text-center' bindtap='openRoute'>
+        <input disabled='false' placeholder='请选择详细地址' value='{{item.title}}'></input>
+        
+        </navigator>
       </view>
     </view>
 
@@ -190,6 +195,16 @@
         <image class='icon-20' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
         <view class='txt-black h5     margin-left-20'>备注</view>
         <textarea placeholder='暂无备注（限制字数140字）' bindinput='bindremark' name='remark' style='height:100rpx;width:450rpx; border-radius:10rpx;' class='h5 bg-gray padding-20 txt-black   margin-left-10'></textarea>
+      </view>
+
+      <view class='padding-40'>
+      <checkbox-group bindchange="" >
+      <label class='flex-row flex-center checkbox'>
+      <view class='flex-1'></view>
+      <checkbox value="{{item.name}}" color='#353A4D' checked="{{item.checked}}" />
+      <view class='h5 margin-left-10'>添加为常用任务</view>
+      </label>
+      </checkbox-group>
       </view>
 
     </view>
