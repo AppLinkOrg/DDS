@@ -236,7 +236,20 @@ class Content extends AppBase {
       remark: e.detail.value
     })
   }
-
+  startaddress(e){
+    var startaddress = e.detail.value;
+    console.log(startaddress);
+    this.Base.setMyData({
+      startaddress: e.detail.value
+    })
+  }
+  endaddress(e) {
+    var endaddress = e.detail.value;
+    console.log(endaddress);
+    this.Base.setMyData({
+      endaddress: e.detail.value
+    })
+  }
 
 
   confirm(e) {
@@ -251,6 +264,14 @@ class Content extends AppBase {
     // }
     if (data.ecdate == "") {
       this.Base.info("请选择报名截止日期");
+      return;
+    }
+    if (data.startaddress == "") {
+      this.Base.info("请输入装车地址");
+      return;
+    }
+    if (data.endaddress == "") {
+      this.Base.info("请输入目的地址");
       return;
     }
     // if (data.ectime == "") {
@@ -305,6 +326,8 @@ class Content extends AppBase {
     var carnum = this.Base.getMyData().carnum;
     var stptime = this.Base.getMyData().stptime;
     var tstenddate = this.Base.getMyData().tstenddate;
+    var startaddress = this.Base.getMyData().startaddress;
+    var endaddress = this.Base.getMyData().endaddress;
     var etptime = this.Base.getMyData().etptime;
     var gdsweight = this.Base.getMyData().gdsweight;
     var goodstype = this.Base.getMyData().goodstype;
@@ -319,6 +342,8 @@ class Content extends AppBase {
       enroll_start: startdate,
       enroll_deadline: enddate,
       start_time: tstdate,
+      startaddress: startaddress,
+      targetaddress: endaddress,
       end_time: tstenddate,
       weight: gdsweight,
       carcount: carnum,
@@ -329,9 +354,9 @@ class Content extends AppBase {
       end_contact: edcontact,
       remark: remark
     }, (create) => {
-      // wx.reLaunch({
-      //   url: '/pages/home/home'
-      // })
+       wx.reLaunch({
+         url: '/pages/home/home'
+       })
     })
   }
 
@@ -385,4 +410,6 @@ body.bindremark = content.bindremark;
 body.confirm = content.confirm; 
 body.carnumber = content.carnumber;
 body.openRoute = content.openRoute;
+body.startaddress = content.startaddress;
+body.endaddress = content.endaddress;
 Page(body)

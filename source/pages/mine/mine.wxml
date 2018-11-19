@@ -1,11 +1,13 @@
 <!--pages/mine/mine.wxml-->
-<navigator class='flex-row flex-center bg-white padding-30 bor_btm' >
+<navigator url='/pages/certification/certification' class='flex-row flex-center bg-white padding-30 bor_btm' >
   <view>
     <image class='icon-60 radius-50' src='{{UserInfo.avatarUrl}}'></image>
   </view>
-  <view class='flex-1 flex-row column padding-left-30'>
+  <view class='flex-1 flex-row column padding-left-30' wx:for='{{errlist}}' wx:key='k'>
     <view class='txt-bold txt-black h4'>{{UserInfo.nickName}}</view>
-    <view>已认证</view>
+    <view wx:if='{{item.status=="I"}}' class='txt-red txt-bold h5'>{{item.status_name}}</view>
+    <view wx:if='{{item.status=="N"}}' class='txt-red txt-bold h5'>{{item.status_name}}</view>
+    <view wx:if='{{item.status=="A"}}' class='txt-primary txt-bold h5'>{{item.status_name}}</view>
   </view>
   <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>

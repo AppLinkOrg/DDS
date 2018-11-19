@@ -302,6 +302,9 @@ button[disabled][type=primary] {
 .padding-top-70{
   padding-top: 70rpx;
 }
+.padding-top-100{
+  padding-top: 100rpx;
+}
 .padding-bottom-10{
   padding-bottom: 10rpx;
 }
