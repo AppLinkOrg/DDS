@@ -3,6 +3,8 @@ import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api.js";
 import { OrderApi } from "../../apis/order.api.js";
+import { date } from "../../apis/order.api.js";
+
 class Content extends AppBase {
   constructor() {
     super();
@@ -54,19 +56,41 @@ class Content extends AppBase {
   onMyShow() {
     
     var that = this;
-    
+   //查询所有列表 
     var orderapi=new OrderApi();
     orderapi.list({}, (list) => {
       this.Base.setMyData({ list });
+      var year = new Array();
+      var month=new Array();
+      var day=new Array();
       var num=0;
-             for(var i=1;i<list.length;i++){
-               if (list[0].release_status_name="报名中")
+      //循环转化时间
+             for(var i=0;i<list.length;i++){
+               var myDate = new Date(list[i].enroll_deadline);
+                
+               year[i] = myDate.getFullYear();
+               month[i] = myDate.getMonth() + 1;
+               if(month[i]<10)
+               {
+                 month[i] = ''+ myDate.getMonth() + 1;
+               }
+               day[i]=myDate.getDate();
+             
+               if (day[i]<10) {
+                 day[i] = '0' + myDate.getDate() ;
+               }
+
+                     
+
+
+
+               if (list[i].status_name=="报名中")
                {
                  num++;
                }       
              }
 
-      this.Base.setMyData({ num: num });
+      this.Base.setMyData({ num: num, year: year, month: month, day: day});
     });
   }
   qwe(e) {

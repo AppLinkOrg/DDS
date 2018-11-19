@@ -2,10 +2,11 @@
   <view class="flex-row flex-center  asd  " style='padding-top:30rpx;padding-bottom:30rpx '>
     <view class="flex-3" style='margin:30rpx'>
       <image class=' icon-100  avatar  ' src="{{UserInfo.avatarUrl}}"> </image>
-      <navigator url='/pages/rz/rz?cats=[{{item.id}}]' id="rz" style=' '>已认证</navigator>
+      <navigator url='/pages/certificate/certificate?openid={{UserInfo.openid}}' id="rz" style=' '>{{list[0].status_name}}</navigator>
     </view>
     <view class="flex-4 flex-wrap">
       <view class="h4">{{UserInfo.nickName}}</view>
+       
       <view class="h4">18636645558</view>
 
     </view>

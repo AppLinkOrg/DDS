@@ -1,56 +1,32 @@
 <view class="nr1  flex-center flex-wrap margin-top-20">
-  <view class="asd   flex-1   " style='width:95%;position:relative'>
-  
+  <view wx:for="{{vehiclelist}}" wx:key="k"  class="asd   flex-1   " style='width:95%;position:relative'>
+
     <view class="flex-center flex-row margin-top-20">
 
-      <view class="flex-row  flex-2 " style='color:#222222;justify-content: center;'>半挂车</view>
+      <view class="flex-row  flex-2 " style='color:#222222;justify-content: center;'>{{item.vehicletype}}</view>
       <view class="flex-1"></view>
-       <view id="yj" class="flex-row  flex-1 padding-10 margin-10  " style='justify-content: center;border:1px solid #24c689;color:#24c689;margin-right:40rpx'  >已认证</view>
-
-      </view>
-
-      <view style=' margin-bottom:50rpx ;margin-top:50rpx ' class="flex-center flex-row ">
-        <view class="flex-row  flex-2 flex-bottom " style='justify-content: center;'>
-        <view style='color:#8B8B8B;font-size: 70rpx !important'>33.33</view>
-        <view style='color:#222222'>吨</view>
-        </view>
-        <view class="flex-1"></view>
-       <view id="cp" class="flex-row  flex-1  margin-10 "
-        style='border:1px solid #2B2B2B;color:#222222;justify-content: center;margin-right:40rpx'>晋A·12128</view>
-      </view>
-    </view>
-    
-
-     <view class="asd   flex-1  margin-top-20 " style='width:95%;position:relative'>
-  
-    <view class="flex-center flex-row margin-top-20">
-
-      <view class="flex-row  flex-2 " style='color:#222222;justify-content: center;'>半挂车</view>
-      <view class="flex-1"></view>
-       <view id="yj" class="flex-row  flex-1 padding-10 margin-10  " style='justify-content: center;border:1px solid #24c689;color:#24c689;margin-right:40rpx'  >已认证</view>
-
-      </view>
-
-      <view style=' margin-bottom:50rpx ;margin-top:50rpx ' class="flex-center flex-row ">
-        <view class="flex-row  flex-2 flex-bottom " style='justify-content: center;'>
-        <view style='color:#8B8B8B;font-size: 70rpx !important'>33.33</view>
-        <view style='color:#222222'>吨</view>
-        </view>
-        <view class="flex-1"></view>
-       <view id="cp" class="flex-row  flex-1  margin-10 "
-        style='border:1px solid #2B2B2B;color:#222222;justify-content: center;margin-right:40rpx'>
-       晋A·12128</view>
-      </view>
+      <view id="yj" class="flex-row  flex-1 padding-10 margin-10  " style='justify-content: center;border:1px solid #24c689;color:#24c689;margin-right:40rpx'>{{item.status_name}}</view>
 
     </view>
 
+    <view style=' margin-bottom:50rpx ;margin-top:50rpx ' class="flex-center flex-row ">
+      <view class="flex-row  flex-2 flex-bottom " style='justify-content: center;'>
+        <view style='color:#8B8B8B;font-size: 70rpx !important'>{{item.load}}</view>
+        <view style='color:#222222'>吨</view>
+      </view>
+      <view class="flex-1"></view>
+      <view id="cp" class="flex-row  flex-1  margin-10 " style='border:1px solid #2B2B2B;color:#222222;justify-content: center;margin-right:40rpx'>{{item.carnumber}}</view>
+    </view>
+  </view>
 
 
 
 
 
 
-<navigator    url='/pages/Addvehicle/Addvehicle?cats=[{{item.id}}]' class="h4 bm"  id="anniu" >添加车辆</navigator>
+
+
+
+  <navigator url='/pages/Addvehicle/Addvehicle?cats=[{{item.id}}]' class="h4 bm" id="anniu">添加车辆</navigator>
 
 </view>
-

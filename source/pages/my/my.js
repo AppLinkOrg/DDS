@@ -2,7 +2,7 @@
 import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api.js";
-
+import { CertificateApi } from "../../apis/certificate.api.js";
 class Content extends AppBase {
   constructor() {
     super();
@@ -17,11 +17,19 @@ class Content extends AppBase {
   setPageTitle() {
     wx.setNavigationBarTitle({
       title: '任务详情',
-
+ 
     });
   }
   onMyShow() {
     var that = this;
+    var api = new CertificateApi();
+    console.log(8888888);
+    api.riverlist({ openid: this.Base.options.openid}, (list) => {
+     
+      this.Base.setMyData({ list });
+
+     
+    });
   }
 }
 var content = new Content();

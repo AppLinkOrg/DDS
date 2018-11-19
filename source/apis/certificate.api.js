@@ -1,13 +1,13 @@
 import { ApiConfig } from 'apiconfig';
-export class OrderApi {
-  //获取货运类型列表
-  goodslist(json, callback, showLoading = true) {
+export class CertificateApi {
+  //更新司机认证
+  updetedriver(json, callback, showLoading = true) {
     if (showLoading)
       ApiConfig.ShowLoading();
     var header = ApiConfig.GetHeader();
     console.log(header);
     wx.request({
-      url: ApiConfig.GetApiUrl() + 'order/goodslist',
+      url: ApiConfig.GetApiUrl() + 'certificate/updetedriver',
       data: json,
       method: 'POST',
       dataType: 'json',
@@ -30,13 +30,13 @@ export class OrderApi {
     })
   }
   //获取运输单列表
-  list(json, callback, showLoading = true) {
+  riverxq(json, callback, showLoading = true) {
     if (showLoading)
       ApiConfig.ShowLoading();
     var header = ApiConfig.GetHeader();
     console.log(header);
     wx.request({
-      url: ApiConfig.GetApiUrl() + 'order/list',
+      url: ApiConfig.GetApiUrl() + 'certificate/certificatexq',
       data: json,
       method: 'POST',
       dataType: 'json',
@@ -59,13 +59,13 @@ export class OrderApi {
     })
   }
   //获取车辆列表
-  vehiclelist(json, callback, showLoading = true) {
+  riverlist(json, callback, showLoading = true) {
     if (showLoading)
       ApiConfig.ShowLoading();
     var header = ApiConfig.GetHeader();
     console.log(header);
     wx.request({
-      url: ApiConfig.GetApiUrl() + 'order/vehiclelist',
+      url: ApiConfig.GetApiUrl() + 'certificate/certificatelist',
       data: json,
       method: 'POST',
       dataType: 'json',
@@ -130,8 +130,8 @@ export class OrderApi {
       header: header,
       success: function (res) {
         if (callback != null) {
-          
-        
+
+
           callback(res.data);
         }
       },

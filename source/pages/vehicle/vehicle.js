@@ -2,7 +2,7 @@
 import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api.js";
-
+import { OrderApi } from "../../apis/order.api.js";
 class Content extends AppBase {
   constructor() {
     super();
@@ -22,7 +22,11 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
-  }
+    var orderapi = new OrderApi();
+    orderapi.vehiclelist({}, (vehiclelist) => {
+      this.Base.setMyData({ vehiclelist });
+  })}
+  
 }
 var content = new Content();
 var body = content.generateBodyJson();

@@ -1,0 +1,61 @@
+
+
+<view  >
+  <view class="flex-row flex-center" style='' ><view class="flex-1 text-center" style='text-algin:center'>最新发布</view></view>
+ <navigator url='/pages/usercategory/usercategory'  wx:for='{{list}}' wx:key='k' class='mid margin-top-60 margin-bottom-40' >
+  
+  <view class='flex-row flex-column  '>
+
+    <view class='flex-row flex-center margin-top-20'>
+      <view class='h5'>报名截止时间：</view>
+      <view class='h5'>{{item.enroll_deadline}}</view>
+    </view>
+    <view class='text-center txt-red h5 signup margin-top-20'>{{item.status_name}}</view>
+  </view>
+  <view class='flex-row flex-center margin-top-20'>
+    <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
+      <view class='flex-row '>
+        <view class='font-left'>2</view>
+        <view class='font-mid padding-top-40 margin-left-10'>/{{item.carcount}}</view>
+        <view class='txt-bold padding-top-60 margin-left-10'>辆</view>
+      </view>
+    </view>
+
+    <view class='flex-row flex-column flex-1 '>
+      <view class='flex-row '>
+        <view class='font-right'>{{item.unitprice}}</view>
+        <view class='txt-bold padding-top-60 margin-left-10'>元/吨</view>
+      </view>
+    </view>
+  </view>
+  <view class='flex-row flex-center padding-10 ' style='border-bottom:1rpx solid #CFCECF'>
+    <view class='flex-1 text-center font-bottom margin-bottom-10'>已报名</view>
+    <view class='flex-1 text-center font-bottom margin-bottom-10'>预计运费</view>
+  </view>
+  <view class='padding-20'>
+    <view class='flex-row  margin-top-20'>
+      <view>
+        <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
+      </view>
+      <view class='flex-row column margin-left-20'>
+      <view class='h5 txt-gray'>始发地</view>
+      <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.startaddress}}</view>
+      </view>
+    </view>
+    <view class='flex-row  margin-top-20'>
+      <view>
+        <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
+      </view>
+      <view class='flex-row column margin-left-20'>
+      <view class='h5 txt-gray'>目的地</view>
+      <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.targetaddress}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='flex-row flex-center padding-20'>
+    <view class='txt-gray h5'>全程</view>
+    <view class='h4'>{{item.milestone}}</view>
+    <view class=' h5'>公里</view>
+  </view>
+ </navigator>
+</view>

@@ -1,11 +1,11 @@
-
+ <form bindsubmit="confirm" bindreset="formReset" report-submit="{{true}}">
 <scroll-view scroll-y="true" >
 
 <view  class="flex-wrap flex-center">
 <view  class="margin-30" style='margin:30rpx;color:#BBBBBB ' >姓名</view>
 <view class="flex-row flex-center" style='justify-content:center'>
 
-<input placeholder="请输入姓名" style='border:1px solid #D5D5D5; height:90rpx; width:95%;'></input>
+<input placeholder="请输入姓名" bindinput='name' name="name" style='border:1px solid #D5D5D5; height:90rpx; width:95%;'></input>
 
 </view>
 
@@ -15,7 +15,7 @@
 <view  class="margin-30" style='margin:30rpx;color:#BBBBBB ' >身份证号</view>
 <view class="flex-row flex-center" style='justify-content:center'>
 
-<input placeholder="请输入身份证号" style='border:1px solid #D5D5D5; height:90rpx; width:95%;'></input>
+<input placeholder="请输入身份证号" bindinput='idcard' name="idcard" style='border:1px solid #D5D5D5; height:90rpx; width:95%;'></input>
 
 </view>
 
@@ -42,7 +42,7 @@
 
 </view>
 </scroll-view>
-<view class="h4 bm " style='margin-top:20rpx'
-  id="anniu" >确定</view>
+ <button form-type='submit' class="h4 txt-white" type='bak_ble' style='margin-top:20rpx'>确定</button>
+  </form>
 
 

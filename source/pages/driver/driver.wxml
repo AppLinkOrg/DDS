@@ -2,7 +2,7 @@
 <view>
   <view  class='Top'>
     <view style='height:100rpx; border-bottom:1px solid #F3F3F3 ' class="flex-row flex-center bg ">
-      <navigator url='/pages/wd/wd' class='flex-1' style='border-right:1px solid #F3F3F3;margin-left:20rpx'>
+      <navigator url='/pages/my/my?openid={{UserInfo.openid}}' class='flex-1' style='border-right:1px solid #F3F3F3;margin-left:20rpx'>
         <image class='icon-30 ' src='{{uploadpath}}resource/{{res.siji_icon}}'></image>
       </navigator>
       <view class='flex-2 h5 {{tab==0?"aa":"bb"}}  ' bindtap='changetab' id="0">新任务</view>
@@ -24,13 +24,13 @@
     </view>
   </view>
   <!--新任务区域-->
-  <navigator wx:for="{{list}}" wx:key='k' url='/pages/xq/xq?cats=[{{item.id}}]' class="nr1  flex-center flex-wrap margin-top" hidden='{{tab!=0}}'>
+  <navigator wx:for="{{list}}" wx:for-index="idx" wx:key='k' url='/pages/xq/xq?id={{item.id}}' class="nr1  flex-center flex-wrap margin-top" hidden='{{tab!=0}}' wx:if="{{item.status_name=='报名中'}}">
     <view class="asd flex-1  " style='width:95%'>
       <view class="flex-center flex-row margin-top-20">
         <view class="margin-left-20  ">
           <image class='icon-15 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
-        <view class="margin-left-20 h4 " style='color:#222222'>阿里巴巴</view>
+        <view class="margin-left-20 h4 " style='color:#222222'>{{item.member_id_name}}</view>
 
       </view>
 
@@ -47,16 +47,18 @@
 
     <view class="asd flex-1" style='width:95%'>
       <view class=' flex-center margin-top-20  flex-row '>
-        <view class="flex-1 flex-row flex-bottom">
-          <view class="margin-left-20 " style='font-size:50rpx !important; color:#4B69BB'>{{item.unitprice}}</view>
-          <view class="">元/吨</view>
+        <view class="flex-1 flex-row flex-bottom" style=''>
+        
+          <view class="flex-3 flex-center " style='text-align: center; font-size:50rpx !important; color:#4B69BB'>{{item.unitprice}}</view>
+          <view class="flex-2 flex-center " style='text-align: center;margin-right:20rpx'>元/吨</view>
+        
         </view>
         <view class="flex-1 flex-wrap nr1 flex-center ">
-          <view class="h3 " style=' color:#F7B81F'>14:06</view>
-          <view class="">07/22</view>
+          <view class="h3 " style=' color:#F7B81F'>{{year[idx]}}</view>
+          <view class="">{{month[idx]}}/{{day[idx]}}</view>
         </view>
         <view class="flex-1 flex-wrap  nr1 flex-center">
-          <view class="h3 " style=' color:#F7B81F'>1</view>
+          <view class="h3 " style=' color:#F7B81F'>{{item.carcount}}</view>
           <view class="">已报名</view>
         </view>
       </view>
@@ -92,7 +94,7 @@
           <image class='icon-15 ' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
         </view>
         <view class="flex-1 margin-left-20">货运类型</view>
-        <view class="margin-right-20" style='color:#BBBBBB'>精煤</view>
+        <view class="margin-right-20" style='color:#BBBBBB'>{{item.stuff_type_id}}</view>
       </view>
     </view>
 

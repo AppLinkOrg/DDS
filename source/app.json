@@ -1,16 +1,17 @@
 {
-  "pages":[
+  "pages": [
+      "pages/driver/driver",
+    "pages/certificate/certificate",
     "pages/usercategory/usercategory",
+    "pages/Addvehicle/Addvehicle",
+    "pages/vehicle/vehicle",
+    "pages/youke/youke",
     "pages/weighing/weighing",
-    "pages/driver/driver",
     "pages/release/release",
     "pages/phone/phone",
     "pages/maps/maps",
-    "pages/completed/completed", 
-    "pages/rz/rz",
-    "pages/wd/wd",
-    "pages/vehicle/vehicle",
-    "pages/Addvehicle/Addvehicle",
+    "pages/completed/completed",
+    "pages/my/my",
     "pages/xq1/xq1",
     "pages/xq/xq",
     "pages/home/home",
@@ -23,8 +24,8 @@
     "pages/agreement/agreement",
     "pages/auth/auth"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "enablePullDownRefresh": true,
     "navigationBarBackgroundColor": "#353A4D",
     "navigationBarTextStyle": "white"
@@ -55,5 +56,4 @@
       }
     ]
   }
-  
 }
