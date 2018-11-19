@@ -22,6 +22,10 @@ class Content extends AppBase {
     orderapi.list({status:"E"}, (list) => {
       this.Base.setMyData({ list });
     });
+    var UserInfo = this.Base.getMyData().UserInfo;
+    orderapi.enterpriselist({ member_id_name: UserInfo.nickName }, (errlist) => {
+      this.Base.setMyData({ errlist })
+    })
   }
 }
 var content = new Content();
