@@ -89,7 +89,7 @@
 
     <view class='flex-row column'>
 
-      <navigator url='/pages/driverlist/driverlist' hidden='{{orderinfo.member_id!="2"}}' wx:if='{{mineshow=="2"}}' class='flex-row flex-center flex-1 padding-40   bor_btm'>
+      <navigator url='/pages/driverlist/driverlist' hidden='{{orderinfo.member_id_name!=UserInfo.nickName}}' wx:if='{{mineshow=="2"}}' class='flex-row flex-center flex-1 padding-40   bor_btm'>
         <image class='icon-20' src='{{uploadpath}}resource/{{res.driver}}'></image>
         <view class='txt-gray h5 flex-1 margin-left-20'>司机列表</view>
         <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>

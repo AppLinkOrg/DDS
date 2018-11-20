@@ -21,7 +21,8 @@
     <view class='flex-1 h5 txt-black'>共有 {{minelist.length}} 条任务</view>
     <picker class='' bindchange='bindpickerstate' range='{{statuslist}}' range-key='odrstatusname'>
       <view class='flex-row flex-center'>
-        <view class='h5 '>{{statuslist[state_idx].odrstatusname}}</view>
+        <view wx:if='{{state_id==0}}'>所有发布</view>
+        <view wx:if='{{state_id>0}}' class='h5 '>{{statuslist[state_idx].odrstatusname}}</view>
         <view class='margin-left-20'>
           <image class='icon_lower' src='{{uploadpath}}resource/{{res.lowericon}}'></image>
         </view>
@@ -47,7 +48,7 @@
       <view class='h5'>报名截止时间：</view>
       <view class='h5'>{{item.enroll_deadline}}</view>
     </view>
-    <view class='text-center txt-red h5 signup margin-top-20'>{{item.status_name}}</view>
+    <view class='text-center txt-red h5 signup margin-top-20'>{{item.taskstatus_name}}</view>
   </view>
   <view class='flex-row flex-center margin-top-20'>
     <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
@@ -109,7 +110,7 @@
       <view class='h5'>报名截止时间：</view>
       <view class='h5'>{{item.enroll_deadline}}</view>
     </view>
-    <view class='text-center txt-red h5 signup margin-top-20'>{{item.status_name}}</view>
+    <view class='text-center txt-red h5 signup margin-top-20'>{{item.taskstatus_name}}</view>
   </view>
   <view class='flex-row flex-center margin-top-20'>
     <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>

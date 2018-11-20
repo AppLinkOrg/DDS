@@ -1,15 +1,16 @@
 {
   "pages": [
+    "pages/usercategory/usercategory",
+    "pages/release/release",
+    "pages/auth/auth",
     "pages/home/home",
     "pages/driver/driver",
     "pages/certification/certification",
     "pages/certificate/certificate",
     "pages/mine/mine",
-    "pages/usercategory/usercategory",
     "pages/apply/apply",
     "pages/Addvehicle/Addvehicle",
     "pages/vehicle/vehicle",
-    "pages/release/release",
     "pages/addmembers/addmembers",
     "pages/youke/youke",
     "pages/taskhistory/taskhistory",
@@ -29,8 +30,7 @@
     "pages/tasklist/tasklist",
     "pages/noticeinfo/noticeinfo",
     "pages/noticelist/noticelist",
-    "pages/agreement/agreement",
-    "pages/auth/auth"
+    "pages/agreement/agreement"
   ],
   "window": {
     "backgroundTextStyle": "light",

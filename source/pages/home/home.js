@@ -55,11 +55,11 @@ class Content extends AppBase {
      });
     var state_id = this.Base.getMyData().state_id;
     var orderapi = new OrderApi();
-    orderapi.list({ status: state_id, orderby: "r_main.created_date" }, (list) => {
+    orderapi.list({ taskstatus: state_id, orderby: "r_main.created_date" }, (list) => {
       this.Base.setMyData({ list });
     });
     var UserInfo = this.Base.getMyData().UserInfo;
-    orderapi.list({ member_id_name: UserInfo.nickName, status: state_id, orderby: "r_main.created_date"  }, (minelist) => {
+    orderapi.list({ member_id_name: UserInfo.nickName, taskstatus: state_id, orderby: "r_main.created_date"  }, (minelist) => {
       this.Base.setMyData({ minelist });
     });
     

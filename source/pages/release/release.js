@@ -339,6 +339,7 @@ class Content extends AppBase {
     var orderapi = new OrderApi();
     orderapi.create({
       status:"A",
+      taskstatus:"1",
       enroll_start: startdate,
       enroll_deadline: enddate,
       start_time: tstdate,
@@ -354,9 +355,9 @@ class Content extends AppBase {
       end_contact: edcontact,
       remark: remark
     }, (create) => {
-       wx.reLaunch({
-         url: '/pages/home/home'
-       })
+        wx.reLaunch({
+          url: '/pages/home/home'
+        })
     })
   }
 
