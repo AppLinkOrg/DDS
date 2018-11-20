@@ -12,13 +12,28 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
+    console.log(this.options.status);
+      // wx.showModal({
+      //   title: '提示',
+      //   content: '您已经通过认证',
+      //   success: function (res) {
+      //     if (res.confirm) {
+      //       console.log('用户点击确定')
+      //     }
+      //   }
+      // })
+    
   }
   onMyShow() {
     var that = this;
     wx.setNavigationBarTitle({
       title: '企业认证',
     }); 
-    
+    var orderapi = new OrderApi();
+    var UserInfo = this.Base.getMyData().UserInfo;
+    orderapi.enterpriselist({ member_id: UserInfo.nickName }, (errlist) => {
+      this.Base.setMyData({ errlist })
+    })
   }
   uploadimg(e) {
     var that = this;
@@ -46,21 +61,24 @@ class Content extends AppBase {
     var enterprisename = this.Base.getMyData().enterprisename;
     var creditcode = this.Base.getMyData().creditcode;
     var photo = this.Base.getMyData().photo;
+    var UserInfo = this.Base.getMyData().UserInfo;
     var that = this;
     var orderapi = new OrderApi();
+    console.log(UserInfo.nickName);
     orderapi.authenticate({
        status: "I",
+       member_id: UserInfo.nickName,
        enterprisename: enterprisename,
        creditcode: creditcode,
        authenticateimg:photo
     }, (authenticate) => {
-        var pages = getCurrentPages(); 
-        var beforePage = pages[pages.length - 2];
-        wx.navigateBack({
-          success(){
-            beforePage.onLoad();
-          }
-        })
+         var pages = getCurrentPages(); 
+         var beforePage = pages[pages.length - 2];
+         wx.navigateBack({
+           success(){
+             beforePage.onLoad();
+           }
+         })
      });
   }
   enterprisename(e) {

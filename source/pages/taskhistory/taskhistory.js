@@ -19,9 +19,13 @@ class Content extends AppBase {
       title: '历史任务',
     });
     var orderapi=new OrderApi();
-    orderapi.list({status:"E"}, (list) => {
+    orderapi.list({status:"4"}, (list) => {
       this.Base.setMyData({ list });
     });
+    var UserInfo = this.Base.getMyData().UserInfo;
+    orderapi.enterpriselist({ member_id: UserInfo.nickName }, (errlist) => {
+      this.Base.setMyData({ errlist })
+    })
   }
 }
 var content = new Content();

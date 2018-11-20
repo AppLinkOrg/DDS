@@ -4,6 +4,8 @@
     "pages/certification/certification",
     "pages/certificate/certificate",
     
+    
+    "pages/home/home",
     "pages/mine/mine",
     "pages/usercategory/usercategory",
     "pages/apply/apply",
@@ -12,7 +14,7 @@
     "pages/release/release",
     "pages/addmembers/addmembers",
     "pages/youke/youke",
-    "pages/home/home",
+    
     "pages/taskhistory/taskhistory",
     "pages/route/route",
     "pages/addressselect/addressselect",

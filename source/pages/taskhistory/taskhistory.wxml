@@ -1,9 +1,9 @@
 <!--pages/taskhistory/taskhistory.wxml-->
 <navigator url='/pages/tasklist/tasklist' class='mid margin-top-40 margin-bottom-40' wx:for='{{list}}' wx:key='k'>
-  <view class='flex-row flex-center padding-40'>
+  <view class='flex-row flex-center padding-40' wx:for='{{errlist}}' wx:key='k'>
   <view>任务编号：</view>
   <view class='flex-1'>158</view>
-  <view>{{item.member_id_name}}</view>
+  <view>{{item.enterprisename}}</view>
   </view>
   <view class='flex-row flex-column  '>
     <view class='flex-row flex-center margin-top-20'>

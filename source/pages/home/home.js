@@ -13,22 +13,26 @@ class Content extends AppBase {
     //options.id=5;
     super.onLoad(options);
     this.Base.setMyData({
-      allshow:1
+      allshow: 1, state_id:0
     });
-     var statelist=["所有发布","报名中","运输中","未开始"];
-     this.Base.setMyData({
-       statelist
-     });
-    this.Base.setMyData({state:0})
+    
+    var orderapi=new OrderApi();
+    orderapi.orderstatus({orderby:"r_main.id desc"},(statuslist)=>{
+      statuslist.push({ id: "", odrstatusname: "所有发布" });
+    this.Base.setMyData({
+      statuslist
+      })
+    })
+    orderapi.list({ orderby:"r_main.created_date"}, (list) => {
+      this.Base.setMyData({ list });
+    });
+    
   }
   onMyShow() {
     var that = this;
     var orderapi = new OrderApi();
-    orderapi.list({ }, (list) => {
-      this.Base.setMyData({ list });
-    });
-    var UserInfo=this.Base.getMyData().UserInfo;
-    orderapi.list({ member_id_name:UserInfo.nickName}, (minelist) => {
+    var UserInfo = this.Base.getMyData().UserInfo;
+    orderapi.list({ member_id_name: UserInfo.nickName, orderby: "r_main.created_date" }, (minelist) => {
       this.Base.setMyData({ minelist });
     });
   }
@@ -42,14 +46,23 @@ class Content extends AppBase {
   }
  
   bindpickerstate(e){
-    // var list = this.Base.getMyData().list;
-    // this.Base.setMyData({
-    //   state_idx: e.detail.value,
-    //   state_id: list[e.detail.value].id
-    // });
-    this.Base.setMyData({
-      state: e.detail.value
+    console.log(e);
+    var statuslist = this.Base.getMyData().statuslist;
+     this.Base.setMyData({
+       state_idx: e.detail.value,
+       state_id: statuslist[e.detail.value].id,
+       state_name: statuslist[e.detail.value].odrstatusname
+     });
+    var state_id = this.Base.getMyData().state_id;
+    var orderapi = new OrderApi();
+    orderapi.list({ status: state_id, orderby: "r_main.created_date" }, (list) => {
+      this.Base.setMyData({ list });
     });
+    var UserInfo = this.Base.getMyData().UserInfo;
+    orderapi.list({ member_id_name: UserInfo.nickName, status: state_id, orderby: "r_main.created_date"  }, (minelist) => {
+      this.Base.setMyData({ minelist });
+    });
+    
   }
 }
 var content = new Content();
