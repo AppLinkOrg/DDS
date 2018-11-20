@@ -1,8 +1,8 @@
 {
   "pages":[
     "pages/usercategory/usercategory",
-    "pages/mine/mine",
     "pages/home/home",
+    "pages/mine/mine",
     "pages/certification/certification",
     "pages/release/release",
     "pages/addmembers/addmembers",

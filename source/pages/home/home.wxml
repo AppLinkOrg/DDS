@@ -6,9 +6,10 @@
 
   <view class='flex-row flex-center padding-20 bg-white'  hidden='{{allshow!="1"}}'>
     <view class='flex-1 h5 txt-black'>共有 {{list.length}} 条任务</view>
-    <picker class='' bindchange='bindpickerstate' range='{{statelist}}'>
+    <picker class='' bindchange='bindpickerstate' range='{{statuslist}}' range-key='odrstatusname'>
       <view class='flex-row flex-center'>
-        <view class='h5 '>{{statelist[state]}}</view>
+        <view wx:if='{{state_id==0}}'>所有发布</view>
+        <view wx:if='{{state_id>0}}' class='h5 '>{{statuslist[state_idx].odrstatusname}}</view>
         <view class='margin-left-20'>
           <image class='icon_lower' src='{{uploadpath}}resource/{{res.lowericon}}'></image>
         </view>
@@ -18,9 +19,9 @@
   
   <view class='flex-row flex-center padding-20 bg-white' hidden='{{mineshow!="2"}}'>
     <view class='flex-1 h5 txt-black'>共有 {{minelist.length}} 条任务</view>
-    <picker class='' bindchange='bindpickerstate' range='{{statelist}}'>
+    <picker class='' bindchange='bindpickerstate' range='{{statuslist}}' range-key='odrstatusname'>
       <view class='flex-row flex-center'>
-        <view class='h5 '>{{statelist[state]}}</view>
+        <view class='h5 '>{{statuslist[state_idx].odrstatusname}}</view>
         <view class='margin-left-20'>
           <image class='icon_lower' src='{{uploadpath}}resource/{{res.lowericon}}'></image>
         </view>
