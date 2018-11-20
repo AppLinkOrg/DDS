@@ -1,7 +1,11 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/my/my",
+    
     "pages/driver/driver",
+    
+    
     "pages/certification/certification",
     "pages/certificate/certificate",
     "pages/mine/mine",
@@ -22,7 +26,7 @@
     "pages/phone/phone",
     "pages/maps/maps",
     "pages/completed/completed",
-    "pages/my/my",
+    
     "pages/xq1/xq1",
     "pages/orderdetails/orderdetails",
     "pages/driverlist/driverlist",

@@ -23,6 +23,9 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
+    this.Base.setMyData({
+      zt: this.base.
+    })
   }
   name(e) {
     var name = e.detail.value;

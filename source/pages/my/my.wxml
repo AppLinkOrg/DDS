@@ -2,7 +2,18 @@
   <view class="flex-row flex-center  asd  " style='padding-top:30rpx;padding-bottom:30rpx '>
     <view class="flex-3" style='margin:30rpx'>
       <image class=' icon-100  avatar  ' src="{{UserInfo.avatarUrl}}"> </image>
-      <navigator url='/pages/certificate/certificate?openid={{UserInfo.openid}}' id="rz" style=' '>{{list[0].status_name}}</navigator>
+
+
+      <navigator  v-if="{{list.length==0}}" url='/pages/certificate/certificate?openid={{UserInfo.openid}}&&zt={{list[0].status}}' id="rz" style=' '>
+      未认证
+      </navigator>
+
+      <navigator v-if="{{list[0].status==I}}" url='/pages/certificate/certificate?openid={{UserInfo.openid}}&&zt={{list[0].status}}' id="rz" style=' '>
+      {{list[0].status_name}}
+      </navigator>
+      <navigator v-if="{{list[0].status==A}}" url='/pages/certificate/certificate?openid={{UserInfo.openid}}&&zt={{list[0].status}}' id="rz" style=' '>
+      {{list[0].status_name}}
+      </navigator>
     </view>
     <view class="flex-4 flex-wrap">
       <view class="h4">{{UserInfo.nickName}}</view>
@@ -50,19 +61,19 @@
         </view>
       </navigator>
     </view>
-    <!-- <view class="asd flex-1">
-      <navigator url='/pages/completed/completed?cats=[{{item.id}}]' class="flex-row  " style='padding-top:30rpx;padding-bottom:30rpx'>
+     <view class="asd flex-1">
+      <navigator bindtap='Cutstatus' class="flex-row  " style='padding-top:30rpx;padding-bottom:30rpx'>
         <view class="margin-left-20">
-          <image class='icon-17' src='{{uploadpath}}resource/{{res.taskhistory}}'></image>
+          <image class='icon-17' src='{{uploadpath}}resource/{{res.team}}'></image>
         </view>
-        <view class="flex-1 margin-left-20">已完成</view>
+        <view class="flex-1 margin-left-20">切换身份</view>
         <view class="margin-right-20" style='color:#BBBBBB'>
           <image class='icon-17' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
         </view>
       </navigator>
-    </view> -->
+    </view> 
     <view class="asd flex-1">
-      <navigator url='/pages/xq1/xq1?cats=[{{item.id}}]' class="flex-row " style=' padding-top:30rpx;padding-bottom:30rpx'>
+      <navigator url='/pages/aboutus/aboutus' class="flex-row " style=' padding-top:30rpx;padding-bottom:30rpx'>
         <view class="margin-left-20">
           <image class='icon-17' src='{{uploadpath}}resource/{{res.enterprise}}'></image>
         </view>

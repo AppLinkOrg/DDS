@@ -1,3 +1,8 @@
+
+<view   wx:if='{{errlist.length>0}}' class='padding-20'>
+<view class='h4 txt-primary txt-bold txt-center' wx:if='{{item.status=="I"}}'>您的认证申请已提交，请耐心等待审核！</view>
+</view>
+
  <form bindsubmit="confirm" bindreset="formReset" report-submit="{{true}}">
 <scroll-view scroll-y="true" >
 

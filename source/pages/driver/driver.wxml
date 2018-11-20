@@ -10,6 +10,7 @@
       <view class='flex-2 h5  {{tab==2?"aa":"bb"}}' bindtap='changetab' id="2">待完成</view>
 
     </view>
+    
     <view style='height:70rpx;' class="flex-row flex-center bg  " hidden='{{tab!=0}}'>
       <view class="h5 margin-left-20 flex-1">共有任务{{num}}条</view>
       <picker bindchange="qwe" value="{{index}}" range="{{array}}">
@@ -21,10 +22,17 @@
 
         <image class='icon-10 margin-right-20' src='{{uploadpath}}resource/{{res.lowericon}}'></image>
       </picker>
+      
     </view>
+    <navigator url='/pages/noticelist/noticelist' class='padding-20 bg-gray flex-row flex-center'>
+    <view>
+      <image class='icon' src='{{uploadpath}}resource/{{res.gonggao}}'></image>
+    </view>
+    <view class='bg-white h5 padding-10 margin-left-20 txt-gray' style='border-radius:10rpx;width:86%'>关于xxx的通知</view>
+  </navigator>
   </view>
   <!--新任务区域-->
-  <navigator wx:for="{{list}}" wx:for-index="idx" wx:key='k' url='/pages/orderdetails/orderdetails?id={{item.id}}&&openid={{UserInfo.openid}}' class="nr1  flex-center flex-wrap margin-top" hidden='{{tab!=0}}' wx:if="{{item.status_name=='报名中'}}">
+  <navigator wx:for="{{list}}" wx:for-index="idx" wx:key='k' url='/pages/orderdetails/orderdetails?id={{item.id}}&&openid={{UserInfo.openid}}' class="nr1  flex-center flex-wrap margin-top" style='margin-top:100rpx' hidden='{{tab!=0}}' wx:if="{{item.taskstatus_name=='报名中'}}">
     <view class="asd flex-1  " style='width:95%'>
       <view class="flex-center flex-row margin-top-20">
         <view class="margin-left-20  ">
@@ -109,8 +117,8 @@
         <view class="margin-left-20  ">
           <image class='icon-15 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
-        <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{list2[idx].member_id_name}}</view>
-        <view class="margin-right-20" style='color:#BBBBBB '>任务编号:123</view>
+        <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{list1[idx].fabu_name}}</view>
+        <view class="margin-right-20" style='color:#BBBBBB '>任务编号:123   {{idx}}</view>
 
       </view>
 
@@ -129,7 +137,7 @@
     <view class="asd flex-1" style='width:95%'>
       <view class=' flex-center margin-top-20  flex-row '>
         <view class="flex-1 flex-row flex-bottom">
-          <view class="margin-left-20 " style='font-size:98rpx !important; color:#4B69BB'>{{list2[idx].unitprice}}</view>
+          <view class="margin-left-20 " style='font-size:98rpx !important; color:#4B69BB'>{{list1[idx].order_unitprice}}</view>
           <view class="">元/吨</view>
         </view>
         <view class="flex-1  flex-center  " style='text-algin:center'>
@@ -150,14 +158,14 @@
       <view class="flex-wrap" style=' margin-bottom:30rpx'>
         <view class="flex-row margin-top:10">
           <view class="margin-left-20  " id="z1" style='margin-top:15rpx'></view>
-          <view class="margin-left-20">{{list2[idx].startaddress}}</view>
+          <view class="margin-left-20">{{list1[idx].order_startaddress}}</view>
         </view>
         <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>起点距您206公里</view>
         <view class="flex-row">
           <view class="margin-left-20 " id="z2" style='margin-top:30rpx'></view>
-          <view class="margin-left-20 margin-top-10">{{list2[idx].targetaddress}}</view>
+          <view class="margin-left-20 margin-top-10">{{list1[idx].order_targetaddress}}</view>
         </view>
-        <view class="margin-left-30 h5 margin-top-10" style='color:#BBBBBB ; margin-left:60rpx'>总里程{{list2[idx].milestone}}公里</view>
+        <view class="margin-left-30 h5 margin-top-10" style='color:#BBBBBB ; margin-left:60rpx'>总里程{{list1[idx].milestone}}公里</view>
       </view>
 
     </view>
@@ -169,13 +177,13 @@
 
   </navigator>
   <!--已报名区域-->
-  <navigator wx:for="{{list1}}" wx:for-index="idx" wx:key='k' url='/pages/apply/apply?id={{item.id}}&&orderid={{item.orderid}}'        class="nr1  flex-center              flex-wrap margin-top" hidden='{{tab!=1}}' wx:if="{{item.status_name=='已报名'}}">
+  <navigator wx:for="{{list1}}" wx:for-index="idx" wx:key='k' url='/pages/apply/apply?id={{idx}}&&orderid={{item.orderid}}'        class="nr1  flex-center              flex-wrap margin-top" hidden='{{tab!=1}}' wx:if="{{item.status_name=='已报名'}}">
     <view class="asd flex-1  " style='width:95%'>
       <view class="flex-center flex-row margin-top-20">
         <view class="margin-left-20  ">
           <image class='icon-15 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
-        <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{list2[idx].member_id_name}}</view>
+        <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{list1[idx].fabu_name}}</view>
         <view class="margin-right-20" style='color:#BBBBBB '>任务编号:123</view>
 
       </view>
@@ -195,7 +203,7 @@
     <view class="asd flex-1" style='width:95%'>
       <view class=' flex-center margin-top-20  flex-row '>
         <view class="flex-1 flex-row flex-bottom">
-          <view class="margin-left-20 " style='font-size:98rpx !important; color:#4B69BB'>{{list2[idx].unitprice}}</view>
+          <view class="margin-left-20 " style='font-size:98rpx !important; color:#4B69BB'>{{list1[idx].order_unitprice}}</view>
           <view class="">元/吨</view>
         </view>
         <view class="flex-1  flex-center  " style='text-algin:center'>
@@ -216,14 +224,14 @@
       <view class="flex-wrap" style=' margin-bottom:30rpx'>
         <view class="flex-row margin-top:10">
           <view class="margin-left-20  " id="z1" style='margin-top:15rpx'></view>
-          <view class="margin-left-20">{{list2[idx].startaddress}}</view>
+          <view class="margin-left-20">{{list1[idx].order_startaddress}}</view>
         </view>
         <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>起点距您206公里</view>
         <view class="flex-row">
           <view class="margin-left-20 " id="z2" style='margin-top:30rpx'></view>
-          <view class="margin-left-20 margin-top-10">{{list2[idx].targetaddress}}</view>
+          <view class="margin-left-20 margin-top-10">{{list1[idx].order_targetaddress}}</view>
         </view>
-        <view class="margin-left-30 h5 margin-top-10" style='color:#BBBBBB ; margin-left:60rpx'>总里程{{list2[idx].milestone}}公里</view>
+        <view class="margin-left-30 h5 margin-top-10" style='color:#BBBBBB ; margin-left:60rpx'>总里程{{list1[idx].milestone}}公里</view>
       </view>
 
     </view>
