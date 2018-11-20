@@ -27,13 +27,42 @@ class Content extends AppBase {
       title: '任务详情',
     });
     var orderapi=new OrderApi();
-    orderapi.info({id:this.options.id}, (orderinfo) => {
+    orderapi.info({id:that.Base.options.id}, (orderinfo) => {
       this.Base.setMyData({ orderinfo });
-    });
+    }); 
+  }
+  Deleteorder(e){
+    console.log(e);
+    var that=this;
+
+     wx.showModal({
+       title: '',
+       content: '您是否需要取消本次任务？',
+       showCancel: true,
+       cancelText: '否',
+       cancelColor: '',
+       confirmText: '是',
+       confirmColor: '',
+       success: function(res) {
+         if(res.confirm){
+           var orderapi = new OrderApi();
+           orderapi.updataorder({ id: that.Base.options.id }, (updataorder) => {
+             that.Base.setMyData({ 
+               updataorder
+              });
+             wx.reLaunch({
+               url: '/pages/home/home',
+             })
+           });
+         }
+       }
+     })
+    
   }
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
+body.Deleteorder = content.Deleteorder;
 Page(body)

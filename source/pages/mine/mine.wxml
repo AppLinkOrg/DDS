@@ -39,7 +39,7 @@
 <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>
 
-<navigator class='flex-row flex-center padding-30 bg-white bor_btm'>
+<navigator bindtap='Cutstatus' class='flex-row flex-center padding-30 bg-white bor_btm'>
 <image class='icon-20' src='{{uploadpath}}resource/{{res.team}}'></image>
 <view class='txt-black txt-bold margin-left-20 h5 flex-1'>身份切换</view>
 <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>

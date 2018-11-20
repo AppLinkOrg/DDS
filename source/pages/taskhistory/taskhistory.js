@@ -18,6 +18,8 @@ class Content extends AppBase {
     wx.setNavigationBarTitle({
       title: '历史任务',
     });
+
+    
     var orderapi=new OrderApi();
     orderapi.list({status:"4"}, (list) => {
       this.Base.setMyData({ list });
