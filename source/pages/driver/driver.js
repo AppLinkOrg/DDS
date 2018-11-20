@@ -57,16 +57,14 @@ class Content extends AppBase {
     
     var that = this;
    //查询所有列表 
+   
      var orderapi=new OrderApi();
      orderapi.applylist({}, (list1) =>{
-       this.Base.setMyData({ list1 });
-         
-              for(var i=0;i<=list1.length;i++)
-              {
-                
-               
-
-              }
+     
+      
+       
+       
+       this.Base.setMyData({list1:list1});
               
                  
 
@@ -102,7 +100,7 @@ class Content extends AppBase {
 
 
 
-               if (list[i].status_name=="报名中")
+               if (list[i].taskstatus_name=="报名中")
                {
                  num++;
                }       

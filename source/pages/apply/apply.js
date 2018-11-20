@@ -54,28 +54,17 @@ class Content extends AppBase {
 
 
   onMyShow() {
-    var that = this;
-    //查询所有列表 
-    
     var orderapi = new OrderApi();
-    console.log(66666666);
-    console.log(this.Base.options.orderid)
-    orderapi.applylist({ orderid: this.Base.options.orderid}, (list1) => {
-      this.Base.setMyData({ list1 });
+    orderapi.applylist({}, (list1) => {
+      this.Base.setMyData({ list1: list1[this.Base.options.id] });
 
+  
 
-      orderapi.info({id: this.Base.options.id}, (list2) => {
-
-        this.Base.setMyData(list2);
-
-      })
-
-      })
+    })
 
     
     
-    }
-    
+  }
   qwe(e) {
     this.setData({
       index: e.detail.value
