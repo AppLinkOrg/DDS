@@ -57,11 +57,24 @@ class Content extends AppBase {
     
     var that = this;
    //查询所有列表 
-    var orderapi=new OrderApi();
-    orderapi.applylist({}, (list1) =>{
-      this.Base.setMyData({ list1 });
+     var orderapi=new OrderApi();
+     orderapi.applylist({}, (list1) =>{
+       this.Base.setMyData({ list1 });
+         
+              for(var i=0;i<=list1.length;i++)
+              {
+                
+               
 
-    })
+              }
+              
+                 
+
+
+       
+
+
+     })
 
     orderapi.list({}, (list) => {
       this.Base.setMyData({ list });

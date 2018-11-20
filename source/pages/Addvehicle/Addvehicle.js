@@ -14,6 +14,23 @@ class Content extends AppBase {
     super.onLoad(options);
 
   }
+  uploadimg(e) {
+    var that = this;
+    var id = e.currentTarget.id;
+    this.Base.uploadImage("vehicle", (ret) => {
+      that.Base.setMyData({
+        photo: ret
+      });
+    }, 1);
+  }
+  photo(e) {
+    var photo = e.detail.value;
+    console.log(photo);
+    this.Base.setMyData({
+      photo: e.detail.value
+    })
+  }
+
   //界面标题
   setPageTitle() {
     wx.setNavigationBarTitle({
@@ -64,12 +81,14 @@ class Content extends AppBase {
     var vehicletype = this.Base.getMyData().vehicletype;
     var load = this.Base.getMyData().load;
     var that =this;
+    var photo = this.Base.getMyData().photo;
     var orderapi=new OrderApi();
     orderapi.addvehicle({
       status:"I",
       carnumber: carnumber,
       vehicletype: vehicletype,
-      load: load
+      load: load,
+      reviewimg: photo
     }, (addvehicle) => {
       
     });
@@ -83,4 +102,6 @@ body.carnumber = content.carnumber;
 body.load = content.load;
 body.vehicletype = content.vehicletype;
 body.confirm=content.confirm;
+body.photo = content.photo;
+body.uploadimg = content.uploadimg;
 Page(body)

@@ -1,31 +1,18 @@
 {
   "pages": [
-  "pages/driver/driver",
+    "pages/driver/driver",
+    "pages/certification/certification",
     "pages/certificate/certificate",
+    
     "pages/mine/mine",
-    "pages/home/home",
     "pages/usercategory/usercategory",
-<<<<<<< .mine
-"pages/apply/apply",
+    "pages/apply/apply",
     "pages/Addvehicle/Addvehicle",
     "pages/vehicle/vehicle",
-=======
-    "pages/certification/certification",
     "pages/release/release",
     "pages/addmembers/addmembers",
->>>>>>> .theirs
     "pages/youke/youke",
-<<<<<<< .mine
-    
-    
-
     "pages/home/home",
-=======
-
-
-
-
->>>>>>> .theirs
     "pages/taskhistory/taskhistory",
     "pages/route/route",
     "pages/addressselect/addressselect",
@@ -33,8 +20,6 @@
     "pages/team/team",
     "pages/aboutus/aboutus",
     "pages/weighing/weighing",
-   
-
     "pages/phone/phone",
     "pages/maps/maps",
     "pages/completed/completed",

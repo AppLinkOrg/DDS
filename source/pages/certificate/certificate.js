@@ -31,6 +31,40 @@ class Content extends AppBase {
       name: e.detail.value
     })
   }
+  uploadimg(e) {
+    var that = this;
+    var id = e.currentTarget.id;
+    this.Base.uploadImage("driver", (ret) => {
+      that.Base.setMyData({
+        photo: ret
+      });
+    }, 1);
+  }
+  photo(e) {
+    var photo = e.detail.value;
+    console.log(photo);
+    this.Base.setMyData({
+      photo: e.detail.value
+    })
+  }
+
+  iduploadimg(e) {
+    var that = this;
+    var id = e.currentTarget.id;
+    this.Base.uploadImage("driver", (ret) => {
+      that.Base.setMyData({
+        idphoto: ret
+      });
+    }, 1);
+  }
+  idphoto(e) {
+    var idphoto = e.detail.value;
+    console.log(photo);
+    this.Base.setMyData({
+      idphoto: e.detail.value
+    })
+  }
+
   idcard(e) {
     var idcard = e.detail.value;
 
@@ -48,6 +82,8 @@ class Content extends AppBase {
       this.Base.info("请输入身份证号");
       return;
     }
+    var idphoto = this.Base.getMyData().idphoto;
+    var photo = this.Base.getMyData().photo;
     var name = this.Base.getMyData().name;
     var idcard = this.Base.getMyData().idcard;
     var openid = this.Base.options.openid;
@@ -60,7 +96,11 @@ class Content extends AppBase {
       status: "Q",
       name: name,
       idcard: idcard,
-      openid:openid
+      openid:openid,
+      dirlicense_img: photo,
+      idcard_img: idphoto
+    
+
     }, (updetedriver) => {
       //wx.showToast({
         
@@ -68,9 +108,9 @@ class Content extends AppBase {
         //icon: 'success',
         //duration: 2000
      // })  
-       wx.navigateBack({
+      //  wx.navigateBack({
          
-       })
+      //  })
     });
   }
 
@@ -82,4 +122,8 @@ body.onMyShow = content.onMyShow;
 body.confirm = content.confirm;
 body.name=content.name;
 body.idcard = content.idcard;
+body.idphoto = content.idphoto;
+body.iduploadimg = content.iduploadimg;
+body.photo = content.photo;
+body.uploadimg = content.uploadimg;
 Page(body)

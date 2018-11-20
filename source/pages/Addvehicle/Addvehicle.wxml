@@ -33,11 +33,19 @@
     <view>
 
       <view class="margin-30" style='margin:30rpx;color:#BBBBBB '>行驶证</view>
-      <view class="flex-row flex-center" style='justify-content:center'>
 
-        <input placeholder="+上传行驶证照片" bindinput='' style='border:1px solid #D5D5D5; height:300rpx; width:95%;text-align:center;'></input>
 
-      </view>
+     <view class=' margin-top-20 ctc_border padding-10' bindtap='uploadimg'>
+
+<view class='img flex-row flex-column padding-top-100'style='line-height' wx:if='{{photo==undefined}}' >
+<image class='icon-100 '  src='{{uploadpath}}resource/{{res.addrz_icon}}'></image>
+</view>
+
+<image wx:if='{{photo!=undefined}}' class='photo img'  mode='aspectFit' src='{{uploadpath}}vehicle/{{photo}}'></image>
+
+<input hidden='true' name="photo" value="{{photo}}"></input>
+
+</view>
       
     </view>
     <button form-type='submit' class="h4 txt-white bm" id="anniu" type='bak_ble' >确定</button>

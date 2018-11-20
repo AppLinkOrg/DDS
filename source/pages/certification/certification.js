@@ -89,9 +89,10 @@ var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
-body.uploadimg = content.uploadimg;
+
 body.confirm = content.confirm;
 body.enterprisename = content.enterprisename;
 body.creditcode = content.creditcode; 
 body.photo = content.photo;
+body.uploadimg = content.uploadimg;
 Page(body)
