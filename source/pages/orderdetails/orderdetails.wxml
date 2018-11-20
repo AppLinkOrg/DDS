@@ -1,4 +1,5 @@
 <!--pages/xq/xq.wxml-->
+<form bindsubmit="confirm" bindreset="formReset" report-submit="{{true}}">
 <view class="nr1  flex-center flex-wrap margin-top-20">
 
 
@@ -7,15 +8,15 @@
     <view class=' flex-center margin-top-20  flex-row '>
 
       <view class="flex-1 flex-wrap nr1 flex-center " style='border-right:1px solid #F3F3F3; '>
-        <view class="h3 " style=' color:#F7B81F'>14:21</view>
-        <view class="">07/22</view>
+        <view class="h3 " style=' color:#F7B81F'>{{hh}}:{{mm}}</view>
+        <view class="">{{month}}/{{day}}</view>
       </view>
       <view class="flex-1 flex-wrap  nr1 flex-center" style='border-right:1px solid #F3F3F3; '>
-        <view class="h3 " style=' color:#F7B81F'>16:21</view>
-        <view class="">07/28</view>
+        <view class="h3 " style=' color:#F7B81F'>{{hh}}:{{mm}}</view>
+        <view class="">{{month}}/{{day}}</view>
       </view>
       <view class="flex-1 flex-row  flex-bottom" style='justify-content:center;'>
-        <view class="margin-left-20" style='font-size:60rpx !important; color:#4B69BB'>60</view>
+        <view class="margin-left-20" style='font-size:60rpx !important; color:#4B69BB'>{{weight}}</view>
         <view class="">吨</view>
       </view>
     </view>
@@ -38,8 +39,8 @@
     <view style=' margin-bottom:30rpx ' class="flex-center flex-row margin-top-20">
 
       <view class="margin-left-20  " style='color:#BBBBBB'>运输时间:</view>
-      <view class="margin-left-20 flex-1 ">07/27 16:21</view>
-      <view class="margin-left-20  margin-right-20">07/28 16:21</view>
+      <view class="margin-left-20 flex-1 ">{{month}}/{{day}} {{hh}}:{{mm}}</view>
+      <view class="margin-left-20  margin-right-20">{{month}}/{{day}} {{hh}}:{{mm}}</view>
     </view>
 
   </view>
@@ -53,7 +54,7 @@
           <view class="flex-row column flex-1">
             <view class='flex-row flex-center'>
                <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
-              <view class="margin-left-20">太原高新区电子数xxxxxxxx公司</view>
+              <view class="margin-left-20">{{startaddress}}</view>
             </view>
             <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>起点距您206公里</view>
           </view>
@@ -73,9 +74,9 @@
           <view class="flex-row column flex-1">
             <view class='flex-row flex-center'>
                <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.green}}'></image>
-              <view class="margin-left-20">创享天地xxxxxxxx公司</view>
+              <view class="margin-left-20">{{targetaddress}}</view>
             </view>
-            <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>总里程666公里</view>
+            <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>总里程{{milestone}}公里</view>
           </view>
 
            <navigator  url='/pages/maps/maps' style='width:90rpx;  border-left:1px solid #F3F3F3;display:flex;justify-content: center' >
@@ -98,7 +99,7 @@
         <image class='icon-17' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
       </view>
       <view class="flex-1 margin-left-20">货运类型</view>
-      <view class="margin-right-20" style='color:#BBBBBB'>精煤</view>
+      <view class="margin-right-20" style='color:#BBBBBB'>{{stuff_type_id}}</view>
     </view>
   </view>
   <view class="asd flex-1" style='width:95%'>
@@ -116,7 +117,7 @@
         <image class='icon-17' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
       </view>
       <view class="flex-1 margin-left-20">备注</view>
-      <view class="margin-right-20" style='color:#BBBBBB'>22</view>
+      <view class="margin-right-20" style='color:#BBBBBB'>{{remark}}</view>
     </view>
     <view>
       <view class="flex-wrap">
@@ -127,7 +128,7 @@
           </view>
           <view class="flex-1 margin-left-20">货运吨数</view>
           <view>
-            <input placeholder='请输入客运吨数' style='width:250rpx'></input>
+            <input placeholder='请输入客运吨数' bindinput='tonnage' name="tonnage" style='text-align:right;margin-right:20rpx'></input>
           </view>
         </view>
         <navigator    url='/pages/vehicle/vehicle?cats=[{{item.id}}]'  class="flex-row  margin-top-10 flex-center" >
@@ -142,11 +143,15 @@
 
           </view>
         </navigator>
-<view class="h4 bm" style='margin-top:118rpx' id="anniu">立即报名</view>
+ <button form-type='submit' style='margin-top:118rpx' class="h4 txt-white bm" id="anniu" type='bak_ble' >确定</button>
+ 
+
       </view>
+    
     </view>
+   
   </view>
 
-  
 
 </view>
+     </form>

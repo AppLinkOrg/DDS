@@ -1,11 +1,20 @@
 {
-  "pages":[
-    "pages/usercategory/usercategory",
+  "pages": [
+    "pages/driver/driver",
+    "pages/certification/certification",
+    "pages/certificate/certificate",
+    
+    
     "pages/home/home",
     "pages/mine/mine",
-    "pages/certification/certification",
+    "pages/usercategory/usercategory",
+    "pages/apply/apply",
+    "pages/Addvehicle/Addvehicle",
+    "pages/vehicle/vehicle",
     "pages/release/release",
     "pages/addmembers/addmembers",
+    "pages/youke/youke",
+    
     "pages/taskhistory/taskhistory",
     "pages/route/route",
     "pages/addressselect/addressselect",
@@ -13,16 +22,12 @@
     "pages/team/team",
     "pages/aboutus/aboutus",
     "pages/weighing/weighing",
-    "pages/driver/driver",
     "pages/phone/phone",
     "pages/maps/maps",
-    "pages/completed/completed", 
-    "pages/rz/rz",
-    "pages/wd/wd",
-    "pages/vehicle/vehicle",
-    "pages/Addvehicle/Addvehicle",
+    "pages/completed/completed",
+    "pages/my/my",
     "pages/xq1/xq1",
-    "pages/xq/xq",
+    "pages/orderdetails/orderdetails",
     "pages/driverlist/driverlist",
     "pages/tasklist/tasklist",
     "pages/noticeinfo/noticeinfo",
@@ -30,8 +35,8 @@
     "pages/agreement/agreement",
     "pages/auth/auth"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "enablePullDownRefresh": true,
     "navigationBarBackgroundColor": "#353A4D",
     "navigationBarTextStyle": "white"
@@ -62,5 +67,4 @@
       }
     ]
   }
-  
 }

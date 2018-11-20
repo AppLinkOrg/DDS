@@ -1,47 +1,53 @@
+<view class="flex-wrap flex-center">
+  <form bindsubmit="confirm" bindreset="formReset" report-submit="{{true}}">
+    <view class="flex-wrap flex-center">
+      <view class="margin-30" style='margin:30rpx;color:#BBBBBB '>车牌号码</view>
+      <view class="flex-row flex-center" style='justify-content:center'>
 
-<view class="flex-wrap flex-center" >
+        <input placeholder="请输入车牌号码" bindinput='carnumber' name="carnumber" style='border:1px solid #D5D5D5; height:90rpx; width:95%;'></input>
 
-<view  class="flex-wrap flex-center">
-<view  class="margin-30" style='margin:30rpx;color:#BBBBBB ' >车牌号码</view>
-<view class="flex-row flex-center" style='justify-content:center'>
+      </view>
 
-<input placeholder="请输入车牌号码" style='border:1px solid #D5D5D5; height:90rpx; width:95%;'></input>
+    </view>
 
+    <view>
+      <view class="margin-30" style='margin:30rpx;color:#BBBBBB '>车辆类型</view>
+      <view class="flex-row flex-center" style='justify-content:center'>
+
+        <input placeholder="请选择车辆类型" bindinput='vehicletype' name="vehicletype" style='border:1px solid #D5D5D5; height:90rpx; width:95%;'></input>
+
+      </view>
+
+    </view>
+
+    <view>
+      <view class="margin-30" style='margin:30rpx;color:#BBBBBB '>载重 (吨)</view>
+      <view class="flex-row flex-center" style='justify-content:center'>
+
+        <input placeholder="请填写该车辆的核定载重" bindinput='load' name="load" style='border:1px solid #D5D5D5; height:90rpx; width:95%;'></input>
+
+      </view>
+
+    </view>
+
+    <view>
+
+      <view class="margin-30" style='margin:30rpx;color:#BBBBBB '>行驶证</view>
+
+
+     <view class=' margin-top-20 ctc_border padding-10' bindtap='uploadimg'>
+
+<view class='img flex-row flex-column padding-top-100'style='line-height' wx:if='{{photo==undefined}}' >
+<image class='icon-100 '  src='{{uploadpath}}resource/{{res.addrz_icon}}'></image>
 </view>
 
-</view>
+<image wx:if='{{photo!=undefined}}' class='photo img'  mode='aspectFit' src='{{uploadpath}}vehicle/{{photo}}'></image>
 
-<view>
-<view  class="margin-30" style='margin:30rpx;color:#BBBBBB ' >车辆类型</view>
-<view class="flex-row flex-center" style='justify-content:center'>
-
-<input placeholder="请选择车辆类型" style='border:1px solid #D5D5D5; height:90rpx; width:95%;'></input>
+<input hidden='true' name="photo" value="{{photo}}"></input>
 
 </view>
-
+      
+    </view>
+    <button form-type='submit' class="h4 txt-white bm" id="anniu" type='bak_ble' >确定</button>
+  </form>
 </view>
-
-<view>
-<view  class="margin-30" style='margin:30rpx;color:#BBBBBB ' >载重 (吨)</view>
-<view class="flex-row flex-center" style='justify-content:center'>
-
-<input placeholder="请填写该车辆的核定载重" style='border:1px solid #D5D5D5; height:90rpx; width:95%;'></input>
-
-</view>
-
-</view>
-
-<view>
-
-<view  class="margin-30" style='margin:30rpx;color:#BBBBBB ' >行驶证</view>
-<view class="flex-row flex-center" style='justify-content:center'>
-
-<input placeholder="+上传行驶证照片" style='border:1px solid #D5D5D5; height:300rpx; width:95%;text-align:center;'></input>
-
-</view>
-<view class="h4 bm" 
-  style='margin-top:118rpx ;' id="anniu" >确定</view>
-</view>
-
-</view>
-
