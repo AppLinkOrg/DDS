@@ -10,7 +10,7 @@ class Content extends AppBase {
   }
   onLoad(options) {
     this.Base.Page = this;
-    //options.id=5;
+    
     super.onLoad(options);
 
   }
@@ -23,13 +23,22 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
-    this.Base.setMyData({
-      zt: this.base.
+    that.Base.setMyData({
+     zt: this.Base.options.zt
+    });
+    var api = new CertificateApi();
+    var UserInfo = this.Base.getMyData().UserInfo;
+    api.riverlist({ openid: UserInfo.openid }, (list) => {
+      that.Base.setMyData({
+        list
+      });
     })
+         
   }
   name(e) {
-    var name = e.detail.value;
 
+
+    var name = e.detail.value;
     this.Base.setMyData({
       name: e.detail.value
     })
@@ -85,18 +94,27 @@ class Content extends AppBase {
       this.Base.info("请输入身份证号");
       return;
     }
+    if (data.photo == "") {
+      this.Base.info("请上传驾驶证照片");
+      return;
+    }
+    if (data.idphoto == "") {
+      this.Base.info("请上传身份证照片");
+      return;
+    }
     var idphoto = this.Base.getMyData().idphoto;
     var photo = this.Base.getMyData().photo;
     var name = this.Base.getMyData().name;
     var idcard = this.Base.getMyData().idcard;
-    var openid = this.Base.options.openid;
+    var UserInfo = this.Base.getMyData().UserInfo;
+    var openid=UserInfo.openid;
     var that = this;
     
    
     var certificateapi = new CertificateApi();
     
     certificateapi.updetedriver({
-      status: "Q",
+      status: "I",
       name: name,
       idcard: idcard,
       openid:openid,
@@ -105,15 +123,21 @@ class Content extends AppBase {
     
 
     }, (updetedriver) => {
-      //wx.showToast({
-        
-       //title: '成功',
-        //icon: 'success',
-        //duration: 2000
-     // })  
-      //  wx.navigateBack({
          
-      //  })
+      
+      var pages = getCurrentPages();
+      var beforePage = pages[pages.length - 2];
+      wx.navigateBack({
+        success() {
+          beforePage.onLoad();
+          wx.showToast({
+
+            title: '成功',
+            icon: 'success',
+            duration: 2000
+          })
+        }
+      })
     });
   }
 

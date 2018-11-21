@@ -1,11 +1,8 @@
 {
   "pages": [
+    "pages/driver/driver",
     "pages/home/home",
     "pages/my/my",
-    
-    "pages/driver/driver",
-    
-    
     "pages/certification/certification",
     "pages/certificate/certificate",
     "pages/mine/mine",
@@ -15,7 +12,6 @@
     "pages/vehicle/vehicle",
     "pages/release/release",
     "pages/addmembers/addmembers",
-    "pages/youke/youke",
     "pages/taskhistory/taskhistory",
     "pages/route/route",
     "pages/addressselect/addressselect",
@@ -26,7 +22,6 @@
     "pages/phone/phone",
     "pages/maps/maps",
     "pages/completed/completed",
-    
     "pages/xq1/xq1",
     "pages/orderdetails/orderdetails",
     "pages/driverlist/driverlist",

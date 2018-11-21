@@ -117,13 +117,13 @@ export class CertificateApi {
     })
   }
   //获取运输单详情
-  info(json, callback, showLoading = true) {
+  addweighing(json, callback, showLoading = true) {
     if (showLoading)
       ApiConfig.ShowLoading();
     var header = ApiConfig.GetHeader();
     console.log(header);
     wx.request({
-      url: ApiConfig.GetApiUrl() + 'order/info',
+      url: ApiConfig.GetApiUrl() + 'certificate/addweighing',
       data: json,
       method: 'POST',
       dataType: 'json',

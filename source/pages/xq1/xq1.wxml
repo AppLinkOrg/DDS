@@ -8,7 +8,7 @@
 
       
       <view class="flex-1 flex-row  flex-bottom" style='justify-content:center;'>
-        <view class="margin-left-20" style='font-size:80rpx !important; color:#4B69BB'>150</view>
+        <view class="margin-left-20" style='font-size:80rpx !important; color:#4B69BB'>{{list1.order_unitprice}}</view>
         <view class="">元/吨</view>
       </view>
     </view>
@@ -23,7 +23,7 @@
       <view class="margin-left-20  ">
         <image class='icon-15' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
       </view>
-      <view class="margin-left-10 h4  " style='color:#222222'>大的森</view>
+      <view class="margin-left-10 h4  " style='color:#222222'>{{list1.fabu_name}}</view>
 
     </view>
 
@@ -45,7 +45,7 @@
           <view class="flex-row column flex-1">
             <view class='flex-row flex-center'>
                <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
-              <view class="margin-left-20">太原高新区电子数xxxxxxxx公司</view>
+              <view class="margin-left-20">{{list1.order_startaddress}}</view>
             </view>
             <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>起点距您206公里</view>
           </view>
@@ -65,7 +65,7 @@
           <view class="flex-row column flex-1">
             <view class='flex-row flex-center'>
                <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.green}}'></image>
-              <view class="margin-left-20">创享天地xxxxxxxx公司</view>
+              <view class="margin-left-20">{{list1.order_targetaddress}}</view>
             </view>
             <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>起点距您206公里</view>
           </view>
@@ -90,7 +90,7 @@
         <image class='icon-17' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
       </view>
       <view class="flex-1 margin-left-20">货运类型</view>
-      <view class="margin-right-20" style='color:#BBBBBB'>精煤</view>
+      <view class="margin-right-20" style='color:#BBBBBB'>{{list1.order_stuff_type_id}}</view>
     </view>
   </view>
   <view class="asd flex-1" style='width:95%'>
@@ -119,7 +119,7 @@
       <view class="flex-1 margin-left-20">添加起点过磅单</view>
 
       <navigator  
-        url='/pages/ weighing/weighing?cats=[{{item.id}}]' class="margin-right-20" style='color:#BBBBBB'>
+        url='/pages/weighing/weighing?id={{list1.order_id}}' class="margin-right-20" style='color:#BBBBBB'>
        <image class='icon-17' src='{{uploadpath}}resource/{{res.tianjia}}'></image>
       
       </navigator >
@@ -131,7 +131,7 @@
         <image class='icon-17' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
       </view>
       <view class="flex-1 margin-left-20">备注</view>
-      <view class="margin-right-20" style='color:#BBBBBB'>22</view>
+      <view class="margin-right-20" style='color:#BBBBBB'>{{list1.order_remark}}</view>
     </view>
     <view>
       <view class="flex-wrap">

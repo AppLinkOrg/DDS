@@ -4,6 +4,7 @@ import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api.js";
 import { OrderApi } from "../../apis/order.api.js";
 import { date } from "../../apis/order.api.js";
+import { CertificateApi } from "../../apis/certificate.api.js";
 class Content extends AppBase {
   constructor() {
     super();
@@ -23,6 +24,9 @@ class Content extends AppBase {
   }
   onMyShow() {
      
+    
+
+    
     var that = this;
     var month ;
     var month1;
@@ -44,6 +48,7 @@ class Content extends AppBase {
     console.log(this.Base.options.id);
     var api = new OrderApi();
     api.info({ id: this.Base.options.id }, (info) => {
+ 
       var data1 = new Date(info.enroll_start);
       var data2 = new Date(info.enroll_deadline);
       var data3 = new Date(info.start_time);
@@ -125,6 +130,8 @@ class Content extends AppBase {
   }
   tonnage(e) {
     var tonnage = e.detail.value;
+   
+    
 
     this.Base.setMyData({
       tonnage: e.detail.value
@@ -133,31 +140,55 @@ class Content extends AppBase {
   confirm(e) {
     
     var data = e.detail.value;
-    
+    var weight = this.Base.getMyData().weight;
+    console.log(weight);
+
     if (data.tonnage == "") {
       this.Base.info("请输入客运吨数");
       return;
     }
+    
+    if (parseInt(data.tonnage) > parseInt(weight) ) {
+      this.Base.info("不能大于剩余吨数");
+      return;
+    }
+    
+    
    
     var tonnage = this.Base.getMyData().tonnage;
-    var openid = this.Base.options.openid;
+    var UserInfo = this.Base.getMyData().UserInfo;
+    
+   
     var orderid = this.Base.options.id;
     var vehicle="晋A·123456";
     var that = this;
-    var orderapi = new OrderApi();
-    orderapi.addapply({
-      status: "I",
-      orderid:orderid,
-      tonnage: tonnage,
-      vehicle: vehicle,
-      openid:openid
-    }, (addvehicle) => {
+    var api = new CertificateApi();
+    var UserInfo = this.Base.getMyData().UserInfo;
+    api.riverlist({ openid: UserInfo.openid }, (list3) => {
+           console.log(1111111);
+      console.log(list3[0].name);
 
-    });
+      var orderapi = new OrderApi();
+      orderapi.addapply({
+        status: "A",
+        transport: "Y",
+        orderid: orderid,
+        tonnage: tonnage,
+        vehicle: vehicle,
+        member_id: list3[0].name,
+        openid: UserInfo.openid
+      }, (addvehicle) => {
+        wx.reLaunch({
+          url: '/pages/driver/driver',
+        })
+      });
+    })
+   
   }
 }
 var content = new Content();
 var body = content.generateBodyJson();
+
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
 body.tonnage = content.tonnage;

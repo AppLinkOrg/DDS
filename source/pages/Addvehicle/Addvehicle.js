@@ -77,6 +77,10 @@ class Content extends AppBase {
       this.Base.info("请输入车辆载重");
       return;
     }
+    if (data.photo == "") {
+      this.Base.info("请上传图片");
+      return;
+    }
     var carnumber = this.Base.getMyData().carnumber;
     var vehicletype = this.Base.getMyData().vehicletype;
     var load = this.Base.getMyData().load;
@@ -90,7 +94,19 @@ class Content extends AppBase {
       load: load,
       reviewimg: photo
     }, (addvehicle) => {
-      
+      var pages = getCurrentPages();
+      var beforePage = pages[pages.length - 2];
+      wx.navigateBack({
+        success() {
+          beforePage.onLoad();
+          wx.showToast({
+
+            title: '添加成功',
+            icon: 'success',
+            duration: 2000
+          })
+        }
+      })
     });
   }
 }
