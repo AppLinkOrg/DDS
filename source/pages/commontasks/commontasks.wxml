@@ -1,5 +1,5 @@
 <!--pages/commontasks/commontasks.wxml-->
-<navigator url='/pages/tasklist/tasklist' class='mid margin-top-40 margin-bottom-40'>
+<navigator url='/pages/historydetail/historydetail' class='mid margin-top-40 margin-bottom-40'>
   <view class='flex-row flex-center padding-40'>
   <view>任务编号：</view>
   <view class='flex-1'>158</view>

@@ -23,5 +23,11 @@ Page{
   font-size: 100rpx;
   font-weight:bold;
   color: #26C48B;
-  
+}
+.null_icon{
+  height: 200rpx;
+  width: 380rpx;
+  margin-top: 150rpx;
+  margin-left: 20rpx;
+  opacity: 0.8;
 }

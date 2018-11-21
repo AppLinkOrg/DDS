@@ -2,6 +2,7 @@
 import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api.js";
+import { OrderApi } from "../../apis/order.api.js";
 
 class Content extends AppBase {
   constructor() {
@@ -20,6 +21,16 @@ class Content extends AppBase {
     wx.setNavigationBarTitle({
       title: '司机列表',
     });
+    var orderapi=new OrderApi();
+    orderapi.applylist({ transport:"Y"}, (applylist) => {
+      this.Base.setMyData({ applylist });
+    });
+    orderapi.applylist({ transport: "N" }, (tobecpdlist) => {
+      this.Base.setMyData({ tobecpdlist });
+    });
+    orderapi.applylist({ transport: "N" }, (completedlist) => {
+      this.Base.setMyData({ completedlist });
+    }); 
   }
   bindcompleted(e){
     this.Base.setMyData({ cpd: 3,  waitcpd: 3,ctt:3})

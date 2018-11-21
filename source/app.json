@@ -2,15 +2,22 @@
   "pages": [
     "pages/driver/driver",
     "pages/home/home",
+    "pages/release/release",
+    "pages/mine/mine",
+    "pages/historydetail/historydetail",
+    "pages/driverlist/driverlist",
+    "pages/usercategory/usercategory",
+    "pages/auth/auth",
     "pages/my/my",
+<<<<<<< HEAD
+=======
+    "pages/driver/driver",
+>>>>>>> 7a746d40bf2b8f51907a0e48f4c3025961bc01a3
     "pages/certification/certification",
     "pages/certificate/certificate",
-    "pages/mine/mine",
-    "pages/usercategory/usercategory",
     "pages/apply/apply",
     "pages/Addvehicle/Addvehicle",
     "pages/vehicle/vehicle",
-    "pages/release/release",
     "pages/addmembers/addmembers",
     "pages/taskhistory/taskhistory",
     "pages/route/route",
@@ -24,12 +31,10 @@
     "pages/completed/completed",
     "pages/xq1/xq1",
     "pages/orderdetails/orderdetails",
-    "pages/driverlist/driverlist",
     "pages/tasklist/tasklist",
     "pages/noticeinfo/noticeinfo",
     "pages/noticelist/noticelist",
-    "pages/agreement/agreement",
-    "pages/auth/auth"
+    "pages/agreement/agreement"
   ],
   "window": {
     "backgroundTextStyle": "light",

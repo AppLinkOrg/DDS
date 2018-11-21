@@ -14,9 +14,12 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
+  }
+  setPageTitle(instinfo) {
+    var title = "常用任务";
     wx.setNavigationBarTitle({
-      title: '常用任务',
-    });
+      title: title,
+    })
   }
 }
 var content = new Content();
