@@ -26,13 +26,16 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
-    wx.setNavigationBarTitle({
-      title: '企业认证',
-    }); 
     var orderapi = new OrderApi();
     var UserInfo = this.Base.getMyData().UserInfo;
     orderapi.enterpriselist({ member_id: UserInfo.nickName }, (errlist) => {
       this.Base.setMyData({ errlist })
+    })
+  }
+  setPageTitle(instinfo) {
+    var title = "企业认证";
+    wx.setNavigationBarTitle({
+      title: title,
     })
   }
   uploadimg(e) {

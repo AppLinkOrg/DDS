@@ -12,14 +12,10 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
+    
   }
   onMyShow() {
     var that = this;
-    wx.setNavigationBarTitle({
-      title: '历史任务',
-    });
-
-    
     var orderapi=new OrderApi();
     orderapi.list({ taskstatus:"4"}, (list) => {
       this.Base.setMyData({ list });
@@ -29,6 +25,13 @@ class Content extends AppBase {
       this.Base.setMyData({ errlist })
     })
   }
+  setPageTitle(instinfo) {
+    var title = "历史任务";
+    wx.setNavigationBarTitle({
+      title: title,
+    })
+  }
+  
 }
 var content = new Content();
 var body = content.generateBodyJson();

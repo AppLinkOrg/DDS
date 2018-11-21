@@ -20,13 +20,17 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
-    wx.setNavigationBarTitle({
-      title: '团队成员',
-    });
     var orderapi = new OrderApi();
-    orderapi.memberlist({}, (memberlist) => {
+    var UserInfo=this.Base.getMyData().UserInfo;
+    orderapi.memberlist({member_id_name:UserInfo.nickName}, (memberlist) => {
       this.Base.setMyData({ memberlist });
     });
+  }
+  setPageTitle(instinfo) {
+    var title = "团队成员";
+    wx.setNavigationBarTitle({
+      title: title,
+    })
   }
 }
 var content = new Content();

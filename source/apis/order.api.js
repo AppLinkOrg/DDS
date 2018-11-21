@@ -205,6 +205,7 @@ export class OrderApi {
       }
     })
   }
+  //发布运输单
   create(json, callback, showLoading = true) {
     if (showLoading)
       ApiConfig.ShowLoading();

@@ -1,6 +1,6 @@
-<!--pages/tasklist/tasklist.wxml-->
-
-<view class='mid margin-top margin-bottom-40'>
+<!--pages/historydetail/historydetail.wxml-->
+<view class=''>
+  <view class='mid margin-top margin-bottom-40'>
     <view class='flex-row flex-column  '>
 
       <view class='flex-row flex-center margin-top-20'>
@@ -135,8 +135,6 @@
 
 
 
-</view>
- 
+  </view>
 
-<navigator bindtap='Deleteorder' wx:if='{{orderinfo.member_id_name==UserInfo.nickName}}' class='cancel_btn bg-bck_ble txt-white text-center'>取消本次任务</navigator>
-<!-- <button type='bak_ble' hover-class='txt-white' class='txt-white cancel_btn'>取消本次任务</button> -->
+</view>

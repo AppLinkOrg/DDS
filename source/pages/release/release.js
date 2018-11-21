@@ -16,13 +16,8 @@ class Content extends AppBase {
     orderapi.goodslist({orderby:"r_main.seq"}, (goodslist) => {
       this.Base.setMyData({ goodslist });
     });
-    var orderapi = new OrderApi();
-    orderapi.memberlist({}, (memberlist) => {
-      this.Base.setMyData({ memberlist })
-    })
-    
     this.Base.setMyData({
-      today: this.Base.util.FormatDate(new Date()),
+      today: this.Base.util.FormatDate(new Date())
     });
   }
   onMyShow() {
@@ -30,7 +25,11 @@ class Content extends AppBase {
     wx.setNavigationBarTitle({
       title: '任务发布',
     });
-    
+    var orderapi = new OrderApi();
+    var UserInfo = this.Base.getMyData().UserInfo;
+    orderapi.memberlist({ member_id_name: UserInfo.nickName }, (memberlist) => {
+      this.Base.setMyData({ memberlist })
+    })
   }
   bindgoods(e) {
     var goodslist = this.Base.getMyData().goodslist;
@@ -64,11 +63,22 @@ class Content extends AppBase {
       edcontact: endcontactlist[e.detail.value].name
     });
   }
+
+
   bindstartdate(e){
     console.log(e);
+    var that =this;
     this.setData({
       startdate: e.detail.value
     })
+    var startdate = this.Base.getMyData().startdate;
+    var enddate = this.Base.getMyData().enddate;
+    if (startdate > enddate) {
+      this.Base.setMyData({
+        startdate: enddate
+      })
+    }
+    
   }
 
   bindstarttime(e) {
@@ -76,38 +86,125 @@ class Content extends AppBase {
     this.setData({
       starttime: e.detail.value
     })
+    var startdate = this.Base.getMyData().startdate;
+    var enddate = this.Base.getMyData().enddate;
+    var starttime = this.Base.getMyData().starttime;
+    var endtime = this.Base.getMyData().endtime;
+    if (startdate == enddate && endtime<starttime) {
+      this.Base.setMyData({
+        starttime: endtime
+      })
+    }
   }
 
   bindendtime(e) {
     this.setData({
       endtime: e.detail.value
     })
+    var startdate = this.Base.getMyData().startdate;
+    var enddate = this.Base.getMyData().enddate;
+    var tstdate = this.Base.getMyData().tstdate;
+    var starttime = this.Base.getMyData().starttime; 
+    var endtime = this.Base.getMyData().endtime;
+    var tsttime = this.Base.getMyData().tsttime;
+    if (startdate == enddate && endtime < starttime) {
+      this.Base.setMyData({
+         endtime: starttime
+      })
+    }
+    if (tstdate == enddate && endtime > tsttime) {
+      this.Base.setMyData({
+        endtime: tsttime
+      })
+    }
+    
   }
   
   bindenddate(e) {
     this.setData({
       enddate: e.detail.value
     })
+    var startdate = this.Base.getMyData().startdate;
+    var enddate = this.Base.getMyData().enddate;
+    var tstdate = this.Base.getMyData().tstdate;
+    if (startdate > enddate) {
+      this.Base.setMyData({
+        enddate: startdate
+      })
+    }
+    if (tstdate < enddate) {
+      this.Base.setMyData({
+        enddate: tstdate
+      })
+    }
   }
+
   tst_startdate(e){
     this.setData({
       tstdate: e.detail.value
     })
+    var tstdate = this.Base.getMyData().tstdate;
+    var enddate = this.Base.getMyData().enddate;
+    var tstenddate = this.Base.getMyData().tstenddate;
+    if (tstdate < enddate ) {
+      this.Base.setMyData({
+        tstdate: enddate
+      })
+    }
+    if (tstenddate < tstdate) {
+      this.Base.setMyData({
+        tstdate: tstenddate
+      })
+    }
   }
+
   tst_starttime(e) {
     this.setData({
       tsttime: e.detail.value
     })
+     var tstdate = this.Base.getMyData().tstdate;
+     var tstenddate = this.Base.getMyData().tstenddate;
+     var tsttime = this.Base.getMyData().tsttime;
+     var  tstendtime = this.Base.getMyData().tstendtime;
+    var enddate = this.Base.getMyData().enddate;
+     var endtime = this.Base.getMyData().endtime;
+    if (tstdate == tstenddate && tstendtime < tsttime) {
+       this.Base.setMyData({
+         tsttime: tstendtime
+       })
+     }
+    if (tstdate == enddate && endtime > tsttime)
+    {
+      this.Base.setMyData({
+        tsttime: endtime
+      })
+    }
   }
   tst_enddate(e) {
     this.setData({
       tstenddate: e.detail.value
     })
+    var tstdate = this.Base.getMyData().tstdate;
+    var tstenddate = this.Base.getMyData().tstenddate;
+    if (tstenddate < tstdate) {
+      this.Base.setMyData({
+        tstenddate: tstdate
+      })
+    }
   }
   tst_endtime(e) {
     this.setData({
       tstendtime: e.detail.value
     })
+    var tstdate = this.Base.getMyData().tstdate;
+    var tstenddate = this.Base.getMyData().tstenddate;
+    var tsttime = this.Base.getMyData().tsttime;
+    var tstendtime = this.Base.getMyData().tstendtime;
+    if (tstdate == tstenddate && tstendtime < tsttime) {
+      this.Base.setMyData({
+         tstendtime: tsttime
+      })
+    }
   }
 
   // binddt(e) {
@@ -319,13 +416,16 @@ class Content extends AppBase {
       return;
     }
     var startdate = this.Base.getMyData().startdate;
-    var sctime = this.Base.getMyData().sctime;
+    var starttime = this.Base.getMyData().starttime;
     var enddate = this.Base.getMyData().enddate;
-    var ectime = this.Base.getMyData().ectime;
+    var endtime = this.Base.getMyData().endtime;
     var tstdate = this.Base.getMyData().tstdate; 
-    var carnum = this.Base.getMyData().carnum;
-    var stptime = this.Base.getMyData().stptime;
+    var tsttime = this.Base.getMyData().tsttime;
+    var tstendtime = this.Base.getMyData().tstendtime;
     var tstenddate = this.Base.getMyData().tstenddate;
+    console.log(tstendtime);
+    console.log(tstenddate);
+    var carnum = this.Base.getMyData().carnum;
     var startaddress = this.Base.getMyData().startaddress;
     var endaddress = this.Base.getMyData().endaddress;
     var etptime = this.Base.getMyData().etptime;
@@ -337,15 +437,18 @@ class Content extends AppBase {
     var edcontact = this.Base.getMyData().edcontact;
     var remark = this.Base.getMyData().remark;
     var orderapi = new OrderApi();
+    var today = this.Base.getMyData().today;
+    var time = this.Base.getMyData().time;
     orderapi.create({
       status:"A",
       taskstatus:"1",
-      enroll_start: startdate,
-      enroll_deadline: enddate,
-      start_time: tstdate,
+      enroll_start: startdate + " " + starttime ,
+      enroll_deadline: enddate + " " + endtime,
+      start_time: tstdate + " " + tsttime,
+      end_time: tstenddate + " " + tstendtime,
+      submit_date:today,
       startaddress: startaddress,
       targetaddress: endaddress,
-      end_time: tstenddate,
       weight: gdsweight,
       carcount: carnum,
       stuff_type_id: goodstype,
@@ -355,9 +458,9 @@ class Content extends AppBase {
       end_contact: edcontact,
       remark: remark
     }, (create) => {
-        wx.reLaunch({
-          url: '/pages/home/home'
-        })
+        // wx.reLaunch({
+        //   url: '/pages/home/home'
+        // })
     })
   }
 

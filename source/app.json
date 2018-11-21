@@ -1,17 +1,16 @@
 {
   "pages": [
-    "pages/usercategory/usercategory",
-    "pages/release/release",
-    "pages/auth/auth",
     "pages/home/home",
+    "pages/release/release",
+    "pages/mine/mine",
+    "pages/historydetail/historydetail",
+    "pages/driverlist/driverlist",
+    "pages/usercategory/usercategory",
+    "pages/auth/auth",
     "pages/my/my",
-    
     "pages/driver/driver",
-    
-    
     "pages/certification/certification",
     "pages/certificate/certificate",
-    "pages/mine/mine",
     "pages/apply/apply",
     "pages/Addvehicle/Addvehicle",
     "pages/vehicle/vehicle",
@@ -27,10 +26,8 @@
     "pages/phone/phone",
     "pages/maps/maps",
     "pages/completed/completed",
-    
     "pages/xq1/xq1",
     "pages/orderdetails/orderdetails",
-    "pages/driverlist/driverlist",
     "pages/tasklist/tasklist",
     "pages/noticeinfo/noticeinfo",
     "pages/noticelist/noticelist",

@@ -13,3 +13,9 @@ Page{
   z-index: 50;
   opacity: 0.7;
 }
+.null_icon{
+  height: 240rpx;
+  width: 240rpx;
+  margin-top: 150rpx;
+  opacity: 0.7;
+}
