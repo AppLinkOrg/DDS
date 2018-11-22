@@ -14,5 +14,7 @@
 </view>
 </view>
 
-<navigator url='/pages/addmembers/addmembers' class='add'><image class='icon-75' src='{{uploadpath}}resource/{{res.insert_icon}}'></image></navigator>
+
 </view>
+
+<navigator url='/pages/addmembers/addmembers' class='add'><image class='icon-75' src='{{uploadpath}}resource/{{res.insert_icon}}'></image></navigator>

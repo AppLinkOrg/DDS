@@ -16,7 +16,7 @@ class Content extends AppBase {
   //界面标题
   setPageTitle() {
     wx.setNavigationBarTitle({
-      title: '已完成',
+      title: '历史任务',
 
     });
   }

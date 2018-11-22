@@ -86,8 +86,11 @@ class Content extends AppBase {
     var load = this.Base.getMyData().load;
     var that =this;
     var photo = this.Base.getMyData().photo;
+    var UserInfo = this.Base.getMyData().UserInfo;
     var orderapi=new OrderApi();
+
     orderapi.addvehicle({
+      openid: UserInfo.openid,
       status:"I",
       carnumber: carnumber,
       vehicletype: vehicletype,

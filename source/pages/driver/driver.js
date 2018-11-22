@@ -25,20 +25,23 @@ class Content extends AppBase {
 
     })
 
+    timer=null;
+
+
     this.setData({
       array: ['所有', '离我最近', '费用最高'],
       objectArray: [{
-          id: 0,
-          name: '所有'
-        },
-        {
-          id: 1,
-          name: '离我最近'
-        },
-        {
-          id: 2,
-          name: '费用最高'
-        }
+        id: 0,
+        name: '所有'
+      },
+      {
+        id: 1,
+        name: '离我最近'
+      },
+      {
+        id: 2,
+        name: '费用最高'
+      }
 
       ],
       index: 0,
@@ -59,53 +62,52 @@ class Content extends AppBase {
 
     });
   }
-  sj(date){
+  sj(date) {
 
-    
-     var year = date.getFullYear()
-     var month = date.getMonth() + 1
-     var day = date.getDate()
 
-     var hour = date.getHours()
-     var minute = date.getMinutes()
-     var second = date.getSeconds()
+    var year = date.getFullYear()
+    var month = date.getMonth() + 1
+    var day = date.getDate()
 
-     return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-   
+    var hour = date.getHours()
+    var minute = date.getMinutes()
+    var second = date.getSeconds()
 
- }
+    return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+
+
+  }
+
 
   onMyShow() {
 
     var that = this;
     //查询所有列表 
-    console.log(6666666);
-   
+    this.Countdown();
     var orderapi = new OrderApi();
     orderapi.applylist({}, (list1) => {
-      
+
       orderapi.list({}, (list) => {
-          
-          
-          
-          console.log(sj);
+
         var year = new Array();
         var month = new Array();
+        var days = new Array()
         var day = new Array();
-        var sj=new Array();
+        var sj = new Array();
         var num = 0;
         //循环转化时间
         for (var i = 0; i < list.length; i++) {
           var dqsj = Date.parse(new Date()) / 1000;
           var sjc = list[i].enroll_deadline_timespan;
-           
-          
+          var sjj = sjc - dqsj;
 
-          sj[i] = utils.sjc(sjc-dqsj, ' h:m:s')
-        
-      
-          var myDate = new Date(list[i].enroll_deadline);
-         
+          days[i] = parseInt(sjj / (3600 * 24));
+
+          sj[i] = utils.sjc(sjj, ' h:m:s')
+
+
+          var myDate = new Date(Date.parse(list[i].enroll_deadline.replace(/-/g, "/")));
+
           year[i] = myDate.getFullYear();
           month[i] = myDate.getMonth() + 1;
           if (month[i] < 10) {
@@ -116,20 +118,25 @@ class Content extends AppBase {
           if (day[i] < 10) {
             day[i] = '0' + myDate.getDate();
           }
-          
+
         }
 
-        
+
         //循环找出新任务中已报名
         var UserInfo = this.Base.getMyData().UserInfo;
+        var bm = [];
         for (var a = 0; a < list.length; a++) {
-         
+          bm[a] = 0;
           for (var b = 0; b < list1.length; b++) {
+            if (list[a].id == list[b].order_id) {
+              bm[a]++;
+
+            }
 
             if (list[a].id == list1[b].order_id && UserInfo.openid == list1[b].openid) {
 
 
-              console.log(list[a].id);
+
               list[a].status = "O";
 
             }
@@ -138,15 +145,31 @@ class Content extends AppBase {
             num++;
           }
         }
+
         this.Base.setMyData({
           num: num,
           year: year,
           month: month,
           day: day,
-          sj:sj
+          days: days,
+          sj: sj,
+          bm: bm
         });
-        this.Base.setMyData({ list1: list1 });
-        this.Base.setMyData({ list });
+        orderapi.applylist({ transport_name: "待完成" }, (list2) => {
+
+          this.Base.setMyData({
+            list2: list2
+
+          });
+
+        })
+        this.Base.setMyData({
+          list1: list1
+
+        });
+        this.Base.setMyData({
+          list
+        });
       });
 
 
@@ -164,14 +187,55 @@ class Content extends AppBase {
       tab: e.currentTarget.id
     });
   }
+  onUnload() {
+    clearInterval();
+  }
+
+  Countdown() {
+    var that=this;
+    this.timer=setInterval(()=>{
+      var orderapi = new OrderApi();
+      orderapi.list({}, (list) => {
+
+        var days = new Array()
+
+        var sj = new Array();
+        var num = 0;
+        //循环转化时间
+        for (var i = 0; i < list.length; i++) {
+          var dqsj = Date.parse(new Date()) / 1000;
+          var sjc = list[i].enroll_deadline_timespan;
+          var sjj = sjc - dqsj;
+
+          days[i] = parseInt(sjj / (3600 * 24));
+
+          sj[i] = utils.sjc(sjj, ' h:m:s')
+        }
+        content.setMyData({
+
+          days: days,
+          sj: sj,
+
+        });
+
+      })
+
+    }, 1000);
+
+
+
+  }
 
 }
 var tab = null;
+var timer;
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
 body.qwe = content.qwe;
 body.changetab = content.changetab;
-body.sj=content.sj;
+body.sj = content.sj;
+body.Countdown = content.Countdown;
+body.setTimeout = content.setTimeout;
 Page(body)

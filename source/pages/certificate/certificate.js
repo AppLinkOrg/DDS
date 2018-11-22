@@ -23,7 +23,7 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
-<<<<<<< HEAD
+
     that.Base.setMyData({
      zt: this.Base.options.zt
     });
@@ -35,11 +35,7 @@ class Content extends AppBase {
       });
     })
          
-=======
-    // this.Base.setMyData({
-    //   zt: this.base.
-    // })
->>>>>>> 7a746d40bf2b8f51907a0e48f4c3025961bc01a3
+ 
   }
   name(e) {
 

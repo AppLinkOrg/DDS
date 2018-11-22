@@ -1,6 +1,9 @@
 {
   "pages": [
-    "pages/driver/driver",
+      "pages/driver/driver",
+    "pages/vehicle/vehicle",
+  
+    "pages/youke/youke",
     "pages/home/home",
     "pages/release/release",
     "pages/mine/mine",
@@ -9,15 +12,11 @@
     "pages/usercategory/usercategory",
     "pages/auth/auth",
     "pages/my/my",
-<<<<<<< HEAD
-=======
-    "pages/driver/driver",
->>>>>>> 7a746d40bf2b8f51907a0e48f4c3025961bc01a3
     "pages/certification/certification",
     "pages/certificate/certificate",
     "pages/apply/apply",
     "pages/Addvehicle/Addvehicle",
-    "pages/vehicle/vehicle",
+   
     "pages/addmembers/addmembers",
     "pages/taskhistory/taskhistory",
     "pages/route/route",
@@ -35,6 +34,7 @@
     "pages/noticeinfo/noticeinfo",
     "pages/noticelist/noticelist",
     "pages/agreement/agreement"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

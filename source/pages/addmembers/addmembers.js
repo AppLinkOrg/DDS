@@ -41,6 +41,7 @@ class Content extends AppBase {
     orderapi.addmembers({
       status:"A",
       name:name,
+      member_id:this.Base.getMyData().UserInfo.id,
       member_phone:mobile
     }, (addmembers) => {
        var pages = getCurrentPages(); 

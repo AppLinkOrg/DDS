@@ -13,7 +13,11 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
+    this.Base.setMyData(
 
+      { id: this.Base.options.id }
+    )
+    
   }
   //界面标题
   setPageTitle() {
@@ -22,12 +26,37 @@ class Content extends AppBase {
 
     });
   }
+  enrollcontact(e) {
+    
+    var elcontact = e.detail.value;
+    console.log(elcontact);
+    this.Base.setMyData({
+      elcontact: e.detail.value
+    })
+  }
+
+  bindenroll(e) {
+    var enrolllist = this.Base.getMyData().vehiclelist;
+    
+    this.Base.setMyData({
+      enroll_idx: e.detail.value,
+      enroll_id: enrolllist[e.detail.value].id,
+      elcontact: enrolllist[e.detail.value].carnumber
+    });
+  }
   onMyShow() {
      
     
 
     
     var that = this;
+    var UserInfo = this.Base.getMyData().UserInfo;
+    var orderapi = new OrderApi();
+    orderapi.vehiclelist({ openid: UserInfo.openid }, (vehiclelist) => {
+      this.Base.setMyData({ vehiclelist });
+    })
+  
+
     var month ;
     var month1;
     var month2;
@@ -44,15 +73,15 @@ class Content extends AppBase {
     var mm1;
     var mm2;
     var mm3;
-
-    console.log(this.Base.options.id);
+         
+       
     var api = new OrderApi();
-    api.info({ id: this.Base.options.id }, (info) => {
- 
-      var data1 = new Date(info.enroll_start);
-      var data2 = new Date(info.enroll_deadline);
-      var data3 = new Date(info.start_time);
-      var data4 = new Date(info.end_time);
+    api.info({ id: this.Base.getMyData().id }, (info) => {
+      
+      var data1 = new Date(Date.parse(info.enroll_start.replace(/-/g, "/")));
+      var data2 = new Date(Date.parse(info.enroll_deadline.replace(/-/g, "/")));
+      var data3 = new Date(Date.parse(info.start_time.replace(/-/g, "/")));
+      var data4 = new Date(Date.parse(info.end_time.replace(/-/g, "/")));
         month=data1.getMonth()+1;
       month1 = data2.getMonth() + 1;
       month2 = data3.getMonth() + 1;
@@ -121,8 +150,8 @@ class Content extends AppBase {
       if (mm3 < 10) {
         mm3 = "0" + mm3;
       }
-      console.log(data1);
-      console.log(month,day,hh,mm);
+      
+    
       this.Base.setMyData({month:month,day:day,hh:hh,mm:mm});
       this.Base.setMyData(info);
 
@@ -159,14 +188,14 @@ class Content extends AppBase {
     var UserInfo = this.Base.getMyData().UserInfo;
     
    
-    var orderid = this.Base.options.id;
-    var vehicle="晋A·123456";
+    var orderid = this.Base.getMyData().id ;
+    var vehicle = this.Base.getMyData().elcontact;
+    
     var that = this;
     var api = new CertificateApi();
     var UserInfo = this.Base.getMyData().UserInfo;
     api.riverlist({ openid: UserInfo.openid }, (list3) => {
-           console.log(1111111);
-      console.log(list3[0].name);
+          
 
       var orderapi = new OrderApi();
       orderapi.addapply({
@@ -185,6 +214,9 @@ class Content extends AppBase {
     })
    
   }
+  onUnload(){
+    clearInterval();
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -193,4 +225,7 @@ body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
 body.tonnage = content.tonnage;
 body.confirm = content.confirm;
+
+body.enrollcontact = content.enrollcontact;
+body.bindenroll = content.bindenroll;
 Page(body)

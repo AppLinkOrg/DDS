@@ -73,7 +73,34 @@ class Content extends AppBase {
   changetab(e) {
     this.Base.setMyData({ tab: e.currentTarget.id });
   }
+  Deleteorder(e) {
+    console.log(e);
+    var that = this;
 
+    wx.showModal({
+      title: '',
+      content: '您是否需要取消本次任务？',
+      showCancel: true,
+      cancelText: '否',
+      cancelColor: '',
+      confirmText: '是',
+      confirmColor: '',
+      success: function (res) {
+        if (res.confirm) {
+          var orderapi = new OrderApi();
+          orderapi.deleteapply({ idlist: that.Base.options.idlist }, (updataorder) => {
+            that.Base.setMyData({
+              updataorder
+            });
+            wx.reLaunch({
+              url: '/pages/driver/driver',
+            })
+          });
+        }
+      }
+    })
+
+  }
 }
 var tab = null;
 var content = new Content();
@@ -82,4 +109,5 @@ body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
 body.qwe = content.qwe;
 body.changetab = content.changetab;
+body.Deleteorder = content.Deleteorder;
 Page(body)

@@ -40,7 +40,7 @@ class Content extends AppBase {
 
      wx.showModal({
        title: '',
-       content: '您是否需要取消本次任务？',
+       content: '您是否需要取消本次报名？',
        showCancel: true,
        cancelText: '否',
        cancelColor: '',
@@ -49,7 +49,7 @@ class Content extends AppBase {
        success: function(res) {
          if(res.confirm){
            var orderapi = new OrderApi();
-           orderapi.updataorder({ id: that.Base.options.id }, (updataorder) => {
+           orderapi.deleteapply({ idlist: that.Base.options.id }, (updataorder) => {
              that.Base.setMyData({ 
                updataorder
               });

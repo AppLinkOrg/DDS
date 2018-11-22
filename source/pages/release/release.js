@@ -403,18 +403,18 @@ class Content extends AppBase {
       this.Base.info("请输入运输费用");
       return;
     }
-    if (data.elcontact == "") {
-      this.Base.info("请选择报名联系人");
-      return;
-    }
-    if (data.stcontact == "") {
-      this.Base.info("请选择起点联系人");
-      return;
-    }
-    if (data.edcontact == "") {
-      this.Base.info("请选择终点联系人");
-      return;
-    }
+    // if (data.elcontact == "") {
+    //   this.Base.info("请选择报名联系人");
+    //   return;
+    // }
+    // if (data.stcontact == "") {
+    //   this.Base.info("请选择起点联系人");
+    //   return;
+    // }
+    // if (data.edcontact == "") {
+    //   this.Base.info("请选择终点联系人");
+    //   return;
+    // }
     var startdate = this.Base.getMyData().startdate;
     var starttime = this.Base.getMyData().starttime;
     var enddate = this.Base.getMyData().enddate;
@@ -458,9 +458,9 @@ class Content extends AppBase {
       end_contact: edcontact,
       remark: remark
     }, (create) => {
-        // wx.reLaunch({
-        //   url: '/pages/home/home'
-        // })
+         wx.reLaunch({
+           url: '/pages/home/home'
+         })
     })
   }
 
