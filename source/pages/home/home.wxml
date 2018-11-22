@@ -30,7 +30,6 @@
     </picker>
   </view>
 
-
   <navigator url='/pages/noticelist/noticelist' class='padding-20 bg-gray flex-row flex-center'>
     <view>
       <image class='icon' src='{{uploadpath}}resource/{{res.gonggao}}'></image>
@@ -44,9 +43,9 @@
     <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.nocontent_icon}}'></image>
     <view class=''>暂无发布信息</view>
   </view>
-  <navigator url='/pages/tasklist/tasklist?id={{item.id}}&mineshow=1' wx:for='{{list}}' wx:for-index='idx' wx:key='k' class='mid margin-top-60 margin-bottom-40'>
-
-    <view class='flex-row flex-column  '>
+  <navigator url='/pages/tasklist/tasklist?id={{item.id}}&mineshow=1&all={{all[idx]}}' wx:for='{{list}}' wx:for-index='idx' wx:key='k' class='mid margin-top-60 margin-bottom-40'>
+    <view class='h5 padding-20'>运输单号：{{item.orderno}}</view>
+    <view class='flex-row flex-column'>
 
       <view class='flex-row flex-center margin-top-20'>
         <view class='h5'>报名截止时间：</view>
@@ -58,7 +57,7 @@
 
       <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
         <view class='flex-row'>
-          <view class='font-left'>{{num[idx]}}</view>
+          <view class='font-left'>{{all[idx]}}</view>
           <view class='font-mid padding-top-40 margin-left-10'>/{{item.carcount}}</view>
           <view class='txt-bold padding-top-60 margin-left-10'>辆</view>
         </view>
@@ -110,8 +109,8 @@
     <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.nocontent_icon}}'></image>
     <view class=''>您还未发布任何信息</view>
   </view>
-  <navigator url='/pages/tasklist/tasklist?id={{item.id}}&mineshow=2' wx:for='{{minelist}}' wx:key='k' wx:for-index='idx' class='mid margin-top-60 margin-bottom-40'>
-
+  <navigator url='/pages/tasklist/tasklist?id={{item.id}}&mineshow=2&num={{num[idx]}}' wx:for='{{minelist}}' wx:key='k' wx:for-index='idx' class='mid margin-top-60 margin-bottom-40'>
+<view class='h5 padding-20'>运输单号：{{item.orderno}}</view>
     <view class='flex-row flex-column  '>
 
       <view class='flex-row flex-center margin-top-20'>

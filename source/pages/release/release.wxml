@@ -1,7 +1,8 @@
 <!--pages/release/release.wxml-->
-<view class=''>
-  <view class='mid margin-top margin-bottom-40 '>
+
+<view class='mid margin-top  '>
   <form bindsubmit="confirm" bindreset="formReset" report-submit="{{true}}">
+
     <view class='flex-row flex-center bor_btm padding-40'>
       <view class='txt-black txt-bold h3 flex-1'>开始创建新的任务</view>
       <image class='icon-100' src='{{uploadpath}}resource/{{res.car_pic}}'></image>
@@ -22,7 +23,7 @@
           </picker>
           <view class='flex-row flex-center margin-top-20'>
             <!-- <view class='h5'>周三</view> -->
-            <picker mode='time' bindchange="bindstarttime">
+            <picker mode='time' bindchange="bindstarttime" disabled='{{startdate==""}}'>
               <input placeholder-style="font-size:28rpx;" bindinput='startcontacttime' name='startcontacttime' class='h5 txt-black   text-center' disabled='true' placeholder='请选择开始时间' value='{{starttime}}'></input>
             </picker>
           </view>
@@ -30,12 +31,13 @@
 
         <view class='flex-row flex-column flex-1' style=''>
           <view class='txt-black'>报名截止:</view>
-          <picker mode='date' bindchange="bindenddate" start='{{today}}'>
+          <picker mode='date' bindchange="bindenddate" start='{{startdatenextday}}' bindtap='start' disabled='{{startdate==""||starttime==""}}'>
             <input placeholder-style="font-size:35rpx;" bindinput='endcontactdate' name='ecdate' class='h3 txt-black margin-top-10  text-center' disabled='true' placeholder='请选择截止日期' value='{{enddate}}'></input>
           </picker>
+
           <view class='flex-row flex-center margin-top-20'>
             <!-- <view class='h5'>周四</view> -->
-            <picker mode='time' bindchange="bindendtime">
+            <picker mode='time' bindchange="bindendtime" disabled='{{startdate==""}}' disabled='{{startdate==""||starttime==""}}' bindtap='start'>
               <input placeholder-style="font-size:28rpx;" bindinput='endcontacttime' name='endcontacttime' class='h5 txt-black   text-center' disabled='true' placeholder='请选择截止时间' value='{{endtime}}'></input>
             </picker>
           </view>
@@ -51,20 +53,20 @@
           <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
           <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>装车地址</view>
         </view>
-        <navigator class='h4 txt-black padding-top-10 padding-left-30 text-center' >
-        <input  placeholder='请输入详细地址' bindinput='startaddress' name='startaddress'></input>
-        </navigator>
+        <view class='h4 txt-black padding-top-10 padding-left-30 text-center'>
+          <input placeholder='请输入详细地址' bindinput='startaddress' name='startaddress'></input>
+        </view>
       </view>
-<!-- bindtap='openRoute' -->
+      <!-- bindtap='openRoute' -->
       <view class='flex-row column margin-left-20 margin-top-20'>
         <view class='flex-row flex-center '>
           <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
           <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>目的地址</view>
         </view>
-        <navigator class='h4 txt-black padding-top-10 padding-left-30 text-center'>
-        <input  placeholder='请输入详细地址' bindinput='endaddress' name='endaddress'></input>
-        
-        </navigator>
+        <view class='h4 txt-black padding-top-10 padding-left-30 text-center'>
+          <input placeholder='请输入详细地址' bindinput='endaddress' name='endaddress'></input>
+
+        </view>
       </view>
     </view>
 
@@ -77,12 +79,12 @@
       <view class='flex-row flex-center margin-top' style='border-bottom:'>
         <view class='flex-row flex-column flex-1' style=''>
           <view class='txt-black'>运输开始:</view>
-          <picker mode='date' bindchange="tst_startdate" start='{{today}}'>
+          <picker mode='date' bindchange="tst_startdate" start='{{enddatenextday}}' disabled='{{enddate==""||endtime==""}}' bindtap='end'>
             <input placeholder-style="font-size:28rpx;" bindinput='starttransportdate' name='stpdate' class='h3 txt-black margin-top-10  text-center' disabled='true' placeholder='请选择开始日期' value='{{tstdate}}'></input>
           </picker>
           <view class='flex-row flex-center margin-top-20'>
             <!-- <view class='h5'>周三</view> -->
-            <picker mode='time' bindchange="tst_starttime">
+            <picker mode='time' bindchange="tst_starttime" disabled='{{enddate==""||endtime==""}}' bindtap='end'>
               <input placeholder-style="font-size:25rpx;" bindinput='starttransporttime' name='starttransporttime' class='h5 txt-black   text-center' disabled='true' placeholder='请选择开始时间' value='{{tsttime}}'></input>
             </picker>
           </view>
@@ -98,12 +100,12 @@
 
         <view class='flex-row flex-column flex-1' style=''>
           <view class='txt-black'>运输截止:</view>
-          <picker mode='date' bindchange="tst_enddate" start='{{today}}'>
+          <picker mode='date' bindchange="tst_enddate" start='{{tststartdatenextday}}' disabled='{{tstdate==""||tsttime==""}}' bindtap='ttstart'>
             <input placeholder-style="font-size:28rpx;" bindinput='endtransportdate' name='etpdate' class='h3 txt-black margin-top-10  text-center' disabled='true' placeholder='请选择截止日期' value='{{tstenddate}}'></input>
           </picker>
           <view class='flex-row flex-center margin-top-20'>
             <!-- <view class='h5'>周四</view> -->
-            <picker mode='time' bindchange="tst_endtime">
+            <picker mode='time' bindchange="tst_endtime" disabled='{{tstdate==""||tsttime==""}}' bindtap='ttstart'>
               <input placeholder-style="font-size:25rpx;" bindinput='endtransporttime' name='endtransporttime' class='h5 txt-black   text-center' disabled='true' placeholder='请选择截止时间' value='{{tstendtime}}'></input>
             </picker>
           </view>
@@ -135,7 +137,7 @@
 
     </view>
 
-    <view class='flex-row column'>
+    <view class='flex-row column '>
 
       <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
         <image class='icon-20' src='{{uploadpath}}resource/{{res.driver}}'></image>
@@ -198,21 +200,18 @@
       </view>
 
       <view class='padding-40'>
-      <checkbox-group bindchange="" >
-      <label class='flex-row flex-center checkbox'>
-      <view class='flex-1'></view>
-      <checkbox value="{{item.name}}" color='#353A4D' checked="{{item.checked}}" />
-      <view class='h5 margin-left-10'>添加为常用任务</view>
-      </label>
-      </checkbox-group>
+        <checkbox-group bindchange="checkchange">
+          <label class='flex-row flex-center checkbox'>
+            <view class='flex-1'></view>
+            <checkbox value="E" color='#353A4D' checked="" />
+            <view class='h5 margin-left-10'>添加为常用任务</view>
+          </label>
+        </checkbox-group>
       </view>
-
     </view>
-    <button class='cancel_btn bg-bck_ble txt-white text-center' form-type='submit' >发布</button>
+
+    <button class='cancel_btn bg-bck_ble txt-white text-center' form-type='submit'>发布</button>
+
   </form>
-  </view>
-  <!-- <view><button bindtap='bindrelease'>sssssssss</button></view> -->
 </view>
-
 <!-- bindtap='bindrelease' -->
-
