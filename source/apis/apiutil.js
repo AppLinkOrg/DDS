@@ -65,6 +65,7 @@ export class ApiUtil {
   // static FormatDate2(val) {
   //   return  (val.getMonth() + 1) + "-" + val.getDate() +val.getDay();
   // }
+
   static FormatDateTime(val) {
     return val.getFullYear() + "-" + (val.getMonth() + 1) + "-" + val.getDate() +
       " " + val.getHours() + ":" + val.getMinutes() + ":" + val.getSeconds();

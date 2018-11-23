@@ -1,8 +1,16 @@
 // pages/addmembers/addmembers.js
-import { AppBase } from "../../appbase";
-import { ApiConfig } from "../../apis/apiconfig";
-import { InstApi } from "../../apis/inst.api.js";
-import { OrderApi } from "../../apis/order.api.js";
+import {
+  AppBase
+} from "../../appbase";
+import {
+  ApiConfig
+} from "../../apis/apiconfig";
+import {
+  InstApi
+} from "../../apis/inst.api.js";
+import {
+  OrderApi
+} from "../../apis/order.api.js";
 
 class Content extends AppBase {
   constructor() {
@@ -18,11 +26,11 @@ class Content extends AppBase {
     wx.setNavigationBarTitle({
       title: "添加成员",
     })
-    
+
   }
-  confirm(e){
+  confirm(e) {
     var data = e.detail.value;
-    if (data.addname=='') {
+    if (data.addname == '') {
       this.Base.info("请输入成员姓名");
       return;
     }
@@ -30,37 +38,41 @@ class Content extends AppBase {
       this.Base.info("请输入成员联系电话");
       return;
     }
-      if (data.addmobile.length < "11") {
-        this.Base.info("请正确输入联系电话");
-        return;
-      }
-    var name=this.Base.getMyData().name;
+    if (data.addmobile.length < "11") {
+      this.Base.info("请正确输入联系电话");
+      return;
+    }
+    var name = this.Base.getMyData().name;
     var mobile = this.Base.getMyData().mobile;
-    var that=this;
-    var UserInfo=this.Base.getMyData().UserInfo.nickName;
+    var that = this;
+    var UserInfo = this.Base.getMyData().UserInfo.nickName;
     console.log(UserInfo);
     console.log(1111111111111);
     var orderapi = new OrderApi();
     orderapi.addmembers({
-      status:"A",
-      name:name,
-      member_id:this.Base.getMyData().UserInfo.id,
-      member_phone:mobile
+      status: "A",
+      name: name,
+
+      member_phone: mobile
     }, (addmembers) => {
       //$request["member_id"]=$member_id;
 
       //member_id:this.Base.getMyData().UserInfo.id,
-      
-        var pages = getCurrentPages(); 
-        var beforePage = pages[pages.length - 2];
-        wx.navigateBack({
-          success(){
-            beforePage.onLoad();
-          }
-        })
+
+      var pages = getCurrentPages();
+      var beforePage = pages[pages.length - 2];
+      wx.navigateBack({
+        success() {
+          beforePage.onLoad();
+        }
+      })
+      wx.showToast({
+        title: '添加成功',
+        duration: 1000
+      });
     });
   }
-  bindaddname(e){
+  bindaddname(e) {
     var name = e.detail.value;
     console.log(name);
     this.Base.setMyData({

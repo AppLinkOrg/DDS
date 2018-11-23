@@ -16,10 +16,11 @@ class Content extends AppBase {
   onMyShow() {
     var that = this;
     var orderapi=new OrderApi();
-    orderapi.list({ cmptask: "E" }, (list) => {
+    var UserInfo = this.Base.getMyData().UserInfo;
+    orderapi.list({ cmptask: "E", member_id_name: UserInfo.nickName }, (list) => {
       this.Base.setMyData({ list });
     });
-    var UserInfo = this.Base.getMyData().UserInfo;
+    
     orderapi.enterpriselist({ member_id: UserInfo.nickName }, (errlist) => {
       this.Base.setMyData({ errlist })
     })

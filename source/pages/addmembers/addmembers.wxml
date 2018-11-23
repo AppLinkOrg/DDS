@@ -11,7 +11,7 @@
 </view>
 
 <view class='margin-top under'>
-<button  hover-class='hover_btn' class='btn' form-type='submit'>添加</button>
+<button  hover-class='hover_btn' class='btn' form-type='submit' style='border-radius:0'>添加</button>
 </view>
 </form>
 

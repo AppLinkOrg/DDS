@@ -36,6 +36,7 @@
     </view>
     <view class='bg-white h5 padding-10 margin-left-20 txt-gray' style='border-radius:10rpx;width:86%'>关于xxx的通知</view>
   </navigator>
+
 </view>
 
 <view hidden='{{allshow!="1"}}'>
@@ -43,18 +44,25 @@
     <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.nocontent_icon}}'></image>
     <view class=''>暂无发布信息</view>
   </view>
-  <navigator url='/pages/tasklist/tasklist?id={{item.id}}&mineshow=1&all={{all[idx]}}' wx:for='{{list}}' wx:for-index='idx' wx:key='k' class='mid margin-top-60 margin-bottom-40'>
-    <view class='h5 padding-20'>运输单号：{{item.orderno}}</view>
-    <view class='flex-row flex-column'>
+  <navigator url='/pages/tasklist/tasklist?id={{item.id}}&mineshow=1&all={{all[idx]}}' hidden='' wx:for='{{list}}' wx:for-index='idx' wx:key='k' class='mid margin-top-60 margin-bottom-40'>
+    <view class='padding-20'>
+      <view class='txt-black h4'>{{item.companyname}}</view>
+
+      <view class='h5 margin-top-20'>运输单号：{{item.orderno}}</view>
 
       <view class='flex-row flex-center margin-top-20'>
         <view class='h5'>报名截止时间：</view>
         <view class='h5'>{{item.enroll_deadline}}</view>
       </view>
-      <view class='text-center txt-red h5 signup margin-top-20'>{{item.taskstatus_name}}</view>
+    </view>
+
+    <view class='flex-row flex-column'>
+
+
+      <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{item.enroll_deadline>today}}'>{{item.taskstatus_name}}</view>
+      <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{item.enroll_deadline<=today}}'>报名截止</view>
     </view>
     <view class='flex-row flex-center margin-top-20'>
-
       <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
         <view class='flex-row'>
           <view class='font-left'>{{all[idx]}}</view>
@@ -109,14 +117,19 @@
     <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.nocontent_icon}}'></image>
     <view class=''>您还未发布任何信息</view>
   </view>
-  <navigator url='/pages/tasklist/tasklist?id={{item.id}}&mineshow=2&num={{num[idx]}}' wx:for='{{minelist}}' wx:key='k' wx:for-index='idx' class='mid margin-top-60 margin-bottom-40'>
-<view class='h5 padding-20'>运输单号：{{item.orderno}}</view>
-    <view class='flex-row flex-column  '>
 
+  <navigator url='/pages/tasklist/tasklist?id={{item.id}}&mineshow=2&num={{num[idx]}}' wx:for='{{minelist}}' wx:key='k' wx:for-index='idx' class='mid margin-top-60 margin-bottom-40'>
+    <view class='padding-20'>
+      <view class='txt-black h4'>{{item.companyname}}</view>
+      <view class='h5 margin-top-20'>运输单号：{{item.orderno}}</view>
       <view class='flex-row flex-center margin-top-20'>
-        <view class='h5'>报名截止时间：</view>
+        <view class='h5 '>报名截止时间：</view>
         <view class='h5'>{{item.enroll_deadline}}</view>
       </view>
+    </view>
+    <view class='flex-row flex-column '>
+
+
       <view class='text-center txt-red h5 signup margin-top-20'>{{item.taskstatus_name}}</view>
     </view>
     <view class='flex-row flex-center margin-top-20'>
@@ -135,29 +148,36 @@
         </view>
       </view>
     </view>
+
     <view class='flex-row flex-center padding-10 ' style='border-bottom:1rpx solid #CFCECF'>
       <view class='flex-1 text-center font-bottom margin-bottom-10'>已报名</view>
       <view class='flex-1 text-center font-bottom margin-bottom-10'>预计运费</view>
     </view>
+
     <view class='padding-20'>
       <view class='flex-row  margin-top-20'>
         <view>
           <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
         </view>
+
         <view class='flex-row column margin-left-20'>
           <view class='h5 txt-gray'>始发地</view>
           <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.startaddress}}</view>
         </view>
       </view>
+
+
       <view class='flex-row  margin-top-20'>
         <view>
           <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
         </view>
+
         <view class='flex-row column margin-left-20'>
           <view class='h5 txt-gray'>目的地</view>
           <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.targetaddress}}</view>
         </view>
       </view>
+
     </view>
     <view class='flex-row flex-center padding-20'>
       <view class='txt-gray h5'>全程</view>

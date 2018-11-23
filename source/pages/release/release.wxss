@@ -23,18 +23,18 @@ height: 25rpx;
   width: 190rpx;
   height: 20rpx;
 }
-.signup{
+/* .signup{
 width:170rpx;
 height:50rpx;
 line-height:50rpx;
 border:4rpx solid red;
 border-radius:50rpx;
-}
+} */
 .mid{
   margin-left: 20rpx;
   margin-right: 20rpx;
   box-shadow:1rpx 2rpx 25rpx 2rpx rgb(173, 173, 173);
-  border-radius: 10rpx;
+  /* border-radius: 10rpx; */
 }
 
 .line{

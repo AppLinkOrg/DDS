@@ -11,7 +11,7 @@
     <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.driverlist_icon}}'></image>
     <view class=''>暂无报名人员</view>
   </view>
-  <view class=' mid margin-40' wx:for='{{applylist}}' wx:key='k'>
+  <view class=' mid margin-40' wx:if='{{item.order_id==id}}' wx:for='{{applylist}}' wx:key='k'>
     <view class='padding-40' style='border-bottom:1rpx solid #CFCECF'>
       <view class='flex-row flex-center'>
         <view class='flex-row flex-center flex-1'>
@@ -49,13 +49,13 @@
     <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.driverlist_icon}}'></image>
     <view class=''>暂无待完成运输人员</view>
   </view>
-  <view class=' mid margin-40' wx:for='{{tobecpdlist}}' wx:key='k'>
+  <view class=' mid margin-40'  wx:if='{{item.order_id==id}}'  wx:for='{{tobecpdlist}}' wx:key='k'>
 
     <view class='padding-40' style='border-bottom:1rpx solid #CFCECF'>
       <view class='flex-row flex-center'>
         <view class='flex-row flex-center flex-1'>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.enterprise}}'></image>
-          <view class='flex-1 margin-left-20 h4 txt-black'>李家拉盖圣埃蒂安</view>
+          <view class='flex-1 margin-left-20 h4 txt-black'>{{item.member_id}}</view>
         </view>
 
         <navigator class='flex-row flex-center margin-top-20'>
@@ -88,7 +88,7 @@
     <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.driverlist_icon}}'></image>
     <view class=''>暂无人员完成运输</view>
   </view>
- <view class=' mid margin-40' wx:for='{{completedlist}}' wx:key='k'>
+ <view class=' mid margin-40' wx:if='{{item.order_id==id}}' wx:for='{{completedlist}}' wx:key='k'>
   <view class='padding-40' style='border-bottom:1rpx solid #CFCECF'>
     <view class='flex-row flex-center'>
       <view class='flex-row flex-center flex-1'>

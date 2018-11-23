@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/usercategory/usercategory",
+    "pages/release/release",
+    "pages/team/team",
     "pages/driver/driver",
     "pages/vehicle/vehicle",
     "pages/youke/youke",
@@ -10,7 +12,6 @@
     "pages/commontasks/commontasks",
     "pages/aboutus/aboutus",
     "pages/auth/auth",
-    "pages/release/release",
     "pages/historydetail/historydetail",
     "pages/driverlist/driverlist",
     "pages/my/my",
@@ -21,7 +22,6 @@
     "pages/addmembers/addmembers",
     "pages/route/route",
     "pages/addressselect/addressselect",
-    "pages/team/team",
     "pages/weighing/weighing",
     "pages/phone/phone",
     "pages/maps/maps",

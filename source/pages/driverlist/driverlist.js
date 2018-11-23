@@ -23,6 +23,7 @@ class Content extends AppBase {
     wx.setNavigationBarTitle({
       title: '司机列表',
     });
+    // var id=this.Base.getMyData().id;
     var orderapi=new OrderApi();
     orderapi.applylist({ transport:"Y"}, (applylist) => {
       this.Base.setMyData({ applylist });
@@ -30,7 +31,7 @@ class Content extends AppBase {
     orderapi.applylist({ transport: "N" }, (tobecpdlist) => {
       this.Base.setMyData({ tobecpdlist });
     });
-    orderapi.applylist({ transport: "N" }, (completedlist) => {
+    orderapi.applylist({ transport: "S"}, (completedlist) => {
       this.Base.setMyData({ completedlist });
     }); 
     // var exampleapi = new ExampleApi();

@@ -22,7 +22,8 @@ class Content extends AppBase {
     super.onLoad(options);
     this.Base.setMyData({
       allshow: 1,
-      state_id: 0
+      state_id: 0,
+      today: this.Base.util.FormatDate(new Date())
     });
 
     var orderapi = new OrderApi();
@@ -65,12 +66,12 @@ class Content extends AppBase {
           all: all
         });
       });
-
+      
       this.Base.setMyData({
         list
       });
-    });
 
+    });
 
     orderapi.list({
       member_id_name: UserInfo.nickName,

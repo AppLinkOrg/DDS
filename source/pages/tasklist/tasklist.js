@@ -24,7 +24,6 @@ class Content extends AppBase {
       all:this.Base.options.all
     })
   
-    
     console.log(11111111)
   }
   onMyShow() {
@@ -50,11 +49,11 @@ class Content extends AppBase {
         mm1 = "0" + mm1;
       }
 
-      var data = new Date(Date.parse(orderinfo.start_time.replace(/-/g, "/")));
-      var month = data1.getMonth() + 1;
-      var day = data1.getDate();
-      var hh = data1.getHours();
-      var mm = data1.getMinutes();
+      var data = new Date(Date.parse(orderinfo.end_time.replace(/-/g, "/")));
+      var month = data.getMonth() + 1;
+      var day = data.getDate();
+      var hh = data.getHours();
+      var mm = data.getMinutes();
       if (month < 10) {
         month = "0" + month;
       }
@@ -100,13 +99,14 @@ class Content extends AppBase {
        success: function(res) {
          if(res.confirm){
            var orderapi = new OrderApi();
-           orderapi.deleteapply({ idlist: that.Base.options.id }, (updataorder) => {
+           orderapi.updataorder({ id: that.Base.options.id }, (updataorder) => {
              that.Base.setMyData({ 
                updataorder
               });
-             wx.reLaunch({
-               url: '/pages/home/home',
-             })
+
+              wx.reLaunch({
+                url: '/pages/home/home',
+              })
            });
          }
        }

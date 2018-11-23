@@ -37,6 +37,7 @@ class Content extends AppBase {
       tstdate: "",
       today: this.Base.util.FormatDate(new Date())
     });
+    
   }
   onMyShow() {
     var that = this;
@@ -45,6 +46,13 @@ class Content extends AppBase {
     });
     var orderapi = new OrderApi();
     var UserInfo = this.Base.getMyData().UserInfo;
+    orderapi.enterpriselist({ member_id: UserInfo.nickName }, (errlist) => {
+      this.Base.setMyData({ errlist })
+
+      console.log(errlist[0].enterprisename);
+    })
+    console.log(1111111111111111)
+
     orderapi.memberlist({
       member_id_name: UserInfo.nickName
     }, (memberlist) => {
@@ -438,6 +446,15 @@ class Content extends AppBase {
       remark: e.detail.value
     })
   }
+  
+  // bindcompanyname(e) {
+  //   var companyname = e.detail.value;
+  //   console.log(companyname);
+  //   this.Base.setMyData({
+  //     companyname: e.detail.value
+  //   })
+  // }
+
   startaddress(e) {
     var startaddress = e.detail.value;
     console.log(startaddress);
@@ -452,6 +469,7 @@ class Content extends AppBase {
       endaddress: e.detail.value
     })
   }
+  
 
 
   confirm(e) {
@@ -492,6 +510,10 @@ class Content extends AppBase {
       this.Base.info("请选择运输结束日期");
       return;
     }
+    if (data.etptime == "") {
+      this.Base.info("请选择运输结束时间");
+      return;
+    }
     if (data.carnumber == "") {
       this.Base.info("请输入车辆数目");
       return;
@@ -508,18 +530,18 @@ class Content extends AppBase {
       this.Base.info("请输入运输费用");
       return;
     }
-    // if (data.elcontact == "") {
-    //   this.Base.info("请选择报名联系人");
-    //   return;
-    // }
-    // if (data.stcontact == "") {
-    //   this.Base.info("请选择起点联系人");
-    //   return;
-    // }
-    // if (data.edcontact == "") {
-    //   this.Base.info("请选择终点联系人");
-    //   return;
-    // }
+     if (data.elcontact == "") {
+       this.Base.info("请选择报名联系人");
+       return;
+     }
+     if (data.stcontact == "") {
+       this.Base.info("请选择起点联系人");
+       return;
+     }
+     if (data.edcontact == "") {
+       this.Base.info("请选择终点联系人");
+       return;
+     }
     var startdate = this.Base.getMyData().startdate;
     var starttime = this.Base.getMyData().starttime;
     var enddate = this.Base.getMyData().enddate;
@@ -528,8 +550,6 @@ class Content extends AppBase {
     var tsttime = this.Base.getMyData().tsttime;
     var tstendtime = this.Base.getMyData().tstendtime;
     var tstenddate = this.Base.getMyData().tstenddate;
-    console.log(tstendtime);
-    console.log(tstenddate);
     var carnum = this.Base.getMyData().carnum;
     var startaddress = this.Base.getMyData().startaddress;
     var endaddress = this.Base.getMyData().endaddress;
@@ -541,10 +561,14 @@ class Content extends AppBase {
     var stcontact = this.Base.getMyData().stcontact;
     var edcontact = this.Base.getMyData().edcontact;
     var remark = this.Base.getMyData().remark;
-    var orderapi = new OrderApi();
     var today = this.Base.getMyData().today;
     var time = this.Base.getMyData().time;
     var check = this.Base.getMyData().check;
+    var orderapi = new OrderApi();
+    var UserInfo = this.Base.getMyData().UserInfo;
+
+    var companyname = this.Base.getMyData().errlist[0].enterprisename;
+    console.log(companyname);
     orderapi.create({
       status: "A",
       taskstatus: "1",
@@ -563,14 +587,17 @@ class Content extends AppBase {
       enroll_contact: elcontact,
       start_contact: stcontact,
       end_contact: edcontact,
-      remark: remark
+      remark: remark,
+      companyname: companyname
     }, (create) => {
-
-         wx.reLaunch({
-           url: '/pages/home/home'
-         })
-
-  
+      
+       wx.reLaunch({
+         url: '/pages/home/home'
+       }),
+      wx.showToast({
+        title: '发布成功',
+        duration:1000
+      });
 
     })
   }
@@ -638,4 +665,5 @@ body.endaddress = content.endaddress;
 body.start = content.start;
 body.end = content.end;
 body.ttstart = content.ttstart;
+// body.bindcompanyname = content.bindcompanyname;
 Page(body)
