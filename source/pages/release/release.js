@@ -553,7 +553,7 @@ class Content extends AppBase {
       enroll_deadline: enddate + " " + endtime,
       start_time: tstdate + " " + tsttime,
       end_time: tstenddate + " " + tstendtime,
-      // submit_date: today,
+      submit_date: today,
       startaddress: startaddress,
       targetaddress: endaddress,
       weight: gdsweight,

@@ -181,8 +181,15 @@ class Content extends AppBase {
       this.Base.info("不能大于剩余吨数");
       return;
     }
-    
-    
+    if (parseInt(data.tonnage) > parseInt(weight)) {
+      this.Base.info("不能大于剩余吨数");
+      return;
+    }
+    if (this.Base.getMyData().elcontact==null){
+
+      this.Base.info("请选择汽车");
+      return;
+    }
    
     var tonnage = this.Base.getMyData().tonnage;
     var UserInfo = this.Base.getMyData().UserInfo;
