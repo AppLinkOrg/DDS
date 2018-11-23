@@ -1,9 +1,12 @@
 {
   "pages": [
-    "pages/usercategory/usercategory",
-    "pages/driver/driver",
-    "pages/vehicle/vehicle",
     "pages/youke/youke",
+    "pages/driver/driver",
+    
+    "pages/usercategory/usercategory",
+    
+    "pages/vehicle/vehicle",
+    
     "pages/home/home",
     "pages/mine/mine",
     "pages/taskhistory/taskhistory",

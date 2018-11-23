@@ -5,9 +5,9 @@
       <navigator url='/pages/my/my?openid={{UserInfo.openid}}' class='flex-1' style='border-right:1px solid #F3F3F3;margin-left:20rpx'>
         <image class='icon-30 ' src='{{uploadpath}}resource/{{res.siji_icon}}'></image>
       </navigator>
-      <view class='flex-2 h5 {{tab==0?"aa":"bb"}}  ' bindtap='changetab' id="0">新任务</view>
-      <view class='flex-2 h5  {{tab==1?"aa":"bb"}}' bindtap='changetab' id="1">已报名</view>
-      <view class='flex-2 h5  {{tab==2?"aa":"bb"}}' bindtap='changetab' id="2">待完成</view>
+      <view class='flex-2 h5 {{tab==0?"aa":"bb"}} padding-20 ' bindtap='changetab' id="0">新任务</view>
+      <view class='flex-2 h5  {{tab==1?"aa":"bb"}} padding-20' bindtap='changetab'  id="1">已报名</view>
+      <view class='flex-2 h5  {{tab==2?"aa":"bb"}} padding-20'  bindtap='changetab'  id="2">待完成</view>
 
     </view>
 
@@ -32,7 +32,7 @@
     </navigator>
   </view>
   <!--新任务区域-->
-  <navigator wx:for="{{list}}" wx:for-index="idx" wx:key='k' url='/pages/orderdetails/orderdetails?id={{item.id}}&&openid={   {UserInfo.openid}}' class="nr1  flex-center flex-wrap margin-top" style='margin-top:100rpx' hidden='{{tab!=0}}' wx:if="{{item.taskstatus_name=='报名中'&&item.status=='A'}}">
+  <navigator wx:for="{{list}}" wx:for-index="idx" wx:key='k' url='/pages/orderdetails/orderdetails?id={{item.id}}&&openid={   {UserInfo.openid}}' class="nr1  flex-center flex-wrap margin-top" style='margin-top:100rpx' hidden='{{tab!=0}}' wx:if="{{item.taskstatus_name=='报名中'&&item.status=='A'&&days[idx]>0}}">
     <view class="asd flex-1  " style='width:95%'>
 
 
@@ -52,7 +52,7 @@
         <view class="margin-left-20  ">
           <image class='icon-15 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
-        <view class="margin-left-20 h4 " style='color:#222222'>{{item.member_id_name}}</view>
+        <view class="margin-left-20 h4 " style='color:#222222'>{{item.companyname}}</view>
 
       </view>
 
@@ -66,7 +66,7 @@
           <image class='icon-15 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
         </view>
         <view class="margin-left-20  " style='color:#BBBBBB'>距离报名结束还剩:</view>
-        <view class="margin-left-20 " style='color:red'>{{days[idx]}}天{{sj[idx]}}</view>
+        <view class="margin-left-20 " style='color:red'>{{days[idx]-1}}天{{sj[idx]}}</view>
       </view>
 
     </view>
@@ -109,7 +109,7 @@
           <view class="margin-left-20 " id="z2" style='margin-top:30rpx'></view>
           <view class="margin-left-20 margin-top-10">{{item.targetaddress}}</view>
         </view>
-        <view class="margin-left-30 h5 margin-top-10" style='color:#BBBBBB ; margin-left:60rpx'>总里程{{item.milestone}}公里</view>
+        <view class="margin-left-30 h5 margin-top-10" style='color:#BBBBBB ; margin-left:60rpx'>总里程0公里</view>
       </view>
 
     </view>
@@ -151,7 +151,7 @@
         <view class="margin-left-20  ">
           <image class='icon-15 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
-        <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{list1[idx].fabu_name}}</view>
+        <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{list1[idx].order_companyname}}</view>
       
 
       </view>
@@ -161,7 +161,7 @@
           <image class='icon-15 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
         </view>
         <view class="margin-left-20 flex-1 " style='color:#BBBBBB'>运输时间</view>
-        <view class="margin-left-20 margin-right-20 " style='color:red'>07/25 13:49 - 07/26 13:49</view>
+        <view class="margin-left-20 margin-right-20 " style='color:red'>{{month1[idx]}}/{{day1[idx]}} {{hh1[idx]}}:{{mm1[idx]}} - {{month2[idx]}}/{{day2[idx]}} {{hh2[idx]}}:{{mm2[idx]}}</view>
       </view>
 
     </view>
@@ -227,7 +227,7 @@
         <view class="margin-left-20  ">
           <image class='icon-15 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
-        <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{list1[idx].fabu_name}}</view>
+        <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{list1[idx].order_companyname}}</view>
 
 
       </view>
@@ -237,7 +237,7 @@
           <image class='icon-15 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
         </view>
         <view class="margin-left-20 flex-1 " style='color:#BBBBBB'>运输时间</view>
-        <view class="margin-left-20 margin-right-20 " style='color:red'>07/25 13:49 - 07/26 13:49</view>
+        <view class="margin-left-20 margin-right-20 " style='color:red'>{{month1[idx]}}/{{day1[idx]}} {{hh1[idx]}}:{{mm1[idx]}} - {{month2[idx]}}/{{day2[idx]}} {{hh2[idx]}}:{{mm2[idx]}}</view>
       </view>
 
     </view>
@@ -275,7 +275,7 @@
           <view class="margin-left-20 " id="z2" style='margin-top:30rpx'></view>
           <view class="margin-left-20 margin-top-10">{{list1[idx].order_targetaddress}}</view>
         </view>
-        <view class="margin-left-30 h5 margin-top-10" style='color:#BBBBBB ; margin-left:60rpx'>总里程{{list1[idx].milestone}}公里</view>
+        <view class="margin-left-30 h5 margin-top-10" style='color:#BBBBBB ; margin-left:60rpx'>总里程0公里</view>
       </view>
 
     </view>

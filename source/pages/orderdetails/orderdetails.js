@@ -153,6 +153,9 @@ class Content extends AppBase {
       
     
       this.Base.setMyData({month:month,day:day,hh:hh,mm:mm});
+      this.Base.setMyData({ month1: month1, day1: day1, hh1: hh1, mm1: mm1 });
+      this.Base.setMyData({ month2: month2, day2: day2, hh2: hh2, mm2: mm2 });
+      this.Base.setMyData({ month3: month3, day3: day3, hh3: hh3, mm3: mm3 });
       this.Base.setMyData(info);
 
     });

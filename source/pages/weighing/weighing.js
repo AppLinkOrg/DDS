@@ -104,7 +104,12 @@ class Content extends AppBase {
       member_id: list3[0].name
     }, (addvehicle) => {
       var pages = getCurrentPages();
-      var beforePage = pages[pages.length - 2];
+      var beforePage = pages[pages.length - 2]; 
+      beforePage.setMyData({
+        id: this.Base.options.id
+
+
+      })
       wx.navigateBack({
         success() {
           beforePage.onLoad();
