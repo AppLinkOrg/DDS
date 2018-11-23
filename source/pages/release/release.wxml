@@ -210,7 +210,7 @@
       </view>
     </view>
 
-    <button class='cancel_btn bg-bck_ble txt-white text-center' form-type='submit'>发布</button>
+    <button class='cancel_btn bg-bck_ble txt-white text-center' form-type='submit' style='border-radius:0'>发布</button>
 
   </form>
 </view>
