@@ -52,20 +52,20 @@ export class ApiUtil {
     });
     toast.present();
   }
-
+  // static bu0(num) {
+  //   return num > 9 ? num.toString() : "0" + num.toString();
+  // }
   static FormatDateTime(val) {
     return val.getFullYear() + "-" + bu0(val.getMonth() + 1) + "-" + bu0(val.getDate()) +
       " " + val.getHours() + ":" + val.getMinutes() + ":" + val.getSeconds();
   }
   static FormatDate(val) {
-    return val.getFullYear() + "-" + bu0(val.getMonth() + 1) + "-" + bu0(val.getDate()) ;
+    return val.getFullYear() + "-" + val.getMonth() + 1 + "-" + val.getDate();
   }
   static FormatDate2(val) {
     return  (val.getMonth() + 1) + "-" + val.getDate() +val.getDay();
   }
-  static bu0(num){
-    return num>9?num.toString():"0"+num.toString();
-  }
+  
 
   static IsMobileNo(str) {
 
