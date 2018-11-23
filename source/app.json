@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/usercategory/usercategory",
     "pages/home/home",
     "pages/mine/mine",
     "pages/taskhistory/taskhistory",
@@ -9,7 +10,6 @@
     "pages/release/release",
     "pages/historydetail/historydetail",
     "pages/driverlist/driverlist",
-    "pages/usercategory/usercategory",
     "pages/my/my",
     "pages/driver/driver",
     "pages/certification/certification",
