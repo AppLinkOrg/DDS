@@ -25,7 +25,7 @@
   <view class="margin-top-20">
     <view class="asd margin-top-30 ">
 
-      <navigator url='/pages/vehicle/vehicle?cats=[{{item.id}}]' class="flex-row  " style=' padding-top:30rpx;padding-bottom:30rpx'>
+      <navigator url='/pages/vehicle/vehicle?openid={{UserInfo.openid}}' class="flex-row  " style=' padding-top:30rpx;padding-bottom:30rpx'>
         <view class="margin-left-20">
           <image class='icon-17' src='{{uploadpath}}resource/{{res.huoche}}'></image>
         </view>

@@ -18,4 +18,9 @@
   </view>
 </view>
 
+
+
+<!-- 
+<navigator url='/pages/addmembers/addmembers' class='add'><image class='icon-75' src='{{uploadpath}}resource/{{res.insert_icon}}'></image></navigator> -->
+
 <navigator url='/pages/addmembers/addmembers' class='add bg-bck_ble  flex-row flex-column '><view class='padding-30 txt-white' >添加成员</view></navigator>

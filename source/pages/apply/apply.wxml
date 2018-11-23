@@ -104,22 +104,23 @@
             </view>
             <view class="flex-1 margin-left-20">货运吨数</view>
             <view class="margin-right-20">
-              {{list1.order_weight}}吨
+              {{list1.tonnage}}吨
             </view>
           </view>
-          <navigator url='/pages/vehicle/vehicle?cats=[{{item.id}}]' class="flex-row  margin-top-10 flex-center">
+          <view  class="flex-row  margin-top-10 flex-center">
             <view class='margin-left-20'>
               <image class='icon-17' src='{{uploadpath}}resource/{{res.huanche}}'></image>
             </view>
             <view class="flex-1  margin-left-20   ">选择车辆</view>
+           
             <view class="flex-row  flex-center  margin-right-20">
               <view>{{list1.vehicle}}</view>
 
 
 
             </view>
-          </navigator>
-          <view class="h4 bm" style='margin-top:118rpx' id="anniu">取消报名</view>
+          </view>
+          <view bindtap='Deleteorder' class="h4 bm" style='margin-top:118rpx' id="anniu">取消报名</view>
         </view>
       </view>
     </view>

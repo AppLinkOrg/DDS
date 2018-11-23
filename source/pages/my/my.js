@@ -24,7 +24,8 @@ class Content extends AppBase {
     var that = this;
     var api = new CertificateApi();
     console.log(8888888);
-    api.riverlist({ openid: this.Base.options.openid}, (list) => {
+    var UserInfo=this.Base.getMyData().UserInfo;
+    api.riverlist({ openid: UserInfo.openid}, (list) => {
      
       this.Base.setMyData({ list });
 
