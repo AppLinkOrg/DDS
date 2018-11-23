@@ -1,28 +1,43 @@
 <!--pages/aboutus/aboutus.wxml-->
-<view class='flex-row flex-column'>
+<view class='flex-row flex-column '>
 <image class='icon_top' src='{{uploadpath}}resource/{{res.enterprise_bg}}'></image>
+<view class='h4 txt-black margin-top'>大德森</view>
 </view>
 
-<view class='margin-40 bg-white border-radius'  >
-<view class='txt-primary padding-30 h5 text-center' style='border-bottom:1rpx dashed #e5e4e7'>大德森</view>
+<!-- <view class='margin-40 bg-white border-radius'  >
+<view class='txt-primary padding-30 h5 ' style='border-bottom:1rpx dashed #e5e4e7'>官方微信</view>
 <view class='margin-20 padding-10' >
 <view class='h5 margin-top-10' wx:for='{{abouts}}' hidden='{{item.title!="A"}}' wx:for-index="idx"  wx:key='k'>{{idx+1}}.{{item.aboutus_content}}</view>
 </view>
-</view>
+</view> -->
 
-<view class='margin-40 bg-white border-radius'  >
-<view class='txt-primary padding-30 h5 text-center' style='border-bottom:1rpx dashed #e5e4e7'>技术支持</view>
+<view class='bg-white border-radius mid margin-top'  >
+
+<view style='border-bottom:1rpx dashed #e5e4e7'>
 <view class='margin-20 padding-10 flex-row flex-center' >
-<view class='h5 txt-black'>联系电话：</view>
+<view class='h5 txt-black flex-1'>官方微信</view>
+<view class='txt-primary margin-left-10' bindtap='phoneCall' id='{{item.aboutus_content}}'  wx:for='{{abouts}}' hidden='{{item.title!="A"}}'  wx:key='k'>{{item.aboutus_content}}</view>
+</view></view>
+
+<view style='border-bottom:1rpx dashed #e5e4e7'>
+<view class='margin-20 padding-10 flex-row flex-center' >
+<view class='h5 txt-black flex-1'>官方微博</view>
 <view class='txt-primary margin-left-10' bindtap='phoneCall' id='{{item.aboutus_content}}'  wx:for='{{abouts}}' hidden='{{item.title!="B"}}'  wx:key='k'>{{item.aboutus_content}}</view>
-</view>
+</view></view>
+
+<view style='border-bottom:1rpx dashed #e5e4e7'>
+<view class='margin-20 padding-10 flex-row flex-center' >
+<view class='h5 txt-black flex-1'>公司邮箱</view>
+<view class='txt-primary margin-left-10' bindtap='phoneCall' id='{{item.aboutus_content}}'  wx:for='{{abouts}}' hidden='{{item.title!="C"}}'  wx:key='k'>{{item.aboutus_content}}</view>
+</view></view>
+
 </view>
 
-<view class='margin-40 bg-white border-radius' >
-<view class='txt-primary padding-30 h5 text-center' style='border-bottom:1rpx dashed #e5e4e7'>业务咨询</view>
+<!-- <view class='margin-40 bg-white border-radius' >
+<view class='txt-primary padding-30 h5 ' style='border-bottom:1rpx dashed #e5e4e7'>公司邮箱</view>
 <view  class='margin-20 padding-10 flex-row flex-center' >
 <view class='h5 txt-black'>咨询热线：</view>
 <view class='txt-primary margin-left-10' bindtap='phoneCall' id='{{item.aboutus_content}}'  wx:for='{{abouts}}' hidden='{{item.title!="C"}}'  wx:key='k'>{{item.aboutus_content}}</view>
 </view>
-</view>
+</view> -->
 

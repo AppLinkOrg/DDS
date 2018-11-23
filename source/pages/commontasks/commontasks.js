@@ -2,6 +2,7 @@
 import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api.js";
+import { OrderApi } from "../../apis/order.api.js";
 
 class Content extends AppBase {
   constructor() {
@@ -14,6 +15,14 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
+    var orderapi=new OrderApi();
+    orderapi.list({ cmptask: "E" }, (list) => {
+      this.Base.setMyData({ list });
+    });
+    var UserInfo = this.Base.getMyData().UserInfo;
+    orderapi.enterpriselist({ member_id: UserInfo.nickName }, (errlist) => {
+      this.Base.setMyData({ errlist })
+    })
   }
   setPageTitle(instinfo) {
     var title = "常用任务";

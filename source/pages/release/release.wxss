@@ -1,6 +1,6 @@
 /* pages/release/release.wxss */
 Page{
-  padding-bottom: 100rpx;
+  padding-bottom: 40rpx;
 }
 .icon{
   width: 50rpx;
@@ -68,13 +68,9 @@ background: #CFCECF;
   border-bottom:1rpx solid #CFCECF;
 }
 .cancel_btn{
-  position: fixed;
-  z-index: 90;
-  width: 95%;
-  bottom: 0;
+  margin-top:50rpx;
   height:100rpx; 
   line-height: 100rpx;
-  opacity: 0.8;
 }
 
 checkbox .wx-checkbox-input {

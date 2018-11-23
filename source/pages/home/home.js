@@ -37,19 +37,41 @@ class Content extends AppBase {
         statuslist
       })
     })
-    orderapi.list({
-      orderby: "r_main.created_date desc"
-    }, (list) => {
-      this.Base.setMyData({
-        list
-      });
-    });
+
   }
   onMyShow() {
     var that = this;
     var orderapi = new OrderApi();
     var num = [];
     var UserInfo = this.Base.getMyData().UserInfo;
+
+    var all = [];
+    orderapi.list({
+      orderby: "r_main.created_date desc"
+    }, (list) => {
+
+      orderapi.applylist({}, (applylist) => {
+        for (var i = 0; i < list.length; i++) {
+          all[i] = 0;
+          for (var j = 0; j < applylist.length; j++) {
+            if (list[i].id == applylist[j].order_id) {
+              all[i]++;
+              console.log(all);
+            }
+          }
+        }
+        this.Base.setMyData({
+          applylist,
+          all: all
+        });
+      });
+
+      this.Base.setMyData({
+        list
+      });
+    });
+
+
     orderapi.list({
       member_id_name: UserInfo.nickName,
       orderby: "r_main.created_date desc"

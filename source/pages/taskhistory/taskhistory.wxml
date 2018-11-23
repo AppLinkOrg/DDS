@@ -8,17 +8,12 @@
   <navigator url='/pages/historydetail/historydetail?id={{item.id}}' class='mid margin-top  margin-bottom-40' wx:for='{{list}}' wx:key='k'>
     <view class='flex-row flex-center padding-40' wx:for='{{errlist}}' wx:key='k'>
       <view>任务编号：</view>
-      <view class='flex-1'>158</view>
+      <view class='flex-1'>{{item.orderno}}</view>
       <view>{{item.enterprisename}}</view>
     </view>
-    <view class='flex-row flex-column  '>
-      <view class='flex-row flex-center margin-top-20'>
-        <image class='icon-20' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
-        <view class='h5 margin-left-10'>运输时间：</view>
-        <view class='h5'>{{item.start_time}}</view>
-        <view class='margin-left-10 margin-right-10 h5'> 至 </view>
-        <view class='h5'>{{item.end_time}}</view>
-      </view>
+    <view class='flex-row column '>
+      <view class='flex-row flex-center margin-left-30'><image class='icon-17 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image><view class='h5 margin-left-10'>运输开始时间：{{item.start_time}}</view></view>
+      <view class='flex-row flex-center margin-left-30 margin-top-20'><image class='icon-17 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image><view class='h5 margin-left-10'>运输结束时间：{{item.end_time}}</view></view>
     </view>
     <view class='flex-row flex-center margin-top'>
       <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>

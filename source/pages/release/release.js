@@ -1,8 +1,16 @@
 // pages/release/release.js
-import { AppBase } from "../../appbase";
-import { ApiConfig } from "../../apis/apiconfig";
-import { InstApi } from "../../apis/inst.api.js";
-import { OrderApi } from "../../apis/order.api.js";
+import {
+  AppBase
+} from "../../appbase";
+import {
+  ApiConfig
+} from "../../apis/apiconfig";
+import {
+  InstApi
+} from "../../apis/inst.api.js";
+import {
+  OrderApi
+} from "../../apis/order.api.js";
 
 class Content extends AppBase {
   constructor() {
@@ -13,10 +21,20 @@ class Content extends AppBase {
     //options.id=5;
     super.onLoad(options);
     var orderapi = new OrderApi();
-    orderapi.goodslist({orderby:"r_main.seq"}, (goodslist) => {
-      this.Base.setMyData({ goodslist });
+    orderapi.goodslist({
+      orderby: "r_main.seq"
+    }, (goodslist) => {
+      this.Base.setMyData({
+        goodslist
+      });
     });
     this.Base.setMyData({
+      startdate: "",
+      starttime: "",
+      endtime: "",
+      enddate: "",
+      tsttime: "",
+      tstdate: "",
       today: this.Base.util.FormatDate(new Date())
     });
   }
@@ -27,16 +45,58 @@ class Content extends AppBase {
     });
     var orderapi = new OrderApi();
     var UserInfo = this.Base.getMyData().UserInfo;
-    orderapi.memberlist({ member_id_name: UserInfo.nickName }, (memberlist) => {
-      this.Base.setMyData({ memberlist })
+    orderapi.memberlist({
+      member_id_name: UserInfo.nickName
+    }, (memberlist) => {
+      this.Base.setMyData({
+        memberlist
+      })
     })
   }
+  start(e) {
+    console.log(e);
+    var startdate = this.Base.getMyData().startdate;
+    var starttime = this.Base.getMyData().starttime;
+    if (startdate == "" || starttime == "") {
+      wx.showToast({
+        title: '请先选择报名\n开始日期!',
+        icon: 'none',
+        duration: 1000
+      })
+    }
+
+  }
+  end(e) {
+    console.log(e);
+    var enddate = this.Base.getMyData().enddate;
+    var endtime = this.Base.getMyData().endtime;
+    if (enddate == "" || endtime == "") {
+      wx.showToast({
+        title: '请先选择报名\n截止日期!',
+        icon: 'none',
+        duration: 1000
+      })
+    }
+  }
+  ttstart(e) {
+    console.log(e);
+    var tstdate = this.Base.getMyData().tstdate;
+    var tsttime = this.Base.getMyData().tsttime;
+    if (tstdate == "" || tsttime == "") {
+      wx.showToast({
+        title: '请先选择运输\n开始日期!',
+        icon: 'none',
+        duration: 1000
+      })
+    }
+  }
+
   bindgoods(e) {
     var goodslist = this.Base.getMyData().goodslist;
     this.Base.setMyData({
       goods_idx: e.detail.value,
       goods_id: goodslist[e.detail.value].id,
-      goodstype:goodslist[e.detail.value].name
+      goodstype: goodslist[e.detail.value].name
     });
   }
   bindenroll(e) {
@@ -64,21 +124,36 @@ class Content extends AppBase {
     });
   }
 
-
-  bindstartdate(e){
+  bindstartdate(e) {
     console.log(e);
-    var that =this;
+    var that = this;
     this.setData({
       startdate: e.detail.value
     })
-    var startdate = this.Base.getMyData().startdate;
     var enddate = this.Base.getMyData().enddate;
-    if (startdate > enddate) {
+    var startdate = this.Base.getMyData().startdate;
+
+    var date = new Date(startdate);
+    date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
+    this.Base.setMyData({
+      startdatenextday: date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+    })
+    // var houdate = new Date(enddate);
+    // houdate.setTime(houdate.getTime() - 24 * 60 * 60 * 1000);
+
+    if (enddate != "") {
       this.Base.setMyData({
-        startdate: enddate
+        enddate: "",
+        tstdate: "",
+        starttime: "",
+        endtime: "",
+        tsttime: "",
+        tstenddate: "",
+        tstendtime: ""
       })
     }
-    
+
+
   }
 
   bindstarttime(e) {
@@ -90,9 +165,42 @@ class Content extends AppBase {
     var enddate = this.Base.getMyData().enddate;
     var starttime = this.Base.getMyData().starttime;
     var endtime = this.Base.getMyData().endtime;
-    if (startdate == enddate && endtime<starttime) {
+    if (startdate == enddate && endtime < starttime) {
       this.Base.setMyData({
         starttime: endtime
+      })
+    }
+  }
+
+  bindenddate(e) {
+    this.setData({
+      enddate: e.detail.value
+    })
+    var startdate = this.Base.getMyData().startdate;
+    var enddate = this.Base.getMyData().enddate;
+    var tstdate = this.Base.getMyData().tstdate;
+
+    var enddate = new Date(enddate);
+    enddate.setTime(enddate.getTime() + 24 * 60 * 60 * 1000);
+    this.Base.setMyData({
+      enddatenextday: enddate.getFullYear() + "-" + (enddate.getMonth() + 1) + "-" + enddate.getDate()
+    })
+    // if (startdate > enddate) {
+    //   this.Base.setMyData({
+    //     enddate: startdate
+    //   })
+    // }
+    // if (tstdate < enddate) {
+    //   this.Base.setMyData({
+    //     enddate: tstdate
+    //   })
+    // }
+    if (tstdate != "") {
+      this.Base.setMyData({
+        tstdate: "",
+        tsttime: "",
+        tstenddate: "",
+        tstendtime: ""
       })
     }
   }
@@ -104,56 +212,51 @@ class Content extends AppBase {
     var startdate = this.Base.getMyData().startdate;
     var enddate = this.Base.getMyData().enddate;
     var tstdate = this.Base.getMyData().tstdate;
-    var starttime = this.Base.getMyData().starttime; 
+    var starttime = this.Base.getMyData().starttime;
     var endtime = this.Base.getMyData().endtime;
     var tsttime = this.Base.getMyData().tsttime;
-    if (startdate == enddate && endtime < starttime) {
-      this.Base.setMyData({
-         endtime: starttime
-      })
-    }
-    if (tstdate == enddate && endtime > tsttime) {
-      this.Base.setMyData({
-        endtime: tsttime
-      })
-    }
-    
-  }
-  
-  bindenddate(e) {
-    this.setData({
-      enddate: e.detail.value
-    })
-    var startdate = this.Base.getMyData().startdate;
-    var enddate = this.Base.getMyData().enddate;
-    var tstdate = this.Base.getMyData().tstdate;
-    if (startdate > enddate) {
-      this.Base.setMyData({
-        enddate: startdate
-      })
-    }
-    if (tstdate < enddate) {
-      this.Base.setMyData({
-        enddate: tstdate
-      })
-    }
+    // if (startdate == enddate && endtime < starttime) {
+    //   this.Base.setMyData({
+    //     endtime: starttime
+    //   })
+    // }
+    // if (tstdate == enddate && endtime > tsttime) {
+    //   this.Base.setMyData({
+    //     endtime: tsttime
+    //   })
+    // }
+
   }
 
-  tst_startdate(e){
+  tst_startdate(e) {
     this.setData({
       tstdate: e.detail.value
     })
     var tstdate = this.Base.getMyData().tstdate;
     var enddate = this.Base.getMyData().enddate;
     var tstenddate = this.Base.getMyData().tstenddate;
-    if (tstdate < enddate ) {
+
+    var tstdate = this.Base.getMyData().tstdate;
+
+    var tstdate = new Date(tstdate);
+    tstdate.setTime(tstdate.getTime() + 24 * 60 * 60 * 1000);
+    this.Base.setMyData({
+      tststartdatenextday: tstdate.getFullYear() + "-" + (tstdate.getMonth() + 1) + "-" + tstdate.getDate()
+    })
+    // if (tstdate < enddate) {
+    //   this.Base.setMyData({
+    //     tstdate: enddate
+    //   })
+    // }
+    // if (tstenddate < tstdate) {
+    //   this.Base.setMyData({
+    //     tstdate: tstenddate
+    //   })
+    // }
+    if (tstenddate != "") {
       this.Base.setMyData({
-        tstdate: enddate
-      })
-    }
-    if (tstenddate < tstdate) {
-      this.Base.setMyData({
-        tstdate: tstenddate
+        tstenddate: "",
+        tstendtime: ""
       })
     }
   }
@@ -162,23 +265,22 @@ class Content extends AppBase {
     this.setData({
       tsttime: e.detail.value
     })
-     var tstdate = this.Base.getMyData().tstdate;
-     var tstenddate = this.Base.getMyData().tstenddate;
-     var tsttime = this.Base.getMyData().tsttime;
-     var  tstendtime = this.Base.getMyData().tstendtime;
+    var tstdate = this.Base.getMyData().tstdate;
+    var tstenddate = this.Base.getMyData().tstenddate;
+    var tsttime = this.Base.getMyData().tsttime;
+    var tstendtime = this.Base.getMyData().tstendtime;
     var enddate = this.Base.getMyData().enddate;
-     var endtime = this.Base.getMyData().endtime;
-    if (tstdate == tstenddate && tstendtime < tsttime) {
-       this.Base.setMyData({
-         tsttime: tstendtime
-       })
-     }
-    if (tstdate == enddate && endtime > tsttime)
-    {
-      this.Base.setMyData({
-        tsttime: endtime
-      })
-    }
+    var endtime = this.Base.getMyData().endtime;
+    // if (tstdate == tstenddate && tstendtime < tsttime) {
+    //   this.Base.setMyData({
+    //     tsttime: tstendtime
+    //   })
+    // }
+    // if (tstdate == enddate && endtime > tsttime) {
+    //   this.Base.setMyData({
+    //     tsttime: endtime
+    //   })
+    // }
   }
   tst_enddate(e) {
     this.setData({
@@ -186,11 +288,11 @@ class Content extends AppBase {
     })
     var tstdate = this.Base.getMyData().tstdate;
     var tstenddate = this.Base.getMyData().tstenddate;
-    if (tstenddate < tstdate) {
-      this.Base.setMyData({
-        tstenddate: tstdate
-      })
-    }
+    // if (tstenddate < tstdate) {
+    //   this.Base.setMyData({
+    //     tstenddate: tstdate
+    //   })
+    // }
   }
   tst_endtime(e) {
     this.setData({
@@ -200,11 +302,12 @@ class Content extends AppBase {
     var tstenddate = this.Base.getMyData().tstenddate;
     var tsttime = this.Base.getMyData().tsttime;
     var tstendtime = this.Base.getMyData().tstendtime;
-    if (tstdate == tstenddate && tstendtime < tsttime) {
-      this.Base.setMyData({
-         tstendtime: tsttime
-      })
-    }
+    // if (tstdate == tstenddate && tstendtime < tsttime) {
+    //   this.Base.setMyData({
+    //     tstendtime: tsttime
+    //   })
+    // }
+
   }
 
   // binddt(e) {
@@ -214,18 +317,20 @@ class Content extends AppBase {
   //     date: e.detail.value
   //   })
   // }
-   bindrelease(e){
-     var orderapi = new OrderApi();
-     orderapi.create({}, (create) => {
-       this.Base.setMyData({ create })
-     })
-   }
-  startcontactdate(e){
+  bindrelease(e) {
+    var orderapi = new OrderApi();
+    orderapi.create({}, (create) => {
+      this.Base.setMyData({
+        create
+      })
+    })
+  }
+  startcontactdate(e) {
     var scdate = e.detail.value;
     console.log(scdate);
-      this.Base.setMyData({
-        scdate: e.detail.value
-      })
+    this.Base.setMyData({
+      scdate: e.detail.value
+    })
   }
   startcontacttime(e) {
     var sctime = e.detail.value;
@@ -277,13 +382,13 @@ class Content extends AppBase {
       etptime: e.detail.value
     })
   }
-  goodsweight(e){
+  goodsweight(e) {
     var gdsweight = e.detail.value;
     console.log(gdsweight);
     this.Base.setMyData({
       gdsweight: e.detail.value
     })
-  } 
+  }
   goodstype(e) {
     var gdstype = e.detail.value;
     console.log(gdstype);
@@ -291,13 +396,13 @@ class Content extends AppBase {
       gdstype: e.detail.value
     })
   }
-  cost(e){
+  cost(e) {
     var tstcost = e.detail.value;
     console.log(tstcost);
     this.Base.setMyData({
       tstcost: e.detail.value
     })
-  } 
+  }
   carnumber(e) {
     var carnum = e.detail.value;
     console.log(carnum);
@@ -325,7 +430,7 @@ class Content extends AppBase {
     this.Base.setMyData({
       edcontact: e.detail.value
     })
-  } 
+  }
   bindremark(e) {
     var remark = e.detail.value;
     console.log(remark);
@@ -333,7 +438,7 @@ class Content extends AppBase {
       remark: e.detail.value
     })
   }
-  startaddress(e){
+  startaddress(e) {
     var startaddress = e.detail.value;
     console.log(startaddress);
     this.Base.setMyData({
@@ -419,7 +524,7 @@ class Content extends AppBase {
     var starttime = this.Base.getMyData().starttime;
     var enddate = this.Base.getMyData().enddate;
     var endtime = this.Base.getMyData().endtime;
-    var tstdate = this.Base.getMyData().tstdate; 
+    var tstdate = this.Base.getMyData().tstdate;
     var tsttime = this.Base.getMyData().tsttime;
     var tstendtime = this.Base.getMyData().tstendtime;
     var tstenddate = this.Base.getMyData().tstenddate;
@@ -439,14 +544,16 @@ class Content extends AppBase {
     var orderapi = new OrderApi();
     var today = this.Base.getMyData().today;
     var time = this.Base.getMyData().time;
+    var check = this.Base.getMyData().check;
     orderapi.create({
-      status:"A",
-      taskstatus:"1",
-      enroll_start: startdate + " " + starttime ,
+      status: "A",
+      taskstatus: "1",
+      cmptask: check,
+      enroll_start: startdate + " " + starttime,
       enroll_deadline: enddate + " " + endtime,
       start_time: tstdate + " " + tsttime,
       end_time: tstenddate + " " + tstendtime,
-      submit_date:today,
+      submit_date: today,
       startaddress: startaddress,
       targetaddress: endaddress,
       weight: gdsweight,
@@ -458,9 +565,13 @@ class Content extends AppBase {
       end_contact: edcontact,
       remark: remark
     }, (create) => {
+
          wx.reLaunch({
            url: '/pages/home/home'
          })
+
+  
+
     })
   }
 
@@ -477,26 +588,34 @@ class Content extends AppBase {
       })
     }
   }
+  checkchange(e) {
+    var check = e.detail.value;
+    console.log(check);
+    this.Base.setMyData({
+      check: e.detail.value
+    })
+  }
 
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
+body.checkchange = content.checkchange;
 body.bindgoods = content.bindgoods;
 body.bindstartdate = content.bindstartdate;
 body.bindenddate = content.bindenddate;
 body.bindstarttime = content.bindstarttime;
-body.bindendtime = content.bindendtime; 
+body.bindendtime = content.bindendtime;
 body.bindenroll = content.bindenroll;
 body.bindstartcontact = content.bindstartcontact;
 body.bindendcontact = content.bindendcontact;
 body.tst_enddate = content.tst_enddate;
 body.tst_endtime = content.tst_endtime;
 body.tst_startdate = content.tst_startdate;
-body.tst_starttime = content.tst_starttime; 
-body.bindrelease = content.bindrelease; 
-body.startcontactdate = content.startcontactdate; 
+body.tst_starttime = content.tst_starttime;
+body.bindrelease = content.bindrelease;
+body.startcontactdate = content.startcontactdate;
 body.startcontacttime = content.startcontacttime;
 body.endcontactdate = content.endcontactdate;
 body.endcontacttime = content.endcontacttime;
@@ -505,15 +624,18 @@ body.starttransporttime = content.starttransporttime;
 body.endtransportdate = content.endtransportdate;
 body.endtransporttime = content.endtransporttime;
 body.goodsweight = content.goodsweight;
-body.goodstype = content.goodstype; 
-body.cost = content.cost; 
+body.goodstype = content.goodstype;
+body.cost = content.cost;
 body.enrollcontact = content.enrollcontact;
 body.startcontact = content.startcontact;
 body.endcontact = content.endcontact;
-body.bindremark = content.bindremark; 
-body.confirm = content.confirm; 
+body.bindremark = content.bindremark;
+body.confirm = content.confirm;
 body.carnumber = content.carnumber;
 body.openRoute = content.openRoute;
 body.startaddress = content.startaddress;
 body.endaddress = content.endaddress;
+body.start = content.start;
+body.end = content.end;
+body.ttstart = content.ttstart;
 Page(body)

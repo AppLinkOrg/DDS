@@ -10,7 +10,7 @@
 <view class='margin-top-20 padding-10'  style='border:1rpx solid #CFCECF;border-radius:7rpx;width:70%'><input name='addmobile' maxlength='11' type='number' bindinput='bindaddmobile' class='h5 txt-black text-center' placeholder='请输入成员电话'></input></view>
 </view>
 
-<view class='margin-top'>
+<view class='margin-top under'>
 <button  hover-class='hover_btn' class='btn' form-type='submit'>添加</button>
 </view>
 </form>
