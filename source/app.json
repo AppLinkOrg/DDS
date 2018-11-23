@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/youke/youke",
     "pages/usercategory/usercategory",
     "pages/release/release",
     "pages/team/team",
     "pages/driver/driver",
     "pages/vehicle/vehicle",
-    "pages/youke/youke",
     "pages/home/home",
     "pages/mine/mine",
     "pages/taskhistory/taskhistory",

@@ -50,6 +50,12 @@ class Content extends AppBase {
       state: e.detail.value
     });
   }
+  setPageTitle() {
+    wx.setNavigationBarTitle({
+      title: '游客界面',
+
+    });
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();

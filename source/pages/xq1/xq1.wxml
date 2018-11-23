@@ -23,15 +23,15 @@
       <view class="margin-left-20  ">
         <image class='icon-15' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
       </view>
-      <view class="margin-left-10 h4  " style='color:#222222'>{{list1.fabu_name}}</view>
+      <view class="margin-left-10 h4  " style='color:#222222'>{{list1.order_companyname}}</view>
 
     </view>
 
     <view style=' margin-bottom:30rpx ' class="flex-center flex-row margin-top-20">
 
       <view class="margin-left-20  " style='color:#BBBBBB'>运输时间:</view>
-      <view class="margin-left-20 flex-1 ">07/27 16:21</view>
-      <view class="margin-left-20 margin-right-20 ">07/28 16:21</view>
+       <view class="margin-left-20 flex-1 ">{{month1}}/{{day1}} {{hh1}}:{{mm1}}</view>
+        <view class="margin-left-20  margin-right-20">{{month2}}/{{day2}} {{hh2}}:{{mm2}}</view>
     </view>
 
   </view>
@@ -44,8 +44,8 @@
         <view class="flex-row flex-center margin-top:10">
           <view class="flex-row column flex-1">
             <view class='flex-row flex-center'>
-               <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
-              <view class="margin-left-20">{{list1.order_startaddress}}</view>
+               <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.green}}'></image>
+              <view class="margin-left-20">{{list1.order_targetaddress}}</view>
             </view>
             <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>起点距您206公里</view>
           </view>
@@ -64,10 +64,10 @@
         <view class="flex-row flex-center margin-top:10">
           <view class="flex-row column flex-1">
             <view class='flex-row flex-center'>
-               <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.green}}'></image>
-              <view class="margin-left-20">{{list1.order_targetaddress}}</view>
+               <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
+              <view class="margin-left-20">{{list1.order_startaddress}}</view>
             </view>
-            <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>起点距您206公里</view>
+            <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>总里程206公里</view>
           </view>
 
            <view style='width:90rpx;  display:flex;justify-content: center' >
@@ -131,7 +131,7 @@
         <image class='icon-17' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
       </view>
       <view class="flex-1 margin-left-20">备注</view>
-      <view class="margin-right-20" style='color:#BBBBBB'>{{list1.order_remark}}</view>
+       <view class="   margin-right-10   " style='color:#BBBBBB;width:30% '>{{list1.order_remark}}</view>
     </view>
     <view>
       <view class="flex-wrap">

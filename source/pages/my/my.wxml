@@ -51,7 +51,7 @@
     </navigator>
     </view>
     <view class="asd flex-1">
-      <navigator url='/pages/xq1/xq1?cats=[{{item.id}}]' class="flex-row  " style=' padding-top:30rpx;padding-bottom:30rpx'>
+      <navigator class="flex-row  " style=' padding-top:30rpx;padding-bottom:30rpx'>
         <view class="margin-left-20">
           <image class='icon-17' src='{{uploadpath}}resource/{{res.dianhua}}'></image>
         </view>

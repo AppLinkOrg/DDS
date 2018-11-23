@@ -16,7 +16,7 @@ class Content extends AppBase {
   //界面标题
   setPageTitle() {
     wx.setNavigationBarTitle({
-      title: '任务详情',
+      title: '我的',
  
     });
   }
