@@ -187,7 +187,7 @@ class Content extends AppBase {
     }
     if (this.Base.getMyData().elcontact==null){
 
-      this.Base.info("请选择汽车");
+      this.Base.info("请选择车辆");
       return;
     }
    

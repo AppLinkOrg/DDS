@@ -129,8 +129,10 @@ class Content extends AppBase {
         var bm = [];
         for (var a = 0; a < list.length; a++) {
           bm[a] = 0;
+          
           for (var b = 0; b < list1.length; b++) {
-            if (list[a].id == list[b].order_id) {
+            if (list[a].id == list1[b].order_id) {
+            
               bm[a]++;
 
             }
@@ -230,7 +232,7 @@ class Content extends AppBase {
 
       })
 
-    }, 1000);
+    }, 10000);
 
 
 
