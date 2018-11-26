@@ -7,6 +7,7 @@ import { OrderApi } from "../../apis/order.api.js";
 class Content extends AppBase {
   constructor() {
     super();
+    this.needauth=false;
   }
   onLoad(options) {
     this.Base.Page = this;
@@ -19,10 +20,26 @@ class Content extends AppBase {
     this.Base.setMyData({
       statelist
     });
-    this.Base.setMyData({ state: 0 })
+    this.Base.setMyData({ state: 0 });
   }
   onMyShow() {
     var that = this;
+    wx.getStorage({
+      key: 'lastlogin',
+      success: function(res) {
+        console.log("lastlogin");
+        console.log(res);
+        if(res.data=="D"){
+          wx.reLaunch({
+            url: '/pages/driver/driver',
+          })
+        } else if (res.data == "Q"){
+          wx.reLaunch({
+            url: '/pages/home/home',
+          })
+        }
+      },
+    });
     var orderapi = new OrderApi();
     orderapi.list({}, (list) => {
       this.Base.setMyData({ list });
@@ -53,7 +70,6 @@ class Content extends AppBase {
   setPageTitle() {
     wx.setNavigationBarTitle({
       title: '游客界面',
-
     });
   }
 }

@@ -26,6 +26,8 @@ class Content extends AppBase {
       today: this.Base.util.FormatDate(new Date())
     });
 
+    wx.setStorageSync("lastlogin", "Q");
+
     var orderapi = new OrderApi();
     orderapi.orderstatus({
       orderby: "r_main.id desc"

@@ -55,7 +55,7 @@
           <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>装车地址</view>
         </view>
         <view class='h4 txt-black padding-top-10 padding-left-30 text-center'>
-          <input placeholder='请输入详细地址' bindinput='startaddress' name='startaddress'></input>
+          <input placeholder='请输入详细地址' readonly  value='{{startaddress}}'bindtap='openRoute'></input>
         </view>
       </view>
       <!-- bindtap='openRoute' -->
@@ -65,9 +65,11 @@
           <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>目的地址</view>
         </view>
         <view class='h4 txt-black padding-top-10 padding-left-30 text-center'>
-          <input placeholder='请输入详细地址' bindinput='endaddress' name='endaddress'></input>
+          <input placeholder='请输入详细地址' readonly value='{{targetaddress}}' bindtap='openRoute'></input>
 
         </view>
+        公里数：{{distance}}
+        时间：{{duration}}
       </view>
     </view>
 

@@ -99,6 +99,45 @@ class Content extends AppBase {
     }
   }
 
+  openRoute() {
+    var route = this.Base.getMyData().route;
+    if (route != undefined) {
+      wx.navigateTo({
+        url: '/pages/route/route?callbackid=route&route=' + JSON.stringify(route),
+      })
+    } else {
+
+      wx.navigateTo({
+        url: '/pages/route/route?callbackid=route',
+      })
+    }
+  }
+  dataReturnCallback(callbackid, data) {
+    console.log("callbackid");
+    console.log(callbackid);
+    var that = this;
+    if (callbackid == "route") {
+      var route=data.route;
+      var startaddress = route[0].address;
+      var startlat = route[0].location.lat;
+      var startlng = route[0].location.lng;
+      var targetaddress = route[1].address;
+      var targetlat = route[1].location.lat;
+      var targetlng = route[1].location.lng;
+      var distance = data.distance;
+      var duration = data.duration;
+      that.Base.setMyData({
+        startaddress,
+        startlat,
+        startlng,
+        targetaddress,
+        targetlat,
+        targetlng,
+        distance,
+        duration
+      });
+    }
+  }
   bindgoods(e) {
     var goodslist = this.Base.getMyData().goodslist;
     this.Base.setMyData({
@@ -552,7 +591,13 @@ class Content extends AppBase {
     var tstenddate = this.Base.getMyData().tstenddate;
     var carnum = this.Base.getMyData().carnum;
     var startaddress = this.Base.getMyData().startaddress;
-    var endaddress = this.Base.getMyData().endaddress;
+    var startlat = this.Base.getMyData().startlat;
+    var startlng = this.Base.getMyData().startlng;
+    var targetaddress = this.Base.getMyData().targetaddress;
+    var targetlat = this.Base.getMyData().targetlat;
+    var targetlng = this.Base.getMyData().targetlng;
+    var distance = this.Base.getMyData().distance;
+    var duration = this.Base.getMyData().duration;
     var etptime = this.Base.getMyData().etptime;
     var gdsweight = this.Base.getMyData().gdsweight;
     var goodstype = this.Base.getMyData().goodstype;
@@ -579,7 +624,13 @@ class Content extends AppBase {
       end_time: tstenddate + " " + tstendtime,
       submit_date: today,
       startaddress: startaddress,
-      targetaddress: endaddress,
+      startlat: startlat,
+      startlng: startlng,
+      targetaddress: targetaddress,
+      targetlat: targetlat,
+      targetlng: targetlng,
+      distance: distance,
+      duration: duration,
       weight: gdsweight,
       carcount: carnum,
       stuff_type_id: goodstype,
@@ -665,5 +716,6 @@ body.endaddress = content.endaddress;
 body.start = content.start;
 body.end = content.end;
 body.ttstart = content.ttstart;
+body.openRoute = content.openRoute;  
 // body.bindcompanyname = content.bindcompanyname;
 Page(body)

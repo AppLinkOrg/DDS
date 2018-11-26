@@ -27,6 +27,7 @@ class Content extends AppBase {
 
 
 
+    wx.setStorageSync("lastlogin", "D");
 
 
     this.setData({
