@@ -44,7 +44,7 @@
     <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.nocontent_icon}}'></image>
     <view class=''>暂无发布信息</view>
   </view>
-  <navigator url='/pages/tasklist/tasklist?id={{item.id}}&mineshow=1&all={{all[idx]}}' hidden='' wx:for='{{list}}' wx:for-index='idx' wx:key='k' class='mid margin-top-60 margin-bottom-40'>
+  <navigator url='/pages/tasklist/tasklist?id={{item.id}}&mineshow=1&all={{all[idx]}}' hidden='' bindtap='one' wx:for='{{list}}' wx:for-index='idx' wx:key='k' class='mid margin-top-60 margin-bottom-40'>
     <view class='padding-20'>
       <view class='txt-black h4'>{{item.companyname}}</view>
 

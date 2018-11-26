@@ -47,8 +47,8 @@ class Content extends AppBase {
     var orderapi = new OrderApi();
     var num = [];
     var UserInfo = this.Base.getMyData().UserInfo;
-
     var all = [];
+   
     orderapi.list({
       orderby: "r_main.created_date desc"
     }, (list) => {
@@ -144,6 +144,21 @@ class Content extends AppBase {
     });
 
   }
+  one(e){
+    var orderapi = new OrderApi();
+    var UserInfo=this.Base.getMyData().UserInfo;
+    orderapi.enterpriselist({ member_id: UserInfo.nickName }, (errlist) => {
+      this.Base.setMyData({ errlist })
+
+      console.log(errlist[0].status);
+    })
+    var errlist = this.Base.getMyData().errlist;
+     if(status!="B"){
+       wx.showToast({
+         title: 'ssss',
+       })
+     }
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -152,4 +167,5 @@ body.onMyShow = content.onMyShow;
 body.bindall = content.bindall;
 body.bindmine = content.bindmine;
 body.bindpickerstate = content.bindpickerstate;
+body.one = content.one;
 Page(body)

@@ -5,7 +5,7 @@
 
     <view class='flex-row flex-center bor_btm padding-40'>
       <view class='txt-black txt-bold h3 flex-1'>开始创建新的任务</view>
-      
+
       <image class='icon-100' src='{{uploadpath}}resource/{{res.car_pic}}'></image>
     </view>
 
@@ -55,7 +55,7 @@
           <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>装车地址</view>
         </view>
         <view class='h4 txt-black padding-top-10 padding-left-30 text-center'>
-          <input placeholder='请输入详细地址' readonly  value='{{startaddress}}'bindtap='openRoute'></input>
+          <input placeholder='请输入详细地址' disabled='false' name='startaddress' readonly value='{{startaddress}}' bindtap='openRoute'></input>
         </view>
       </view>
       <!-- bindtap='openRoute' -->
@@ -65,11 +65,13 @@
           <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>目的地址</view>
         </view>
         <view class='h4 txt-black padding-top-10 padding-left-30 text-center'>
-          <input placeholder='请输入详细地址' readonly value='{{targetaddress}}' bindtap='openRoute'></input>
-
+          <input placeholder='请输入详细地址' disabled='false' name='endaddress' readonly value='{{targetaddress}}' bindtap='openRoute'></input>
         </view>
-        公里数：{{distance}}
-        时间：{{duration}}
+        <view class='flex-row flex-center margin-top-10'>
+          <view class='flex-row flex-center '>距离：<input class='h5 flex-1 ' placeholder='— —' value='{{distance}}'></input></view>
+          <view class='flex-row flex-center'>时间：<input class='h5 flex-1 ' placeholder='— —' value='{{duration}}'></input></view>
+          
+        </view>
       </view>
     </view>
 
@@ -83,12 +85,12 @@
         <view class='flex-row flex-column flex-1' style=''>
           <view class='txt-black'>运输开始:</view>
           <picker mode='date' bindchange="tst_startdate" start='{{enddatenextday}}' disabled='{{enddate==""||endtime==""}}' bindtap='end'>
-            <input placeholder-style="font-size:28rpx;" bindinput='starttransportdate' name='stpdate' class='h3 txt-black margin-top-10  text-center' disabled='true' placeholder='请选择开始日期' value='{{tstdate}}'></input>
+            <input placeholder-style="font-size:35rpx;" bindinput='starttransportdate' name='stpdate' class='h3 txt-black margin-top-10  text-center' disabled='true' placeholder='请选择开始日期' value='{{tstdate}}'></input>
           </picker>
           <view class='flex-row flex-center margin-top-20'>
             <!-- <view class='h5'>周三</view> -->
             <picker mode='time' bindchange="tst_starttime" disabled='{{enddate==""||endtime==""}}' bindtap='end'>
-              <input placeholder-style="font-size:25rpx;" bindinput='starttransporttime' name='starttransporttime' class='h5 txt-black   text-center' disabled='true' placeholder='请选择开始时间' value='{{tsttime}}'></input>
+              <input placeholder-style="font-size:28rpx;" bindinput='starttransporttime' name='starttransporttime' class='h5 txt-black   text-center' disabled='true' placeholder='请选择开始时间' value='{{tsttime}}'></input>
             </picker>
           </view>
         </view>
@@ -104,12 +106,12 @@
         <view class='flex-row flex-column flex-1' style=''>
           <view class='txt-black'>运输截止:</view>
           <picker mode='date' bindchange="tst_enddate" start='{{tststartdatenextday}}' disabled='{{tstdate==""||tsttime==""}}' bindtap='ttstart'>
-            <input placeholder-style="font-size:28rpx;" bindinput='endtransportdate' name='etpdate' class='h3 txt-black margin-top-10  text-center' disabled='true' placeholder='请选择截止日期' value='{{tstenddate}}'></input>
+            <input placeholder-style="font-size:35rpx;" bindinput='endtransportdate' name='etpdate' class='h3 txt-black margin-top-10  text-center' disabled='true' placeholder='请选择截止日期' value='{{tstenddate}}'></input>
           </picker>
           <view class='flex-row flex-center margin-top-20'>
             <!-- <view class='h5'>周四</view> -->
             <picker mode='time' bindchange="tst_endtime" disabled='{{tstdate==""||tsttime==""}}' bindtap='ttstart'>
-              <input placeholder-style="font-size:25rpx;" bindinput='endtransporttime' name='endtransporttime' class='h5 txt-black   text-center' disabled='true' placeholder='请选择截止时间' value='{{tstendtime}}'></input>
+              <input placeholder-style="font-size:28rpx;" bindinput='endtransporttime' name='endtransporttime' class='h5 txt-black   text-center' disabled='true' placeholder='请选择截止时间' value='{{tstendtime}}'></input>
             </picker>
           </view>
         </view>
@@ -176,57 +178,57 @@
           <input class='h5 txt-black text-right' disabled='false' bindinput='startcontact' name='stcontact' placeholder='请选择起点联系人' value='{{memberlist[startcontact_idx].name}}'></input>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
         </view>
-    </navigator>
+      </navigator>
 
-<view wx:if='{{memberlist.length>0}}'>
-      <picker range='{{memberlist}}' bindchange='bindenroll' range-key='name'>
-        <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-          <image class='icon-20' src='{{uploadpath}}resource/{{res.enterprise}}'></image>
-          <view class='txt-black h5 flex-1  margin-left-20'>报名联系人</view>
-          <input class='h5 txt-black text-right' disabled='false' bindinput='enrollcontact' name='elcontact' placeholder='请选择报名联系人' value='{{memberlist[enroll_idx].name}}'></input>
-          <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
-        </view>
-      </picker>
-</view>
+      <view wx:if='{{memberlist.length>0}}'>
+        <picker range='{{memberlist}}' bindchange='bindenroll' range-key='name'>
+          <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
+            <image class='icon-20' src='{{uploadpath}}resource/{{res.enterprise}}'></image>
+            <view class='txt-black h5 flex-1  margin-left-20'>报名联系人</view>
+            <input class='h5 txt-black text-right' disabled='false' bindinput='enrollcontact' name='elcontact' placeholder='请选择报名联系人' value='{{memberlist[enroll_idx].name}}'></input>
+            <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
+          </view>
+        </picker>
+      </view>
 
-   <navigator url='/pages/addmembers/addmembers' wx:if='{{memberlist.length==0}}'>
-        <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-          <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
-          <view class='txt-black h5 flex-1  margin-left-20'>起点联系人</view>
-          <input class='h5 txt-black text-right' disabled='false' bindinput='startcontact' name='stcontact' placeholder='请选择起点联系人' value='{{memberlist[startcontact_idx].name}}'></input>
-          <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
-        </view>
-    </navigator>
-
-    <view wx:if='{{memberlist.length>0}}'>
-      <picker range='{{memberlist}}' bindchange='bindstartcontact' range-key='name'>
+      <navigator url='/pages/addmembers/addmembers' wx:if='{{memberlist.length==0}}'>
         <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
           <view class='txt-black h5 flex-1  margin-left-20'>起点联系人</view>
           <input class='h5 txt-black text-right' disabled='false' bindinput='startcontact' name='stcontact' placeholder='请选择起点联系人' value='{{memberlist[startcontact_idx].name}}'></input>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
         </view>
-      </picker>
-    </view>
+      </navigator>
 
-<navigator url='/pages/addmembers/addmembers' wx:if='{{memberlist.length==0}}'>
+      <view wx:if='{{memberlist.length>0}}'>
+        <picker range='{{memberlist}}' bindchange='bindstartcontact' range-key='name'>
+          <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
+            <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
+            <view class='txt-black h5 flex-1  margin-left-20'>起点联系人</view>
+            <input class='h5 txt-black text-right' disabled='false' bindinput='startcontact' name='stcontact' placeholder='请选择起点联系人' value='{{memberlist[startcontact_idx].name}}'></input>
+            <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
+          </view>
+        </picker>
+      </view>
+
+      <navigator url='/pages/addmembers/addmembers' wx:if='{{memberlist.length==0}}'>
         <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
           <view class='txt-black h5 flex-1  margin-left-20'>终点联系人</view>
           <input class='h5 txt-black text-right' disabled='false' bindinput='startcontact' name='stcontact' placeholder='请选择起点联系人' value='{{memberlist[startcontact_idx].name}}'></input>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
         </view>
-    </navigator>
+      </navigator>
 
-<view wx:if='{{memberlist.length>0}}'>
-      <picker range='{{memberlist}}' bindchange='bindendcontact' range-key='name'>
-        <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-          <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
-          <view class='txt-black h5 flex-1  margin-left-20'>终点联系人</view>
-          <input class='h5 txt-black text-right' disabled='false' bindinput='endcontact' name='edcontact' placeholder='请选择终点联系人' value='{{memberlist[endcontact_idx].name}}'></input>
-          <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
-        </view>
-      </picker>
+      <view wx:if='{{memberlist.length>0}}'>
+        <picker range='{{memberlist}}' bindchange='bindendcontact' range-key='name'>
+          <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
+            <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
+            <view class='txt-black h5 flex-1  margin-left-20'>终点联系人</view>
+            <input class='h5 txt-black text-right' disabled='false' bindinput='endcontact' name='edcontact' placeholder='请选择终点联系人' value='{{memberlist[endcontact_idx].name}}'></input>
+            <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
+          </view>
+        </picker>
       </view>
 
       <view class='flex-row   flex-1 padding-40   bor_btm'>
@@ -244,6 +246,7 @@
           </label>
         </checkbox-group>
       </view>
+
     </view>
 
     <button class='cancel_btn bg-bck_ble txt-white text-center' form-type='submit' style='border-radius:0'>发布</button>

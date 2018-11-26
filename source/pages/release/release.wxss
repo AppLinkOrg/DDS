@@ -5,7 +5,7 @@ Page{
 .icon{
   width: 50rpx;
   height: 40rpx;
-} 
+}
 .column{
   align-content: center;
   flex-direction:column;
