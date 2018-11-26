@@ -127,6 +127,7 @@ class Content extends AppBase {
       var distance = data.distance;
       var duration = data.duration;
       that.Base.setMyData({
+        route:route,
         startaddress,
         startlat,
         startlng,
