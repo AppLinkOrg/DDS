@@ -1,5 +1,10 @@
 /* pages/driver/driver.wxss */
-
+.null_icon {
+  height: 200rpx;
+  width: 240rpx;
+  margin-top: 150rpx;
+  margin-left: 20rpx;
+}
 
 
 .Top {

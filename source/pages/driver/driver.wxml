@@ -66,7 +66,7 @@
           <image class='icon-15 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
         </view>
         <view class="margin-left-20  " style='color:#BBBBBB'>距离报名结束还剩:</view>
-        <view class="margin-left-20 " style='color:red'>{{days[idx]-1}}天{{sj[idx]}}</view>
+        <view class="margin-left-20 " style='color:red'>{{days[idx]-1}}天  {{xs[idx]}}:{{sj[idx]}}</view>
       </view>
 
     </view>
@@ -109,7 +109,7 @@
           <view class="margin-left-20 " id="z2" style='margin-top:30rpx'></view>
           <view class="margin-left-20 margin-top-10">{{item.targetaddress}}</view>
         </view>
-        <view class="margin-left-30 h5 margin-top-10" style='color:#BBBBBB ; margin-left:60rpx'>总里程0公里</view>
+        <view class="margin-left-30 h5 margin-top-10" style='color:#BBBBBB ; margin-left:60rpx'>总里程{{item.distance}}</view>
       </view>
 
     </view>
@@ -133,10 +133,20 @@
   <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.nocontent_icon}}'></image>
   <view class=''>暂无历史任务</view>
 </view>
+
+<view wx:if='{{ybm.length==0}}' class='flex-row flex-column'  hidden='{{tab!=1}}'>
+  <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.nocontent_icon}}'></image>
+  <view class=''>暂无已报名任务</view>
+</view>
+
+<view wx:if='{{dwc.length==0}}' class='flex-row flex-column'  hidden='{{tab!=2}}'>
+  <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.nocontent_icon}}'></image>
+  <view class=''>暂无待完成任务</view>
+</view>
  
 
   <!--待完成区域-->
-  <navigator wx:for="{{list1}}" wx:for-index="idx" wx:key='k' url='/pages/xq1/xq1?id={{idx}}' class="nr1  flex-center flex-wrap     margin-top" hidden='{{tab!=2}}' wx:if="{{item.transport_name=='待完成'}}">
+  <navigator wx:for="{{dwc}}" wx:for-index="idx" wx:key='k' url='/pages/xq1/xq1?id={{idx}}' class="nr1  flex-center flex-wrap     margin-top" hidden='{{tab!=2}}' wx:if="{{item.transport_name=='待完成'}}">
     <view class="asd flex-1  " style='width:95%'>
 
       <view style=' margin-bottom:30rpx ;margin-top:30rpx ' class="flex-center flex-row ">
@@ -212,7 +222,7 @@
   </navigator>
 
   <!--已报名区域-->
-  <navigator wx:for="{{list1}}" wx:for-index="idx" wx:key='k' url='/pages/apply/apply?idlist={{item.id}}&&id={{idx}}&&orderid={{item.orderid}}' class="nr1  flex-center flex-wrap margin-top" hidden='{{tab!=1}}' wx:if="{{item.openid==UserInfo.openid&&item.transport_name=='已报名'}}">
+  <navigator wx:for="{{ybm}}" wx:for-index="idx" wx:key='k' url='/pages/apply/apply?idlist={{item.id}}&&id={{idx}}&&orderid={{item.orderid}}' class="nr1  flex-center flex-wrap margin-top" hidden='{{tab!=1}}' wx:if="{{item.openid==UserInfo.openid&&item.transport_name=='已报名'}}">
     <view class="asd flex-1  " style='width:95%'>
 
       <view style=' margin-bottom:30rpx ;margin-top:30rpx ' class="flex-center flex-row ">

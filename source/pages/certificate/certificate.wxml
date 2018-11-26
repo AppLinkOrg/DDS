@@ -7,7 +7,7 @@
 
   <view hidden='{{zt=="I"}}' wx:if='{{zt!="A"}}'>
     <view class="flex-wrap flex-center">
-      <view class="margin-30" style='margin:30rpx;color:#BBBBBB '></view>
+      <view class="margin-30" style='margin:30rpx;color:#BBBBBB '>姓名</view>
       <view class="flex-row flex-center" style='justify-content:center'>
 
         <input placeholder="请输入姓名" bindinput='name' name="name" style='border:1px solid #D5D5D5; height:90rpx; width:95%;'></input>

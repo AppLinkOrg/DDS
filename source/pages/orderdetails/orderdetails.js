@@ -36,7 +36,7 @@ class Content extends AppBase {
   }
 
   bindenroll(e) {
-    var enrolllist = this.Base.getMyData().vehiclelist;
+    var enrolllist = this.Base.getMyData().xzcl;
     
     this.Base.setMyData({
       enroll_idx: e.detail.value,
@@ -52,8 +52,22 @@ class Content extends AppBase {
     var that = this;
     var UserInfo = this.Base.getMyData().UserInfo;
     var orderapi = new OrderApi();
+    var xzcl = [];
     orderapi.vehiclelist({ openid: UserInfo.openid }, (vehiclelist) => {
-      this.Base.setMyData({ vehiclelist });
+
+       for(var i=0;i<vehiclelist.length;i++){
+        
+         if (vehiclelist[i].status_name=="已认证")
+         
+             xzcl.push(vehiclelist[i]);
+       }
+
+          
+
+
+
+
+      this.Base.setMyData({ xzcl: xzcl, vehiclelist: vehiclelist });
     })
   
 

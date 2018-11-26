@@ -128,13 +128,13 @@
           </view>
           <view class="flex-1 txt-black margin-left-20">货运吨数</view>
           <view>
-            <input placeholder='请输入货运吨数' bindinput='tonnage' name="tonnage" style='text-align:right;margin-right:20rpx'></input>
+            <input placeholder='请输入货运吨数' type='number' bindinput='tonnage' name="tonnage" style='text-align:right;margin-right:20rpx'></input>
             
           </view>
         </view>
 
 
-         <picker wx:if="{{vehiclelist.length>0}}" range='{{vehiclelist}}' bindchange='bindenroll' range-key='carnumber'>
+         <picker wx:if="{{vehiclelist.length>0}}" range='{{xzcl}}' bindchange='bindenroll' range-key='carnumber'>
         <view class='flex-row flex-center flex-1 margin-left-20 margin-top-20   bor_btm'>
           <image class='icon-17' src='{{uploadpath}}resource/{{res.huanche}}'></image>
           <view class='txt-black  flex-1  margin-left-20'>选择车辆</view>
