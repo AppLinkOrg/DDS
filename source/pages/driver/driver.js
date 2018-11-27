@@ -29,7 +29,6 @@ class Content extends AppBase {
 
     wx.setStorageSync("lastlogin", "D");
 
-
     this.setData({
       array: ['所有', '离我最近', '费用最高'],
       objectArray: [{

@@ -44,11 +44,15 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
-    var orderapi = new OrderApi();
     var num = [];
-    var UserInfo = this.Base.getMyData().UserInfo;
     var all = [];
-   
+    var UserInfo = this.Base.getMyData().UserInfo;
+    var orderapi = new OrderApi();
+    orderapi.enterpriselist({ member_id: UserInfo.nickName }, (errlist) => {
+      this.Base.setMyData({ errlist })
+
+      
+    })
     orderapi.list({
       orderby: "r_main.created_date desc"
     }, (list) => {
@@ -145,19 +149,62 @@ class Content extends AppBase {
 
   }
   one(e){
-    var orderapi = new OrderApi();
-    var UserInfo=this.Base.getMyData().UserInfo;
-    orderapi.enterpriselist({ member_id: UserInfo.nickName }, (errlist) => {
-      this.Base.setMyData({ errlist })
-
-      console.log(errlist[0].status);
-    })
     var errlist = this.Base.getMyData().errlist;
-     if(status!="B"){
-       wx.showToast({
-         title: 'ssss',
-       })
-     }
+    var status = this.Base.getMyData().errlist[0].status;
+     console.log(status);
+     console.log(222222222222222);
+      if(status!="A"||errlist==""){
+        wx.showModal({
+          title: '未认证',
+          content: '您是否需要前往企业认证',
+          showCancel: true,
+          cancelText: '取消',
+          cancelColor: '#EE2222',
+          confirmText: '确定',
+          confirmColor: '#2699EC', 
+          success: function (res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '/pages/certification/certification',
+              })
+            }
+          }
+        });
+      }
+      // else{
+      //   wx.navigateTo({
+      //     url: '/pages/tasklist/tasklist?id={{item.id}}&mineshow=1&all={{all[idx]}}'
+      //   })
+      // }
+  }
+  mine(e){
+    var errlist = this.Base.getMyData().errlist;
+    var status = this.Base.getMyData().errlist[0].status;
+    console.log(status);
+    console.log(222222222222222);
+    if (status != "A"||errlist=="") {
+      wx.showModal({
+        title: '未认证',
+        content: '您是否需要前往企业认证',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#EE2222',
+        confirmText: '确定',
+        confirmColor: '#2699EC',
+        success: function (res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/certification/certification',
+            })
+          }
+        }
+      });
+    }
+      // else{
+      //   wx.navigateTo({
+      //     url: '/pages/tasklist/tasklist?id={{item.id}}&mineshow=1&all={{all[idx]}}'
+      //   })
+      // }
   }
 }
 var content = new Content();
@@ -168,4 +215,5 @@ body.bindall = content.bindall;
 body.bindmine = content.bindmine;
 body.bindpickerstate = content.bindpickerstate;
 body.one = content.one;
+body.mine = content.mine;
 Page(body)

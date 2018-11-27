@@ -12,3 +12,30 @@ Page{
   width: 50rpx;
   height: 50rpx;
 }
+.orange {
+  color: white;
+  background-color: #f4991f;
+  border-radius: 22rpx;
+  padding-left: 15rpx;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
+  padding-right: 15rpx;
+}
+.blue{
+  color: white;
+  background-color: #2699EC;
+  border-radius: 22rpx;
+  padding-left: 15rpx;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
+  padding-right: 15rpx;
+}
+.red{
+  color: white;
+  background-color: rgb(255, 53, 53);
+  border-radius: 22rpx;
+  padding-left: 15rpx;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
+  padding-right: 15rpx;
+}

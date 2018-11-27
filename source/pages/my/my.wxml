@@ -1,17 +1,16 @@
-<view class="flex-wrap ">
+<!-- <view class="flex-wrap ">
   <view class="flex-row flex-center  asd  " style='padding-top:30rpx;padding-bottom:30rpx '>
     <view class="flex-3" style='margin:30rpx'>
-      <image class=' icon-100  avatar  ' src="{{UserInfo.avatarUrl}}"> </image>
+      <image class=' icon-60  avatar  ' src="{{UserInfo.avatarUrl}}"> </image>
 
-
-      <navigator  v-if="{{list.length==0}}" url='/pages/certificate/certificate?openid={{UserInfo.openid}}&&zt={{list[0].status}}' id="rz" style=' '>
+      <navigator  wx:if="{{list.length==0}}" url='/pages/certificate/certificate?openid={{UserInfo.openid}}&&zt={{list[0].status}}'  class='h5 rz' style=' '>
       未认证
       </navigator>
 
-      <navigator v-if="{{list[0].status==I}}" url='/pages/certificate/certificate?openid={{UserInfo.openid}}&&zt={{list[0].status}}' id="rz" style=' '>
+      <navigator wx:if="{{list[0].status==I}}" url='/pages/certificate/certificate?openid={{UserInfo.openid}}&&zt={{list[0].status}}'  class='h5 rz' style=' '>
       {{list[0].status_name}}
       </navigator>
-      <navigator v-if="{{list[0].status==A}}" url='/pages/certificate/certificate?openid={{UserInfo.openid}}&&zt={{list[0].status}}' id="rz" style=' '>
+      <navigator wx:if="{{list[0].status==A}}" url='/pages/certificate/certificate?openid={{UserInfo.openid}}&&zt={{list[0].status}}' class='h5 rz' style=' '>
       {{list[0].status_name}}
       </navigator>
     </view>
@@ -85,4 +84,50 @@
     </view>
 
   </view>
-</view>
+</view> -->
+
+<navigator url='/pages/certificate/certificate?openid={{UserInfo.openid}}&&zt={{list[0].status}}' class='flex-row flex-center bg-white padding-30 bor_btm'>
+  <view class='flex-row flex-column'>
+    <image class='icon-60 radius-50' src='{{UserInfo.avatarUrl}}'></image>
+    <navigator url='/pages/certificate/certificate?openid={{UserInfo.openid}}&&zt={{list[0].status}}' class='h5 under' style=' '>
+      <view class='h6 txt-white text-center' wx:if="{{list.length==0}}">未认证</view>
+      <view class='h6 txt-white text-center' wx:if="{{list[0].status=='I'}}">{{list[0].status_name}}</view>
+      <view class='h6 txt-white text-center' wx:if="{{list[0].status=='A'}}">{{list[0].status_name}}</view>
+    </navigator>
+  </view>
+
+  <view class='flex-1 flex-row column padding-left-30'>
+    <view class='txt-bold txt-black h4'>{{UserInfo.nickName}}</view>
+  </view>
+  <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
+</navigator>
+
+<navigator class='flex-row flex-center padding-30 bg-white hig_btm' bindtap='phoneCall' id='17608463082'>
+  <image class='icon-20' src='{{uploadpath}}resource/{{res.dianhua}}'></image>
+  <view class='txt-black txt-bold margin-left-20 h5 flex-1'>联系电话</view>
+  <view class='txt-black h5 txt-bold'>17608463082</view>
+</navigator>
+
+<navigator  bindtap='mycar' class='flex-row flex-center padding-30 bg-white hig_btm'>
+  <image class='icon-20' src='{{uploadpath}}resource/{{res.huoche}}'></image>
+  <view class='txt-black txt-bold margin-left-20 h5 flex-1'>我的车辆</view>
+  <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
+</navigator>
+
+<navigator bindtap='mytask' class='flex-row flex-center padding-30 bg-white bor_btm'>
+  <image class='icon-20' src='{{uploadpath}}resource/{{res.commontask}}'></image>
+  <view class='txt-black txt-bold margin-left-20 h5 flex-1'>我的任务</view>
+  <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
+</navigator>
+
+<navigator bindtap='Cutstatus' class='flex-row flex-center padding-30 bg-white bor_btm'>
+  <image class='icon-20' src='{{uploadpath}}resource/{{res.team}}'></image>
+  <view class='txt-black txt-bold margin-left-20 h5 flex-1'>身份切换</view>
+  <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
+</navigator>
+
+<navigator url='/pages/aboutus/aboutus' class='flex-row flex-center padding-30 bg-white '>
+  <image class='icon-20' src='{{uploadpath}}resource/{{res.aboutus}}'></image>
+  <view class='txt-black txt-bold margin-left-20 h5 flex-1'>关于我们</view>
+  <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
+</navigator>

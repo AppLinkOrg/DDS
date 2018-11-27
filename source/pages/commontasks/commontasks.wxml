@@ -1,15 +1,28 @@
 <!--pages/commontasks/commontasks.wxml-->
-<navigator url='/pages/historydetail/historydetail?id={{item.id}}' wx:for='{{list}}' wx:key='k' class='mid margin-top-40 margin-bottom-40'>
-  <view class='flex-row flex-center padding-40' >
-  <view>运输单号：</view>
-  <view class='flex-1' >{{item.orderno}}</view>
-  <view wx:for='{{errlist}}' wx:key='k'>{{item.enterprisename}}</view>
+<view wx:if='{{list.length==0}}' class='flex-row flex-column'>
+  <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.nocontent_icon}}'></image>
+  <view class=''>暂未添加常用任务</view>
+</view>
+
+
+
+<navigator url='/pages/historydetail/historydetail?id={{item.id}}' wx:if='{{list.length>0}}' wx:for='{{list}}' wx:key='k' class='mid margin-top-40 margin-bottom-40'>
+  <view class='flex-row flex-center padding-40'>
+    <view>运输单号：</view>
+    <view class='flex-1'>{{item.orderno}}</view>
+    <view wx:for='{{errlist}}' wx:key='k'>{{item.enterprisename}}</view>
   </view>
- 
-   <view class='flex-row column '>
-      <view class='flex-row flex-center margin-left-30'><image class='icon-17 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image><view class='h5 margin-left-10'>运输开始时间：{{item.start_time}}</view></view>
-      <view class='flex-row flex-center margin-left-30 margin-top-20'><image class='icon-17 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image><view class='h5 margin-left-10'>运输结束时间：{{item.end_time}}</view></view>
+
+  <view class='flex-row column '>
+    <view class='flex-row flex-center margin-left-30'>
+      <image class='icon-17 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
+      <view class='h5 margin-left-10'>运输开始时间：{{item.start_time}}</view>
     </view>
+    <view class='flex-row flex-center margin-left-30 margin-top-20'>
+      <image class='icon-17 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
+      <view class='h5 margin-left-10'>运输结束时间：{{item.end_time}}</view>
+    </view>
+  </view>
 
   <view class='flex-row flex-center margin-top'>
     <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
@@ -31,7 +44,7 @@
   <view class='flex-row flex-center padding-10 ' style='border-bottom:1rpx solid #CFCECF'>
     <view class='flex-1 text-center font-bottom margin-bottom-10'>已报名</view>
     <view class='flex-1 text-center font-bottom margin-bottom-10'>预计运费</view>
-    
+
   </view>
   <view class='padding-20 ' style='border-bottom:1rpx solid #CFCECF'>
     <view class='flex-row  margin-top-20'>

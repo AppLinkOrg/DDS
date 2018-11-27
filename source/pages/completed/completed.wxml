@@ -4,12 +4,6 @@
   <view class=''>暂无历史任务</view>
 </view>
 
-
-
-
-
-
-
 <view wx:if='{{list.length>0}}'>
 
  <navigator    url='/pages/xq1/xq1?cats=[{{item.id}}]' class="nr1  flex-center flex-wrap margin-top-20" >

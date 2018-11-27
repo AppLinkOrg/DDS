@@ -66,3 +66,9 @@ background: #CFCECF;
   color: rgb(177, 174, 174);
   
 }
+.null_icon {
+  height: 200rpx;
+  width: 240rpx;
+  margin-top: 150rpx;
+  margin-left: 60rpx;
+}

@@ -17,11 +17,11 @@ class Content extends AppBase {
   setPageTitle() {
     wx.setNavigationBarTitle({
       title: '历史任务',
-
     });
   }
   onMyShow() {
     var that = this;
+    
   }
 }
 var content = new Content();

@@ -1,5 +1,5 @@
 <!--pages/certification/certification.wxml-->
-<view wx:for='{{errlist}}' wx:if='{{errlist.length>0}}' class='padding-20'>
+<view wx:for='{{errlist}}' wx:key='k' wx:if='{{errlist.length>0}}' class='padding-20'>
   <view class='h4 txt-primary txt-bold txt-center' wx:if='{{item.status=="I"}}'>您的认证申请已提交，请耐心等待审核！</view>
 </view>
 

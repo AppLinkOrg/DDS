@@ -509,6 +509,13 @@ class Content extends AppBase {
       endaddress: e.detail.value
     })
   }
+  // binddistance(e) {
+  //   var distance = e.detail.value;
+  //   console.log(distance);
+  //   this.Base.setMyData({
+  //     distance: e.detail.value
+  //   })
+  // }
   
 
 
@@ -605,7 +612,7 @@ class Content extends AppBase {
     var tstcost = this.Base.getMyData().tstcost;
     var elcontact = this.Base.getMyData().elcontact;
     var stcontact = this.Base.getMyData().stcontact;
-    var edcontact = this.Base.getMyData().edcontact;
+    var edcontact = this.Base.getMyData().edcontact; 
     var remark = this.Base.getMyData().remark;
     var today = this.Base.getMyData().today;
     var time = this.Base.getMyData().time;
@@ -642,14 +649,38 @@ class Content extends AppBase {
       remark: remark,
       companyname: companyname
     }, (create) => {
+      var errlist = this.Base.getMyData().errlist;
+      var status = this.Base.getMyData().errlist[0].status;
+      console.log(status);
+      console.log(222222222222222);
+      if (status != "A"|| errlist=="") {
+        wx.showModal({
+          title: '未认证',
+          content: '您是否需要前往企业认证',
+          showCancel: true,
+          cancelText: '取消',
+          cancelColor: '#EE2222',
+          confirmText: '确定',
+          confirmColor: '#2699EC',
+          success: function (res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '/pages/certification/certification',
+              })
+            }
+          }
+        });
+      }
+      else{
+        wx.reLaunch({
+          url: '/pages/home/home'
+        }),
+          wx.showToast({
+            title: '发布成功',
+            duration: 1000
+          });
+      }
       
-       wx.reLaunch({
-         url: '/pages/home/home'
-       }),
-      wx.showToast({
-        title: '发布成功',
-        duration:1000
-      });
 
     })
   }
@@ -674,13 +705,14 @@ class Content extends AppBase {
       check: e.detail.value
     })
   }
-
+  
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
-body.checkchange = content.checkchange;
+body.checkchange = content.checkchange; 
+// body.binddistance = content.binddistance; 
 body.bindgoods = content.bindgoods;
 body.bindstartdate = content.bindstartdate;
 body.bindenddate = content.bindenddate;

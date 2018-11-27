@@ -58,7 +58,7 @@ export class CertificateApi {
       }
     })
   }
-  //获取车辆列表
+  //获取司机列表
   riverlist(json, callback, showLoading = true) {
     if (showLoading)
       ApiConfig.ShowLoading();

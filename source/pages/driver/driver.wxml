@@ -6,20 +6,17 @@
         <image class='icon-30 ' src='{{uploadpath}}resource/{{res.siji_icon}}'></image>
       </navigator>
       <view class='flex-2 h5 {{tab==0?"aa":"bb"}} padding-20 ' bindtap='changetab' id="0">新任务</view>
-      <view class='flex-2 h5  {{tab==1?"aa":"bb"}} padding-20' bindtap='changetab'  id="1">已报名</view>
-      <view class='flex-2 h5  {{tab==2?"aa":"bb"}} padding-20'  bindtap='changetab'  id="2">待完成</view>
+      <view class='flex-2 h5  {{tab==1?"aa":"bb"}} padding-20' bindtap='changetab' id="1">已报名</view>
+      <view class='flex-2 h5  {{tab==2?"aa":"bb"}} padding-20' bindtap='changetab' id="2">待完成</view>
 
     </view>
 
     <view style='height:70rpx;' class="flex-row flex-center bg  " hidden='{{tab!=0}}'>
       <view class="h5 margin-left-20 flex-1">共有任务{{num}}条</view>
       <picker bindchange="qwe" value="{{index}}" range="{{array}}">
-
         <view class="h5 margin-right-10  picker " style='color:#BBBBBB'>{{array[index]}}</view>
-
       </picker>
       <picker bindchange="qwe" value="{{index}}" range="{{array}}">
-
         <image class='icon-10 margin-right-20' src='{{uploadpath}}resource/{{res.lowericon}}'></image>
       </picker>
 
@@ -66,7 +63,7 @@
           <image class='icon-15 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
         </view>
         <view class="margin-left-20  " style='color:#BBBBBB'>距离报名结束还剩:</view>
-        <view class="margin-left-20 " style='color:red'>{{days[idx]-1}}天  {{xs[idx]}}:{{sj[idx]}}</view>
+        <view class="margin-left-20 " style='color:red'>{{days[idx]-1}}天 {{xs[idx]}}:{{sj[idx]}}</view>
       </view>
 
     </view>
@@ -129,21 +126,21 @@
 
 
   </navigator>
-<view wx:if='{{list.length==0}}' class='flex-row flex-column'  hidden='{{tab!=0}}'>
-  <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.nocontent_icon}}'></image>
-  <view class=''>暂无历史任务</view>
-</view>
+  <view wx:if='{{list.length==0}}' class='flex-row flex-column' hidden='{{tab!=0}}'>
+    <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.nocontent_icon}}'></image>
+    <view class=''>暂无历史任务</view>
+  </view>
 
-<view wx:if='{{ybm.length==0}}' class='flex-row flex-column'  hidden='{{tab!=1}}'>
-  <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.nocontent_icon}}'></image>
-  <view class=''>暂无已报名任务</view>
-</view>
+  <view wx:if='{{ybm.length==0}}' class='flex-row flex-column' hidden='{{tab!=1}}'>
+    <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.nocontent_icon}}'></image>
+    <view class=''>暂无已报名任务</view>
+  </view>
 
-<view wx:if='{{dwc.length==0}}' class='flex-row flex-column'  hidden='{{tab!=2}}'>
-  <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.nocontent_icon}}'></image>
-  <view class=''>暂无待完成任务</view>
-</view>
- 
+  <view wx:if='{{dwc.length==0}}' class='flex-row flex-column' hidden='{{tab!=2}}'>
+    <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.nocontent_icon}}'></image>
+    <view class=''>暂无待完成任务</view>
+  </view>
+
 
   <!--待完成区域-->
   <navigator wx:for="{{dwc}}" wx:for-index="idx" wx:key='k' url='/pages/xq1/xq1?id={{idx}}' class="nr1  flex-center flex-wrap     margin-top" hidden='{{tab!=2}}' wx:if="{{item.transport_name=='待完成'}}">
@@ -162,7 +159,7 @@
           <image class='icon-15 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
         <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{list1[idx].order_companyname}}</view>
-      
+
 
       </view>
 
@@ -297,6 +294,6 @@
 
   </navigator>
 
- 
+
 
 </view>

@@ -14,7 +14,6 @@ class Content extends AppBase {
     //options.id=5;
     super.onLoad(options);
     this.Base.setMyData(
-
       { id: this.Base.options.id }
     )
     
@@ -27,7 +26,6 @@ class Content extends AppBase {
     });
   }
   enrollcontact(e) {
-    
     var elcontact = e.detail.value;
     console.log(elcontact);
     this.Base.setMyData({
@@ -45,13 +43,16 @@ class Content extends AppBase {
     });
   }
   onMyShow() {
-     
-    
-
-    
     var that = this;
     var UserInfo = this.Base.getMyData().UserInfo;
     var orderapi = new OrderApi();
+    var UserInfo = this.Base.getMyData().UserInfo;
+    var api = new CertificateApi();
+    api.riverlist({ openid: UserInfo.openid }, (list) => {
+      that.Base.setMyData({
+        list
+      });
+    })
     var xzcl = [];
     orderapi.vehiclelist({ openid: UserInfo.openid }, (vehiclelist) => {
 
@@ -61,16 +62,9 @@ class Content extends AppBase {
          
              xzcl.push(vehiclelist[i]);
        }
-
-          
-
-
-
-
       this.Base.setMyData({ xzcl: xzcl, vehiclelist: vehiclelist });
     })
   
-
     var month ;
     var month1;
     var month2;
@@ -165,26 +159,20 @@ class Content extends AppBase {
         mm3 = "0" + mm3;
       }
       
-    
       this.Base.setMyData({month:month,day:day,hh:hh,mm:mm});
       this.Base.setMyData({ month1: month1, day1: day1, hh1: hh1, mm1: mm1 });
       this.Base.setMyData({ month2: month2, day2: day2, hh2: hh2, mm2: mm2 });
       this.Base.setMyData({ month3: month3, day3: day3, hh3: hh3, mm3: mm3 });
       this.Base.setMyData(info);
-
     });
   }
   tonnage(e) {
     var tonnage = e.detail.value;
-   
-    
-
     this.Base.setMyData({
       tonnage: e.detail.value
     })
   }
   confirm(e) {
-    
     var data = e.detail.value;
     var weight = this.Base.getMyData().weight;
     console.log(weight);
@@ -207,20 +195,14 @@ class Content extends AppBase {
       this.Base.info("请选择车辆");
       return;
     }
-   
     var tonnage = this.Base.getMyData().tonnage;
     var UserInfo = this.Base.getMyData().UserInfo;
-    
-   
     var orderid = this.Base.getMyData().id ;
     var vehicle = this.Base.getMyData().elcontact;
-    
     var that = this;
     var api = new CertificateApi();
     var UserInfo = this.Base.getMyData().UserInfo;
     api.riverlist({ openid: UserInfo.openid }, (list3) => {
-          
-
       var orderapi = new OrderApi();
       orderapi.addapply({
         status: "A",
@@ -231,9 +213,43 @@ class Content extends AppBase {
         member_id: list3[0].name,
         openid: UserInfo.openid
       }, (addvehicle) => {
-        wx.reLaunch({
-          url: '/pages/driver/driver',
-        })
+
+        var list = this.Base.getMyData().list;
+        var status = this.Base.getMyData().list[0].status;
+        console.log(status);
+        console.log(222222222222222);
+        if (status != "A" || list == "") {
+          wx.showModal({
+            title: '未认证',
+            content: '您是否需要前往企业认证',
+            showCancel: true,
+            cancelText: '取消',
+            cancelColor: '#EE2222',
+            confirmText: '确定',
+            confirmColor: '#2699EC',
+            success: function (res) {
+              if (res.confirm) {
+                wx.navigateTo({
+                  url: '/pages/certificate/certificate',
+                })
+              }
+            }
+          });
+        }
+        else {
+          wx.reLaunch({
+            url: '/pages/driver/driver'
+          }),
+            wx.showToast({
+              title: '发布成功',
+              duration: 1000
+            });
+        }
+
+
+        // wx.reLaunch({
+        //   url: '/pages/driver/driver',
+        // })
       });
     })
    
@@ -249,7 +265,6 @@ body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
 body.tonnage = content.tonnage;
 body.confirm = content.confirm;
-
 body.enrollcontact = content.enrollcontact;
 body.bindenroll = content.bindenroll;
 Page(body)
