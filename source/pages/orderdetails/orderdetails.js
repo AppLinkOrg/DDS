@@ -1,10 +1,22 @@
 // pages/driver/driver.js
-import { AppBase } from "../../appbase";
-import { ApiConfig } from "../../apis/apiconfig";
-import { InstApi } from "../../apis/inst.api.js";
-import { OrderApi } from "../../apis/order.api.js";
-import { date } from "../../apis/order.api.js";
-import { CertificateApi } from "../../apis/certificate.api.js";
+import {
+  AppBase
+} from "../../appbase";
+import {
+  ApiConfig
+} from "../../apis/apiconfig";
+import {
+  InstApi
+} from "../../apis/inst.api.js";
+import {
+  OrderApi
+} from "../../apis/order.api.js";
+import {
+  date
+} from "../../apis/order.api.js";
+import {
+  CertificateApi
+} from "../../apis/certificate.api.js";
 class Content extends AppBase {
   constructor() {
     super();
@@ -13,10 +25,10 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
-    this.Base.setMyData(
-      { id: this.Base.options.id }
-    )
-    
+    this.Base.setMyData({
+      id: this.Base.options.id
+    })
+
   }
   //界面标题
   setPageTitle() {
@@ -33,39 +45,25 @@ class Content extends AppBase {
     })
   }
 
-  bindenroll(e) {
-    var enrolllist = this.Base.getMyData().xzcl;
-    
-    this.Base.setMyData({
-      enroll_idx: e.detail.value,
-      enroll_id: enrolllist[e.detail.value].id,
-      elcontact: enrolllist[e.detail.value].carnumber
-    });
-  }
+
   onMyShow() {
     var that = this;
     var UserInfo = this.Base.getMyData().UserInfo;
     var orderapi = new OrderApi();
-    var UserInfo = this.Base.getMyData().UserInfo;
     var api = new CertificateApi();
-    api.riverlist({ openid: UserInfo.openid }, (list) => {
+    api.certificatelist({
+      
+    }, (list) => {
       that.Base.setMyData({
         list
       });
     })
-    var xzcl = [];
-    orderapi.vehiclelist({ openid: UserInfo.openid }, (vehiclelist) => {
 
-       for(var i=0;i<vehiclelist.length;i++){
-        
-         if (vehiclelist[i].status_name=="已认证")
-         
-             xzcl.push(vehiclelist[i]);
-       }
-      this.Base.setMyData({ xzcl: xzcl, vehiclelist: vehiclelist });
+    orderapi.vehiclelist({}, (vehiclelist) => {
+      this.Base.setMyData({ vehiclelist})
     })
-  
-    var month ;
+
+    var month;
     var month1;
     var month2;
     var month3;
@@ -81,16 +79,18 @@ class Content extends AppBase {
     var mm1;
     var mm2;
     var mm3;
-         
-       
+
+
     var api = new OrderApi();
-    api.info({ id: this.Base.getMyData().id }, (info) => {
-      
+    api.info({
+      id: this.Base.getMyData().id
+    }, (info) => {
+
       var data1 = new Date(Date.parse(info.enroll_start.replace(/-/g, "/")));
       var data2 = new Date(Date.parse(info.enroll_deadline.replace(/-/g, "/")));
       var data3 = new Date(Date.parse(info.start_time.replace(/-/g, "/")));
       var data4 = new Date(Date.parse(info.end_time.replace(/-/g, "/")));
-        month=data1.getMonth()+1;
+      month = data1.getMonth() + 1;
       month1 = data2.getMonth() + 1;
       month2 = data3.getMonth() + 1;
       month3 = data4.getMonth() + 1;
@@ -106,10 +106,9 @@ class Content extends AppBase {
       mm1 = data2.getMinutes();
       mm2 = data3.getMinutes();
       mm3 = data4.getMinutes();
-         if(month<10)
-         {
-           month="0"+month;
-         }
+      if (month < 10) {
+        month = "0" + month;
+      }
       if (month1 < 10) {
         month1 = "0" + month1;
       }
@@ -119,7 +118,7 @@ class Content extends AppBase {
       if (month3 < 10) {
         month3 = "0" + month3;
       }
-      
+
       if (day < 10) {
         day = "0" + day;
       }
@@ -132,9 +131,9 @@ class Content extends AppBase {
       if (day3 < 10) {
         day3 = "0" + day3;
       }
-       
+
       if (hh < 10) {
-        hh ="0" + hh;
+        hh = "0" + hh;
       }
       if (hh1 < 10) {
         hh1 = "0" + hh1;
@@ -145,7 +144,7 @@ class Content extends AppBase {
       if (hh3 < 10) {
         hh3 = "0" + hh3;
       }
-        
+
       if (mm < 10) {
         mm = "0" + mm;
       }
@@ -158,14 +157,49 @@ class Content extends AppBase {
       if (mm3 < 10) {
         mm3 = "0" + mm3;
       }
-      
-      this.Base.setMyData({month:month,day:day,hh:hh,mm:mm});
-      this.Base.setMyData({ month1: month1, day1: day1, hh1: hh1, mm1: mm1 });
-      this.Base.setMyData({ month2: month2, day2: day2, hh2: hh2, mm2: mm2 });
-      this.Base.setMyData({ month3: month3, day3: day3, hh3: hh3, mm3: mm3 });
+
+      this.Base.setMyData({
+        month: month,
+        day: day,
+        hh: hh,
+        mm: mm
+      });
+      this.Base.setMyData({
+        month1: month1,
+        day1: day1,
+        hh1: hh1,
+        mm1: mm1
+      });
+      this.Base.setMyData({
+        month2: month2,
+        day2: day2,
+        hh2: hh2,
+        mm2: mm2
+      });
+      this.Base.setMyData({
+        month3: month3,
+        day3: day3,
+        hh3: hh3,
+        mm3: mm3
+      });
       this.Base.setMyData(info);
     });
   }
+
+
+  bindenroll(e) {
+    var vehiclelist = this.Base.getMyData().vehiclelist;
+    this.Base.setMyData({
+      enroll_idx: e.detail.value,
+      enroll_id: vehiclelist[e.detail.value].id,
+      elcontact: vehiclelist[e.detail.value].carnumber
+    });
+  }
+
+
+
+
+
   tonnage(e) {
     var tonnage = e.detail.value;
     this.Base.setMyData({
@@ -181,8 +215,8 @@ class Content extends AppBase {
       this.Base.info("请输入客运吨数");
       return;
     }
-    
-    if (parseInt(data.tonnage) > parseInt(weight) ) {
+
+    if (parseInt(data.tonnage) > parseInt(weight)) {
       this.Base.info("不能大于剩余吨数");
       return;
     }
@@ -190,19 +224,21 @@ class Content extends AppBase {
       this.Base.info("不能大于剩余吨数");
       return;
     }
-    if (this.Base.getMyData().elcontact==null){
+    if (this.Base.getMyData().elcontact == null) {
 
       this.Base.info("请选择车辆");
       return;
     }
     var tonnage = this.Base.getMyData().tonnage;
     var UserInfo = this.Base.getMyData().UserInfo;
-    var orderid = this.Base.getMyData().id ;
+    var orderid = this.Base.getMyData().id;
     var vehicle = this.Base.getMyData().elcontact;
     var that = this;
     var api = new CertificateApi();
     var UserInfo = this.Base.getMyData().UserInfo;
-    api.riverlist({ openid: UserInfo.openid }, (list3) => {
+    api.certificatelist({
+      openid: UserInfo.openid
+    }, (list3) => {
       var orderapi = new OrderApi();
       orderapi.addapply({
         status: "A",
@@ -218,43 +254,42 @@ class Content extends AppBase {
         var status = this.Base.getMyData().list[0].status;
         console.log(status);
         console.log(222222222222222);
-        if (status != "A" || list == "") {
-          wx.showModal({
-            title: '未认证',
-            content: '您是否需要前往企业认证',
-            showCancel: true,
-            cancelText: '取消',
-            cancelColor: '#EE2222',
-            confirmText: '确定',
-            confirmColor: '#2699EC',
-            success: function (res) {
-              if (res.confirm) {
-                wx.navigateTo({
-                  url: '/pages/certificate/certificate',
-                })
-              }
-            }
-          });
-        }
-        else {
-          wx.reLaunch({
-            url: '/pages/driver/driver'
-          }),
-            wx.showToast({
-              title: '发布成功',
-              duration: 1000
-            });
-        }
+        // if (status != "A" || list == "") {
+        //   wx.showModal({
+        //     title: '未认证',
+        //     content: '您是否需要前往企业认证',
+        //     showCancel: true,
+        //     cancelText: '取消',
+        //     cancelColor: '#EE2222',
+        //     confirmText: '确定',
+        //     confirmColor: '#2699EC',
+        //     success: function (res) {
+        //       if (res.confirm) {
+        //         wx.navigateTo({
+        //           url: '/pages/certificate/certificate',
+        //         })
+        //       }
+        //     }
+        //   });
+        // }
+        // else {
+        //   wx.reLaunch({
+        //     url: '/pages/driver/driver'
+        //   }),
+        //     wx.showToast({
+        //       title: '发布成功',
+        //       duration: 1000
+        //     });
+        // }
 
-
-        // wx.reLaunch({
-        //   url: '/pages/driver/driver',
-        // })
+        wx.reLaunch({
+          url: '/pages/driver/driver',
+        })
       });
     })
-   
+
   }
-  onUnload(){
+  onUnload() {
     clearInterval();
   }
 }

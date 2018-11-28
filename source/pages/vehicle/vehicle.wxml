@@ -1,4 +1,9 @@
-<view class="nr1  flex-center flex-wrap margin-top-20">
+<view wx:if='{{vehiclelist.length==0}}' class='flex-row flex-column'>
+  <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.nocar_icon}}'></image>
+  <view class=''>暂未添加车辆</view>
+</view>
+
+<view class="nr1  flex-center flex-wrap margin-top-20" wx:if='{{vehiclelist.length>0}}'>
   <view wx:for="{{vehiclelist}}" wx:key="k" class="asd   flex-1  margin-top-20  " style='width:90%;position:relative'>
 
     <view class="flex-center flex-row margin-top-20">
@@ -22,15 +27,8 @@
       </view>
     </view>
   </view>
-<view style='height:150rpx'></view>
+  <view style='height:150rpx'></view>
 
-
-
-
-
-
-
-
-  <navigator url='/pages/Addvehicle/Addvehicle?cats=[{{item.id}}]' class="h4 bm" id="anniu" >添加车辆</navigator>
- 
 </view>
+
+<navigator url='/pages/Addvehicle/Addvehicle?cats=[{{item.id}}]' class="h4 bm" id="anniu">添加车辆</navigator>

@@ -29,8 +29,8 @@ export class CertificateApi {
       }
     })
   }
-  //获取运输单列表
-  riverxq(json, callback, showLoading = true) {
+  //获取司机详情
+  certificatexq(json, callback, showLoading = true) {
     if (showLoading)
       ApiConfig.ShowLoading();
     var header = ApiConfig.GetHeader();
@@ -59,7 +59,7 @@ export class CertificateApi {
     })
   }
   //获取司机列表
-  riverlist(json, callback, showLoading = true) {
+  certificatelist(json, callback, showLoading = true) {
     if (showLoading)
       ApiConfig.ShowLoading();
     var header = ApiConfig.GetHeader();

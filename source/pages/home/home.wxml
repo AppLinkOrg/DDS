@@ -46,7 +46,11 @@
   </view>
   
   <navigator url= '/pages/tasklist/tasklist?id={{item.id}}&mineshow=1&all={{all[idx]}}'  hidden='' bindtap='one' wx:for='{{list}}' wx:for-index='idx' wx:key='k' class='mid margin-top-60 margin-bottom-40'>
-    <view class='padding-20'>
+<!--  -->
+  <view class='flex-row '>
+  
+  
+    <view class='padding-20 flex-1'>
       <view class='txt-black h4'>{{item.companyname}}</view>
 
       <view class='h5 margin-top-20'>运输单号：{{item.orderno}}</view>
@@ -56,6 +60,12 @@
         <view class='h5'>{{item.enroll_deadline}}</view>
       </view>
     </view>
+
+    <image wx:if='{{item.enroll_deadline<=today}}'  class='icon-75 chaoshi' src='{{uploadpath}}resource/{{res.chaoshi}}'></image>
+  
+  
+  </view>
+    
 
     <view class='flex-row flex-column'>
 

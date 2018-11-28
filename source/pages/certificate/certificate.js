@@ -24,22 +24,17 @@ class Content extends AppBase {
   onMyShow() {
     var that = this;
 
-    that.Base.setMyData({
-     zt: this.Base.options.zt
-    });
     var api = new CertificateApi();
     var UserInfo = this.Base.getMyData().UserInfo;
-    api.riverlist({ openid: UserInfo.openid }, (list) => {
+    api.certificatexq({  }, (driverinfo) => {
       that.Base.setMyData({
-        list
+        driverinfo
       });
     })
          
  
   }
   name(e) {
-
-
     var name = e.detail.value;
     this.Base.setMyData({
       name: e.detail.value
@@ -122,11 +117,7 @@ class Content extends AppBase {
       openid:openid,
       dirlicense_img: photo,
       idcard_img: idphoto
-    
-
     }, (updetedriver) => {
-         
-      
       var pages = getCurrentPages();
       var beforePage = pages[pages.length - 2];
       wx.navigateBack({

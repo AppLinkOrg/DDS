@@ -23,15 +23,16 @@ class Content extends AppBase {
     wx.setNavigationBarTitle({
       title: '司机列表',
     });
+
     // var id=this.Base.getMyData().id;
     var orderapi=new OrderApi();
-    orderapi.applylist({ transport:"Y"}, (applylist) => {
+    orderapi.applylist({ transport: "Y", orderid: this.Base.options.id}, (applylist) => {
       this.Base.setMyData({ applylist });
     });
-    orderapi.applylist({ transport: "N" }, (tobecpdlist) => {
+    orderapi.applylist({ transport: "N", orderid: this.Base.options.id}, (tobecpdlist) => {
       this.Base.setMyData({ tobecpdlist });
     });
-    orderapi.applylist({ transport: "S"}, (completedlist) => {
+    orderapi.applylist({ transport: "L", orderid: this.Base.options.id}, (completedlist) => {
       this.Base.setMyData({ completedlist });
     }); 
     // var exampleapi = new ExampleApi();
@@ -58,11 +59,79 @@ class Content extends AppBase {
   }
   Determineduse(e){
     console.log(e);
-    var exampleapi = new ExampleApi();
-    var id = e.currentTarget.id;
-    exampleapi.updatestatus({id:id}, (updatestatus) => {
-      this.Base.setMyData({ updatestatus });
-     });
+    var that = this;
+    wx.showModal({
+      title: '',
+      content: '您是否确定使用该司机？',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: 'EE2222',
+      confirmText: '确定',
+      confirmColor: '2699EC',
+      success: function (res) {
+        if (res.confirm) {
+          var exampleapi = new ExampleApi();
+          var applylist = that.Base.getMyData().applylist;
+          exampleapi.updatestatus({ id: applylist[0].id }, (updatestatus) => {
+            that.Base.setMyData({ updatestatus });
+            that.onMyShow();
+          });
+        }
+      }
+    })
+    
+  }
+  Refuse(e){
+    var that=this;
+    wx.showModal({
+      title: '',
+      content: '您是否需要取消本次报名？',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: 'EE2222',
+      confirmText: '确定',
+      confirmColor: '2699EC',
+      success: function (res) {
+        if (res.confirm) {
+          var orderapi = new OrderApi();
+          var applylist = that.Base.getMyData().applylist;
+          
+          orderapi.deleteapply({ idlist:applylist[0].id}, (deleteapply) => {
+            that.Base.setMyData({
+              deleteapply
+            });
+            that.onMyShow();
+          });
+        }
+      }
+
+    })
+  }
+
+  addcompleted(e){
+    var that = this;
+    wx.showModal({
+      title: '',
+      content: '您是否确认该司机已完成？',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: 'EE2222',
+      confirmText: '确定',
+      confirmColor: '2699EC',
+      success: function (res) {
+        if (res.confirm) {
+          var orderapi = new OrderApi();
+          var tobecpdlist = that.Base.getMyData().tobecpdlist;
+          orderapi.addcompleted({ id: tobecpdlist[0].id }, (addcompleted) => {
+            that.Base.setMyData({
+              addcompleted
+            });
+            that.onMyShow();
+          });
+        }
+      }
+
+    })
   }
 }
 var content = new Content();
@@ -74,4 +143,6 @@ body.bindwaitcompleted = content.bindwaitcompleted;
 body.bindcontact = content.bindcontact;
 body.bindqueren = content.bindqueren;
 body.Determineduse = content.Determineduse;
+body.Refuse = content.Refuse;
+body.addcompleted = content.addcompleted;
 Page(body)

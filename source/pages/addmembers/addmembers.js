@@ -45,14 +45,14 @@ class Content extends AppBase {
     var name = this.Base.getMyData().name;
     var mobile = this.Base.getMyData().mobile;
     var that = this;
-    var UserInfo = this.Base.getMyData().UserInfo.nickName;
+    var UserInfo = this.Base.getMyData().UserInfo;
     console.log(UserInfo);
     console.log(1111111111111);
     var orderapi = new OrderApi();
     orderapi.addmembers({
       status: "A",
       name: name,
-
+      open_id:UserInfo.openid,
       member_phone: mobile
     }, (addmembers) => {
       //$request["member_id"]=$member_id;

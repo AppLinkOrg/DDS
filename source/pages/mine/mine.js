@@ -17,8 +17,8 @@ class Content extends AppBase {
     var that = this;
     var orderapi = new OrderApi();
     var UserInfo = this.Base.getMyData().UserInfo;
-    orderapi.enterpriselist({ member_id:UserInfo.nickName }, (errlist) => {
-      this.Base.setMyData({ errlist })
+    orderapi.enterpriseinfo({  }, (errinfo) => {
+      this.Base.setMyData({ errinfo })
     })
     
   }
@@ -41,11 +41,9 @@ class Content extends AppBase {
     });
   }
   tishi(e) {
-    var errlist = this.Base.getMyData().errlist;
-    var status = this.Base.getMyData().errlist[0].status;
-    console.log(status);
-    console.log(222222222222222);
-    if (status != "A" || errlist=="") {
+    var errinfo = this.Base.getMyData().errinfo;
+    
+    if (errinfo == null || errinfo.status != "D") {
       wx.showModal({
         title: '未认证',
         content: '您是否需要前往企业认证',
@@ -63,6 +61,7 @@ class Content extends AppBase {
         }
       });
     }
+    
     else{
       wx.navigateTo({
         url: '/pages/commontasks/commontasks',
@@ -70,11 +69,8 @@ class Content extends AppBase {
     }
   }
   lishi(e){
-    var errlist = this.Base.getMyData().errlist;
-    var status = this.Base.getMyData().errlist[0].status;
-    console.log(status);
-    console.log(222222222222222);
-    if (status != "A" || errlist == "") {
+    var errinfo = this.Base.getMyData().errinfo;
+    if (errinfo == null || errinfo.status != "D") {
       wx.showModal({
         title: '未认证',
         content: '您是否需要前往企业认证',
@@ -99,11 +95,8 @@ class Content extends AppBase {
     }
   }
   chenyuan(e) {
-    var errlist = this.Base.getMyData().errlist;
-    var status = this.Base.getMyData().errlist[0].status;
-    console.log(status);
-    console.log(222222222222222);
-    if (status != "A" || errlist == "") {
+    var errinfo = this.Base.getMyData().errinfo;
+    if (errinfo == null || errinfo.status != "D") {
       wx.showModal({
         title: '未认证',
         content: '您是否需要前往企业认证',

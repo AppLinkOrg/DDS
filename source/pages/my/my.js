@@ -25,9 +25,9 @@ class Content extends AppBase {
     var api = new CertificateApi();
     console.log(8888888);
     var UserInfo=this.Base.getMyData().UserInfo;
-    api.riverlist({ openid: UserInfo.openid}, (list) => {
+    api.certificatexq({ }, (driverinfo) => {
      
-      this.Base.setMyData({ list });
+      this.Base.setMyData({ driverinfo });
 
      
     });
@@ -51,11 +51,8 @@ class Content extends AppBase {
     });
   }
   mycar(e){
-    var list = this.Base.getMyData().list;
-    var status = this.Base.getMyData().list[0].status;
-    console.log(status);
-    console.log(222222222222222);
-    if (status != "A" || list == "") {
+    var driverinfo = this.Base.getMyData().driverinfo;
+    if (driverinfo == null || driverinfo.status != "A") {
       wx.showModal({
         title: '未认证',
         content: '您是否需要前往企业认证',
@@ -80,11 +77,8 @@ class Content extends AppBase {
     }
   }
   mytask(e){
-    var list = this.Base.getMyData().list;
-    var status = this.Base.getMyData().list[0].status;
-    console.log(status);
-    console.log(222222222222222);
-    if (status != "A" || list == "") {
+    var driverinfo = this.Base.getMyData().driverinfo;
+    if (driverinfo == null || driverinfo.status != "A") {
       wx.showModal({
         title: '未认证',
         content: '您是否需要前往企业认证',

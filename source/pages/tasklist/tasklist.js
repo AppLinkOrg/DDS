@@ -29,6 +29,12 @@ class Content extends AppBase {
   onMyShow() {
     var that = this;
     var orderapi=new OrderApi();
+    var UserInfo = this.Base.getMyData().UserInfo;
+    orderapi.memberlist({ }, (memberlist) => {
+      this.Base.setMyData({ memberlist });
+    });
+
+
     orderapi.info({id:that.Base.options.id}, (orderinfo) => {
       
       var data1 = new Date(Date.parse(orderinfo.start_time.replace(/-/g, "/")));

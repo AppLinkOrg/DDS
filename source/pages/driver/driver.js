@@ -64,32 +64,20 @@ class Content extends AppBase {
     });
   }
   sj(date) {
-
-
     var year = date.getFullYear()
     var month = date.getMonth() + 1
     var day = date.getDate()
-
     var hour = date.getHours()
     var minute = date.getMinutes()
     var second = date.getSeconds()
-
     return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-
-
   }
-
-
   onMyShow() {
-
     var that = this;
     //查询所有列表 
-
     var orderapi = new OrderApi();
     orderapi.applylist({}, (list1) => {
-
-      orderapi.list({}, (list) => {
-
+      orderapi.list({getall:"Y"}, (list) => {
         var year = new Array();
         var month = new Array();
         var year1 = new Array();
@@ -133,8 +121,6 @@ class Content extends AppBase {
           if (month[i] < 10) {
             month[i] = '0' + month[i];
           }
-
-
           if (day[i] < 10) {
             day[i] = '0' + day[i];
           }
@@ -147,9 +133,7 @@ class Content extends AppBase {
 
         }
         for (var i = 0; i < list1.length; i++) {
-
           var myDate1 = new Date(Date.parse(list1[i].order_start_time.replace(/-/g, "/")));
-
           year1[i] = myDate1.getFullYear();
           month1[i] = myDate1.getMonth() + 1;
           day1[i] = myDate1.getDate();
@@ -187,9 +171,6 @@ class Content extends AppBase {
           if (mm2[i] < 10) {
             mm2[i] = '0' + mm2[i];
           }
-
-
-
         }
 
         //循环找出新任务中已报名
@@ -202,33 +183,22 @@ class Content extends AppBase {
 
           for (var b = 0; b < list1.length; b++) {
             if (list[a].id == list1[b].order_id) {
-              
               bm[a]++;
-
             }
-
             if (list[a].id == list1[b].order_id && list1[b].transport_name=="已报名") {
               ybm.push(list1[b]);
-
             }
             if (list[a].id == list1[b].order_id && list1[b].transport_name== "待完成") {
               dwc.push(list1[b]);
-
             }
-
-
-
             if (list[a].id == list1[b].order_id && UserInfo.openid == list1[b].openid) {
-
               list[a].status = "O";
-
             }
           }
           if (list[a].taskstatus_name == "报名中" && list[a].status == "A" && days[a] > 0) {
             num++;
           }
         }
-
         this.Base.setMyData({
           num: num,
 

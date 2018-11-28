@@ -133,14 +133,14 @@
           </view>
 
 
-          <picker wx:if="{{vehiclelist.length>0}}" range='{{xzcl}}' bindchange='bindenroll' range-key='carnumber'>
+          <picker wx:if="{{vehiclelist.length>0}}" range='{{vehiclelist}}' bindchange='bindenroll' range-key='carnumber'> 
             <view class='flex-row flex-center flex-1 margin-left-20 margin-top-20   bor_btm'>
               <image class='icon-17' src='{{uploadpath}}resource/{{res.huanche}}'></image>
               <view class='txt-black  flex-1  margin-left-20'>选择车辆</view>
-              <input class=' txt-black text-right' disabled='false' bindinput='enrollcontact' name='elcontact' placeholder='请选择车辆' value='{{vehiclelist[enroll_idx].carnumber}}'></input>
+              <input class=' txt-black text-right'  bindinput='enrollcontact' name='elcontact' placeholder='请选择车辆' value='{{elcontact}}'></input>
               <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
             </view>
-          </picker>
+          </picker> 
 
           <navigator url="/pages/Addvehicle/Addvehicle" wx:if="{{vehiclelist.length==0}}" class="flex-row  margin-top-10 flex-center">
             <view class='margin-left-20'>

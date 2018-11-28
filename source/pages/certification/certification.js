@@ -22,14 +22,14 @@ class Content extends AppBase {
       //     }
       //   }
       // })
-    
+
   }
   onMyShow() {
     var that = this;
     var orderapi = new OrderApi();
     var UserInfo = this.Base.getMyData().UserInfo;
-    orderapi.enterpriselist({ member_id: UserInfo.nickName }, (errlist) => {
-      this.Base.setMyData({ errlist })
+    orderapi.enterpriseinfo( {} , (errinfo) => {
+      this.Base.setMyData({ errinfo })
     })
   }
   setPageTitle(instinfo) {
@@ -70,7 +70,7 @@ class Content extends AppBase {
     console.log(UserInfo.nickName);
     orderapi.authenticate({
        status: "I",
-       member_id: UserInfo.nickName,
+       open_id: UserInfo.openid,
        enterprisename: enterprisename,
        creditcode: creditcode,
        authenticateimg:photo

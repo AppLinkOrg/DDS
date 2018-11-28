@@ -181,7 +181,7 @@
       </navigator>
 
       <view wx:if='{{memberlist.length>0}}'>
-        <picker range='{{memberlist}}' bindchange='bindenroll' range-key='name'>
+        <picker range='{{memberlist}}' bindchange='bindenroll' range-key="{{'name'}}">
           <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
             <image class='icon-20' src='{{uploadpath}}resource/{{res.enterprise}}'></image>
             <view class='txt-black h5 flex-1  margin-left-20'>报名联系人</view>

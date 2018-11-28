@@ -46,20 +46,15 @@ class Content extends AppBase {
     });
     var orderapi = new OrderApi();
     var UserInfo = this.Base.getMyData().UserInfo;
-    orderapi.enterpriselist({ member_id: UserInfo.nickName }, (errlist) => {
-      this.Base.setMyData({ errlist })
+    orderapi.enterpriseinfo({}, (errinfo) => {
+      this.Base.setMyData({ errinfo })
 
-      console.log(errlist[0].enterprisename);
     })
     console.log(1111111111111111)
 
-    orderapi.memberlist({
-      member_id_name: UserInfo.nickName
-    }, (memberlist) => {
-      this.Base.setMyData({
-        memberlist
-      })
-    })
+    orderapi.memberlist({ open_id: UserInfo.openid }, (memberlist) => {
+      this.Base.setMyData({ memberlist });
+    });
   }
   start(e) {
     console.log(e);
@@ -619,13 +614,14 @@ class Content extends AppBase {
     var check = this.Base.getMyData().check;
     var orderapi = new OrderApi();
     var UserInfo = this.Base.getMyData().UserInfo;
-
-    var companyname = this.Base.getMyData().errlist[0].enterprisename;
+    
+    var companyname = this.Base.getMyData().errinfo.enterprisename;
     console.log(companyname);
     orderapi.create({
       status: "A",
       taskstatus: "1",
       cmptask: check,
+      open_id:UserInfo.openid,
       enroll_start: startdate + " " + starttime,
       enroll_deadline: enddate + " " + endtime,
       start_time: tstdate + " " + tsttime,
@@ -649,11 +645,9 @@ class Content extends AppBase {
       remark: remark,
       companyname: companyname
     }, (create) => {
-      var errlist = this.Base.getMyData().errlist;
-      var status = this.Base.getMyData().errlist[0].status;
-      console.log(status);
-      console.log(222222222222222);
-      if (status != "A"|| errlist=="") {
+      var errinfo = this.Base.getMyData().errinfo;
+      var status = this.Base.getMyData().errinfo.status;
+      if (errinfo==null) {
         wx.showModal({
           title: '未认证',
           content: '您是否需要前往企业认证',

@@ -10,7 +10,7 @@
   <view class='flex-row flex-center padding-40'>
     <view>运输单号：</view>
     <view class='flex-1'>{{item.orderno}}</view>
-    <view wx:for='{{errlist}}' wx:key='k'>{{item.enterprisename}}</view>
+    <view>{{item.companyname}}</view>
   </view>
 
   <view class='flex-row column '>

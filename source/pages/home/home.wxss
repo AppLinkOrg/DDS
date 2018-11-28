@@ -71,3 +71,6 @@ background: #CFCECF;
   margin-top: 150rpx;
   margin-left: 20rpx;
 }
+.chaoshi{
+  border-top-right-radius: 10rpx;
+}

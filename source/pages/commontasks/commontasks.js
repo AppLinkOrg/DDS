@@ -17,13 +17,13 @@ class Content extends AppBase {
     var that = this;
     var orderapi=new OrderApi();
     var UserInfo = this.Base.getMyData().UserInfo;
-    orderapi.list({ cmptask: "E", member_id_name: UserInfo.nickName }, (list) => {
+    orderapi.list({ cmptask: "E" }, (list) => {
       this.Base.setMyData({ list });
     });
     
-    orderapi.enterpriselist({ member_id: UserInfo.nickName }, (errlist) => {
-      this.Base.setMyData({ errlist })
-    })
+    // orderapi.enterpriselist({ member_id: UserInfo.nickName }, (errlist) => {
+    //   this.Base.setMyData({ errlist })
+    // })
   }
   setPageTitle(instinfo) {
     var title = "常用任务";

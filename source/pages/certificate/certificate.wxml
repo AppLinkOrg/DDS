@@ -1,9 +1,9 @@
 <view class='padding-20'>
-  <view class='h4 txt-primary txt-bold txt-center' wx:if='{{zt=="I"}}'>您的认证申请已提交，请耐心等待审核！</view>
+  <view class='h4 txt-primary txt-bold txt-center' wx:if='{{driverinfo.status=="I"}}'>您的认证申请已提交，请耐心等待审核！</view>
 </view>
 
 <form bindsubmit="confirm" bindreset="formReset" report-submit="{{true}}">
-  <view hidden='{{zt=="I"}}' wx:if='{{zt!="A"}}'>
+  <view  wx:if='{{driverinfo.status==null}}'>
     <view class="flex-row  column">
       <view class='flex-row column padding-40'>
         <view class="margin-left-10">姓名</view>
@@ -38,25 +38,25 @@
 
 
 
-<view wx:if='{{zt=="A"}}'>
+<view wx:if='{{driverinfo.status=="A"}}'>
   <view class="flex-row  column">
     <view class='flex-row column padding-40'>
       <view class="margin-left-10">姓名</view>
-      <input class='padding-20 margin-top-20 ctc_border' disabled='false' style='border:1rpx solid #CECFCE' placeholder='请输入姓名' value="{{list[0].name}}"></input>
+      <input class='padding-20 margin-top-20 ctc_border' disabled='false' style='border:1rpx solid #CECFCE' placeholder='请输入姓名' value="{{driverinfo.name}}"></input>
     </view>
     <view class='flex-row column padding-40'>
       <view class="margin-left-10">身份证号</view>
-      <input class='padding-20 margin-top-20 ctc_border' disabled='false' name='idcard' bindinput='idcard' type='idcard' style='border:1rpx solid #CECFCE' placeholder='请输入身份证号' value="{{list[0].idcard}}"></input>
+      <input class='padding-20 margin-top-20 ctc_border' disabled='false' name='idcard' bindinput='idcard' type='idcard' style='border:1rpx solid #CECFCE' placeholder='请输入身份证号' value="{{driverinfo.idcard}}"></input>
     </view>
   </view>
   <view class='flex-row column padding-40'>
     <view class="margin-left-10">驾驶证照片</view>
     <view class='margin-top-20  padding-10' style='border:1rpx solid #CECFCE;border-radius:10rpx'>
-      <image class='photo' src='{{uploadpath}}driver/{{list[0].dirlicense_img}}'></image>
+      <image class='photo' src='{{uploadpath}}driver/{{driverinfo.dirlicense_img}}'></image>
     </view>
     <view class="margin-left-10 margin-top-60">身份证照片</view>
     <view class=' margin-top-20 padding-10' style='border:1rpx solid #CECFCE;border-radius:10rpx'>
-      <image class='photo' mode='aspectFit' src='{{uploadpath}}driver/{{list[0].idcard_img}}'></image>
+      <image class='photo' mode='aspectFit' src='{{uploadpath}}driver/{{driverinfo.idcard_img}}'></image>
     </view>
   </view>
 </view>

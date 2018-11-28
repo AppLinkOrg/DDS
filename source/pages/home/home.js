@@ -48,13 +48,16 @@ class Content extends AppBase {
     var all = [];
     var UserInfo = this.Base.getMyData().UserInfo;
     var orderapi = new OrderApi();
-    orderapi.enterpriselist({ member_id: UserInfo.nickName }, (errlist) => {
-      this.Base.setMyData({ errlist })
+    orderapi.enterpriselist({
+      open_id: UserInfo.openid
+    }, (errlist) => {
+      this.Base.setMyData({
+        errlist
+      })
 
-      
     })
     orderapi.list({
-      orderby: "r_main.created_date desc"
+      orderby: "r_main.created_date desc",getall:"Y"
     }, (list) => {
 
       orderapi.applylist({}, (applylist) => {
@@ -72,7 +75,7 @@ class Content extends AppBase {
           all: all
         });
       });
-      
+
       this.Base.setMyData({
         list
       });
@@ -80,7 +83,7 @@ class Content extends AppBase {
     });
 
     orderapi.list({
-      member_id_name: UserInfo.nickName,
+      open_id: UserInfo.openid,
       orderby: "r_main.created_date desc"
     }, (minelist) => {
       orderapi.applylist({}, (applylist) => {
@@ -130,7 +133,8 @@ class Content extends AppBase {
     var orderapi = new OrderApi();
     orderapi.list({
       taskstatus: state_id,
-      orderby: "r_main.created_date"
+      orderby: "r_main.created_date desc",
+      getall: "Y"
     }, (list) => {
       this.Base.setMyData({
         list
@@ -138,9 +142,9 @@ class Content extends AppBase {
     });
     var UserInfo = this.Base.getMyData().UserInfo;
     orderapi.list({
-      member_id_name: UserInfo.nickName,
+      open_id: UserInfo.openid,
       taskstatus: state_id,
-      orderby: "r_main.created_date"
+      orderby: "r_main.created_date desc"
     }, (minelist) => {
       this.Base.setMyData({
         minelist
@@ -148,41 +152,12 @@ class Content extends AppBase {
     });
 
   }
-  one(e){
-    var errlist = this.Base.getMyData().errlist;
-    var status = this.Base.getMyData().errlist[0].status;
-     console.log(status);
-     console.log(222222222222222);
-      if(status!="A"||errlist==""){
-        wx.showModal({
-          title: '未认证',
-          content: '您是否需要前往企业认证',
-          showCancel: true,
-          cancelText: '取消',
-          cancelColor: '#EE2222',
-          confirmText: '确定',
-          confirmColor: '#2699EC', 
-          success: function (res) {
-            if (res.confirm) {
-              wx.navigateTo({
-                url: '/pages/certification/certification',
-              })
-            }
-          }
-        });
-      }
-      // else{
-      //   wx.navigateTo({
-      //     url: '/pages/tasklist/tasklist?id={{item.id}}&mineshow=1&all={{all[idx]}}'
-      //   })
-      // }
-  }
-  mine(e){
+  one(e) {
     var errlist = this.Base.getMyData().errlist;
     var status = this.Base.getMyData().errlist[0].status;
     console.log(status);
     console.log(222222222222222);
-    if (status != "A"||errlist=="") {
+    if (status != "A" || errlist == "") {
       wx.showModal({
         title: '未认证',
         content: '您是否需要前往企业认证',
@@ -191,7 +166,7 @@ class Content extends AppBase {
         cancelColor: '#EE2222',
         confirmText: '确定',
         confirmColor: '#2699EC',
-        success: function (res) {
+        success: function(res) {
           if (res.confirm) {
             wx.navigateTo({
               url: '/pages/certification/certification',
@@ -200,11 +175,40 @@ class Content extends AppBase {
         }
       });
     }
-      // else{
-      //   wx.navigateTo({
-      //     url: '/pages/tasklist/tasklist?id={{item.id}}&mineshow=1&all={{all[idx]}}'
-      //   })
-      // }
+    // else{
+    //   wx.navigateTo({
+    //     url: '/pages/tasklist/tasklist?id={{item.id}}&mineshow=1&all={{all[idx]}}'
+    //   })
+    // }
+  }
+  mine(e) {
+    var errlist = this.Base.getMyData().errlist;
+    var status = this.Base.getMyData().errlist[0].status;
+    console.log(status);
+    console.log(222222222222222);
+    if (status != "A" || errlist == "") {
+      wx.showModal({
+        title: '未认证',
+        content: '您是否需要前往企业认证',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#EE2222',
+        confirmText: '确定',
+        confirmColor: '#2699EC',
+        success: function(res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/certification/certification',
+            })
+          }
+        }
+      });
+    }
+    // else{
+    //   wx.navigateTo({
+    //     url: '/pages/tasklist/tasklist?id={{item.id}}&mineshow=1&all={{all[idx]}}'
+    //   })
+    // }
   }
 }
 var content = new Content();

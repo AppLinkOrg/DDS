@@ -2,11 +2,11 @@
 <navigator url='/pages/certification/certification' class='flex-row flex-center bg-white padding-30 bor_btm'>
   <view class='flex-row flex-column'>
     <image class='icon-60 radius-50' src='{{UserInfo.avatarUrl}}'></image>
-    <view wx:if='{{errlist.length==0}}' class='txt-red text-center h6 orange'>未认证</view>
-    <view wx:for='{{errlist}}' wx:key='k'>
-      <view wx:if='{{item.status=="I"}}' class='txt-red text-center  h6 orange'>未认证</view>
-      <view wx:if='{{item.status=="N"}}' class='txt-red  text-center h6 red'>{{item.status_name}}</view>
-      <view wx:if='{{item.status=="A"}}' class='txt-primary text-center h6 blue'>{{item.status_name}}</view>
+    <view wx:if='{{errinfo==null}}' class='txt-red text-center h6 orange'>未认证</view>
+    <view >
+      <view wx:if='{{errinfo.status=="I"}}' class='txt-red text-center  h6 orange'>{{errinfo.status_name}}</view>
+      <view wx:if='{{errinfo.status=="N"}}' class='txt-red  text-center h6 red'>{{errinfo.status_name}}</view>
+      <view wx:if='{{errinfo.status=="A"}}' class='txt-primary text-center h6 blue'>{{errinfo.status_name}}</view>
     </view>
   </view>
 
