@@ -29,7 +29,7 @@
     </navigator>
   </view>
   <!--新任务区域-->
-  <navigator wx:for="{{list}}" wx:for-index="idx" wx:key='k' url='/pages/orderdetails/orderdetails?id={{item.id}}&&openid={   {UserInfo.openid}}' class="nr1  flex-center flex-wrap margin-top" style='margin-top:100rpx' hidden='{{tab!=0}}' wx:if="{{item.taskstatus_name=='报名中'&&item.status=='A'&&days[idx]>0}}">
+  <navigator wx:for="{{list}}" wx:for-index="idx" wx:key='k' url='/pages/orderdetails/orderdetails?id={{item.id}}&&openid={{UserInfo.openid}}' class="nr1  flex-center flex-wrap margin-top" style='margin-top:100rpx' hidden='{{tab!=0}}' wx:if="{{item.taskstatus_name=='报名中'&&item.status=='A'&&days[idx]>0}}">
     <view class="asd flex-1  " style='width:95%'>
 
 
