@@ -1,130 +1,121 @@
- <view class="nr1  flex-center flex-wrap margin-top" >
-
-
-
-
-    <view class="asd flex-1  " style='width:95%'>
-      <view class="flex-center flex-row margin-top-20" style='justify-content:center'>
-        <view class="margin-left-20  ">
-          <image class='icon-15' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
-        </view>
-        <view class="margin-left-10 h4  " style='color:#222222'>{{list1.order_companyname}}</view>
-
+<view class="nr1  flex-center flex-wrap margin-top">
+  <view class="asd flex-1  " style='width:95%'>
+    <view class="flex-center flex-row margin-top-20" style='justify-content:center'>
+      <view class="margin-left-20  ">
+        <image class='icon-15' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
       </view>
-
-      <view style=' margin-bottom:30rpx ' class="flex-center flex-row margin-top-20">
-
-        <view class="margin-left-20  " style='color:#BBBBBB'>运输时间:</view>
-        <view class="margin-left-20 flex-1 ">{{month1}}/{{day1}} {{hh1}}:{{mm1}}</view>
-        <view class="margin-left-20  margin-right-20">{{month2}}/{{day2}} {{hh2}}:{{mm2}}</view>
-      </view>
-
+      <view class="margin-left-10 h4  " style='color:#222222'>{{applyinfo.order_companyname}}</view>
     </view>
-
-
-    <view class="asd flex-1" style=' width:95%'>
-      <view class="flex-wrap" style=' margin-bottom:30rpx'>
-
-        <view class="" style=''>
-          <view class="flex-row flex-center margin-top:10">
-            <view class="flex-row column flex-1">
-              <view class='flex-row flex-center'>
-                <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.green}}'></image>
-                <view class="margin-left-20">{{list1.order_targetaddress}}</view>
-              </view>
-              <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>起点距您666公里</view>
-            </view>
-
-            <view style='width:90rpx;  border-left:1px dotted #919191;display:flex;justify-content: center'>
-              <image class='icon-30' src='{{uploadpath}}resource/{{res.daohan}} '></image>
-            </view>
-
-          </view>
-
-
-
-        </view>
-
-        <view class="" style=''>
-          <view class="flex-row flex-center margin-top:10">
-            <view class="flex-row column flex-1">
-              <view class='flex-row flex-center'>
-                <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
-                <view class="margin-left-20">{{list1.order_startaddress}}</view>
-              </view>
-              <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>总里程206公里</view>
-            </view>
-
-            <view style='width:90rpx;  border-left:1px dotted #919191;display:flex;justify-content: center'>
-              <image class='icon-30' src='{{uploadpath}}resource/{{res.daohan}} '></image>
-            </view>
-
-          </view>
-
-
-
-        </view>
+    <view style=' margin-bottom:30rpx ' class="flex-row flex-column margin-top-20">
+      <view class='flex-row flex-center'>
+        <view class=" " style=''>运输开始时间:</view>
+        <view class=" ">{{month1}}/{{day1}} {{hh1}}:{{mm1}}</view>
       </view>
-
-    </view>
-
-
-    <view class="asd flex-1" style='width:95%'>
-      <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
-        <view class="margin-left-20">
-          <image class='icon-17' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
-        </view>
-        <view class="flex-1 margin-left-20">货运类型</view>
-        <view class="margin-right-20" style='color:#BBBBBB'>{{list1.order_stuff_type_id}}</view>
+      <view class='flex-row flex-center'>
+        <view class="margin-top-20" style=''>运输结束时间:</view>
+        <view class="margin-top-20">{{month2}}/{{day2}} {{hh2}}:{{mm2}}</view>
       </view>
     </view>
-    <view class="asd flex-1" style='width:95%'>
-      <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
-        <view class="margin-left-20">
-          <image class='icon-17' src='{{uploadpath}}resource/{{res.dianhua}}'></image>
-        </view>
-        <view class="flex-1 margin-left-20">联系电话</view>
-        <view class="margin-right-20" style='color:#BBBBBB'>13033454643</view>
-      </view>
-    </view>
-    <view class="asd flex-1" style='width:95%'>
-      <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
-        <view class="margin-left-20">
-          <image class='icon-17' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
-        </view>
-        <view class="flex-1 margin-left-20">备注</view>
-        <view class="margin-right-20" style='color:#BBBBBB;width:40%'>{{list1.order_remark	}}</view>
-      </view>
-      <view>
-        <view class="flex-wrap">
-          <view class="" style='margin:30rpx'>报名资料</view>
-          <view class="flex-row  flex-center">
-            <view class='margin-left-20'>
-              <image class='icon-17' src='{{uploadpath}}resource/{{res.huoche}}'></image>
-            </view>
-            <view class="flex-1 margin-left-20">货运吨数</view>
-            <view class="margin-right-20">
-              {{list1.tonnage}}吨
-            </view>
-          </view>
-          <view  class="flex-row  margin-top-10 flex-center">
-            <view class='margin-left-20'>
-              <image class='icon-17' src='{{uploadpath}}resource/{{res.huanche}}'></image>
-            </view>
-            <view class="flex-1  margin-left-20   ">选择车辆</view>
-           
-            <view class="flex-row  flex-center  margin-right-20">
-              <view>{{list1.vehicle}}</view>
-
-
-
-            </view>
-          </view>
-          <view bindtap='Deleteorder' class="h4 bm" style='margin-top:118rpx' id="anniu">取消报名</view>
-        </view>
-      </view>
-    </view>
-
-
-
   </view>
+  <view class="asd flex-1" style=' width:95%'>
+    <view class="flex-wrap" style=' margin-bottom:30rpx'>
+      <view class="" style=''>
+        <view class="flex-row flex-center margin-top:10">
+          <view class="flex-row column flex-1">
+            <view class='flex-row flex-center'>
+              <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.green}}'></image>
+              <view class="margin-left-20">{{applyinfo.order_startaddress}}</view>
+            </view>
+            <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>起点距您666公里</view>
+          </view>
+          <view style='width:90rpx;  border-left:1px dotted #919191;display:flex;justify-content: center'>
+            <image class='icon-30' src='{{uploadpath}}resource/{{res.daohan}} '></image>
+          </view>
+        </view>
+      </view>
+      <view class="" style=''>
+        <view class="flex-row flex-center margin-top:10">
+          <view class="flex-row column flex-1">
+            <view class='flex-row flex-center'>
+              <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
+              <view class="margin-left-20">{{applyinfo.order_targetaddress}}</view>
+            </view>
+            <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>总里程：{{info.distance}}</view>
+          </view>
+          <view style='width:90rpx;  border-left:1px dotted #919191;display:flex;justify-content: center'>
+            <image class='icon-30' src='{{uploadpath}}resource/{{res.daohan}} '></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="asd flex-1" style='width:95%'>
+    <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
+      <view class="margin-left-20">
+        <image class='icon-17' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
+      </view>
+      <view class="flex-1 margin-left-20">货运类型</view>
+      <view class="margin-right-20">{{applyinfo.order_stuff_type_id}}</view>
+    </view>
+  </view>
+  <view class="asd flex-1" style='width:95%'>
+    <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
+      <view class="margin-left-20">
+        <image class='icon-17' src='{{uploadpath}}resource/{{res.dianhua}}'></image>
+      </view>
+      <view class="flex-1 margin-left-20">报名联系电话</view>
+      <view class="margin-right-20">13033454643</view>
+    </view>
+  </view>
+  <view class="asd flex-1" style='width:95%'>
+    <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
+      <view class="margin-left-20">
+        <image class='icon-17' src='{{uploadpath}}resource/{{res.dianhua}}'></image>
+      </view>
+      <view class="flex-1 margin-left-20">起点联系电话</view>
+      <view class="margin-right-20">13033454643</view>
+    </view>
+  </view>
+  <view class="asd flex-1" style='width:95%'>
+    <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
+      <view class="margin-left-20">
+        <image class='icon-17' src='{{uploadpath}}resource/{{res.dianhua}}'></image>
+      </view>
+      <view class="flex-1 margin-left-20">终点联系电话</view>
+      <view class="margin-right-20">13033454643</view>
+    </view>
+  </view>
+  <view class="asd flex-1" style='width:95%'>
+    <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
+      <view class="margin-left-20">
+        <image class='icon-17' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
+      </view>
+      <view class="flex-1 margin-left-20">备注</view>
+      <view class="margin-right-20">{{applyinfo.order_remark}}</view>
+    </view>
+    <view>
+      <view class="flex-wrap">
+        <view class="" style='margin:30rpx'>报名资料</view>
+        <view class="flex-row  flex-center">
+          <view class='margin-left-20'>
+            <image class='icon-17' src='{{uploadpath}}resource/{{res.huoche}}'></image>
+          </view>
+          <view class="flex-1 margin-left-20">货运吨数</view>
+          <view class="margin-right-20">
+            {{applyinfo.tonnage}}吨
+          </view>
+        </view>
+        <view class="flex-row  margin-top-10 flex-center">
+          <view class='margin-left-20'>
+            <image class='icon-17' src='{{uploadpath}}resource/{{res.huanche}}'></image>
+          </view>
+          <view class="flex-1  margin-left-20">报名车辆</view>
+          <view class="flex-row  flex-center  margin-right-20">
+            <view>{{applyinfo.vehicle}}</view>
+          </view>
+        </view>
+        <view bindtap='Deleteorder' class="h4 bm" style='margin-top:118rpx' id="anniu">取消报名</view>
+      </view>
+    </view>
+  </view>
+</view>

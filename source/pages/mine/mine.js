@@ -43,7 +43,7 @@ class Content extends AppBase {
   tishi(e) {
     var errinfo = this.Base.getMyData().errinfo;
     
-    if (errinfo == null || errinfo.status != "D") {
+    if (errinfo == null || errinfo.status != "A") {
       wx.showModal({
         title: '未认证',
         content: '您是否需要前往企业认证',
@@ -70,7 +70,7 @@ class Content extends AppBase {
   }
   lishi(e){
     var errinfo = this.Base.getMyData().errinfo;
-    if (errinfo == null || errinfo.status != "D") {
+    if (errinfo == null || errinfo.status != "A") {
       wx.showModal({
         title: '未认证',
         content: '您是否需要前往企业认证',
@@ -96,7 +96,7 @@ class Content extends AppBase {
   }
   chenyuan(e) {
     var errinfo = this.Base.getMyData().errinfo;
-    if (errinfo == null || errinfo.status != "D") {
+    if (errinfo == null || errinfo.status != "A") {
       wx.showModal({
         title: '未认证',
         content: '您是否需要前往企业认证',

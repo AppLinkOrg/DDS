@@ -48,31 +48,34 @@ class Content extends AppBase {
     var all = [];
     var UserInfo = this.Base.getMyData().UserInfo;
     var orderapi = new OrderApi();
-    orderapi.enterpriselist({
-      open_id: UserInfo.openid
-    }, (errlist) => {
-      this.Base.setMyData({
-        errlist
-      })
+    // orderapi.enterpriselist({
+    //   open_id: UserInfo.openid
+    // }, (errlist) => {
+    //   this.Base.setMyData({
+    //     errlist
+    //   })
 
+    // })
+    orderapi.enterpriseinfo({}, (errinfo) => {
+      this.Base.setMyData({ errinfo })
     })
     orderapi.list({
       orderby: "r_main.created_date desc",getall:"Y"
     }, (list) => {
 
       orderapi.applylist({}, (applylist) => {
-        for (var i = 0; i < list.length; i++) {
-          all[i] = 0;
-          for (var j = 0; j < applylist.length; j++) {
-            if (list[i].id == applylist[j].order_id) {
-              all[i]++;
-              console.log(all);
-            }
-          }
-        }
+        // for (var i = 0; i < list.length; i++) {
+        //   all[i] = 0;
+        //   for (var j = 0; j < applylist.length; j++) {
+        //     if (list[i].id == applylist[j].order_id) {
+        //       all[i]++;
+        //       console.log(all);
+        //     }
+        //   }
+        // }
         this.Base.setMyData({
-          applylist,
-          all: all
+          // applylist,
+          // all: all
         });
       });
 
@@ -87,18 +90,18 @@ class Content extends AppBase {
       orderby: "r_main.created_date desc"
     }, (minelist) => {
       orderapi.applylist({}, (applylist) => {
-        for (var i = 0; i < minelist.length; i++) {
-          num[i] = 0;
-          for (var j = 0; j < applylist.length; j++) {
-            if (minelist[i].id == applylist[j].order_id) {
-              num[i]++;
-              console.log(num);
-            }
-          }
-        }
+        // for (var i = 0; i < minelist.length; i++) {
+        //   num[i] = 0;
+        //   for (var j = 0; j < applylist.length; j++) {
+        //     if (minelist[i].id == applylist[j].order_id) {
+        //       num[i]++;
+        //       console.log(num);
+        //     }
+        //   }
+        // }
         this.Base.setMyData({
-          applylist,
-          num: num
+          // applylist,
+          // num: num
         });
       });
       this.Base.setMyData({
@@ -153,15 +156,12 @@ class Content extends AppBase {
 
   }
   one(e) {
-    var errlist = this.Base.getMyData().errlist;
-    var status = this.Base.getMyData().errlist[0].status;
-    console.log(status);
-    console.log(222222222222222);
-    if (status != "A" || errlist == "") {
+    var errinfo = this.Base.getMyData().errinfo;
+    if (errinfo == null || errinfo.status == "N") {
       wx.showModal({
         title: '未认证',
         content: '您是否需要前往企业认证',
-        showCancel: true,
+        showCancel: false,
         cancelText: '取消',
         cancelColor: '#EE2222',
         confirmText: '确定',
@@ -182,15 +182,12 @@ class Content extends AppBase {
     // }
   }
   mine(e) {
-    var errlist = this.Base.getMyData().errlist;
-    var status = this.Base.getMyData().errlist[0].status;
-    console.log(status);
-    console.log(222222222222222);
-    if (status != "A" || errlist == "") {
+    var errinfo = this.Base.getMyData().errinfo;
+    if (errinfo == null || errinfo.status == "N") {
       wx.showModal({
         title: '未认证',
         content: '您是否需要前往企业认证',
-        showCancel: true,
+        showCancel: false,
         cancelText: '取消',
         cancelColor: '#EE2222',
         confirmText: '确定',

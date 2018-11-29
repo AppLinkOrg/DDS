@@ -28,6 +28,10 @@ class Content extends AppBase {
         goodslist
       });
     });
+    var UserInfo = this.Base.getMyData().UserInfo;
+    orderapi.enterpriseinfo({}, (errinfo) => {
+      this.Base.setMyData({ errinfo })
+    })
     this.Base.setMyData({
       startdate: "",
       starttime: "",
@@ -37,6 +41,25 @@ class Content extends AppBase {
       tstdate: "",
       today: this.Base.util.FormatDate(new Date())
     });
+    // var errinfo = this.Base.getMyData().errinfo;
+    // if (errinfo == null || errinfo.status == "I") {
+    //   wx.showModal({
+    //     title: '未认证',
+    //     content: '请等待认证结果',
+    //     showCancel: false,
+    //     // cancelText: '取消',
+    //     cancelColor: '#EE2222',
+    //     confirmText: '确定',
+    //     confirmColor: '#2699EC',
+    //     success: function (res) {
+    //       if (res.confirm) {
+    //         wx.reLaunch({
+    //           url: '/pages/home/home',
+    //         })
+    //       }
+    //     }
+    //   });
+    // }
     
   }
   onMyShow() {
@@ -52,9 +75,29 @@ class Content extends AppBase {
     })
     console.log(1111111111111111)
 
-    orderapi.memberlist({ open_id: UserInfo.openid }, (memberlist) => {
+    orderapi.memberlist({}, (memberlist) => {
       this.Base.setMyData({ memberlist });
     });
+    var errinfo = this.Base.getMyData().errinfo;
+    if (errinfo == null || errinfo.status != "A") {
+      wx.showModal({
+        title: '未认证',
+        content: '请您进行企业认证',
+        showCancel: false,
+        // cancelText: '取消',
+        cancelColor: '#EE2222',
+        confirmText: '确定',
+        confirmColor: '#2699EC',
+        success: function (res) {
+          if (res.confirm) {
+            wx.reLaunch({
+              url: '/pages/certification/certification',
+            })
+          }
+        }
+      });
+    }
+    
   }
   start(e) {
     console.log(e);
@@ -516,6 +559,29 @@ class Content extends AppBase {
 
   confirm(e) {
     var data = e.detail.value;
+    var errinfo = this.Base.getMyData().errinfo;
+    if (errinfo == null || errinfo.status != "A") {
+      wx.showModal({
+        title: '未认证',
+        content: '您是否需要前往企业认证',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#EE2222',
+        confirmText: '确定',
+        confirmColor: '#2699EC',
+        success: function (res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/certification/certification',
+            })
+          }
+        }
+      });
+    }
+    if (errinfo == null || errinfo.status != "A"){
+      this.Base.info("您暂未进行认证，请先认证!");
+      return;
+    }
     if (data.scdate == "") {
       this.Base.info("请选择报名开始日期");
       return;
@@ -584,6 +650,7 @@ class Content extends AppBase {
        this.Base.info("请选择终点联系人");
        return;
      }
+    
     var startdate = this.Base.getMyData().startdate;
     var starttime = this.Base.getMyData().starttime;
     var enddate = this.Base.getMyData().enddate;
@@ -614,8 +681,9 @@ class Content extends AppBase {
     var check = this.Base.getMyData().check;
     var orderapi = new OrderApi();
     var UserInfo = this.Base.getMyData().UserInfo;
-    
-    var companyname = this.Base.getMyData().errinfo.enterprisename;
+    if(errinfo!=null){
+      var companyname = this.Base.getMyData().errinfo.enterprisename;
+    }
     console.log(companyname);
     orderapi.create({
       status: "A",
@@ -645,27 +713,7 @@ class Content extends AppBase {
       remark: remark,
       companyname: companyname
     }, (create) => {
-      var errinfo = this.Base.getMyData().errinfo;
-      var status = this.Base.getMyData().errinfo.status;
-      if (errinfo==null) {
-        wx.showModal({
-          title: '未认证',
-          content: '您是否需要前往企业认证',
-          showCancel: true,
-          cancelText: '取消',
-          cancelColor: '#EE2222',
-          confirmText: '确定',
-          confirmColor: '#2699EC',
-          success: function (res) {
-            if (res.confirm) {
-              wx.navigateTo({
-                url: '/pages/certification/certification',
-              })
-            }
-          }
-        });
-      }
-      else{
+      
         wx.reLaunch({
           url: '/pages/home/home'
         }),
@@ -673,7 +721,7 @@ class Content extends AppBase {
             title: '发布成功',
             duration: 1000
           });
-      }
+      
       
 
     })

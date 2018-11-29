@@ -75,13 +75,16 @@ class Content extends AppBase {
        creditcode: creditcode,
        authenticateimg:photo
     }, (authenticate) => {
-         var pages = getCurrentPages(); 
-         var beforePage = pages[pages.length - 2];
-         wx.navigateBack({
-           success(){
-             beforePage.onLoad();
-           }
-         })
+        //  var pages = getCurrentPages(); 
+        //  var beforePage = pages[pages.length - 2];
+        //  wx.reLaunch({
+        //    success(){
+        //      beforePage.onLoad();
+        //    }
+        //  })
+        wx.reLaunch({
+          url: '/pages/mine/mine',
+        })
      });
   }
   enterprisename(e) {
@@ -105,6 +108,11 @@ class Content extends AppBase {
       photo: e.detail.value
     })
   }
+  Yes(e){
+  wx.reLaunch({
+    url: '/pages/mine/mine',
+  })
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -115,5 +123,6 @@ body.confirm = content.confirm;
 body.enterprisename = content.enterprisename;
 body.creditcode = content.creditcode; 
 body.photo = content.photo;
-body.uploadimg = content.uploadimg;
+body.uploadimg = content.uploadimg; 
+body.Yes = content.Yes;
 Page(body)

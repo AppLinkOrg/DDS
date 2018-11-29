@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/youke/youke",
-    "pages/Addvehicle/Addvehicle",
-    "pages/home/home",
-    "pages/vehicle/vehicle",
     "pages/driver/driver",
+    "pages/home/home",
+    "pages/Addvehicle/Addvehicle",
+    "pages/vehicle/vehicle",
     "pages/certificate/certificate",
     "pages/mine/mine",
     "pages/my/my",

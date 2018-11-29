@@ -14,7 +14,7 @@
     <view style='height:70rpx;' class="flex-row flex-center bg  " hidden='{{tab!=0}}'>
       <view class="h5 margin-left-20 flex-1">共有任务{{num}}条</view>
       <picker bindchange="qwe" value="{{index}}" range="{{array}}">
-        <view class="h5 margin-right-10  picker " style='color:#BBBBBB'>{{array[index]}}</view>
+        <view class="h5 margin-right-10  picker " style=''>{{array[index]}}</view>
       </picker>
       <picker bindchange="qwe" value="{{index}}" range="{{array}}">
         <image class='icon-10 margin-right-20' src='{{uploadpath}}resource/{{res.lowericon}}'></image>
@@ -38,7 +38,7 @@
         <view class="margin-left-20  ">
 
         </view>
-        <view class="margin-left-20  " style='color:#BBBBBB'>订单编号</view>
+        <view class="margin-left-20  " style=''>订单编号</view>
         <view class="margin-left-20 " style='color:red'>{{item.orderno}}</view>
       </view>
 
@@ -211,15 +211,10 @@
 
     </view>
 
-
-
-
-
-
   </navigator>
 
   <!--已报名区域-->
-  <navigator wx:for="{{ybm}}" wx:for-index="idx" wx:key='k' url='/pages/apply/apply?idlist={{item.id}}&&id={{idx}}&&orderid={{item.orderid}}' class="nr1  flex-center flex-wrap margin-top" hidden='{{tab!=1}}' wx:if="{{item.openid==UserInfo.openid&&item.transport_name=='已报名'}}">
+  <navigator wx:for="{{ybm}}" wx:for-index="idx" wx:key='k' url='/pages/apply/apply?id={{item.orderid}}' class="nr1  flex-center flex-wrap margin-top" hidden='{{tab!=1}}' wx:if="{{item.openid==UserInfo.openid&&item.transport_name=='已报名'}}">
     <view class="asd flex-1  " style='width:95%'>
 
       <view style=' margin-bottom:30rpx ;margin-top:30rpx ' class="flex-center flex-row ">

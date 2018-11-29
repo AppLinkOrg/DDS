@@ -22,10 +22,7 @@ class Content extends AppBase {
 
     //options.id=5;
     this.Base.setMyData({
-
     })
-
-
 
     wx.setStorageSync("lastlogin", "D");
 
@@ -244,8 +241,6 @@ class Content extends AppBase {
           list
         });
       });
-
-
     })
 
 
