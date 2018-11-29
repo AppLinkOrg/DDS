@@ -26,10 +26,7 @@ class Content extends AppBase {
     console.log(8888888);
     var UserInfo=this.Base.getMyData().UserInfo;
     api.certificatexq({ }, (driverinfo) => {
-     
       this.Base.setMyData({ driverinfo });
-
-     
     });
   }
   Cutstatus(e) {

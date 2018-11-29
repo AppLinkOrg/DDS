@@ -51,14 +51,17 @@ class Content extends AppBase {
     var UserInfo = this.Base.getMyData().UserInfo;
     var orderapi = new OrderApi();
     var api = new CertificateApi();
-    api.certificatelist({
-      
-    }, (list) => {
+    api.certificatelist({}, (list) => {
       that.Base.setMyData({
         list
       });
     })
-
+    orderapi.info({id:this.Base.options.id}, (info) => {
+      this.Base.setMyData({ info })
+    })
+    api.certificatexq({}, (driverinfo) => {
+      this.Base.setMyData({ driverinfo });
+    });
     orderapi.vehiclelist({}, (vehiclelist) => {
       this.Base.setMyData({ vehiclelist})
     })
@@ -196,10 +199,6 @@ class Content extends AppBase {
     });
   }
 
-
-
-
-
   tonnage(e) {
     var tonnage = e.detail.value;
     this.Base.setMyData({
@@ -236,19 +235,17 @@ class Content extends AppBase {
     var that = this;
     var api = new CertificateApi();
     var UserInfo = this.Base.getMyData().UserInfo;
-    api.certificatelist({
-      
-    }, (list3) => {
-      var orderapi = new OrderApi();
+    var orderapi = new OrderApi();
+    var info=this.Base.getMyData().info;
       orderapi.addapply({
         status: "A",
         transport: "Y",
         orderid: orderid,
         tonnage: tonnage,
         vehicle: vehicle,
-        member_name: list3[0].name,
+        member_name: info.companyname,
         openid: UserInfo.openid
-      }, (addvehicle) => {
+      }, (addapply) => {
         var driverinfo = this.Base.getMyData().driverinfo;
         if (driverinfo == null || driverinfo.status != "A") {
            wx.showModal({
@@ -267,7 +264,7 @@ class Content extends AppBase {
                }
              }
            });
-         }
+          }
          else {
            wx.reLaunch({
              url: '/pages/driver/driver'
@@ -278,11 +275,8 @@ class Content extends AppBase {
              });
         }
 
-        // wx.reLaunch({
-        //   url: '/pages/driver/driver',
-        // })
       });
-    })
+    
 
   }
   onUnload() {

@@ -14,9 +14,8 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     this.Base.setMyData({
-
+      id:this.Base.options.id
     })
-
     this.setData({
       array: ['所有', '离我最近', '费用最高'],
       objectArray: [
@@ -39,32 +38,31 @@ class Content extends AppBase {
 
 
     })
-
     super.onLoad(options);
 
   }
-
-
   //界面标题
   setPageTitle() {
     wx.setNavigationBarTitle({
       title: '报名详情',
-
     });
   }
-
 
   onMyShow() {
     var that=this;
     var api = new CertificateApi();
+    var orderapi = new OrderApi();
     var UserInfo=this.Base.getMyData().UserInfo;
-    api.riverlist({ openid: UserInfo.openid }, (list) => {
+    api.riverlist({ }, (list) => {
       that.Base.setMyData({
         list
       });
     })
+    orderapi.info({ id: this.Base.options.id }, (info) => {
+      this.Base.setMyData({ info })
+    })
     var orderapi = new OrderApi();
-    orderapi.applylist({}, (list1) => {
+    orderapi.applylist({}, (applylist) => {
       var year2 = new Array();
       var month2 = new Array();
       var day2 = new Array();
@@ -75,8 +73,8 @@ class Content extends AppBase {
       var day1 = new Array();
       var hh1 = new Array();
       var mm1 = new Array();
-      var myDate1 = new Date(Date.parse(list1[this.Base.options.id].order_start_time.replace(/-/g, "/")));
-      var myDate2 = new Date(Date.parse(list1[this.Base.options.id].order_end_time.replace(/-/g, "/")));
+      var myDate1 = new Date(Date.parse(applylist[this.Base.options.id].order_start_time.replace(/-/g, "/")));
+      var myDate2 = new Date(Date.parse(applylist[this.Base.options.id].order_end_time.replace(/-/g, "/")));
       year1 = myDate1.getFullYear();
       month1 = myDate1.getMonth() + 1;
       day1 = myDate1.getDate();
@@ -113,7 +111,7 @@ class Content extends AppBase {
         mm2 = '0' + mm2;
       }
       this.Base.setMyData({
-        list1: list1[this.Base.options.id],
+        applylist: applylist[this.Base.options.id],
         year1: year1,
         year2: year2,
         month1: month1,

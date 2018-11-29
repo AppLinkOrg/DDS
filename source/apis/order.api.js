@@ -87,7 +87,7 @@ export class OrderApi {
       }
     })
   }
-  //新增报名运输单
+  //获取报名列表
   applylist(json, callback, showLoading = true) {
     if (showLoading)
       ApiConfig.ShowLoading();
