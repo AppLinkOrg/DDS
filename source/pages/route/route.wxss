@@ -4,7 +4,6 @@
   margin:40rpx;
   bottom: 100rpx;
   width: 84%;
-  margin-top:65vh;
 }
 .dot{
   width: 16rpx;
@@ -19,10 +18,8 @@
   margin-right:240rpx;
   text-align: center;
   background-color: #F04848;
-  padding:10rpx;
-  padding-top:14rpx;
   font-size: 28rpx;
-  border-radius: 30rpx;
+  border-radius: 60rpx;
   color:white;
   bottom: 0rpx;
   width: 30%;
