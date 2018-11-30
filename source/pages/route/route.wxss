@@ -4,7 +4,6 @@
   margin:40rpx;
   bottom: 100rpx;
   width: 84%;
-  margin-top:65vh;
 }
 .dot{
   width: 16rpx;
