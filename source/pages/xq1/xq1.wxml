@@ -112,21 +112,26 @@
       <view class="margin-left-20 flex-row flex-center">
         <image class='icon-17' src='{{uploadpath}}resource/{{res.xianji}}'></image>
       
-      <view class="flex-1 margin-left-20">添加过磅单</view>
+      <view class=" margin-left-20">添加过磅单</view>
+
+      
+        <image class='icon-20 margin-left-20' bindtap='uploadimg' src='{{uploadpath}}resource/{{res.tianjia}}'></image>
+      
       </view>
-      <!-- <navigator url='/pages/weighing/weighing?id={{list1.order_id}}' class="margin-right-20" style=''>
-        <image class='icon-17' src='{{uploadpath}}resource/{{res.tianjia}}'></image>
-      </navigator> -->
+       
 
-      <view class='padding-10 flex-row flex-center text-center' bindtap='uploadimg' style='border:1rpx solid #CECFCE'>
-
-        <image wx:if='{{photo[0]!=undefined}}' style='width:150rpx;height:150rpx;margin-left:20rpx' class='' mode='aspectFill' src='{{uploadpath}}driver/{{photo[0]}}'></image>
-        <image wx:if='{{photo[1]!=undefined}}' style='width:150rpx;height:150rpx' class='' mode='aspectFill' src='{{uploadpath}}driver/{{photo[1]}}'></image>
-        <image wx:if='{{photo[2]!=undefined}}' style='width:150rpx;height:150rpx' class='' mode='aspectFill' src='{{uploadpath}}driver/{{photo[2]}}'></image>
-        <image wx:if='{{photo[3]!=undefined}}' style='width:150rpx;height:150rpx' class='' mode='aspectFill' src='{{uploadpath}}driver/{{photo[3]}}'></image>
-        <view class='img flex-row flex-column padding-top-100' style='line-height' wx:if='{{photo==undefined}}'>
+      <view class='padding-10 margin-20 flex-row flex-column text-center' style='border:1rpx solid #CECFCE;border-radius:10rpx;'>
+<view class=''>
+        <image wx:if='{{photo[0]!=undefined}}' style='width:150rpx;height:150rpx;' class='margin-5' mode='aspectFill' src='{{uploadpath}}driver/{{photo[0]}}'></image>
+        <image wx:if='{{photo[1]!=undefined}}' style='width:150rpx;height:150rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}driver/{{photo[1]}}'></image>
+        <image wx:if='{{photo[2]!=undefined}}' style='width:150rpx;height:150rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}driver/{{photo[2]}}'></image>
+        <image wx:if='{{photo[3]!=undefined}}' style='width:150rpx;height:150rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}driver/{{photo[3]}}'></image>
+</view>
+        
+        <view class='flex-row flex-column padding-top-'  bindtap='uploadimg' style='line-height' wx:if='{{photo==undefined}}'>
           <image class='icon-60 ' src='{{uploadpath}}resource/{{res.addrz_icon}}'></image>
           <view>添加图片</view>
+          
         </view>
 
         <input hidden='fales' name="photo" value="{{photo}}"></input>
@@ -142,14 +147,14 @@
     </view>
   </view>
   <view class="asd flex-1" style='width:95%'>
-    <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
+    <view class="flex-row  margin-top-20 " style=' margin-bottom:30rpx'>
 
-      <view class='flex-row flex-center '>
+      
         <image class='icon-17 margin-left-20' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
-        <view class="flex-1 margin-left-20">备注</view>
-      </view>
+        <view class=" margin-left-20">备注</view>
+      
 
-      <view class="margin-right-10" style='border:1rpx solid #CECFCE;border-radius:10rpx;min-height:100rpx;width:450rpx;'>{{list1.order_remark}}</view>
+      <view class="margin-left-20 margin-right-20 flex-1 " style='border:1rpx solid #CECFCE;border-radius:10rpx;min-height:100rpx;'>{{list1.order_remark}}</view>
 
     </view>
     <view>
