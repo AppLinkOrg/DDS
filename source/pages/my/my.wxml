@@ -1,11 +1,10 @@
-
 <navigator url='/pages/certificate/certificate?openid={{UserInfo.openid}}&&zt={{driverinfo.status}}' class='flex-row flex-center bg-white padding-30 bor_btm'>
   <view class='flex-row flex-column'>
     <image class='icon-60 radius-50' src='{{UserInfo.avatarUrl}}'></image>
-    <navigator url='/pages/certificate/certificate?openid={{UserInfo.openid}}&&zt={{driverinfo.status}}' class='h5 under' style=' '>
-      <view class='h6 txt-white text-center' wx:if="{{driverinfo==null}}">未认证</view>
-      <view class='h6 txt-white text-center' wx:if="{{driverinfo.status=='I'}}">{{driverinfo.status_name}}</view>
-      <view class='h6 txt-white text-center' wx:if="{{driverinfo.status=='A'}}">{{driverinfo.status_name}}</view>
+    <navigator url='/pages/certificate/certificate?openid={{UserInfo.openid}}&&zt={{driverinfo.status}}' class='h5 ' style=' '>
+      <view class='h6 txt-white text-center orange' wx:if="{{driverinfo==null}}">未认证</view>
+      <view class='h6 txt-white text-center orange' wx:if="{{driverinfo.status=='I'}}">{{driverinfo.status_name}}</view>
+      <view class='h6 txt-white text-center blue' wx:if="{{driverinfo.status=='A'}}">{{driverinfo.status_name}}</view>
     </navigator>
   </view>
 
@@ -17,7 +16,7 @@
 
 <navigator class='flex-row flex-center padding-30 bg-white hig_btm' bindtap='phoneCall' id='17608463082'>
   <image class='icon-20' src='{{uploadpath}}resource/{{res.dianhua}}'></image>
-  <view class='txt-black txt-bold margin-left-20 h5 flex-1'>联系电话</view>
+  <view class='txt-black txt-bold margin-left-20 h5 flex-1'>联系电话</view> 
   <view class='txt-black h5 txt-bold'>17608463082</view>
 </navigator>
 

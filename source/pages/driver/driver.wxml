@@ -2,9 +2,10 @@
 <view>
   <view class='Top'>
     <view style='height:100rpx; border-bottom:1px solid #F3F3F3 ' class="flex-row flex-center bg ">
-      <navigator url='/pages/my/my?openid={{UserInfo.openid}}' class='flex-1' style='border-right:1px solid #F3F3F3;margin-left:20rpx'>
+      <navigator url='/pages/my/my?openid={{UserInfo.openid}}' class='' style='margin-left:20rpx'>
         <image class='icon-30 ' src='{{uploadpath}}resource/{{res.siji_icon}}'></image>
       </navigator>
+
       <view class='flex-2 h5 {{tab==0?"aa":"bb"}} padding-20 ' bindtap='changetab' id="0">新任务</view>
       <view class='flex-2 h5  {{tab==1?"aa":"bb"}} padding-20' bindtap='changetab' id="1">已报名</view>
       <view class='flex-2 h5  {{tab==2?"aa":"bb"}} padding-20' bindtap='changetab' id="2">待完成</view>
@@ -19,8 +20,8 @@
       <picker bindchange="qwe" value="{{index}}" range="{{array}}">
         <image class='icon-10 margin-right-20' src='{{uploadpath}}resource/{{res.lowericon}}'></image>
       </picker>
-
     </view>
+
     <navigator url='/pages/noticelist/noticelist' class='padding-20 bg-gray flex-row flex-center'>
       <view>
         <image class='icon' src='{{uploadpath}}resource/{{res.gonggao}}'></image>
@@ -143,7 +144,7 @@
 
 
   <!--待完成区域-->
-  <navigator wx:for="{{dwc}}" wx:for-index="idx" wx:key='k' url='/pages/xq1/xq1?id={{idx}}' class="nr1  flex-center flex-wrap     margin-top" hidden='{{tab!=2}}' wx:if="{{item.transport_name=='待完成'}}">
+  <navigator wx:for="{{dwc}}" wx:for-index="idx" wx:key='k' url='/pages/xq1/xq1?id={{item.id}}' class="nr1  flex-center flex-wrap     margin-top" hidden='{{tab!=2}}' wx:if="{{item.transport_name=='待完成'}}">
     <view class="asd flex-1  " style='width:95%'>
 
       <view style=' margin-bottom:30rpx ;margin-top:30rpx ' class="flex-center flex-row ">
@@ -151,14 +152,14 @@
 
         </view>
         <view class="margin-left-20  " style='color:#BBBBBB'>订单编号</view>
-        <view class="margin-left-20 margin-right-20 " style='color:red'>{{list1[idx].order_orderno}}</view>
+        <view class="margin-left-20 margin-right-20 " style='color:red'>{{dwc[idx].order_orderno}}</view>
       </view>
 
       <view class="flex-center flex-row margin-top-20">
         <view class="margin-left-20  ">
           <image class='icon-15 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
-        <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{list1[idx].order_companyname}}</view>
+        <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{dwc[idx].order_companyname}}</view>
 
 
       </view>
@@ -178,7 +179,7 @@
     <view class="asd flex-1" style='width:95%'>
       <view class=' flex-center margin-top-20  flex-row '>
         <view class="flex-1 flex-row flex-bottom">
-          <view class="margin-left-20 " style='font-size:98rpx !important; color:#4B69BB'>{{list1[idx].order_unitprice}}</view>
+          <view class="margin-left-20 " style='font-size:98rpx !important; color:#4B69BB'>{{dwc[idx].order_unitprice}}</view>
           <view class="">元/吨</view>
         </view>
         <view class="flex-1  flex-center  " style='text-algin:center'>
@@ -199,14 +200,14 @@
       <view class="flex-wrap" style=' margin-bottom:30rpx'>
         <view class="flex-row margin-top:10">
           <view class="margin-left-20  " id="z1" style='margin-top:15rpx'></view>
-          <view class="margin-left-20">{{list1[idx].order_startaddress}}</view>
+          <view class="margin-left-20">{{dwc[idx].order_startaddress}}</view>
         </view>
         <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>起点距您206公里</view>
         <view class="flex-row">
           <view class="margin-left-20 " id="z2" style='margin-top:30rpx'></view>
-          <view class="margin-left-20 margin-top-10">{{list1[idx].order_targetaddress}}</view>
+          <view class="margin-left-20 margin-top-10">{{dwc[idx].order_targetaddress}}</view>
         </view>
-        <view class="margin-left-30 h5 margin-top-10" style='color:#BBBBBB ; margin-left:60rpx'>总里程{{list1[idx].milestone}}公里</view>
+        <view class="margin-left-30 h5 margin-top-10" style='color:#BBBBBB ; margin-left:60rpx'>总里程{{dwc[idx].milestone}}公里</view>
       </view>
 
     </view>
@@ -214,7 +215,7 @@
   </navigator>
 
   <!--已报名区域-->
-  <navigator wx:for="{{ybm}}" wx:for-index="idx" wx:key='k' url='/pages/apply/apply?id={{item.orderid}}' class="nr1  flex-center flex-wrap margin-top" hidden='{{tab!=1}}' wx:if="{{item.openid==UserInfo.openid&&item.transport_name=='已报名'}}">
+  <navigator wx:for="{{ybm}}" wx:for-index="idx" wx:key='k' url='/pages/apply/apply?id={{item.id}}' class="nr1  flex-center flex-wrap margin-top" hidden='{{tab!=1}}' wx:if="{{item.openid==UserInfo.openid&&item.transport_name=='已报名'}}">
     <view class="asd flex-1  " style='width:95%'>
 
       <view style=' margin-bottom:30rpx ;margin-top:30rpx ' class="flex-center flex-row ">
@@ -222,14 +223,14 @@
 
         </view>
         <view class="margin-left-20  " style='color:#BBBBBB'>订单编号</view>
-        <view class="margin-left-20 margin-right-20 " style='color:red'>{{list1[idx].order_orderno}}</view>
+        <view class="margin-left-20 margin-right-20 " style='color:red'>{{ybm[idx].order_orderno}}</view>
       </view>
 
       <view class="flex-center flex-row margin-top-20">
         <view class="margin-left-20  ">
           <image class='icon-15 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
-        <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{list1[idx].order_companyname}}</view>
+        <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{ybm[idx].order_companyname}}</view>
 
 
       </view>
@@ -249,7 +250,7 @@
     <view class="asd flex-1" style='width:95%'>
       <view class=' flex-center margin-top-20  flex-row '>
         <view class="flex-1 flex-row flex-bottom">
-          <view class="margin-left-20 " style='font-size:98rpx !important; color:#4B69BB'>{{list1[idx].order_unitprice}}</view>
+          <view class="margin-left-20 " style='font-size:98rpx !important; color:#4B69BB'>{{ybm[idx].order_unitprice}}</view>
           <view class="">元/吨</view>
         </view>
         <view class="flex-1  flex-center  " style='text-algin:center'>
@@ -270,12 +271,12 @@
       <view class="flex-wrap" style=' margin-bottom:30rpx'>
         <view class="flex-row margin-top:10">
           <view class="margin-left-20  " id="z1" style='margin-top:15rpx'></view>
-          <view class="margin-left-20">{{list1[idx].order_startaddress}}</view>
+          <view class="margin-left-20">{{ybm[idx].order_startaddress}}</view>
         </view>
         <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>起点距您206公里</view>
         <view class="flex-row">
           <view class="margin-left-20 " id="z2" style='margin-top:30rpx'></view>
-          <view class="margin-left-20 margin-top-10">{{list1[idx].order_targetaddress}}</view>
+          <view class="margin-left-20 margin-top-10">{{ybm[idx].order_targetaddress}}</view>
         </view>
         <view class="margin-left-30 h5 margin-top-10" style='color:#BBBBBB ; margin-left:60rpx'>总里程0公里</view>
       </view>

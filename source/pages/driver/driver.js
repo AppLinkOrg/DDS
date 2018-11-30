@@ -301,8 +301,6 @@ class Content extends AppBase {
 
     }, 1000);
 
-
-
   }
 
 }

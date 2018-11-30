@@ -14,6 +14,9 @@ import {
 import {
   date
 } from "../../apis/order.api.js";
+import {
+  ApplyApi
+} from "../../apis/apply.api.js";
 
 class Content extends AppBase {
   constructor() {
@@ -23,37 +26,11 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
-    this.Base.setMyData(
-
-      {
-        id: this.Base.options.id
-      }
-    )
-
-    this.setData({
-      array: ['所有', '离我最近', '费用最高'],
-      objectArray: [{
-          id: 0,
-          name: '所有'
-        },
-        {
-          id: 1,
-          name: '离我最近'
-        },
-        {
-          id: 2,
-          name: '费用最高'
-        }
-
-      ],
-      index: 0,
-      tab: 0,
-
-
+    this.Base.setMyData({
+      
     })
-
+  
     super.onLoad(options);
-
   }
 
 
@@ -61,18 +38,19 @@ class Content extends AppBase {
   setPageTitle() {
     wx.setNavigationBarTitle({
       title: '报名详情',
-
     });
   }
 
-
   onMyShow() {
-
     console.log(6666666);
     console.log(this.Base.getMyData().id);
-
+    
     var orderapi = new OrderApi();
-    orderapi.applylist({}, (list1) => {
+    // orderapi.applyinfo({ id: this.Base.options.orderid},(applyinfo)=>{
+    //    this.Base.setMyData({ applyinfo})
+    //  })
+
+    orderapi.applyinfo({ id: this.Base.options.id}, (applyinfo) => {
       var year2 = new Array();
       var month2 = new Array();
       var day2 = new Array();
@@ -83,8 +61,8 @@ class Content extends AppBase {
       var day1 = new Array();
       var hh1 = new Array();
       var mm1 = new Array();
-      var myDate1 = new Date(Date.parse(list1[this.Base.options.id].order_start_time.replace(/-/g, "/")));
-      var myDate2 = new Date(Date.parse(list1[this.Base.options.id].order_end_time.replace(/-/g, "/")));
+      var myDate1 = new Date(Date.parse(applyinfo.order_start_time.replace(/-/g, "/")));
+      var myDate2 = new Date(Date.parse(applyinfo.order_end_time.replace(/-/g, "/")));
       year1 = myDate1.getFullYear();
       month1 = myDate1.getMonth() + 1;
       day1 = myDate1.getDate();
@@ -121,7 +99,7 @@ class Content extends AppBase {
         mm2 = '0' + mm2;
       }
       this.Base.setMyData({
-        list1: list1[this.Base.options.id],
+        applyinfo,
         year1: year1,
         year2: year2,
         month1: month1,
@@ -132,19 +110,8 @@ class Content extends AppBase {
         hh2: hh2,
         mm2: mm2,
         mm1: mm1
-
-
-
-
       });
-
-
-
-
     })
-
-
-
   }
   qwe(e) {
     this.setData({
@@ -160,21 +127,75 @@ class Content extends AppBase {
     var that = this;
     var id = e.currentTarget.id;
     var photo = [];
-    this.Base.uploadImage("driver", (ret) => {
+    this.Base.uploadImage("photo", (ret) => {
       photo.push(ret);
-
       that.Base.setMyData({
-
         photo
-
       });
-    }, 4);
+    }, () => {}, 4);
   }
-  photo(e) {
-    var photo = e.detail.value;
-    console.log(photo);
+
+  Getover(e) {
+    var data = e.detail.value;
+    if (data.photo == "") {
+      this.Base.info("请添加四张过磅单");
+      return;
+    }
+    if (data.photo2 == "") {
+      this.Base.info("请添加四张过磅单");
+      return;
+    }
+    if (data.photo3 == "") {
+      this.Base.info("请添加四张过磅单");
+      return;
+    }
+    if (data.photo4 == "") {
+      this.Base.info("请添加四张过磅单");
+      return;
+    }
+    var appyapi = new ApplyApi();
+    var photo = this.Base.getMyData().photo[0];
+    var photo2 = this.Base.getMyData().photo[1];
+    var photo3 = this.Base.getMyData().photo[2];
+    var photo4 = this.Base.getMyData().photo[3];
+    var applyinfo=this.Base.getMyData().applyinfo;
+    console.log(applyinfo.id);
+    appyapi.uploaddan({ apply_id: applyinfo.id, photo: photo, photo2: photo2, photo3: photo3, photo4: photo4,}, (uploaddan) => {
+        // wx.reLaunch({
+        //   url: '/pages/driver/driver',
+        // })
+      wx.showToast({
+        title: '提交成功',
+      })
+    });
+
+  }
+   photo(e) {
+     var photo = e.detail.value;
+     console.log(photo);
+     this.Base.setMyData({
+       photo: e.detail.value
+     })
+   }
+  photo2(e) {
+    var photo2 = e.detail.value;
+    console.log(photo2);
     this.Base.setMyData({
-      photo: e.detail.value
+      photo2: e.detail.value
+    })
+  }
+  photo3(e) {
+    var photo3 = e.detail.value;
+    console.log(photo3);
+    this.Base.setMyData({
+      photo3: e.detail.value
+    })
+  }
+  photo4(e) {
+    var photo4 = e.detail.value;
+    console.log(photo4);
+    this.Base.setMyData({
+      photo4: e.detail.value
     })
   }
 
@@ -188,4 +209,8 @@ body.qwe = content.qwe;
 body.changetab = content.changetab;
 body.uploadimg = content.uploadimg;
 body.photo = content.photo;
+body.photo2 = content.photo2;
+body.photo3 = content.photo3;
+body.photo4 = content.photo4;
+body.Getover = content.Getover;
 Page(body)
