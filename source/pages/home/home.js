@@ -64,18 +64,18 @@ class Content extends AppBase {
     }, (list) => {
 
       orderapi.applylist({}, (applylist) => {
-        // for (var i = 0; i < list.length; i++) {
-        //   all[i] = 0;
-        //   for (var j = 0; j < applylist.length; j++) {
-        //     if (list[i].id == applylist[j].order_id) {
-        //       all[i]++;
-        //       console.log(all);
-        //     }
-        //   }
-        // }
+         for (var i = 0; i < list.length; i++) {
+           all[i] = 0;
+           for (var j = 0; j < applylist.length; j++) {
+             if (list[i].id == applylist[j].order_id) {
+              all[i]++;
+               console.log(all);
+             }
+           }
+         }
         this.Base.setMyData({
-          // applylist,
-          // all: all
+           applylist,
+           all: all
         });
       });
 
@@ -90,18 +90,18 @@ class Content extends AppBase {
       orderby: "r_main.created_date desc"
     }, (minelist) => {
       orderapi.applylist({}, (applylist) => {
-        // for (var i = 0; i < minelist.length; i++) {
-        //   num[i] = 0;
-        //   for (var j = 0; j < applylist.length; j++) {
-        //     if (minelist[i].id == applylist[j].order_id) {
-        //       num[i]++;
-        //       console.log(num);
-        //     }
-        //   }
-        // }
+         for (var i = 0; i < minelist.length; i++) {
+           num[i] = 0;
+           for (var j = 0; j < applylist.length; j++) {
+             if (minelist[i].id == applylist[j].order_id) {
+               num[i]++;
+               console.log(num);
+            }
+           }
+         }
         this.Base.setMyData({
-          // applylist,
-          // num: num
+           applylist,
+           num: num
         });
       });
       this.Base.setMyData({

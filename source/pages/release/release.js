@@ -28,10 +28,10 @@ class Content extends AppBase {
         goodslist
       });
     });
-    var UserInfo = this.Base.getMyData().UserInfo;
-    orderapi.enterpriseinfo({}, (errinfo) => {
-      this.Base.setMyData({ errinfo })
-    })
+     var UserInfo = this.Base.getMyData().UserInfo;
+     orderapi.enterpriseinfo({}, (errinfo) => {
+       this.Base.setMyData({ errinfo })
+     })
     this.Base.setMyData({
       startdate: "",
       starttime: "",
@@ -41,6 +41,8 @@ class Content extends AppBase {
       tstdate: "",
       today: this.Base.util.FormatDate(new Date())
     });
+    
+    
     // var errinfo = this.Base.getMyData().errinfo;
     // if (errinfo == null || errinfo.status == "I") {
     //   wx.showModal({
@@ -68,12 +70,11 @@ class Content extends AppBase {
       title: '任务发布',
     });
     var orderapi = new OrderApi();
-    var UserInfo = this.Base.getMyData().UserInfo;
-    orderapi.enterpriseinfo({}, (errinfo) => {
-      this.Base.setMyData({ errinfo })
+    // var UserInfo = this.Base.getMyData().UserInfo;
+    // orderapi.enterpriseinfo({}, (errinfo) => {
+    //   this.Base.setMyData({ errinfo })
 
-    })
-    console.log(1111111111111111)
+    // })
 
     orderapi.memberlist({}, (memberlist) => {
       this.Base.setMyData({ memberlist });

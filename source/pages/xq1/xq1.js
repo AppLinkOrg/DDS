@@ -1,9 +1,19 @@
 // pages/driver/driver.js
-import { AppBase } from "../../appbase";
-import { ApiConfig } from "../../apis/apiconfig";
-import { InstApi } from "../../apis/inst.api.js";
-import { OrderApi } from "../../apis/order.api.js";
-import { date } from "../../apis/order.api.js";
+import {
+  AppBase
+} from "../../appbase";
+import {
+  ApiConfig
+} from "../../apis/apiconfig";
+import {
+  InstApi
+} from "../../apis/inst.api.js";
+import {
+  OrderApi
+} from "../../apis/order.api.js";
+import {
+  date
+} from "../../apis/order.api.js";
 
 class Content extends AppBase {
   constructor() {
@@ -15,13 +25,14 @@ class Content extends AppBase {
     super.onLoad(options);
     this.Base.setMyData(
 
-      { id: this.Base.options.id }
+      {
+        id: this.Base.options.id
+      }
     )
 
     this.setData({
       array: ['所有', '离我最近', '费用最高'],
-      objectArray: [
-        {
+      objectArray: [{
           id: 0,
           name: '所有'
         },
@@ -128,7 +139,7 @@ class Content extends AppBase {
       });
 
 
-  
+
 
     })
 
@@ -141,7 +152,30 @@ class Content extends AppBase {
     })
   }
   changetab(e) {
-    this.Base.setMyData({ tab: e.currentTarget.id });
+    this.Base.setMyData({
+      tab: e.currentTarget.id
+    });
+  }
+  uploadimg(e) {
+    var that = this;
+    var id = e.currentTarget.id;
+    var photo = [];
+    this.Base.uploadImage("driver", (ret) => {
+      photo.push(ret);
+
+      that.Base.setMyData({
+
+        photo
+
+      });
+    }, 4);
+  }
+  photo(e) {
+    var photo = e.detail.value;
+    console.log(photo);
+    this.Base.setMyData({
+      photo: e.detail.value
+    })
   }
 
 }
@@ -152,4 +186,6 @@ body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
 body.qwe = content.qwe;
 body.changetab = content.changetab;
+body.uploadimg = content.uploadimg;
+body.photo = content.photo;
 Page(body)
