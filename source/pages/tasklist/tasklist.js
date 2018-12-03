@@ -20,11 +20,11 @@ class Content extends AppBase {
     this.Base.setMyData({
       allshow:this.Base.options.allshow,
       mineshow:this.Base.options.mineshow,
-      num: this.Base.options.num,
+      mine: this.Base.options.mine,
       all:this.Base.options.all
     })
   
-    console.log(11111111)
+    console.log(11111111);
   }
   onMyShow() {
     var that = this;

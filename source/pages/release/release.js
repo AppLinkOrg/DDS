@@ -70,15 +70,15 @@ class Content extends AppBase {
       title: '任务发布',
     });
     var orderapi = new OrderApi();
-    // var UserInfo = this.Base.getMyData().UserInfo;
-    // orderapi.enterpriseinfo({}, (errinfo) => {
-    //   this.Base.setMyData({ errinfo })
-
-    // })
+     var UserInfo = this.Base.getMyData().UserInfo;
+     orderapi.enterpriseinfo({}, (errinfo) => {
+       this.Base.setMyData({ errinfo })
+     })
 
     orderapi.memberlist({}, (memberlist) => {
       this.Base.setMyData({ memberlist });
     });
+
     var errinfo = this.Base.getMyData().errinfo;
     if (errinfo == null || errinfo.status != "A") {
       wx.showModal({

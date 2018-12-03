@@ -138,29 +138,29 @@ class Content extends AppBase {
   Getover(e) {
     var data = e.detail.value;
     if (data.photo == "") {
-      this.Base.info("请添加四张过磅单");
+      this.Base.info("请至少添加两张过磅单");
       return;
     }
     if (data.photo2 == "") {
-      this.Base.info("请添加四张过磅单");
+      this.Base.info("请至少添加两张过磅单");
       return;
     }
-    if (data.photo3 == "") {
-      this.Base.info("请添加四张过磅单");
-      return;
-    }
-    if (data.photo4 == "") {
-      this.Base.info("请添加四张过磅单");
-      return;
-    }
-    var appyapi = new ApplyApi();
+    // if (data.photo3 == "") {
+    //   this.Base.info("请添加四张过磅单");
+    //   return;
+    // }
+    // if (data.photo4 == "") {
+    //   this.Base.info("请添加四张过磅单");
+    //   return;
+    // }
+    var applyapi = new ApplyApi();
     var photo = this.Base.getMyData().photo[0];
     var photo2 = this.Base.getMyData().photo[1];
     var photo3 = this.Base.getMyData().photo[2];
     var photo4 = this.Base.getMyData().photo[3];
     var applyinfo=this.Base.getMyData().applyinfo;
     console.log(applyinfo.id);
-    appyapi.uploaddan({ apply_id: applyinfo.id, photo: photo, photo2: photo2, photo3: photo3, photo4: photo4,}, (uploaddan) => {
+    applyapi.uploaddan({ apply_id: applyinfo.id, photo: photo, photo2: photo2, photo3: photo3, photo4: photo4,}, (uploaddan) => {
         // wx.reLaunch({
         //   url: '/pages/driver/driver',
         // })

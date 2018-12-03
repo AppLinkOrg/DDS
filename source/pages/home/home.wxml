@@ -44,28 +44,28 @@
     <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.nocontent_icon}}'></image>
     <view class=''>暂无发布信息</view>
   </view>
-  
-  <navigator url= '/pages/tasklist/tasklist?id={{item.id}}&mineshow=1&all={{all[idx]}}'  hidden='' bindtap='one' wx:for='{{list}}' wx:for-index='idx' wx:key='k' class='mid margin-top-60 margin-bottom-40'>
-<!--  -->
-  <view class='flex-row '>
-  
-  
-    <view class='padding-20 flex-1'>
-      <view class='txt-black h4'>{{item.companyname}}</view>
+  <!-- url='/pages/tasklist/tasklist?id={{item.id}}&mineshow=1&all={{all[idx]}}' -->
+  <navigator hidden='' bindtap='one' wx:for='{{list}}' wx:for-index='idx' data-index="{{all[idx]}}"  wx:key='k' id='{{item.id}}' class='mid margin-top-60 margin-bottom-40'>
+    <!--  -->
+    <view class='flex-row '>
 
-      <view class='h5 margin-top-20'>运输单号：{{item.orderno}}</view>
 
-      <view class='flex-row flex-center margin-top-20'>
-        <view class='h5'>报名截止时间：</view>
-        <view class='h5'>{{item.enroll_deadline}}</view>
+      <view class='padding-20 flex-1'>
+        <view class='txt-black h4'>{{item.companyname}}</view>
+
+        <view class='h5 margin-top-20'>运输单号：{{item.orderno}}</view>
+
+        <view class='flex-row flex-center margin-top-20'>
+          <view class='h5'>报名截止时间：</view>
+          <view class='h5'>{{item.enroll_deadline}}</view>
+        </view>
       </view>
+
+      <image wx:if='{{item.enroll_deadline<=today}}' class='icon-75 chaoshi' src='{{uploadpath}}resource/{{res.chaoshi}}'></image>
+
+
     </view>
 
-    <image wx:if='{{item.enroll_deadline<=today}}'  class='icon-75 chaoshi' src='{{uploadpath}}resource/{{res.chaoshi}}'></image>
-  
-  
-  </view>
-    
 
     <view class='flex-row flex-column'>
 
@@ -125,10 +125,10 @@
 <view hidden='{{mineshow!="2"}}'>
   <view wx:if='{{minelist.length==0}}' class='flex-row flex-column'>
     <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.nocontent_icon}}'></image>
-    <view class=''>您还未发布任何信息</view>                                                                                              
+    <view class=''>您还未发布任何信息</view>
   </view>
 
-  <navigator url='/pages/tasklist/tasklist?id={{item.id}}&mineshow=2&num={{num[idx]}}' bindtap='mine' wx:for='{{minelist}}' wx:key='k' wx:for-index='idx' class='mid margin-top-60 margin-bottom-40'>
+  <navigator id='{{item.id}}' data-index='{{num[idx]}}' bindtap='mine' wx:for='{{minelist}}' wx:key='k' wx:for-index='idx' class='mid margin-top-60 margin-bottom-40'>
     <view class='padding-20'>
       <view class='txt-black h4'>{{item.companyname}}</view>
       <view class='h5 margin-top-20'>运输单号：{{item.orderno}}</view>

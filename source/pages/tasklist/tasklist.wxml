@@ -16,8 +16,8 @@
   <view class='flex-row flex-center margin-top-20'>
     <view class='flex-row flex-column flex-1' style='border-right:1rpx solid #CFCECF'>
       <view class='flex-row '>
-        <view wx:if='{{mineshow=="2"}}' class='font-left'>{{num}}</view>
-        <view wx:if='{{mineshow!="2"}}' class='font-left'>{{all}}</view>
+        <view wx:if='{{mineshow=="2"}}' class='font-left'>{{mine}}</view>
+        <view wx:if='{{mineshow=="1"}}' class='font-left'>{{all}}</view>
         <view class='font-mid padding-top-40 margin-left-10'>/{{orderinfo.carcount}}</view>
         <view class='txt-bold padding-top-60 margin-left-10'>辆</view>
       </view>

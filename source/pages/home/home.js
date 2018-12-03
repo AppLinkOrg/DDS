@@ -156,38 +156,43 @@ class Content extends AppBase {
 
   }
   one(e) {
-    var errinfo = this.Base.getMyData().errinfo;
-    if (errinfo == null || errinfo.status == "N") {
-      wx.showModal({
-        title: '未认证',
-        content: '您是否需要前往企业认证',
-        showCancel: false,
+     var errinfo = this.Base.getMyData().errinfo;
+     if (errinfo == null || errinfo.status != "A") {
+       wx.showModal({
+         title: '未认证',
+         content: '您是否需要前往企业认证',
+         showCancel: true,
         cancelText: '取消',
-        cancelColor: '#EE2222',
-        confirmText: '确定',
-        confirmColor: '#2699EC',
-        success: function(res) {
-          if (res.confirm) {
+         cancelColor: '#EE2222',
+         confirmText: '确定',
+         confirmColor: '#2699EC',
+         success: function(res) {
+           if (res.confirm) {
             wx.navigateTo({
-              url: '/pages/certification/certification',
-            })
-          }
-        }
-      });
-    }
-    // else{
-    //   wx.navigateTo({
-    //     url: '/pages/tasklist/tasklist?id={{item.id}}&mineshow=1&all={{all[idx]}}'
-    //   })
-    // }
+               url: '/pages/certification/certification',
+             })
+           }
+         }
+       });
+     }
+     else {
+      var id = e.currentTarget.id;
+      var name = e.currentTarget.dataset.index;
+      console.log(555555555555555555555);
+      console.log(name);
+      wx.navigateTo({
+        url: '/pages/tasklist/tasklist?id=' + id + '&mineshow=' + 1+'&all='+ name
+      })
+      // & all='+{{all[idx]}}
+     }
   }
   mine(e) {
     var errinfo = this.Base.getMyData().errinfo;
-    if (errinfo == null || errinfo.status == "N") {
+    if (errinfo == null || errinfo.status != "A") {
       wx.showModal({
         title: '未认证',
         content: '您是否需要前往企业认证',
-        showCancel: false,
+        showCancel: true,
         cancelText: '取消',
         cancelColor: '#EE2222',
         confirmText: '确定',
@@ -201,11 +206,14 @@ class Content extends AppBase {
         }
       });
     }
-    // else{
-    //   wx.navigateTo({
-    //     url: '/pages/tasklist/tasklist?id={{item.id}}&mineshow=1&all={{all[idx]}}'
-    //   })
-    // }
+     else{
+      var id = e.currentTarget.id;
+      var mine = e.currentTarget.dataset.index;
+       wx.navigateTo({
+         url: '/pages/tasklist/tasklist?id=' + id + '&mineshow=' + 2 + '&mine=' + mine
+       })
+        // & all='+{{all[idx]}}
+     }
   }
 }
 var content = new Content();

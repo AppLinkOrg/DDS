@@ -1,6 +1,6 @@
 <!--pages/certification/certification.wxml-->
-<view wx:if='{{errinfo.status=="I"}}'  class=''>
-  <view class='h4 txt-primary txt-bold txt-center padding-20' >您的认证申请已提交，请耐心等待审核！</view>
+<view wx:if='{{errinfo.status=="I"}}' class=''>
+  <view class='h4 txt-primary txt-bold txt-center padding-20'>您的认证申请已提交，请耐心等待审核！</view>
   <view class='I_bottom padding-30 txt-white bg-bck_ble text-center' bindtap='Yes'>确定</view>
 </view>
 
@@ -39,7 +39,8 @@
   </form>
 </view>
 
-<view wx:key='k' class='padding-40 flex-row column' wx:if='{{errinfo.status=="A"}}'>
+<view wx:if='{{errinfo.status=="A"}}'>
+<view wx:key='k' class='padding-40 flex-row column' >
 
   <view class='flex-row column '>
     <view>企业名称</view>
@@ -58,4 +59,8 @@
     </view>
   </view>
 
+ 
+
+</view>
+ <view class='bottom padding-30 txt-white bg-bck_ble text-center' bindtap='Yes'>确定</view>
 </view>
