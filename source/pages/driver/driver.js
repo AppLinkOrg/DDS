@@ -10,6 +10,7 @@ import {
 import {
   OrderApi
 } from "../../apis/order.api.js";
+import { CertificateApi } from "../../apis/certificate.api.js";
 var utils = require('../../utils/util.js')
 
 class Content extends AppBase {
@@ -73,6 +74,10 @@ class Content extends AppBase {
     var that = this;
     //查询所有列表 
     var orderapi = new OrderApi();
+    var api = new CertificateApi();
+    api.certificatexq({}, (driverinfo) => {
+      this.Base.setMyData({ driverinfo });
+    });
     orderapi.applylist({}, (list1) => {
       orderapi.list({getall:"Y"}, (list) => {
         var year = new Array();
@@ -259,10 +264,6 @@ class Content extends AppBase {
 
     clearInterval(this.timer);
 
-
-
-
-
   }
 
   Countdown(list) {
@@ -302,7 +303,90 @@ class Content extends AppBase {
     }, 1000);
 
   }
-
+  newtask(e){
+    var driverinfo = this.Base.getMyData().driverinfo;
+    if (driverinfo == null || driverinfo.status != "A") {
+      wx.showModal({
+        title: '未认证',
+        content: '您是否需要前往企业认证',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#EE2222',
+        confirmText: '确定',
+        confirmColor: '#2699EC',
+        success: function (res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/certificate/certificate',
+            })
+          }
+        }
+      });
+    }
+    else {
+      var id=e.currentTarget.id;
+      var UserInfo=this.Base.getMyData().UserInfo;
+      wx.navigateTo({
+        url: '/pages/orderdetails/orderdetails?id='+id+'&openid'+UserInfo.openid
+      })
+    }
+  } 
+  registered(e) {
+    var driverinfo = this.Base.getMyData().driverinfo;
+    if (driverinfo == null || driverinfo.status != "A") {
+      wx.showModal({
+        title: '未认证',
+        content: '您是否需要前往企业认证',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#EE2222',
+        confirmText: '确定',
+        confirmColor: '#2699EC',
+        success: function (res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/certificate/certificate',
+            })
+          }
+        }
+      });
+    }
+    else {
+      var id = e.currentTarget.id;
+      var UserInfo = this.Base.getMyData().UserInfo;
+      wx.navigateTo({
+        url: '/pages/apply/apply?id=' + id
+      })
+    }
+  } 
+  tobecompleted(e) {
+    var driverinfo = this.Base.getMyData().driverinfo;
+    if (driverinfo == null || driverinfo.status != "A") {
+      wx.showModal({
+        title: '未认证',
+        content: '您是否需要前往企业认证',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#EE2222',
+        confirmText: '确定',
+        confirmColor: '#2699EC',
+        success: function (res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/certificate/certificate',
+            })
+          }
+        }
+      });
+    }
+    else {
+      var id = e.currentTarget.id;
+      var UserInfo = this.Base.getMyData().UserInfo;
+      wx.navigateTo({
+        url: '/pages/xq1/xq1?id=' + id
+      })
+    }
+  }
 }
 var tab = null;
 var timer = 1;
@@ -315,4 +399,7 @@ body.changetab = content.changetab;
 body.sj = content.sj;
 body.Countdown = content.Countdown;
 body.setTimeout = content.setTimeout;
+body.newtask = content.newtask; 
+body.registered = content.registered; 
+body.tobecompleted = content.tobecompleted;
 Page(body)

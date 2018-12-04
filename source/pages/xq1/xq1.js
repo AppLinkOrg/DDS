@@ -161,9 +161,9 @@ class Content extends AppBase {
     var applyinfo=this.Base.getMyData().applyinfo;
     console.log(applyinfo.id);
     applyapi.uploaddan({ apply_id: applyinfo.id, photo: photo, photo2: photo2, photo3: photo3, photo4: photo4,}, (uploaddan) => {
-        // wx.reLaunch({
-        //   url: '/pages/driver/driver',
-        // })
+         wx.reLaunch({
+           url: '/pages/driver/driver',
+         })
       wx.showToast({
         title: '提交成功',
       })
