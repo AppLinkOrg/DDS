@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/youke/youke",
-    "pages/home/home",
     "pages/weighingsheet/weighingsheet",
+    "pages/home/home",
     "pages/driver/driver",
     "pages/Addvehicle/Addvehicle",
     "pages/vehicle/vehicle",

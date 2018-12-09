@@ -1,6 +1,6 @@
 <!--pages/release/release.wxml-->
 
-<view class='mid margin-top  '>
+<view class='mid margin-top  ' >
   <form bindsubmit="confirm" bindreset="formReset" report-submit="{{true}}">
 
     <view class='flex-row flex-center bor_btm padding-40'>
@@ -68,9 +68,13 @@
           <input placeholder='请输入详细地址' disabled='false' name='endaddress' readonly value='{{targetaddress}}' bindtap='openRoute'></input>
         </view>
         <view class='flex-row flex-center margin-top-10'>
-          <view class='flex-row flex-center '>距离：<input class='h5 flex-1 ' name='juli' bindinput='binddistance' placeholder='— —' value='{{distance}}'></input></view>
-          <view class='flex-row flex-center'>时间：<input class='h5 flex-1 ' placeholder='— —' value='{{duration}}'></input></view>
-          
+          <view class='flex-row flex-center '>距离：
+            <input class='h5 flex-1 ' name='juli' bindinput='binddistance' placeholder='— —' value='{{distance}}'></input>
+          </view>
+          <view class='flex-row flex-center'>时间：
+            <input class='h5 flex-1 ' placeholder='— —' value='{{duration}}'></input>
+          </view>
+
         </view>
       </view>
     </view>

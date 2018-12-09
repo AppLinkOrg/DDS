@@ -292,6 +292,35 @@ export class OrderApi {
       }
     })
   }
+  //获取团队成员详情
+  memberinfo(json, callback, showLoading = true) {
+    if (showLoading)
+      ApiConfig.ShowLoading();
+    var header = ApiConfig.GetHeader();
+    console.log(header);
+    wx.request({
+      url: ApiConfig.GetApiUrl() + 'order/memberinfo',
+      data: json,
+      method: 'POST',
+      dataType: 'json',
+      header: header,
+      success: function (res) {
+        if (callback != null) {
+          callback(res.data);
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+        callback(false);
+      },
+      complete: function (res) {
+        console.log(res);
+
+        if (showLoading)
+          ApiConfig.CloseLoading();
+      }
+    })
+  }
   //获取关于我们内容
   aboutus(json, callback, showLoading = true) {
     if (showLoading)
@@ -349,7 +378,7 @@ export class OrderApi {
           ApiConfig.CloseLoading();
       }
     })
-  } 
+  }
   //提交认证信息
   authenticate(json, callback, showLoading = true) {
     if (showLoading)
@@ -532,6 +561,35 @@ export class OrderApi {
     console.log(header);
     wx.request({
       url: ApiConfig.GetApiUrl() + 'order/updataorder',
+      data: json,
+      method: 'POST',
+      dataType: 'json',
+      header: header,
+      success: function (res) {
+        if (callback != null) {
+          callback(res.data);
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+        callback(false);
+      },
+      complete: function (res) {
+        console.log(res);
+
+        if (showLoading)
+          ApiConfig.CloseLoading();
+      }
+    })
+  }
+  //修改运输单任务状态为已完成
+  updatataskstatus(json, callback, showLoading = true) {
+    if (showLoading)
+      ApiConfig.ShowLoading();
+    var header = ApiConfig.GetHeader();
+    console.log(header);
+    wx.request({
+      url: ApiConfig.GetApiUrl() + 'order/updatataskstatus',
       data: json,
       method: 'POST',
       dataType: 'json',

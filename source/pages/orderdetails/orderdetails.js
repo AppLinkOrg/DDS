@@ -186,7 +186,22 @@ class Content extends AppBase {
         mm3: mm3
       });
       this.Base.setMyData(info);
+      console.log("编号" + info.enroll_id)
+      orderapi.memberinfo({ id: info.enroll_id }, (enrollinfo) => {
+        this.Base.setMyData({ enrollinfo });
+      });
+
+      orderapi.memberinfo({ id: info.start_id }, (startinfo) => {
+        this.Base.setMyData({ startinfo });
+      });
+
+      orderapi.memberinfo({ id: info.end_id }, (endinfo) => {
+        this.Base.setMyData({ endinfo });
+      });
+
     });
+
+    
   }
 
 
@@ -205,6 +220,12 @@ class Content extends AppBase {
       tonnage: e.detail.value
     })
   }
+  binddriver(e) {
+    var driverphone = e.detail.value;
+    this.Base.setMyData({
+      driverphone: e.detail.value
+    })
+  }
   confirm(e) {
     var data = e.detail.value;
     var weight = this.Base.getMyData().weight;
@@ -214,7 +235,10 @@ class Content extends AppBase {
       this.Base.info("请输入客运吨数");
       return;
     }
-
+    if (data.driverphone == "") {
+      this.Base.info("请输入联系电话");
+      return;
+    }
     if (parseInt(data.tonnage) > parseInt(weight)) {
       this.Base.info("不能大于剩余吨数");
       return;
@@ -228,22 +252,26 @@ class Content extends AppBase {
       this.Base.info("请选择车辆");
       return;
     }
-    var tonnage = this.Base.getMyData().tonnage;
+    var tonnage = this.Base.getMyData().tonnage; 
+    var driverphone = this.Base.getMyData().driverphone; 
     var UserInfo = this.Base.getMyData().UserInfo;
     var orderid = this.Base.getMyData().id;
     var vehicle = this.Base.getMyData().elcontact;
     var that = this;
     var api = new CertificateApi();
     var UserInfo = this.Base.getMyData().UserInfo;
-    var orderapi = new OrderApi();
+    var orderapi = new OrderApi(); 
+    var driverinfo = this.Base.getMyData().driverinfo;
     var info=this.Base.getMyData().info;
       orderapi.addapply({
         status: "A",
         transport: "Y",
         orderid: orderid,
         tonnage: tonnage,
+        driver_phone: driverphone,
         vehicle: vehicle,
         member_name: info.companyname,
+        carriage_driver: driverinfo.name,
         openid: UserInfo.openid
       }, (addapply) => {
         var driverinfo = this.Base.getMyData().driverinfo;
@@ -266,9 +294,9 @@ class Content extends AppBase {
            });
           }
          else {
-           wx.reLaunch({
-             url: '/pages/driver/driver'
-           }),
+            wx.reLaunch({
+              url: '/pages/driver/driver'
+            }),
              wx.showToast({
                title: '发布成功',
                duration: 1000
@@ -288,7 +316,8 @@ var body = content.generateBodyJson();
 
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
-body.tonnage = content.tonnage;
+body.tonnage = content.tonnage; 
+body.binddriver = content.binddriver; 
 body.confirm = content.confirm;
 body.enrollcontact = content.enrollcontact;
 body.bindenroll = content.bindenroll;

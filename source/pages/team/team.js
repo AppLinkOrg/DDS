@@ -16,8 +16,8 @@ class Content extends AppBase {
     orderapi.goodslist({}, (goodslist) => {
       this.Base.setMyData({ goodslist });
     });
-    
   }
+  
   onMyShow() {
     var that = this;
     var orderapi = new OrderApi();

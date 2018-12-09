@@ -49,6 +49,7 @@ class Content extends AppBase {
   bindcontact(e) {
     this.Base.setMyData({ cpd: 1, waitcpd: 1 ,ctt:1})
   }
+  
   bindqueren(e){
     wx.showModal({
       content: '您确认 晋A·12345 完成了任务吗？',
@@ -104,7 +105,6 @@ class Content extends AppBase {
           });
         }
       }
-
     })
   }
 
@@ -130,8 +130,34 @@ class Content extends AppBase {
           });
         }
       }
-
     })
+  }
+
+  weightsheet(e) {
+    var tobecpdlist = this.Base.getMyData().tobecpdlist;
+    var photo = e.currentTarget.dataset.index;
+
+    console.log("sssssssssss" + photo);
+
+    var id = e.currentTarget.id;
+    if (photo=="") {
+      wx.showModal({
+        title: '',
+        content: '该司机暂未添加过磅单',
+        showCancel: false,
+        cancelText: '取消',
+        cancelColor: '#EE2222',
+        confirmText: '确定',
+        confirmColor: '#EE2222',
+      })
+    }
+
+    else{
+      wx.navigateTo({
+        url: '/pages/weighingsheet/weighingsheet?id=' + id
+      })
+    }
+
   }
 }
 var content = new Content();
@@ -145,4 +171,5 @@ body.bindqueren = content.bindqueren;
 body.Determineduse = content.Determineduse;
 body.Refuse = content.Refuse;
 body.addcompleted = content.addcompleted;
+body.weightsheet = content.weightsheet;
 Page(body)

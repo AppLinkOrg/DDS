@@ -1,21 +1,20 @@
 
-
 <view  >
   <view class="flex-row flex-center" style='' ><view class="flex-1 text-center" style='text-algin:center'>最新发布</view></view>
  <navigator url='/pages/usercategory/usercategory'  wx:for='{{list}}' wx:key='k' class='mid margin-top-60 margin-bottom-40' >
-  
-  <view class='flex-row flex-column  '>
 
+  <view class='flex-row flex-column  '>
     <view class='flex-row flex-center margin-top-20'>
       <view class='h5'>报名截止时间：</view>
       <view class='h5'>{{item.enroll_deadline}}</view>
     </view>
     <view class='text-center txt-red h5 signup margin-top-20'>报名中</view>
   </view>
+
   <view class='flex-row flex-center margin-top-20'>
     <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
       <view class='flex-row '>
-        <view class='font-left'>2</view>
+        <view class='font-left'>{{item.applycount}}</view>
         <view class='font-mid padding-top-40 margin-left-10'>/{{item.carcount}}</view>
         <view class='txt-bold padding-top-60 margin-left-10'>辆</view>
       </view>
@@ -28,6 +27,7 @@
       </view>
     </view>
   </view>
+  
   <view class='flex-row flex-center padding-10 ' style='border-bottom:1rpx solid #CFCECF'>
     <view class='flex-1 text-center font-bottom margin-bottom-10'>已报名</view>
     <view class='flex-1 text-center font-bottom margin-bottom-10'>预计运费</view>

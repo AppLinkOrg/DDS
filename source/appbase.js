@@ -186,7 +186,6 @@ export class AppBase {
                 console.log("goto update info");
                 //this.loadtabtype();
 
-
                 memberapi.update(AppBase.UserInfo, () => { 
 
                   console.log(AppBase.UserInfo);
@@ -228,6 +227,7 @@ export class AppBase {
 
       that.checkPermission();
     }
+
 
   }
   loadtabtype(){

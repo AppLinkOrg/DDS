@@ -2,6 +2,9 @@
   <view class='flex-row flex-center bg-bck_ble'>
     <view class='flex-1 text-center padding-20 txt-gray_white {{allshow==1?"txt-white":""}}' bindtap='bindall'>所有发布</view>
     <view class='flex-1 text-center padding-20 txt-gray_white {{mineshow==2?"txt-white":""}}' bindtap='bindmine'>我的发布</view>
+    <view class='num txt-white h6 text-center'>{{applylist.length}}</view>
+    <!-- <image src='{{uploadpath}}resource/{{}}'></image> -->
+    
   </view>
 
   <view class='flex-row flex-center padding-20 bg-white' hidden='{{allshow!="1"}}'>
@@ -45,38 +48,36 @@
     <view class=''>暂无发布信息</view>
   </view>
   <!-- url='/pages/tasklist/tasklist?id={{item.id}}&mineshow=1&all={{all[idx]}}' -->
-  <navigator hidden='' bindtap='one' wx:for='{{list}}' wx:for-index='idx' data-index="{{all[idx]}}"  wx:key='k' id='{{item.id}}' class='mid margin-top-60 margin-bottom-40'>
+  <navigator hidden='' bindtap='one' wx:for='{{list}}' wx:for-index='idx' data-index="{{all[idx]}}" wx:if='{{item.taskstatus!=4}}' wx:key='k' id='{{item.id}}' class='mid margin-top-60 margin-bottom-40'>
     <!--  -->
     <view class='flex-row '>
-
-
       <view class='padding-20 flex-1'>
         <view class='txt-black h4'>{{item.companyname}}</view>
-
         <view class='h5 margin-top-20'>运输单号：{{item.orderno}}</view>
+
+        <view class='flex-row flex-center margin-top-20'>
+          <view class='h5'>报名开始时间：</view>
+          <view class='h5'>{{item.enroll_start}}</view>
+        </view>
+
 
         <view class='flex-row flex-center margin-top-20'>
           <view class='h5'>报名截止时间：</view>
           <view class='h5'>{{item.enroll_deadline}}</view>
         </view>
+
       </view>
-
-      <image wx:if='{{item.enroll_deadline<=today}}' class='icon-75 chaoshi' src='{{uploadpath}}resource/{{res.chaoshi}}'></image>
-
-
+      <image wx:if='{{item.enroll_deadline_timespan<=timestamp}}' class='icon-75 chaoshi' src='{{uploadpath}}resource/{{res.chaoshi}}'></image>
     </view>
 
-
     <view class='flex-row flex-column'>
-
-
-      <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{item.enroll_deadline>today}}'>{{item.taskstatus_name}}</view>
-      <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{item.enroll_deadline<=today}}'>报名截止</view>
+      <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{item.enroll_deadline_timespan>timestamp}}'>{{item.taskstatus_name}}</view>
+      <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{item.enroll_deadline_timespan<=timestamp}}'>报名截止</view>
     </view>
     <view class='flex-row flex-center margin-top-20'>
       <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
         <view class='flex-row'>
-          <view class='font-left'>{{all[idx]}}</view>
+          <view class='font-left'>{{item.applycount}}</view>
           <view class='font-mid padding-top-40 margin-left-10'>/{{item.carcount}}</view>
           <view class='txt-bold padding-top-60 margin-left-10'>辆</view>
         </view>
@@ -128,24 +129,34 @@
     <view class=''>您还未发布任何信息</view>
   </view>
 
-  <navigator id='{{item.id}}' data-index='{{num[idx]}}' bindtap='mine' wx:for='{{minelist}}' wx:key='k' wx:for-index='idx' class='mid margin-top-60 margin-bottom-40'>
-    <view class='padding-20'>
-      <view class='txt-black h4'>{{item.companyname}}</view>
-      <view class='h5 margin-top-20'>运输单号：{{item.orderno}}</view>
-      <view class='flex-row flex-center margin-top-20'>
-        <view class='h5 '>报名截止时间：</view>
-        <view class='h5'>{{item.enroll_deadline}}</view>
+  <navigator id='{{item.id}}' data-index='{{num[idx]}}' wx:if='{{item.taskstatus!=4}}' bindtap='mine' wx:for='{{minelist}}' wx:key='k' wx:for-index='idx' class='mid margin-top-60 margin-bottom-40'>
+    <view class='flex-row '>
+      <view class='padding-20 flex-1'>
+        <view class='txt-black h4'>{{item.companyname}}</view>
+        <view class='h5 margin-top-20'>运输单号：{{item.orderno}}</view>
+
+        <view class='flex-row flex-center margin-top-20'>
+          <view class='h5'>报名开始时间：</view>
+          <view class='h5'>{{item.enroll_start}}</view>
+        </view>
+
+        <view class='flex-row flex-center margin-top-20'>
+          <view class='h5'>报名截止时间：</view>
+          <view class='h5'>{{item.enroll_deadline}}</view>
+        </view>
       </view>
+      <image wx:if='{{item.enroll_deadline_timespan<=timestamp}}' class='icon-75 chaoshi' src='{{uploadpath}}resource/{{res.chaoshi}}'></image>
     </view>
     <view class='flex-row flex-column '>
 
 
-      <view class='text-center txt-red h5 signup margin-top-20'>{{item.taskstatus_name}}</view>
+      <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{item.enroll_deadline_timespan>timestamp}}'>{{item.taskstatus_name}}</view>
+      <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{item.enroll_deadline_timespan<=timestamp}}'>报名截止</view>
     </view>
     <view class='flex-row flex-center margin-top-20'>
       <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
         <view class='flex-row '>
-          <view class='font-left'>{{num[idx]}}</view>
+          <view class='font-left'>{{item.applycount}}</view>
           <view class='font-mid padding-top-40 margin-left-10'>/{{item.carcount}}</view>
           <view class='txt-bold padding-top-60 margin-left-10'>辆</view>
         </view>

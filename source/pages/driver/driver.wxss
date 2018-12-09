@@ -14,7 +14,15 @@
   width: 100%;
   box-shadow: 0rpx 1rpx 20rpx 2rpx #ccc;
 }
-
+.num{
+  position: fixed;
+  z-index: 100;
+  right: 10rpx;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  background: red;
+}
 .bg {
   background-color: #fff;
 }

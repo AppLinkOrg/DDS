@@ -61,11 +61,12 @@ class Content extends AppBase {
     //      list
     //    });
     //  })
-    orderapi.info({ id: this.Base.options.id}, (info) => {
+    orderapi.info({ id: 16}, (info) => {
       that.Base.setMyData({
         info
       });
     })
+    
     orderapi.applyinfo({id:this.Base.options.id}, (applyinfo) => {
       var year2 = new Array();
        var month2 = new Array();
@@ -127,6 +128,18 @@ class Content extends AppBase {
          mm2: mm2,
          mm1: mm1
        });
+
+
+      orderapi.memberinfo({ id: applyinfo.order_enroll_id }, (enrollinfo) => {
+        this.Base.setMyData({ enrollinfo });
+      });
+      orderapi.memberinfo({ id: applyinfo.order_start_id }, (startinfo) => {
+        this.Base.setMyData({ startinfo });
+      });
+      orderapi.memberinfo({ id: applyinfo.order_end_id }, (endinfo) => {
+        this.Base.setMyData({ endinfo });
+      });
+
     })
 
   //  var orderapi = new OrderApi();

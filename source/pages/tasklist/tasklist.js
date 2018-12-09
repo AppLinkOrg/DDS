@@ -17,11 +17,16 @@ class Content extends AppBase {
     orderapi.goodslist({}, (goodslist) => {
       this.Base.setMyData({ goodslist });
     });
+    var timestamp = Date.parse(new Date());
+    orderapi.info({ }, (orderinfo) => {
+      this.Base.setMyData({ orderinfo });
+    });
     this.Base.setMyData({
       allshow:this.Base.options.allshow,
       mineshow:this.Base.options.mineshow,
       mine: this.Base.options.mine,
-      all:this.Base.options.all
+      all:this.Base.options.all,
+      timestamp: timestamp / 1000
     })
   
     console.log(11111111);
@@ -29,12 +34,9 @@ class Content extends AppBase {
   onMyShow() {
     var that = this;
     var orderapi=new OrderApi();
+
     var UserInfo = this.Base.getMyData().UserInfo;
-    orderapi.memberlist({ }, (memberlist) => {
-      this.Base.setMyData({ memberlist });
-    });
-
-
+    
     orderapi.info({id:that.Base.options.id}, (orderinfo) => {
       
       var data1 = new Date(Date.parse(orderinfo.start_time.replace(/-/g, "/")));
@@ -81,7 +83,27 @@ class Content extends AppBase {
       orderinfo.start_time;
       console.log(orderinfo.start_time);
       this.Base.setMyData({ orderinfo, month1, day1, hh1, mm1, month, day, hh, mm });
-    }); 
+
+      orderapi.memberinfo({ id: orderinfo.enroll_id}, (enrollinfo) => {
+        this.Base.setMyData({ enrollinfo });
+      });
+      orderapi.memberinfo({ id: orderinfo.start_id }, (startinfo) => {
+        this.Base.setMyData({ startinfo });
+      });
+      orderapi.memberinfo({ id: orderinfo.end_id }, (endinfo) => {
+        this.Base.setMyData({ endinfo });
+      });
+      orderapi.applylist({  orderid: orderinfo.id }, (applylist) => {
+        this.Base.setMyData({ applylist });
+      });
+    });
+   
+    
+    // var orderinfo = that.Base.getMyData().orderinfo;
+    
+    // orderapi.memberlist({ name: orderinfo.orderinfo.carcount }, (enrolllist) => {
+    //   this.Base.setMyData({ enrolllist });
+    // });
     
   }
   setPageTitle(instinfo) {
@@ -93,7 +115,6 @@ class Content extends AppBase {
   Deleteorder(e){
     console.log(e);
     var that=this;
-
      wx.showModal({
        title: '',
        content: '您是否需要取消本次报名？',
@@ -119,10 +140,40 @@ class Content extends AppBase {
      })
     
   }
+
+
+  update(e){
+    
+    console.log(e);
+    var that = this;
+    wx.showModal({
+      title: '',
+      content: '您是否选择完成任务',
+      showCancel: true,
+      cancelText: '否',
+      cancelColor: '',
+      confirmText: '是',
+      confirmColor: '',
+      success: function (res) {
+        if (res.confirm) {
+          var orderapi = new OrderApi();
+          orderapi.updatataskstatus({ id: that.Base.options.id }, (updatataskstatus) => {
+            that.Base.setMyData({
+              updatataskstatus
+            });
+            wx.reLaunch({
+              url: '/pages/home/home',
+            })
+          });
+        }
+      }
+    })
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
-body.Deleteorder = content.Deleteorder;
+body.Deleteorder = content.Deleteorder; 
+body.update = content.update;
 Page(body)

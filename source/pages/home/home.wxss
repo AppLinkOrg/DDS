@@ -74,3 +74,21 @@ background: #CFCECF;
 .chaoshi{
   border-top-right-radius: 10rpx;
 }
+
+.reddot{
+  background: red;
+  border-radius: 50%;
+  height:24rpx;
+  width:24rpx;
+  position: absolute;
+  margin-left:150rpx;
+}
+.num{
+  position: fixed;
+  z-index: 100;
+  right: 40rpx;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  background: red;
+}

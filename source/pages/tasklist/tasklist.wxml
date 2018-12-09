@@ -2,15 +2,16 @@
 
 <view class='mid margin-top margin-bottom-40'>
   <view class='flex-row flex-column  '>
-<view class='h4 txt-black margin-top'>{{orderinfo.companyname}}</view>
+    <view class='h4 txt-black margin-top'>{{orderinfo.companyname}}</view>
     <view class='flex-row flex-center margin-top-20'>
 
-      
+
 
       <view class='h5'>报名截止时间：</view>
       <view class='h5'>{{orderinfo.enroll_deadline}}</view>
     </view>
-    <view class='text-center txt-red h5 signup margin-top-20'>{{orderinfo.taskstatus_name}}</view>
+    <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{orderinfo.enroll_deadline_timespan>timestamp}}'>{{orderinfo.taskstatus_name}}</view>
+    <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{orderinfo.enroll_deadline_timespan<=timestamp}}'>报名截止</view>
   </view>
 
   <view class='flex-row flex-center margin-top-20'>
@@ -93,7 +94,7 @@
 
   <view class='flex-row column'>
 
-    <navigator url='/pages/driverlist/driverlist?id={{orderinfo.id}}' hidden='{{orderinfo.member_id_name!=UserInfo.nickName}}' wx:if='{{mineshow=="2"}}' class='flex-row flex-center flex-1 padding-40   bor_btm'>
+    <navigator url='/pages/driverlist/driverlist?id={{orderinfo.id}}'  wx:if='{{mineshow=="2"}}' class='flex-row flex-center flex-1 padding-40   bor_btm'>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.driver}}'></image>
       <view class='txt-gray h5 flex-1 margin-left-20'>司机列表</view>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
@@ -111,21 +112,24 @@
       <view class='h5 txt-black'>{{orderinfo.stuff_type_id}}</view>
     </view>
 
-    <view class='flex-row flex-center flex-1 padding-40   bor_btm' bindtap='phoneCall' id='98798789'>
+    <view class='flex-row flex-center flex-1 padding-40   bor_btm' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.enterprise}}'></image>
       <view class='txt-black h5 flex-1 margin-left-20'>{{orderinfo.enroll_contact}}</view>
+      <view class='txt-black h5 flex-1 margin-left-20'>{{enrollinfo.member_phone}}</view>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.phone_icon}}'></image>
     </view>
 
-    <view class='flex-row flex-center flex-1 padding-40   bor_btm' bindtap='phoneCall' id='654654654'>
+    <view class='flex-row flex-center flex-1 padding-40   bor_btm' bindtap='phoneCall' id='{{startinfo.member_phone}}'>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
       <view class='txt-black h5 flex-1 margin-left-20'>{{orderinfo.start_contact}}</view>
+      <view class='txt-black h5 flex-1 margin-left-20'>{{startinfo.member_phone}}</view>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.phone_icon}}'></image>
     </view>
 
-    <view class='flex-row flex-center flex-1 padding-40   bor_btm' bindtap='phoneCall' id='123123132'>
+    <view class='flex-row flex-center flex-1 padding-40   bor_btm' bindtap='phoneCall' id='{{endinfo.member_phone}}'>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
       <view class='txt-black h5 flex-1 margin-left-20'>{{orderinfo.end_contact}}</view>
+      <view class='txt-black h5 flex-1 margin-left-20'>{{endinfo.member_phone}}</view>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.phone_icon}}'></image>
     </view>
 
@@ -135,13 +139,15 @@
         <view class='txt-gray h5 flex-1  margin-left-10'>备注</view>
       </view>
 
-      <view class='txt-black h5 flex-1 margin-left-20'>{{orderinfo.remark}}</view>
+      <view class='txt-black h5 flex-1 margin-left-20' wx:if='{{orderinfo.remark!="undefined"}}'>{{orderinfo.remark}}</view>
+      <view class='txt-black h5 flex-1 margin-left-20' wx:if='{{orderinfo.remark=="undefined"}}'></view>
     </view>
-
   </view>
-
 </view>
 
 
-<navigator bindtap='Deleteorder' wx:if='{{orderinfo.member_id_name==UserInfo.nickName}}' class='cancel_btn bg-bck_ble txt-white text-center'>取消本次任务</navigator>
+<navigator bindtap='Deleteorder' wx:if='{{orderinfo.open_id==UserInfo.openid||applylist[0].photo==""||applylist.length==0}}' class='cancel_btn bg-bck_ble txt-white text-center'>取消本次任务</navigator>
+
+<navigator bindtap='update' wx:if='{{applylist[0].photo!=""&&applylist.length>0}}' class='cancel_btn bg-bck_ble txt-white text-center'>完成本次任务</navigator>
+
 <!-- <button type='bak_ble' hover-class='txt-white' class='txt-white cancel_btn'>取消本次任务</button> -->

@@ -20,12 +20,23 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
+    var timestamp = Date.parse(new Date());
     this.Base.setMyData({
       allshow: 1,
       state_id: 0,
-      today: this.Base.util.FormatDate(new Date())
+      today: this.Base.util.FormatDate(new Date()),
+      time: this.Base.util.FormatDateTime(new Date()),
+      timestamp : timestamp / 1000
     });
-
+    
+    // console.log("当前时间戳为：" + timestamp);
+    // var n = timestamp * 1000;
+    // var date = new Date(n);
+    // console.log("当前时间为：" + n);
+    var today = this.Base.util.FormatDate(new Date());
+    var time = this.Base.util.FormatDateTime(new Date());
+    console.log("当前日期为："+today);
+    console.log("当前时间为：" + time);
     wx.setStorageSync("lastlogin", "Q");
 
     var orderapi = new OrderApi();
@@ -57,25 +68,28 @@ class Content extends AppBase {
 
     // })
     orderapi.enterpriseinfo({}, (errinfo) => {
-      this.Base.setMyData({ errinfo })
+      this.Base.setMyData({
+        errinfo
+      })
     })
     orderapi.list({
-      orderby: "r_main.created_date desc",getall:"Y"
+      orderby: "r_main.created_date desc",
+      getall: "Y"
     }, (list) => {
 
-      orderapi.applylist({}, (applylist) => {
-         for (var i = 0; i < list.length; i++) {
-           all[i] = 0;
-           for (var j = 0; j < applylist.length; j++) {
-             if (list[i].id == applylist[j].order_id) {
+      orderapi.applylist({ }, (applylist) => {
+        for (var i = 0; i < list.length; i++) {
+          all[i] = 0;
+          for (var j = 0; j < applylist.length; j++) {
+            if (list[i].id == applylist[j].order_id) {
               all[i]++;
-               console.log(all);
-             }
-           }
-         }
+              console.log(all);
+            }
+          }
+        }
         this.Base.setMyData({
-           applylist,
-           all: all
+          applylist,
+          all: all
         });
       });
 
@@ -88,20 +102,21 @@ class Content extends AppBase {
     orderapi.list({
       open_id: UserInfo.openid,
       orderby: "r_main.created_date desc"
+
     }, (minelist) => {
       orderapi.applylist({}, (applylist) => {
-         for (var i = 0; i < minelist.length; i++) {
-           num[i] = 0;
-           for (var j = 0; j < applylist.length; j++) {
-             if (minelist[i].id == applylist[j].order_id) {
-               num[i]++;
-               console.log(num);
+        for (var i = 0; i < minelist.length; i++) {
+          num[i] = 0;
+          for (var j = 0; j < applylist.length; j++) {
+            if (minelist[i].id == applylist[j].order_id) {
+              num[i]++;
+              console.log(num);
             }
-           }
-         }
+          }
+        }
         this.Base.setMyData({
-           applylist,
-           num: num
+          applylist,
+          num: num
         });
       });
       this.Base.setMyData({
@@ -156,35 +171,34 @@ class Content extends AppBase {
 
   }
   one(e) {
-     var errinfo = this.Base.getMyData().errinfo;
-     if (errinfo == null || errinfo.status != "A") {
-       wx.showModal({
-         title: '未认证',
-         content: '您是否需要前往企业认证',
-         showCancel: true,
+    var errinfo = this.Base.getMyData().errinfo;
+    if (errinfo == null || errinfo.status != "A") {
+      wx.showModal({
+        title: '未认证',
+        content: '您是否需要前往企业认证',
+        showCancel: true,
         cancelText: '取消',
-         cancelColor: '#EE2222',
-         confirmText: '确定',
-         confirmColor: '#2699EC',
-         success: function(res) {
-           if (res.confirm) {
+        cancelColor: '#EE2222',
+        confirmText: '确定',
+        confirmColor: '#2699EC',
+        success: function(res) {
+          if (res.confirm) {
             wx.navigateTo({
-               url: '/pages/certification/certification',
-             })
-           }
-         }
-       });
-     }
-     else {
+              url: '/pages/certification/certification',
+            })
+          }
+        }
+      });
+    } else {
       var id = e.currentTarget.id;
       var name = e.currentTarget.dataset.index;
       console.log(555555555555555555555);
       console.log(name);
       wx.navigateTo({
-        url: '/pages/tasklist/tasklist?id=' + id + '&mineshow=' + 1+'&all='+ name
+        url: '/pages/tasklist/tasklist?id=' + id + '&mineshow=' + 1 + '&all=' + name
       })
       // & all='+{{all[idx]}}
-     }
+    }
   }
   mine(e) {
     var errinfo = this.Base.getMyData().errinfo;
@@ -205,15 +219,14 @@ class Content extends AppBase {
           }
         }
       });
-    }
-     else{
+    } else {
       var id = e.currentTarget.id;
       var mine = e.currentTarget.dataset.index;
-       wx.navigateTo({
-         url: '/pages/tasklist/tasklist?id=' + id + '&mineshow=' + 2 + '&mine=' + mine
-       })
-        // & all='+{{all[idx]}}
-     }
+      wx.navigateTo({
+        url: '/pages/tasklist/tasklist?id=' + id + '&mineshow=' + 2 + '&mine=' + mine
+      })
+      // & all='+{{all[idx]}}
+    }
   }
 }
 var content = new Content();

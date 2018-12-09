@@ -1,4 +1,5 @@
 <!--pages/weighingsheet/weighingsheet.wxml-->
+
 <view class='flex-row flex-column padding-40' >
 <image src='{{uploadpath}}photo/{{applyinfo.photo}}'></image>
 <image class='margin-top' src='{{uploadpath}}photo/{{applyinfo.photo2}}'></image>

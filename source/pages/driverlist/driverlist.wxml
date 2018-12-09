@@ -16,10 +16,10 @@
       <view class='flex-row flex-center'>
         <view class='flex-row flex-center flex-1'>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.enterprise}}'></image>
-          <view class='flex-1 margin-left-20 h4 txt-black'>{{item.member_name}}</view>
+          <view class='flex-1 margin-left-20 h4 txt-black'>{{item.carriage_driver}}</view>
         </view>
 
-        <navigator class='flex-row flex-center margin-top-20'>
+        <navigator class='flex-row flex-center margin-top-20' id='{{item.driver_phone}}' bindtap='phoneCall'>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.phone_icon}}'></image>
           <view class='flex-1 margin-left-20 txt-black'>联系司机</view>
         </navigator>
@@ -33,6 +33,7 @@
         <view class='flex-row flex-center    bg-orange' style='border-radius:7rpx; height:80rpx;'>
           <view class='padding-10 margin-left-10 margin-right-10 txt-bold txt-black' style='border:2rpx solid black;border-radius:7rpx;'>{{item.vehicle}}</view>
         </view>
+        
       </view>
     </view>
     <view class='flex-row flex-center margin-20'>
@@ -55,10 +56,10 @@
       <view class='flex-row flex-center'>
         <view class='flex-row flex-center flex-1'>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.enterprise}}'></image>
-          <view class='flex-1 margin-left-20 h4 txt-black'>{{item.member_name}}</view>
+          <view class='flex-1 margin-left-20 h4 txt-black'>{{item.carriage_driver}}</view>
         </view>
 
-        <navigator class='flex-row flex-center margin-top-20'>
+        <navigator class='flex-row flex-center margin-top-20' id='{{item.driver_phone}}' bindtap='phoneCall'>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.phone_icon}}'></image>
           <view class='flex-1 margin-left-20 txt-black'>联系司机</view>
         </navigator>
@@ -75,7 +76,7 @@
       </view>
     </view>
     <view class='flex-row flex-center margin-20'>
-      <navigator url='/pages/weighingsheet/weighingsheet?id={{item.id}}' class='flex-1 padding-10 bg-red text-center txt-white h5 margin-right-10' style='border-radius:10rpx;'>查看过磅单</navigator>
+      <navigator  id='{{item.id}}' bindtap='weightsheet' data-index='{{item.photo}}' class='flex-1 padding-10 bg-red text-center txt-white h5 margin-right-10' style='border-radius:10rpx;'>查看过磅单</navigator>
       <navigator class='flex-1 padding-10 bg-green text-center txt-white h5 margin-left-10' style='border-radius:10rpx;' bindtap='addcompleted'>确认已到达</navigator>
     </view>
 
@@ -93,10 +94,10 @@
       <view class='flex-row flex-center'>
         <view class='flex-row flex-center flex-1'>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.enterprise}}'></image>
-          <view class='flex-1 margin-left-20 h4 txt-black'>{{item.member_name}}</view>
+          <view class='flex-1 margin-left-20 h4 txt-black'>{{item.carriage_driver}}</view>
         </view>
 
-        <navigator class='flex-row flex-center margin-top-20'>
+        <navigator class='flex-row flex-center margin-top-20' id='{{item.driver_phone}}' bindtap='phoneCall'>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.phone_icon}}'></image>
           <view class='flex-1 margin-left-20 txt-black'>联系司机</view>
         </navigator>

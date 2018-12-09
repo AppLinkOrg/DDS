@@ -111,6 +111,15 @@ class Content extends AppBase {
         mm2: mm2,
         mm1: mm1
       });
+      orderapi.memberinfo({ id: applyinfo.order_enroll_id }, (enrollinfo) => {
+        this.Base.setMyData({ enrollinfo });
+      });
+      orderapi.memberinfo({ id: applyinfo.order_start_id }, (startinfo) => {
+        this.Base.setMyData({ startinfo });
+      });
+      orderapi.memberinfo({ id: applyinfo.order_end_id }, (endinfo) => {
+        this.Base.setMyData({ endinfo });
+      });
     })
   }
   qwe(e) {
@@ -132,19 +141,19 @@ class Content extends AppBase {
       that.Base.setMyData({
         photo
       });
-    }, () => {}, 4);
+    }, () => {}, 9);
   }
 
   Getover(e) {
     var data = e.detail.value;
     if (data.photo == "") {
-      this.Base.info("请至少添加两张过磅单");
+      this.Base.info("请至少添加一张过磅单");
       return;
     }
-    if (data.photo2 == "") {
-      this.Base.info("请至少添加两张过磅单");
-      return;
-    }
+    // if (data.photo2 == "") {
+    //   this.Base.info("请至少添加张过磅单");
+    //   return;
+    // }
     // if (data.photo3 == "") {
     //   this.Base.info("请添加四张过磅单");
     //   return;
@@ -158,17 +167,21 @@ class Content extends AppBase {
     var photo2 = this.Base.getMyData().photo[1];
     var photo3 = this.Base.getMyData().photo[2];
     var photo4 = this.Base.getMyData().photo[3];
+    var photo5 = this.Base.getMyData().photo[4];
+    var photo6 = this.Base.getMyData().photo[5];
+    var photo7 = this.Base.getMyData().photo[6];
+    var photo8 = this.Base.getMyData().photo[7];
+    var photo9 = this.Base.getMyData().photo[8];
     var applyinfo=this.Base.getMyData().applyinfo;
     console.log(applyinfo.id);
-    applyapi.uploaddan({ apply_id: applyinfo.id, photo: photo, photo2: photo2, photo3: photo3, photo4: photo4,}, (uploaddan) => {
-         wx.reLaunch({
-           url: '/pages/driver/driver',
-         })
+    applyapi.uploaddan({ apply_id: applyinfo.id, photo: photo, photo2: photo2, photo3: photo3, photo4: photo4, photo5: photo5, photo6: photo6, photo7: photo7, photo8: photo8, photo9: photo9 }, (uploaddan) => {
+        //  wx.reLaunch({
+        //    url: '/pages/driver/driver',
+        //  })
       wx.showToast({
-        title: '提交成功',
+        title: '提交成功,请等待发布方确认',
       })
     });
-
   }
    photo(e) {
      var photo = e.detail.value;
@@ -177,6 +190,7 @@ class Content extends AppBase {
        photo: e.detail.value
      })
    }
+
   photo2(e) {
     var photo2 = e.detail.value;
     console.log(photo2);

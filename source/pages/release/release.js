@@ -72,33 +72,32 @@ class Content extends AppBase {
     var orderapi = new OrderApi();
      var UserInfo = this.Base.getMyData().UserInfo;
      orderapi.enterpriseinfo({}, (errinfo) => {
-       this.Base.setMyData({ errinfo })
+       this.Base.setMyData({ errinfo });
+       if (errinfo == null || errinfo.status != "A") {
+         wx.showModal({
+           title: '未认证',
+           content: '请您进行企业认证',
+           showCancel: false,
+           //cancelText: '取消',
+           cancelColor: '#EE2222',
+           confirmText: '确定',
+           confirmColor: '#2699EC',
+           duration: 300,
+           success: function (res) {
+             if (res.confirm) {
+               wx.reLaunch({
+                 url: '/pages/certification/certification',
+               })
+             }
+           }
+         });
+       }
      })
 
     orderapi.memberlist({}, (memberlist) => {
       this.Base.setMyData({ memberlist });
     });
 
-    var errinfo = this.Base.getMyData().errinfo;
-    if (errinfo == null || errinfo.status != "A") {
-      wx.showModal({
-        title: '未认证',
-        content: '请您进行企业认证',
-        showCancel: false,
-        // cancelText: '取消',
-        cancelColor: '#EE2222',
-        confirmText: '确定',
-        confirmColor: '#2699EC',
-        success: function (res) {
-          if (res.confirm) {
-            wx.reLaunch({
-              url: '/pages/certification/certification',
-            })
-          }
-        }
-      });
-    }
-    
   }
   start(e) {
     console.log(e);
@@ -111,7 +110,6 @@ class Content extends AppBase {
         duration: 1000
       })
     }
-
   }
   end(e) {
     console.log(e);
@@ -673,9 +671,13 @@ class Content extends AppBase {
     var gdsweight = this.Base.getMyData().gdsweight;
     var goodstype = this.Base.getMyData().goodstype;
     var tstcost = this.Base.getMyData().tstcost;
+
     var elcontact = this.Base.getMyData().elcontact;
+    var enroll_id = this.Base.getMyData().enroll_id;
     var stcontact = this.Base.getMyData().stcontact;
-    var edcontact = this.Base.getMyData().edcontact; 
+    var start_id = this.Base.getMyData().startcontact_id;
+    var end_id = this.Base.getMyData().endcontact_id; 
+    var edcontact = this.Base.getMyData().edcontact;
     var remark = this.Base.getMyData().remark;
     var today = this.Base.getMyData().today;
     var time = this.Base.getMyData().time;
@@ -711,6 +713,9 @@ class Content extends AppBase {
       enroll_contact: elcontact,
       start_contact: stcontact,
       end_contact: edcontact,
+      enroll_id: enroll_id,
+      start_id: start_id,
+      end_id:end_id,
       remark: remark,
       companyname: companyname
     }, (create) => {
@@ -748,11 +753,35 @@ class Content extends AppBase {
       check: e.detail.value
     })
   }
-  
+  bindALL(e){
+    var errinfo = this.Base.getMyData().errinfo;
+    if (errinfo == null || errinfo.status == "A") {
+      this.Base.setMyData({
+
+      });
+      wx.showModal({
+        title: '未认证',
+        content: '请您进行企业认证',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#EE2222',
+        confirmText: '确定',
+        confirmColor: '#2699EC',
+        success: function (res) {
+          if (res.confirm) {
+            wx.reLaunch({
+              url: '/pages/certification/certification',
+            })
+          }
+        }
+      });
+    }
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
+body.bindALL = content.bindALL;
 body.onMyShow = content.onMyShow;
 body.checkchange = content.checkchange; 
 // body.binddistance = content.binddistance; 

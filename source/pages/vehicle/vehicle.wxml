@@ -10,6 +10,7 @@
 
       <view class="flex-row   flex-1 " style='color:#222222;justify-content: center;'>{{item.vehicletype}}</view>
       <view class="flex-1"></view>
+
       <view id="yj" class="flex-row {{item.status=='I'?'sh':'rz'}} margin-top-20  flex-1  margin-right-20 " style='justify-content: center;'>
         <view class="margin-10 {{item.status=='I'?'sh1':'rz1'}}"> {{item.status_name}}</view>
       </view>
@@ -22,9 +23,14 @@
         <view style='color:#222222'>吨</view>
       </view>
       <view class="flex-1"></view>
-      <view id="cp" class="flex-row  flex-1 margin-right-20 " style='border:1px solid #2B2B2B;color:#222222;justify-content: center;'>
+
+      <!-- <view id="cp" class="flex-row  flex-1 margin-right-20 " style='border:1px solid #2B2B2B;color:#222222;justify-content: center;'>
         <view style='margin:10rpx'>{{item.carnumber}}</view>
-      </view>
+      </view> -->
+
+      <view class='flex-row flex-center  margin-right-20  bg-orange' style='border-radius:7rpx; height:80rpx;'>
+          <view class='padding-10 margin-left-10 margin-right-10 txt-bold txt-black' style='border:2rpx solid black;border-radius:7rpx;'>{{item.carnumber}}</view>
+        </view>
     </view>
   </view>
   <view style='height:150rpx'></view>

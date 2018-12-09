@@ -10,7 +10,9 @@ import {
 import {
   OrderApi
 } from "../../apis/order.api.js";
-import { CertificateApi } from "../../apis/certificate.api.js";
+import {
+  CertificateApi
+} from "../../apis/certificate.api.js";
 var utils = require('../../utils/util.js')
 
 class Content extends AppBase {
@@ -22,25 +24,24 @@ class Content extends AppBase {
     this.Base.Page = this;
 
     //options.id=5;
-    this.Base.setMyData({
-    })
+    this.Base.setMyData({})
 
     wx.setStorageSync("lastlogin", "D");
 
     this.setData({
       array: ['所有', '离我最近', '费用最高'],
       objectArray: [{
-        id: 0,
-        name: '所有'
-      },
-      {
-        id: 1,
-        name: '离我最近'
-      },
-      {
-        id: 2,
-        name: '费用最高'
-      }
+          id: 0,
+          name: '所有'
+        },
+        {
+          id: 1,
+          name: '离我最近'
+        },
+        {
+          id: 2,
+          name: '费用最高'
+        }
 
       ],
       index: 0,
@@ -76,10 +77,14 @@ class Content extends AppBase {
     var orderapi = new OrderApi();
     var api = new CertificateApi();
     api.certificatexq({}, (driverinfo) => {
-      this.Base.setMyData({ driverinfo });
+      this.Base.setMyData({
+        driverinfo
+      });
     });
     orderapi.applylist({}, (list1) => {
-      orderapi.list({getall:"Y"}, (list) => {
+      orderapi.list({
+        getall: "Y"
+      }, (list) => {
         var year = new Array();
         var month = new Array();
         var year1 = new Array();
@@ -98,7 +103,20 @@ class Content extends AppBase {
         var day2 = new Array();
         var hh2 = new Array();
         var mm2 = new Array();
+
+        var year3 = new Array();
+        var month3 = new Array();
+        var day3 = new Array();
+        var hh3 = new Array();
+        var mm3 = new Array();
+
+        var year4 = new Array();
+        var month4 = new Array();
+        var day4 = new Array();
+        var hh4 = new Array();
+        var mm4 = new Array();
         var num = 0;
+
         var xs = new Array();
         //循环转化时间
         for (var i = 0; i < list.length; i++) {
@@ -135,51 +153,110 @@ class Content extends AppBase {
 
         }
         for (var i = 0; i < list1.length; i++) {
-          var myDate1 = new Date(Date.parse(list1[i].order_start_time.replace(/-/g, "/")));
-          year1[i] = myDate1.getFullYear();
-          month1[i] = myDate1.getMonth() + 1;
-          day1[i] = myDate1.getDate();
-          hh1[i] = myDate1.getHours();
-          mm1[i] = myDate1.getMinutes();
-          if (month1[i] < 10) {
-            month1[i] = '0' + month1[i];
-          }
-          if (day1[i] < 10) {
-            day1[i] = '0' + day1[i];
-          }
-          if (hh1[i] < 10) {
-            hh1[i] = '0' + hh1[i];
-          }
-          if (mm1[i] < 10) {
-            mm1[i] = '0' + mm1[i];
-          }
+          if (list1[i].transport_name=="已报名")
+          {
+            var myDate1 = new Date(Date.parse(list1[i].order_start_time.replace(/-/g, "/")));
+            var myDate2 = new Date(Date.parse(list1[i].order_end_time.replace(/-/g, "/")));
+            year1[i] = myDate1.getFullYear();
+            month1[i] = myDate1.getMonth() + 1;
+            day1[i] = myDate1.getDate();
+            hh1[i] = myDate1.getHours();
+            mm1[i] = myDate1.getMinutes();
+            if (month1[i] < 10) {
+              month1[i] = '0' + month1[i];
+            }
+            if (day1[i] < 10) {
+              day1[i] = '0' + day1[i];
+            }
+            if (hh1[i] < 10) {
+              hh1[i] = '0' + hh1[i];
+            }
+            if (mm1[i] < 10) {
+              mm1[i] = '0' + mm1[i];
+            }
 
-          var myDate2 = new Date(Date.parse(list1[i].order_end_time.replace(/-/g, "/")));
+            var myDate2 = new Date(Date.parse(list1[i].order_end_time.replace(/-/g, "/")));
 
-          year2[i] = myDate2.getFullYear();
-          month2[i] = myDate2.getMonth() + 1;
-          day2[i] = myDate2.getDate();
-          hh2[i] = myDate2.getHours();
-          mm2[i] = myDate2.getMinutes();
-          if (month2[i] < 10) {
-            month2[i] = '0' + month2[i];
+            year2[i] = myDate2.getFullYear();
+            month2[i] = myDate2.getMonth() + 1;
+            day2[i] = myDate2.getDate();
+            hh2[i] = myDate2.getHours();
+            mm2[i] = myDate2.getMinutes();
+            if (month2[i] < 10) {
+              month2[i] = '0' + month2[i];
+            }
+            if (day2[i] < 10) {
+              day2[i] = '0' + day2[i];
+            }
+            if (hh2[i] < 10) {
+              hh2[i] = '0' + hh2[i];
+            }
+            if (mm2[i] < 10) {
+              mm2[i] = '0' + mm2[i];
+            }
+
           }
-          if (day2[i] < 10) {
-            day2[i] = '0' + day2[i];
+          if (list1[i].transport_name == "待完成") {
+            var myDate3 = new Date(Date.parse(list1[i].order_start_time.replace(/-/g, "/")));
+           
+            var myDate4 = new Date(Date.parse(list1[i].order_end_time.replace(/-/g, "/")));
+            year3[i] = myDate3.getFullYear();
+            month3[i] = myDate3.getMonth() + 1;
+            day3[i] = myDate3.getDate();
+            hh3[i] = myDate3.getHours();
+            mm3[i] = myDate3.getMinutes();
+            if (month3[i] < 10) {
+              month3[i] = '0' + month3[i];
+            }
+            if (day3[i] < 10) {
+              day3[i] = '0' + day3[i];
+            }
+            if (hh3[i] < 10) {
+              hh3[i] = '0' + hh3[i];
+            }
+            if (mm3[i] < 10) {
+              mm3[i] = '0' + mm3[i];
+            }
+            list1[i].day3 = day3[i];
+            list1[i].month3 = month3[i];
+            list1[i].hh3 = hh3[i];
+            list1[i].mm3 = mm3[i];
+
+            year4[i] = myDate4.getFullYear();
+            month4[i] = myDate4.getMonth() + 1;
+            day4[i] = myDate4.getDate();
+            hh4[i] = myDate4.getHours();
+            mm4[i] = myDate4.getMinutes();
+            if (month4[i] < 10) {
+              month4[i] = '0' + month4[i];
+            }
+            if (day4[i] < 10) {
+              day4[i] = '0' + day4[i];
+            }
+            if (hh4[i] < 10) {
+              hh4[i] = '0' + hh4[i];
+            }
+            if (mm4[i] < 10) {
+              mm4[i] = '0' + mm4[i];
+            }
+
+            list1[i].day4 = day4[i];
+            list1[i].month4 = month4[i];
+            list1[i].hh4 = hh4[i];
+            list1[i].mm4 = mm4[i];
           }
-          if (hh2[i] < 10) {
-            hh2[i] = '0' + hh2[i];
-          }
-          if (mm2[i] < 10) {
-            mm2[i] = '0' + mm2[i];
-          }
+ 
+        
+
+         
+
         }
 
         //循环找出新任务中已报名
         var UserInfo = this.Base.getMyData().UserInfo;
         var bm = [];
         var ybm = [];
-        var dwc=[];
+        var dwc = [];
         for (var a = 0; a < list.length; a++) {
           bm[a] = 0;
 
@@ -187,10 +264,14 @@ class Content extends AppBase {
             if (list[a].id == list1[b].order_id) {
               bm[a]++;
             }
-            if (list[a].id == list1[b].order_id && list1[b].transport_name=="已报名") {
+            if (list[a].id == list1[b].order_id && list1[b].transport_name == "已报名") {
+              console.log(list1[b])
+              console.log(6666666);
               ybm.push(list1[b]);
             }
-            if (list[a].id == list1[b].order_id && list1[b].transport_name== "待完成") {
+            if (list[a].id == list1[b].order_id && list1[b].transport_name == "待完成") {
+              console.log(list1[b])
+              console.log(6666666);
               dwc.push(list1[b]);
             }
             if (list[a].id == list1[b].order_id && UserInfo.openid == list1[b].openid) {
@@ -222,32 +303,52 @@ class Content extends AppBase {
           month2: month2,
           day2: day2,
           hh2: hh2,
-          mm2: mm2
+          mm2: mm2,
+
+          year3: year3,
+          month3: month3,
+          day3: day3,
+          hh3: hh3,
+          mm3: mm3,
+
+          year4: year4,
+          month4: month4,
+          day4: day4,
+          hh4: hh4,
+          mm4: mm4,
+
 
         });
         orderapi.applylist({
           transport_name: "待完成"
-        }, (list2) => {
+        }, () => {
 
           this.Base.setMyData({
             ybm: ybm,
-            list2: list2,
-           dwc:dwc
+         
+            dwc: dwc
           });
 
         })
+
         this.Base.setMyData({
           list1: list1
 
         });
+
         this.Countdown(list);
 
         this.Base.setMyData({
           list
         });
+
+        this.one(ybm);
+        this.binddwc(dwc);
+
+
+
       });
     })
-
 
   }
   qwe(e) {
@@ -261,49 +362,104 @@ class Content extends AppBase {
     });
   }
   onHide() {
-
     clearInterval(this.timer);
-
   }
 
   Countdown(list) {
     var that = this;
     this.timer = setInterval(() => {
-
       var orderapi = new OrderApi();
-
-
       var days = new Array()
-
       var sj = new Array();
       var xs = new Array();
       var num = 0;
       //循环转化时间
       for (var i = 0; i < list.length; i++) {
-
-
         var dqsj = Date.parse(new Date()) / 1000;
         var sjc = list[i].enroll_deadline_timespan;
         var sjj = sjc - dqsj;
-
         days[i] = parseInt((sjj + 3600 * 24) / (3600 * 24));
         xs[i] = parseInt((sjj) / 3600);
-
         sj[i] = utils.sjc(sjj, 'm:s')
       }
       content.setMyData({
-
         days: days,
         sj: sj,
         xs: xs
-
-
       })
-
-    }, 1000);
+    }, 100);
 
   }
-  newtask(e){
+  one(ybm) {
+    var that = this;
+    this.timer = setInterval(() => {
+      var orderapi = new OrderApi();
+      var days = new Array()
+      var sj = new Array();
+      var xs = new Array();
+      var num = 0;
+      //循环转化时间
+
+      for (var i = 0; i < ybm.length; i++) {
+
+        var dqsj = Date.parse(new Date()) / 1000;
+        var mydata = ybm[i].order_enroll_deadline;
+        mydata = mydata.replace(/-/g, '/');
+        var sjc = Date.parse(mydata) / 1000;
+        //console.log("1111111111" + sjc + "" + dqsj + "" + ybm[i].order_enroll_deadline);
+        var sjj = sjc - dqsj;
+        days[i] = parseInt((sjj + 3600 * 24) / (3600 * 24));
+        xs[i] = parseInt((sjj) / 3600);
+        sj[i] = utils.sjc(sjj, 'm:s')
+        //console.log(days + "三神山" + sjc + "啊啊啊" + sjj);
+        //console.log()
+      }
+      content.setMyData({
+        days1: days,
+        sj1: sj,
+        xs1: xs
+      })
+    }, 100);
+
+  }
+  binddwc(dwc) {
+    var that = this;
+    this.timer = setInterval(() => {
+      var orderapi = new OrderApi();
+      var days = new Array()
+      var sj = new Array();
+      var xs = new Array();
+      var num = 0;
+      //循环转化时间
+
+      for (var i = 0; i < dwc.length; i++) {
+
+        var dqsj = Date.parse(new Date()) / 1000;
+        // var mydata2 = Date.parse(new Date());
+        // mydata2 = mydata2.replace(/-/g, '/');
+        // var dqsj = Date.parse(mydata2) / 1000;
+
+        var mydata = dwc[i].order_end_time;
+        mydata = mydata.replace(/-/g, '/');
+        var sjc = Date.parse(mydata) / 1000;
+
+        //console.log("阿萨斯" + sjc + "奥术大师" + dqsj + "反对的" + dwc[i].order_end_time);
+        var sjj = sjc - dqsj;
+        days[i] = parseInt((sjj + 3600 * 24) / (3600 * 24));
+        xs[i] = parseInt((sjj) / 3600);
+        sj[i] = utils.sjc(sjj, 'm:s')
+        
+      }
+      content.setMyData({
+        days2: days,
+        sj2: sj,
+        xs2: xs
+      })
+      // console.log(days2 + "mmm" + sj2 + "ssss" + xs2);
+    }, 100);
+ }
+
+  newtask(e) {
     var driverinfo = this.Base.getMyData().driverinfo;
     if (driverinfo == null || driverinfo.status != "A") {
       wx.showModal({
@@ -314,7 +470,7 @@ class Content extends AppBase {
         cancelColor: '#EE2222',
         confirmText: '确定',
         confirmColor: '#2699EC',
-        success: function (res) {
+        success: function(res) {
           if (res.confirm) {
             wx.navigateTo({
               url: '/pages/certificate/certificate',
@@ -322,15 +478,14 @@ class Content extends AppBase {
           }
         }
       });
-    }
-    else {
-      var id=e.currentTarget.id;
-      var UserInfo=this.Base.getMyData().UserInfo;
+    } else {
+      var id = e.currentTarget.id;
+      var UserInfo = this.Base.getMyData().UserInfo;
       wx.navigateTo({
-        url: '/pages/orderdetails/orderdetails?id='+id+'&openid'+UserInfo.openid
+        url: '/pages/orderdetails/orderdetails?id=' + id + '&openid' + UserInfo.openid
       })
     }
-  } 
+  }
   registered(e) {
     var driverinfo = this.Base.getMyData().driverinfo;
     if (driverinfo == null || driverinfo.status != "A") {
@@ -342,7 +497,7 @@ class Content extends AppBase {
         cancelColor: '#EE2222',
         confirmText: '确定',
         confirmColor: '#2699EC',
-        success: function (res) {
+        success: function(res) {
           if (res.confirm) {
             wx.navigateTo({
               url: '/pages/certificate/certificate',
@@ -350,15 +505,15 @@ class Content extends AppBase {
           }
         }
       });
-    }
-    else {
+    } else {
       var id = e.currentTarget.id;
+      console.log("ssssssssssa"+id)
       var UserInfo = this.Base.getMyData().UserInfo;
       wx.navigateTo({
         url: '/pages/apply/apply?id=' + id
       })
     }
-  } 
+  }
   tobecompleted(e) {
     var driverinfo = this.Base.getMyData().driverinfo;
     if (driverinfo == null || driverinfo.status != "A") {
@@ -370,7 +525,7 @@ class Content extends AppBase {
         cancelColor: '#EE2222',
         confirmText: '确定',
         confirmColor: '#2699EC',
-        success: function (res) {
+        success: function(res) {
           if (res.confirm) {
             wx.navigateTo({
               url: '/pages/certificate/certificate',
@@ -378,8 +533,7 @@ class Content extends AppBase {
           }
         }
       });
-    }
-    else {
+    } else {
       var id = e.currentTarget.id;
       var UserInfo = this.Base.getMyData().UserInfo;
       wx.navigateTo({
@@ -398,8 +552,10 @@ body.qwe = content.qwe;
 body.changetab = content.changetab;
 body.sj = content.sj;
 body.Countdown = content.Countdown;
+body.one = content.one;
+body.binddwc = content.binddwc;
 body.setTimeout = content.setTimeout;
-body.newtask = content.newtask; 
-body.registered = content.registered; 
+body.newtask = content.newtask;
+body.registered = content.registered;
 body.tobecompleted = content.tobecompleted;
 Page(body)
