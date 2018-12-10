@@ -8,11 +8,10 @@
     <!-- <view class='num txt-white h6 text-center'>{{applylist.length}}</view> -->
     <!-- <image class='num' src='{{uploadpath}}resource/{{res.xiaoxitishi}}'></image> -->
       <view class='xiaoxi text-center flex-row flex-column'>
-      <view class='txt-white h6 nm ' style='margin-top:2rpx;padding-right:8rpx;'>{{applylist.length}}</view>
+      <view class='txt-white h6 nm' style='margin-top:2rpx;padding-right:8rpx;'>{{applylist.length}}</view>
       <image class='num' src='{{uploadpath}}resource/{{res.xiaoxitishi}}'></image>
       </view>
   </view>
-
 
   <view class='flex-row flex-center padding-20 bg-white' hidden='{{allshow!="1"}}'>
     <view class='flex-1 h4-5 txt-black'>共有 {{list.length}} 条任务</view>

@@ -13,7 +13,7 @@
     <view class='bor_btm padding-40'>
 
       <view class='flex-row flex-center '>
-        <image class='icon-20' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
+        <image class='icon-30' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
         <view class='txt-gray h4-5 margin-left-20'>报名时间</view>
       </view>
 
@@ -83,7 +83,7 @@
     <view class='bor_btm padding-40'>
 
       <view class='flex-row flex-center '>
-        <image class='icon-20' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
+        <image class='icon-30' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
         <view class='txt-gray h4-5 margin-left-20'>运输时间</view>
       </view>
       <view class='flex-row flex-center margin-top' style='border-bottom:'>
@@ -150,37 +150,37 @@
     <view class='flex-row column '>
 
       <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-        <image class='icon-20' src='{{uploadpath}}resource/{{res.driver}}'></image>
+        <image class='icon-30' src='{{uploadpath}}resource/{{res.driver}}'></image>
         <view class='txt-black h4-5   margin-left-20'>货物重量</view>
         <input placeholder='请输入货物吨数' bindinput='goodsweight' name='gdsweight' class='h4-5 text-right flex-1' type='number'></input>
       </view>
 
       <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-        <image class='icon-20' src='{{uploadpath}}resource/{{res.driver}}'></image>
+        <image class='icon-30' src='{{uploadpath}}resource/{{res.cheliangshumu}}'></image>
         <view class='txt-black h4-5   margin-left-20'>车辆数目</view>
         <input placeholder='请输入车辆数目' bindinput='carnumber' name='carnumber' class='h4-5 text-right flex-1' type='number'></input>
       </view>
 
       <picker range='{{goodslist}}' bindchange='bindgoods' range-key='name'>
         <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-          <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
+          <image class='icon-30' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
           <view class='txt-black h4-5 flex-1  margin-left-20'>货运类型</view>
-          <input class='h4-5 txt-black text-right' disabled='false' bindinput='goodstype' name='gdstype' placeholder='请选择货运类型' value='{{goodslist[goods_idx].name}}'></input>
+          <input class='h4-5 txt-black text-right' style='width:250rpx;' disabled='false' bindinput='goodstype' name='gdstype' placeholder='请选择货运类型' value='{{goodslist[goods_idx].name}}'></input>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
         </view>
       </picker>
 
       <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-        <image class='icon-20' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
+        <image class='icon-30' src='{{uploadpath}}resource/{{res.yunshufeiyon}}'></image>
         <view class='txt-black h4-5   margin-left-20'>运输费用</view>
         <input placeholder='请输入每吨价格' bindinput='cost' name='tstcost' class='h4-5 text-right txt-black flex-1' type='number'></input>
       </view>
 
       <navigator url='/pages/addmembers/addmembers' wx:if='{{memberlist.length==0}}'>
         <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-          <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
-          <view class='txt-black h4-5 flex-1  margin-left-20'>报名联系人</view>
-          <input class='h4-5 txt-black text-right' disabled='false' bindinput='startcontact' name='stcontact' placeholder='请选择起点联系人' value='{{memberlist[startcontact_idx].name}}'></input>
+          <image class='icon-30' src='{{uploadpath}}resource/{{res.baoming}}'></image>
+          <view class='txt-black h5 flex-1  margin-left-20'>报名联系人</view>
+          <input class='h4-5 txt-black text-right' style='width:260rpx;' disabled='false' bindinput='startcontact' name='stcontact' placeholder='请选择起点联系人' value='{{memberlist[startcontact_idx].name}}'></input>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
         </view>
       </navigator>
@@ -188,9 +188,9 @@
       <view wx:if='{{memberlist.length>0}}'>
         <picker range='{{memberlist}}' bindchange='bindenroll' range-key="{{'name'}}">
           <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-            <image class='icon-20' src='{{uploadpath}}resource/{{res.enterprise}}'></image>
+            <image class='icon-30' src='{{uploadpath}}resource/{{res.baoming}}'></image>
             <view class='txt-black h4-5 flex-1  margin-left-20'>报名联系人</view>
-            <input class='h4-5 txt-black text-right' disabled='false' bindinput='enrollcontact' name='elcontact' placeholder='请选择报名联系人' value='{{memberlist[enroll_idx].name}}'></input>
+            <input class='h4-5 txt-black text-right' style='width:260rpx;' disabled='false' bindinput='enrollcontact' name='elcontact' placeholder='请选择报名联系人' value='{{memberlist[enroll_idx].name}}'></input>
             <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
           </view>
         </picker>
@@ -198,9 +198,9 @@
 
       <navigator url='/pages/addmembers/addmembers' wx:if='{{memberlist.length==0}}'>
         <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-          <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
+          <image class='icon-30' src='{{uploadpath}}resource/{{res.qidian}}'></image>
           <view class='txt-black h4-5 flex-1  margin-left-20'>起点联系人</view>
-          <input class='h4-5 txt-black text-right' disabled='false' bindinput='startcontact' name='stcontact' placeholder='请选择起点联系人' value='{{memberlist[startcontact_idx].name}}'></input>
+          <input class='h4-5 txt-black text-right' style='width:260rpx;' disabled='false' bindinput='startcontact' name='stcontact' placeholder='请选择起点联系人' value='{{memberlist[startcontact_idx].name}}'></input>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
         </view>
       </navigator>
@@ -208,9 +208,9 @@
       <view wx:if='{{memberlist.length>0}}'>
         <picker range='{{memberlist}}' bindchange='bindstartcontact' range-key='name'>
           <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-            <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
+            <image class='icon-30' src='{{uploadpath}}resource/{{res.qidian}}'></image>
             <view class='txt-black h4-5 flex-1  margin-left-20'>起点联系人</view>
-            <input class='h4-5 txt-black text-right' disabled='false' bindinput='startcontact' name='stcontact' placeholder='请选择起点联系人' value='{{memberlist[startcontact_idx].name}}'></input>
+            <input class='h4-5 txt-black text-right' style='width:260rpx;' disabled='false' bindinput='startcontact' name='stcontact' placeholder='请选择起点联系人' value='{{memberlist[startcontact_idx].name}}'></input>
             <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
           </view>
         </picker>
@@ -218,9 +218,9 @@
 
       <navigator url='/pages/addmembers/addmembers' wx:if='{{memberlist.length==0}}'>
         <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-          <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
+          <image class='icon-30' src='{{uploadpath}}resource/{{res.zhondian}}'></image>
           <view class='txt-black h4-5 flex-1  margin-left-20'>终点联系人</view>
-          <input class='h4-5 txt-black text-right' disabled='false' bindinput='startcontact' name='stcontact' placeholder='请选择起点联系人' value='{{memberlist[startcontact_idx].name}}'></input>
+          <input class='h4-5 txt-black text-right' style='width:260rpx;' disabled='false' bindinput='startcontact' name='stcontact' placeholder='请选择起点联系人' value='{{memberlist[startcontact_idx].name}}'></input>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
         </view>
       </navigator>
@@ -228,18 +228,18 @@
       <view wx:if='{{memberlist.length>0}}'>
         <picker range='{{memberlist}}' bindchange='bindendcontact' range-key='name'>
           <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-            <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
+            <image class='icon-30' src='{{uploadpath}}resource/{{res.zhondian}}'></image>
             <view class='txt-black h4-5 flex-1  margin-left-20'>终点联系人</view>
-            <input class='h4-5 txt-black text-right' disabled='false' bindinput='endcontact' name='edcontact' placeholder='请选择终点联系人' value='{{memberlist[endcontact_idx].name}}'></input>
+            <input class='h4-5 txt-black text-right' style='width:260rpx;' disabled='false' bindinput='endcontact' name='edcontact' placeholder='请选择终点联系人' value='{{memberlist[endcontact_idx].name}}'></input>
             <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
           </view>
         </picker>
       </view>
 
       <view class='flex-row   flex-1 padding-40   bor_btm'>
-        <image class='icon-20' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
-        <view class='txt-black h4-5     margin-left-20'>备注</view>
-        <textarea placeholder='暂无备注（限制字数140字）' bindinput='bindremark' name='remark' style='height:100rpx;width:450rpx; border-radius:10rpx;' class='h4-5 bg-gray padding-20 txt-black   margin-left-10'></textarea>
+        <image class='icon-30' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
+        <view class='txt-black h4-5   margin-left-20'>备注</view>
+        <textarea placeholder='暂无备注（限制字数140字）' bindinput='bindremark' name='remark' style='height:100rpx;width:400rpx; border-radius:10rpx;' class='h5 bg-gray padding-20 txt-black   margin-left-30'></textarea>
       </view>
 
       <view class='padding-40'>

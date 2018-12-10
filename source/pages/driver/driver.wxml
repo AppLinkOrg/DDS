@@ -52,14 +52,14 @@
 
       <view class="flex-center flex-row margin-top-20">
         <view class="margin-left-20  ">
-          <image class='icon-15 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
+          <image class='icon-30 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
         <view class="margin-left-20 h4 txt-black" >{{item.companyname}}</view>
       </view>
 
       <view style=' margin-bottom:30rpx ' class="flex-center flex-row margin-top-20">
         <view class="margin-left-20  ">
-          <image class='icon-15 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
+          <image class='icon-20 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
         </view>
         <view class="margin-left-20  " >距离报名结束还剩:</view>
         <view class="margin-left-20 txt-red" >{{days[idx]-1}}天 {{xs[idx]}}:{{sj[idx]}}</view>
@@ -115,7 +115,7 @@
     <view class="asd flex-1" style='width:95%'>
       <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
         <view class="margin-left-20">
-          <image class='icon-15 ' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
+          <image class='icon-20 ' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
         </view>
         <view class="flex-1 margin-left-20">货运类型</view>
         <view class="margin-right-20 txt-gray" >{{item.stuff_type_id}}</view>
@@ -157,14 +157,14 @@
 </view>
       <view class="flex-center flex-row margin-top-20">
         <view class="margin-left-20  ">
-          <image class='icon-15 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
+          <image class='icon-30 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
         <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{ybm[idx].order_companyname}}</view>
       </view>
 
     <view style=' margin-bottom:30rpx ;margin-top:30rpx ' class="flex-center flex-row ">
         <view class="margin-left-20  ">
-          <image class='icon-15 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
+          <image class='icon-20 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
         </view>
         <view class="margin-left-20 flex-1 " >运输时间</view>
         <view class=" margin-right-20 " style='color:red'>{{month1[idx]}}/{{day1[idx]}} {{hh1[idx]}}:{{mm1[idx]}} - {{month2[idx]}}/{{day2[idx]}} {{hh2[idx]}}:{{mm2[idx]}}</view>
@@ -236,7 +236,7 @@
 
       <view class="flex-center flex-row margin-top-20">
         <view class="margin-left-20  ">
-          <image class='icon-15 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
+          <image class='icon-30 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
         <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{dwc[idx].order_companyname}}</view>
 
@@ -245,7 +245,7 @@
 
       <view style=' margin-bottom:30rpx ;margin-top:30rpx ' class="flex-center flex-row ">
         <view class="margin-left-20  ">
-          <image class='icon-15 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
+          <image class='icon-20 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
         </view>
         <view class="margin-left-20 flex-1 " >运输时间</view>
         <view class=" margin-right-20 " style='color:red'>{{item.month3}}/{{item.day3}} {{item.hh3}}:{{item.mm3}} - {{item.month4}}/{{item.day4}} {{item.hh4}}:{{item.mm4}}</view>
@@ -295,9 +295,5 @@
     </view>
 
   </navigator>
-
-  
-
-
 
 </view>

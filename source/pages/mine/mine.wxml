@@ -42,7 +42,7 @@
 </navigator>
 
 <navigator bindtap='Cutstatus' class='flex-row flex-center padding-30 bg-white bor_btm'>
-  <image class='icon-20' src='{{uploadpath}}resource/{{res.team}}'></image>
+  <image class='icon-20' src='{{uploadpath}}resource/{{res.qiehuan}}'></image>
   <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>身份切换</view>
   <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>
