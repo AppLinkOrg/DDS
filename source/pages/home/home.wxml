@@ -1,18 +1,25 @@
 <view class='top'>
   <view class='flex-row flex-center bg-bck_ble'>
     <view class='flex-1 text-center padding-20 txt-gray_white {{allshow==1?"txt-white":""}}' bindtap='bindall'>所有发布</view>
+    <view class='all_whiteblock' hidden='{{allshow!="1"}}'></view>
+    <view class='mine_whiteblock'hidden='{{mineshow!="2"}}'></view>
     <view class='flex-1 text-center padding-20 txt-gray_white {{mineshow==2?"txt-white":""}}' bindtap='bindmine'>我的发布</view>
-    <view class='num txt-white h6 text-center'>{{applylist.length}}</view>
-    <!-- <image src='{{uploadpath}}resource/{{}}'></image> -->
     
+    <!-- <view class='num txt-white h6 text-center'>{{applylist.length}}</view> -->
+    <!-- <image class='num' src='{{uploadpath}}resource/{{res.xiaoxitishi}}'></image> -->
+      <view class='xiaoxi text-center flex-row flex-column'>
+      <view class='txt-white h6 nm ' style='margin-top:2rpx;padding-right:8rpx;'>{{applylist.length}}</view>
+      <image class='num' src='{{uploadpath}}resource/{{res.xiaoxitishi}}'></image>
+      </view>
   </view>
 
+
   <view class='flex-row flex-center padding-20 bg-white' hidden='{{allshow!="1"}}'>
-    <view class='flex-1 h5 txt-black'>共有 {{list.length}} 条任务</view>
+    <view class='flex-1 h4-5 txt-black'>共有 {{list.length}} 条任务</view>
     <picker class='' bindchange='bindpickerstate' range='{{statuslist}}' range-key='odrstatusname'>
       <view class='flex-row flex-center'>
         <view wx:if='{{state_id==0}}'>所有发布</view>
-        <view wx:if='{{state_id>0}}' class='h5 '>{{statuslist[state_idx].odrstatusname}}</view>
+        <view wx:if='{{state_id>0}}' class='h4-5 '>{{statuslist[state_idx].odrstatusname}}</view>
         <view class='margin-left-20'>
           <image class='icon_lower' src='{{uploadpath}}resource/{{res.lowericon}}'></image>
         </view>
@@ -21,11 +28,11 @@
   </view>
 
   <view class='flex-row flex-center padding-20 bg-white' hidden='{{mineshow!="2"}}'>
-    <view class='flex-1 h5 txt-black'>共有 {{minelist.length}} 条任务</view>
+    <view class='flex-1 h4-5 txt-black'>共有 {{minelist.length}} 条任务</view>
     <picker class='' bindchange='bindpickerstate' range='{{statuslist}}' range-key='odrstatusname'>
       <view class='flex-row flex-center'>
         <view wx:if='{{state_id==0}}'>所有发布</view>
-        <view wx:if='{{state_id>0}}' class='h5 '>{{statuslist[state_idx].odrstatusname}}</view>
+        <view wx:if='{{state_id>0}}' class='h4-5 '>{{statuslist[state_idx].odrstatusname}}</view>
         <view class='margin-left-20'>
           <image class='icon_lower' src='{{uploadpath}}resource/{{res.lowericon}}'></image>
         </view>
@@ -37,7 +44,7 @@
     <view>
       <image class='icon' src='{{uploadpath}}resource/{{res.gonggao}}'></image>
     </view>
-    <view class='bg-white h5 padding-10 margin-left-20 txt-gray' style='border-radius:10rpx;width:86%'>关于xxx的通知</view>
+    <view class='bg-white h4-5 padding-10 margin-left-20 txt-gray' style='border-radius:10rpx;width:86%'>关于xxx的通知</view>
   </navigator>
 
 </view>
@@ -50,36 +57,38 @@
   <!-- url='/pages/tasklist/tasklist?id={{item.id}}&mineshow=1&all={{all[idx]}}' -->
   <navigator hidden='' bindtap='one' wx:for='{{list}}' wx:for-index='idx' data-index="{{all[idx]}}" wx:if='{{item.taskstatus!=4}}' wx:key='k' id='{{item.id}}' class='mid margin-top-60 margin-bottom-40'>
     <!--  -->
-    <view class='flex-row '>
-      <view class='padding-20 flex-1'>
-        <view class='txt-black h4'>{{item.companyname}}</view>
-        <view class='h5 margin-top-20'>运输单号：{{item.orderno}}</view>
-
-        <view class='flex-row flex-center margin-top-20'>
-          <view class='h5'>报名开始时间：</view>
-          <view class='h5'>{{item.enroll_start}}</view>
+    <view class='flex-row column'>
+      <view class='flex-row '>
+        <view class='padding-20 flex-1'>
+          <view class='txt-black h4'>{{item.companyname}}</view>
+          <view class='h4-5 margin-top-20'>运输单号：{{item.orderno}}</view>
         </view>
 
-
-        <view class='flex-row flex-center margin-top-20'>
-          <view class='h5'>报名截止时间：</view>
-          <view class='h5'>{{item.enroll_deadline}}</view>
-        </view>
-
+        <image wx:if='{{item.enroll_deadline_timespan<=timestamp}}' class='icon-75 chaoshi' src='{{uploadpath}}resource/{{res.chaoshi}}'></image>
       </view>
-      <image wx:if='{{item.enroll_deadline_timespan<=timestamp}}' class='icon-75 chaoshi' src='{{uploadpath}}resource/{{res.chaoshi}}'></image>
+      <view class='flex-row flex-center margin-left-20'>
+        <view class='h4-5'>报名开始时间：</view>
+        <view class='h4-5'>{{item.enroll_start}}</view>
+      </view>
+
+
+      <view class='flex-row flex-center margin-top-20 margin-left-20'>
+        <view class='h4-5'>报名截止时间：</view>
+        <view class='h4-5'>{{item.enroll_deadline}}</view>
+      </view>
+
     </view>
 
     <view class='flex-row flex-column'>
-      <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{item.enroll_deadline_timespan>timestamp}}'>{{item.taskstatus_name}}</view>
-      <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{item.enroll_deadline_timespan<=timestamp}}'>报名截止</view>
+      <view class='text-center txt-red h4-5 signup margin-top' wx:if='{{item.enroll_deadline_timespan>timestamp}}'>{{item.taskstatus_name}}</view>
+      <view class='text-center txt-red h4-5 signup margin-top' wx:if='{{item.enroll_deadline_timespan<=timestamp}}'>报名截止</view>
     </view>
     <view class='flex-row flex-center margin-top-20'>
       <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
         <view class='flex-row'>
           <view class='font-left'>{{item.applycount}}</view>
-          <view class='font-mid padding-top-40 margin-left-10'>/{{item.carcount}}</view>
-          <view class='txt-bold padding-top-60 margin-left-10'>辆</view>
+          <view class='txt-bold h4 padding-top-60 margin-left-10'>/{{item.carcount}}</view>
+          <view class='txt-bold h4 padding-top-60 margin-left-10'>辆</view>
         </view>
       </view>
 
@@ -100,7 +109,7 @@
           <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
         </view>
         <view class='flex-row column margin-left-20'>
-          <view class='h5 txt-gray'>始发地</view>
+          <view class='h4-5 txt-gray'>始发地</view>
           <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.startaddress}}</view>
         </view>
       </view>
@@ -109,14 +118,14 @@
           <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
         </view>
         <view class='flex-row column margin-left-20'>
-          <view class='h5 txt-gray'>目的地</view>
+          <view class='h4-5 txt-gray'>目的地</view>
           <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.targetaddress}}</view>
         </view>
       </view>
     </view>
     <view class='flex-row flex-center padding-20'>
-      <view class='txt-gray h5'>全程</view>
-      <view class='h5'>{{item.distance}}</view>
+      <view class='txt-gray h4-5'>全程</view>
+      <view class='h4-5'>{{item.distance}}</view>
     </view>
   </navigator>
 
@@ -130,28 +139,32 @@
   </view>
 
   <navigator id='{{item.id}}' data-index='{{num[idx]}}' wx:if='{{item.taskstatus!=4}}' bindtap='mine' wx:for='{{minelist}}' wx:key='k' wx:for-index='idx' class='mid margin-top-60 margin-bottom-40'>
-    <view class='flex-row '>
-      <view class='padding-20 flex-1'>
-        <view class='txt-black h4'>{{item.companyname}}</view>
-        <view class='h5 margin-top-20'>运输单号：{{item.orderno}}</view>
-
-        <view class='flex-row flex-center margin-top-20'>
-          <view class='h5'>报名开始时间：</view>
-          <view class='h5'>{{item.enroll_start}}</view>
+    <view class='flex-row column'>
+      <view class='flex-row '>
+        <view class='padding-20 flex-1'>
+          <view class='txt-black h4'>{{item.companyname}}</view>
+          <view class='h4-5 margin-top-20'>运输单号：{{item.orderno}}</view>
         </view>
 
-        <view class='flex-row flex-center margin-top-20'>
-          <view class='h5'>报名截止时间：</view>
-          <view class='h5'>{{item.enroll_deadline}}</view>
-        </view>
+        <image wx:if='{{item.enroll_deadline_timespan<=timestamp}}' class='icon-75 chaoshi' src='{{uploadpath}}resource/{{res.chaoshi}}'></image>
       </view>
-      <image wx:if='{{item.enroll_deadline_timespan<=timestamp}}' class='icon-75 chaoshi' src='{{uploadpath}}resource/{{res.chaoshi}}'></image>
+      <view class='flex-row flex-center margin-left-20'>
+        <view class='h4-5'>报名开始时间：</view>
+        <view class='h4-5'>{{item.enroll_start}}</view>
+      </view>
+
+
+      <view class='flex-row flex-center margin-top-20 margin-left-20'>
+        <view class='h4-5'>报名截止时间：</view>
+        <view class='h4-5'>{{item.enroll_deadline}}</view>
+      </view>
+
     </view>
     <view class='flex-row flex-column '>
 
 
-      <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{item.enroll_deadline_timespan>timestamp}}'>{{item.taskstatus_name}}</view>
-      <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{item.enroll_deadline_timespan<=timestamp}}'>报名截止</view>
+      <view class='text-center txt-red h4-5 signup margin-top' wx:if='{{item.enroll_deadline_timespan>timestamp}}'>{{item.taskstatus_name}}</view>
+      <view class='text-center txt-red h4-5 signup margin-top' wx:if='{{item.enroll_deadline_timespan<=timestamp}}'>报名截止</view>
     </view>
     <view class='flex-row flex-center margin-top-20'>
       <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
@@ -182,7 +195,7 @@
         </view>
 
         <view class='flex-row column margin-left-20'>
-          <view class='h5 txt-gray'>始发地</view>
+          <view class='h4-5 txt-gray'>始发地</view>
           <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.startaddress}}</view>
         </view>
       </view>
@@ -194,15 +207,15 @@
         </view>
 
         <view class='flex-row column margin-left-20'>
-          <view class='h5 txt-gray'>目的地</view>
+          <view class='h4-5 txt-gray'>目的地</view>
           <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.targetaddress}}</view>
         </view>
       </view>
 
     </view>
     <view class='flex-row flex-center padding-20'>
-      <view class='txt-gray h5'>全程</view>
-      <view class='h5'>{{item.distance}}</view>
+      <view class='txt-gray h4-5'>全程</view>
+      <view class='h4-5'>{{item.distance}}</view>
     </view>
   </navigator>
 </view>

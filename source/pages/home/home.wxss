@@ -16,8 +16,8 @@ height: 25rpx;
 }
 .txt-white{
   color: white;
-  border-bottom: 4rpx  solid white;
-  border-bottom-width: thick;
+  /* border-bottom: 4rpx  solid white;
+  border-bottom-width: thick; */
 }
 .signup{
 width:170rpx;
@@ -83,12 +83,39 @@ background: #CFCECF;
   position: absolute;
   margin-left:150rpx;
 }
+
+
 .num{
+  width: 45rpx;
+  height: 45rpx;
+  border-radius: 50%;
+}
+.nm{
+  position: absolute;
+  z-index: 120;
+  /* top: 10rpx;
+  right: 101rpx; */
+}
+.xiaoxi{
   position: fixed;
   z-index: 100;
-  right: 40rpx;
-  width: 30rpx;
-  height: 30rpx;
-  border-radius: 50%;
-  background: red;
+  right: 90rpx;
+  top: 7rpx;
+}
+.all_whiteblock{
+  position: fixed;
+  top: 72rpx;
+  z-index: 150;
+  height: 15rpx;
+  width: 50%;
+  background: white;
+}
+.mine_whiteblock{
+  position: fixed;
+  top: 72rpx;
+  right: 0;
+  z-index: 150;
+  height: 15rpx;
+  width: 50%;
+  background: white;
 }

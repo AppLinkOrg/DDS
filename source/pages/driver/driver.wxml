@@ -6,11 +6,17 @@
         <image class='icon-30 ' src='{{uploadpath}}resource/{{res.siji_icon}}'></image>
       </navigator>
 
-      <view class='flex-2 h5 {{tab==0?"aa":"bb"}} padding-20 ' bindtap='changetab' id="0">新任务</view>
-      <view class='flex-2 h5  {{tab==1?"aa":"bb"}} padding-20' bindtap='changetab' id="1">已报名</view>
-      <view class='flex-2 h5  {{tab==2?"aa":"bb"}} padding-20' bindtap='changetab' id="2">待完成</view>
-      <view class='num txt-white h6 text-center'>{{dwc.length}}</view>
+      <view class='flex-2 h4-5 {{tab==0?"aa":"bb"}} padding-20 ' bindtap='changetab' id="0">新任务</view>
+      <view class='flex-2 h4-5  {{tab==1?"aa":"bb"}} padding-20' bindtap='changetab' id="1">已报名</view>
+      <view class='flex-2 h4-5  {{tab==2?"aa":"bb"}} padding-20' bindtap='changetab' id="2">待完成</view>
 
+      <view class='xiaoxi'>
+      <view class='txt-white h6 nm' style='margin-left:11rpx;'>{{dwc.length}}</view>
+      <image class='num' src='{{uploadpath}}resource/{{res.xiaoxitishi}}'></image>
+      </view>
+
+      <!-- <view class='num txt-white h6 text-center'>{{dwc.length}}</view> -->
+      
     </view>
 
     <view style='height:70rpx;' class="flex-row flex-center bg  " hidden='{{tab!=0}}'>
@@ -66,7 +72,7 @@
       <view class=' flex-center margin-top-20  flex-row '>
         <view class="flex-1 flex-row flex-bottom" style=''>
 
-          <view class="flex-3 flex-center " style='text-align: center; font-size:50rpx !important; color:#4B69BB'>{{item.unitprice}}</view>
+          <view class="flex-3 flex-center " style='text-align: center; font-size:70rpx !important; color:#4B69BB'>{{item.unitprice}}</view>
           <view class="flex-2 flex-center " style='text-align: center;margin-right:20rpx'>元/吨</view>
 
         </view>
@@ -141,14 +147,14 @@
   <navigator wx:for="{{ybm}}" wx:for-index="idx" wx:key='k' id='{{item.id}}' bindtap='registered'  class="nr1  flex-center flex-wrap margin-top" hidden='{{tab!=1}}' wx:if="{{item.openid==UserInfo.openid&&item.transport_name=='已报名'}}">
     <view class="asd flex-1  " style='width:95%'>
 
-      <view style=' margin-bottom:30rpx ;margin-top:30rpx ' class="flex-center flex-row ">
-        <view class="margin-left-20  ">
-
-        </view>
+<view class='flex-row flex-center'>
+      <view style=' margin-bottom:30rpx ;margin-top:30rpx ' class="flex-center flex-row  flex-1">
         <view class="margin-left-20  " >订单编号</view>
         <view class="margin-left-20 margin-right-20 " style='color:red'>{{ybm[idx].order_orderno}}</view>
       </view>
 
+      <image wx:if='{{item.order_enroll_deadline<=today}}' class='icon-75' src='{{uploadpath}}resource/{{res.chaoshi}}'></image>
+</view>
       <view class="flex-center flex-row margin-top-20">
         <view class="margin-left-20  ">
           <image class='icon-15 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
@@ -177,16 +183,19 @@
           <view class="margin-left-20 " style='font-size:98rpx !important; color:#4B69BB'>{{ybm[idx].order_unitprice}}</view>
           <view class="">元/吨</view>
         </view>
-        <view class="flex-1  flex-row column " style='text-algin:center'>
+
+        <view class="flex-1  flex-row column " wx:if='{{item.order_enroll_deadline>today}}' style='text-algin:center'>
           <view class=''  style='font-size:50rpx !important; color:#F9B725'>{{days1[idx]-1}}天</view>
           <view class=''  style='font-size:50rpx !important; color:#F9B725'>{{xs1[idx]}}:{{sj1[idx]}}</view>
           <!-- <view class='margin-left-30' wx:if='{{xs1<0}}'  style='font-size:70rpx !important; color:#F9B725'>00:00:00</view> -->
         </view>
-      </view>
-      
-      
-    </view>
 
+        <view class="flex-1  flex-row column " wx:if='{{item.order_enroll_deadline<=today}}' style='text-algin:center'>
+          <view class='margin-left-20'   style='font-size:50rpx !important; color:#F9B725'>00:00:00</view>
+        </view>
+
+      </view>
+    </view>
 
     <view class="asd flex-1" style=' width:95%'>
       <view class="flex-wrap" style=' margin-bottom:30rpx'>
@@ -256,11 +265,16 @@
           <view class="margin-left-20 " style='font-size:98rpx !important; color:#4B69BB'>{{dwc[idx].order_unitprice}}</view>
           <view class="">元/吨</view>
         </view>
-        <view class="flex-1  flex-row column  " style='text-algin:center'>
+        <view class="flex-1  flex-row column  " wx:if='{{item.order_end_time>today}}' style='text-algin:center'>
           <view class=''  style='font-size:50rpx !important; color:#F9B725'>{{days2[idx]-1}}天 </view>
           <view class=''  style='font-size:50rpx !important; color:#F9B725'>{{xs2[idx]}}:{{sj2[idx]}}</view>
           <!-- <view class='margin-left-30' wx:if='{{xs1<0}}'  style='font-size:70rpx !important; color:#F9B725'>00:00:00</view> -->
         </view>
+
+        <view class="flex-1  flex-row column " wx:if='{{item.order_end_time<=today}}' style='text-algin:center'>
+          <view class='margin-left-20'   style='font-size:50rpx !important; color:#F9B725'>00:00:00</view>
+        </view>
+
       </view>
     </view>
 

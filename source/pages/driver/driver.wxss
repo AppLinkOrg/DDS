@@ -15,13 +15,19 @@
   box-shadow: 0rpx 1rpx 20rpx 2rpx #ccc;
 }
 .num{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+}
+.nm{
+  position: fixed;
+  z-index: 120;
+}
+.xiaoxi{
   position: fixed;
   z-index: 100;
-  right: 10rpx;
-  width: 30rpx;
-  height: 30rpx;
-  border-radius: 50%;
-  background: red;
+  right: 8rpx;
+  top: 15rpx;
 }
 .bg {
   background-color: #fff;
@@ -89,10 +95,6 @@ page {
   line-height: 100rpx;
 }
 
-image {
-  margin-top: 8rpx;
-}
-
 .aa {
   margin-left: 70rpx;
   font-weight: bold;
@@ -122,8 +124,6 @@ height: 25rpx;
 }
 .txt-white{
   color: white;
-  border-bottom: 4rpx  solid white;
-  border-bottom-width: thick;
 }
 .signup{
 width:170rpx;

@@ -19,36 +19,36 @@
 
 <navigator class='flex-row flex-center padding-30 bg-white hig_btm' bindtap='phoneCall' id='19245678987'>
   <image class='icon-20' src='{{uploadpath}}resource/{{res.mine}}'></image>
-  <view class='txt-black txt-bold margin-left-20 h5 flex-1'>西安实打实大声道</view>
-  <view class='txt-black h5 txt-bold'>19245678987</view>
+  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>西安实打实大声道</view>
+  <view class='txt-black h4-5 txt-bold'>19245678987</view>
 </navigator>
 
 <navigator bindtap='tishi' class='flex-row flex-center padding-30 bg-white hig_btm'>
   <image class='icon-20' src='{{uploadpath}}resource/{{res.commontask}}'></image>
-  <view class='txt-black txt-bold margin-left-20 h5 flex-1'>常用任务</view>
+  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>常用任务</view>
   <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>
 
 <navigator bindtap='lishi' class='flex-row flex-center padding-30 bg-white bor_btm'>
   <image class='icon-20' src='{{uploadpath}}resource/{{res.taskhistory}}'></image>
-  <view class='txt-black txt-bold margin-left-20 h5 flex-1'>任务历史</view>
+  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>任务历史</view>
   <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>
 
 <navigator bindtap='chenyuan' class='flex-row flex-center padding-30 bg-white bor_btm'>
   <image class='icon-20' src='{{uploadpath}}resource/{{res.team}}'></image>
-  <view class='txt-black txt-bold margin-left-20 h5 flex-1'>团队成员</view>
+  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>团队成员</view>
   <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>
 
 <navigator bindtap='Cutstatus' class='flex-row flex-center padding-30 bg-white bor_btm'>
   <image class='icon-20' src='{{uploadpath}}resource/{{res.team}}'></image>
-  <view class='txt-black txt-bold margin-left-20 h5 flex-1'>身份切换</view>
+  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>身份切换</view>
   <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>
 
 <navigator url='/pages/aboutus/aboutus' class='flex-row flex-center padding-30 bg-white '>
   <image class='icon-20' src='{{uploadpath}}resource/{{res.aboutus}}'></image>
-  <view class='txt-black txt-bold margin-left-20 h5 flex-1'>关于我们</view>
+  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>关于我们</view>
   <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>

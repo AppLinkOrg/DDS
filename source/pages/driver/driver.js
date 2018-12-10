@@ -24,7 +24,7 @@ class Content extends AppBase {
     this.Base.Page = this;
 
     //options.id=5;
-    this.Base.setMyData({})
+    this.Base.setMyData({ today: this.Base.util.FormatDate(new Date())})
 
     wx.setStorageSync("lastlogin", "D");
 
@@ -89,7 +89,7 @@ class Content extends AppBase {
         var month = new Array();
         var year1 = new Array();
         var month1 = new Array();
-        var days = new Array()
+        var days = new Array();
         var day = new Array();
         var day1 = new Array();
         var days = new Array()
@@ -387,7 +387,7 @@ class Content extends AppBase {
         sj: sj,
         xs: xs
       })
-    }, 100);
+    }, 100000);
 
   }
   one(ybm) {
@@ -419,7 +419,7 @@ class Content extends AppBase {
         sj1: sj,
         xs1: xs
       })
-    }, 100);
+    }, 100000);
 
   }
   binddwc(dwc) {
@@ -456,7 +456,7 @@ class Content extends AppBase {
         xs2: xs
       })
       // console.log(days2 + "mmm" + sj2 + "ssss" + xs2);
-    }, 100);
+    }, 100000);
  }
 
   newtask(e) {

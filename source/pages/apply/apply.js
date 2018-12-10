@@ -168,8 +168,8 @@ class Content extends AppBase {
              that.Base.setMyData({
                deleteapply
              });
-              wx.reLaunch({
-                url: '/pages/driver/driver',
+              wx.navigateBack({
+                
               })
              that.onMyShow();
            });

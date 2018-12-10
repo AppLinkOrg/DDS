@@ -294,15 +294,17 @@ class Content extends AppBase {
            });
           }
          else {
-            wx.reLaunch({
-              url: '/pages/driver/driver'
-            }),
+            wx.navigateBack({
+              
+            })
+            // ({
+            //   url: '/pages/driver/driver'
+            // }),
              wx.showToast({
-               title: '发布成功',
+               title: '报名成功',
                duration: 1000
              });
         }
-
       });
     
 

@@ -1,7 +1,7 @@
 <navigator url='/pages/certificate/certificate?openid={{UserInfo.openid}}&&zt={{driverinfo.status}}' class='flex-row flex-center bg-white padding-30 bor_btm'>
   <view class='flex-row flex-column'>
     <image class='icon-60 radius-50' src='{{UserInfo.avatarUrl}}'></image>
-    <navigator url='/pages/certificate/certificate?openid={{UserInfo.openid}}&&zt={{driverinfo.status}}' class='h5 ' style=' '>
+    <navigator url='/pages/certificate/certificate?openid={{UserInfo.openid}}&&zt={{driverinfo.status}}' class='h4-5 ' style=' '>
       <view class='h6 txt-white text-center orange' wx:if="{{driverinfo==null}}">未认证</view>
       <view class='h6 txt-white text-center orange' wx:if="{{driverinfo.status=='I'}}">{{driverinfo.status_name}}</view>
       <view class='h6 txt-white text-center blue' wx:if="{{driverinfo.status=='A'}}">{{driverinfo.status_name}}</view>
@@ -16,30 +16,30 @@
 
 <navigator class='flex-row flex-center padding-30 bg-white hig_btm' bindtap='phoneCall' id='13221231231'>
   <image class='icon-20' src='{{uploadpath}}resource/{{res.dianhua}}'></image>
-  <view class='txt-black txt-bold margin-left-20 h5 flex-1'>联系电话</view> 
-  <view class='txt-black h5 txt-bold'>13221231231</view>
+  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>联系电话</view> 
+  <view class='txt-black h4-5 txt-bold'>13221231231</view>
 </navigator>
 
 <navigator  bindtap='mycar' class='flex-row flex-center padding-30 bg-white hig_btm'>
   <image class='icon-20' src='{{uploadpath}}resource/{{res.huoche}}'></image>
-  <view class='txt-black txt-bold margin-left-20 h5 flex-1'>我的车辆</view>
+  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>我的车辆</view>
   <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>
 
 <navigator bindtap='mytask' class='flex-row flex-center padding-30 bg-white bor_btm'>
   <image class='icon-20' src='{{uploadpath}}resource/{{res.commontask}}'></image>
-  <view class='txt-black txt-bold margin-left-20 h5 flex-1'>我的任务</view>
+  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>我的任务</view>
   <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>
 
 <navigator bindtap='Cutstatus' class='flex-row flex-center padding-30 bg-white bor_btm'>
   <image class='icon-20' src='{{uploadpath}}resource/{{res.team}}'></image>
-  <view class='txt-black txt-bold margin-left-20 h5 flex-1'>身份切换</view>
+  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>身份切换</view>
   <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>
 
 <navigator url='/pages/aboutus/aboutus' class='flex-row flex-center padding-30 bg-white '>
   <image class='icon-20' src='{{uploadpath}}resource/{{res.aboutus}}'></image>
-  <view class='txt-black txt-bold margin-left-20 h5 flex-1'>关于我们</view>
+  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>关于我们</view>
   <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>
