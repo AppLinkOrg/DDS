@@ -1,8 +1,8 @@
-// pages/certification/certification.js
+// pages/updateprove/updateprove.js
 import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
-import { InstApi } from "../../apis/inst.api.js"; 
-import { OrderApi } from "../../apis/order.api.js"; 
+import { InstApi } from "../../apis/inst.api.js";
+import { OrderApi } from "../../apis/order.api.js";
 
 class Content extends AppBase {
   constructor() {
@@ -13,27 +13,27 @@ class Content extends AppBase {
     //options.id=5;
     super.onLoad(options);
     console.log(this.options.status);
-      // wx.showModal({
-      //   title: '提示',
-      //   content: '您已经通过认证',
-      //   success: function (res) {
-      //     if (res.confirm) {
-      //       console.log('用户点击确定')
-      //     }
-      //   }
-      // })
+    // wx.showModal({
+    //   title: '提示',
+    //   content: '您已经通过认证',
+    //   success: function (res) {
+    //     if (res.confirm) {
+    //       console.log('用户点击确定')
+    //     }
+    //   }
+    // })
 
   }
   onMyShow() {
     var that = this;
     var orderapi = new OrderApi();
     var UserInfo = this.Base.getMyData().UserInfo;
-    orderapi.enterpriseinfo( {} , (errinfo) => {
+    orderapi.enterpriseinfo({}, (errinfo) => {
       this.Base.setMyData({ errinfo })
     })
   }
   setPageTitle(instinfo) {
-    var title = "企业认证";
+    var title = "修改认证资料";
     wx.setNavigationBarTitle({
       title: title,
     })
@@ -42,12 +42,12 @@ class Content extends AppBase {
     var that = this;
     var id = e.currentTarget.id;
     this.Base.uploadImage("Renzheng", (ret) => {
-        that.Base.setMyData({
-          photo: ret
-        });
+      that.Base.setMyData({
+        photo: ret
+      });
     }, undefined, 1);
   }
-  confirm(e){
+  confirm(e) {
     var data = e.detail.value;
     if (data.enterprisename == '') {
       this.Base.info("企业名称不可为空");
@@ -67,21 +67,16 @@ class Content extends AppBase {
     var UserInfo = this.Base.getMyData().UserInfo;
     var that = this;
     var orderapi = new OrderApi();
+    var memberinfo=this.Base.getMyData().memberinfo;
     console.log(UserInfo.nickName);
-    orderapi.authenticate({
-       status: "I",
-       open_id: UserInfo.openid,
-       enterprisename: enterprisename,
-       creditcode: creditcode,
-       authenticateimg:photo
-    }, (authenticate) => {
-        //  var pages = getCurrentPages(); 
-        //  var beforePage = pages[pages.length - 2];
-        //  wx.reLaunch({
-        //    success(){
-        //      beforePage.onLoad();
-        //    }
-        //  })
+    orderapi.updateprove({
+      member_id: memberinfo.id,
+      status: "I",
+      enterprisename: enterprisename,
+      creditcode: creditcode,
+      authenticateimg: photo
+    }, (updateprove) => {
+      
       wx.showModal({
         title: '',
         content: '提交成功',
@@ -97,7 +92,7 @@ class Content extends AppBase {
           }
         }
       });
-     });
+    });
   }
   enterprisename(e) {
     var enterprisename = e.detail.value;
@@ -120,11 +115,11 @@ class Content extends AppBase {
       photo: e.detail.value
     })
   }
-  // updateprove
-  Yes(e){
-  wx.navigateTo({
-    url: '/pages/mine/mine',
-  })
+  // 
+  Yes(e) {
+    wx.navigateTo({
+      url: '/pages/mine/mine',
+    })
   }
 }
 var content = new Content();
@@ -134,8 +129,8 @@ body.onMyShow = content.onMyShow;
 
 body.confirm = content.confirm;
 body.enterprisename = content.enterprisename;
-body.creditcode = content.creditcode; 
+body.creditcode = content.creditcode;
 body.photo = content.photo;
-body.uploadimg = content.uploadimg; 
+body.uploadimg = content.uploadimg;
 body.Yes = content.Yes;
 Page(body)

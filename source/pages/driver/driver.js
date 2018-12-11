@@ -24,6 +24,7 @@ class Content extends AppBase {
     this.Base.Page = this;
 
     //options.id=5;
+
     this.Base.setMyData({ today: this.Base.util.FormatDate(new Date()), todayspan:Date.parse(new Date()) / 1000})
 
     wx.setStorageSync("lastlogin", "D");
@@ -45,12 +46,12 @@ class Content extends AppBase {
 
       ],
       index: 0,
-      tab: 0,
-
+      tab: 0
 
     })
     this.Base.setMyData({
-      list:[],ybm:[],dwc:[]
+      list: [], ybm: [], dwc: [],
+      orderby: ""
     })
     this.Countdown();
     this.one();
@@ -86,9 +87,11 @@ class Content extends AppBase {
       });
     });
     // 
+    var orderby=this.Base.getMyData().orderby;
     orderapi.applylist({ }, (list1) => {
       orderapi.list({
-        getall: "Y"
+        getall: "Y",
+        orderby: orderby
       }, (list) => {
         var year = new Array();
         var month = new Array();
@@ -363,9 +366,20 @@ class Content extends AppBase {
 
   }
   qwe(e) {
+    var i = e.detail.value;
+    var orderby="";
+    if(i==1){
+      orderby=" juliwo ";
+    }
+    if (i == 2) {
+      orderby = " unitprice desc";
+    }
+    console.log(i);
     this.setData({
-      index: e.detail.value
-    })
+      index: e.detail.value,
+      orderby: orderby
+    });
+    this.onMyShow();
   }
   changetab(e) {
     this.Base.setMyData({

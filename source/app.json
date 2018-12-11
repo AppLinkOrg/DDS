@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/youke/youke",
+    "pages/updateprove/updateprove",
     "pages/vehicle/vehicle",
     "pages/driver/driver",
     "pages/weighingsheet/weighingsheet",
