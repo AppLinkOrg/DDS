@@ -3,31 +3,24 @@
   <view class=''>暂未添加车辆</view>
 </view>
 
-<view class="margin-20 bg-white asd padding-left-40" wx:if='{{vehiclelist.length>0}}'>
-  <view wx:for="{{vehiclelist}}" wx:key="k" class="margin-top-20  " >
-
+<view class="margin-20 bg-white asd padding-left-40" wx:for="{{vehiclelist}}" wx:key="k" wx:if='{{vehiclelist.length>0}}'>
+  <view class="margin-top-20  ">
     <view class="flex-row flex-center margin-top-20 ">
-      <view class="flex-1 h4 txt-black txt-bold text-center" style=''>{{item.vehicletype}}</view>
-      <view class="margin-10 flex-1 margin-left-100 status_color_A text-center" wx:if='{{item.status=="A"}}'> {{item.status_name}}</view>
+      <view class="flex-1 h4 txt-black txt-bold " style=''>{{item.vehicletype}}</view>
+      <view class="margin-10 flex-1 margin-right-100 margin-left-100 status_color_A text-center" wx:if='{{item.status=="A"}}'> {{item.status_name}}</view>
       <view class="margin-10 flex-1 margin-right-100 margin-left-100 status_color_I text-center" wx:if='{{item.status=="I"}}'> {{item.status_name}}</view>
     </view>
-
     <view style=' ' class="flex-center flex-row ">
-
-      <view class="flex-row   flex-bottom margin-left-40 flex-1" style=''>
+      <view class="flex-row   flex-bottom  flex-1" style=''>
         <view style='color:#8B8B8B;font-size: 100rpx !important' class='txt'>{{item.load}}</view>
-        <view  class='h4-5'>吨</view>
+        <view class='h4-5'>吨</view>
       </view>
-      
       <view class='flex-row flex-center  margin-left-40   flex-1  bg-orange padding-5' style='border-radius:7rpx; height:80rpx;margin-right:120rpx '>
-          <view class='padding-10 margin-left-10 h4 margin-right-10 txt-bold txt-black text-center' style='border:2rpx solid black;border-radius:7rpx;width:200rpx'>{{item.carnumber}}
-          </view>
+        <view class='padding-10 margin-left-10 h4 margin-right-10 txt-bold txt-black text-center' style='border:2rpx solid black;border-radius:7rpx;width:200rpx'>{{item.carnumber}}
+        </view>
       </view>
-
     </view>
-
   </view>
-  
 </view>
 
 <navigator url='/pages/Addvehicle/Addvehicle?cats=[{{item.id}}]' class="h4 bm" id="anniu">添加车辆</navigator>

@@ -150,7 +150,7 @@
     <view class='flex-row column '>
 
       <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-        <image class='icon-30' src='{{uploadpath}}resource/{{res.driver}}'></image>
+        <image class='icon-30' src='{{uploadpath}}resource/{{res.huowuzhgongl}}'></image>
         <view class='txt-black h4-5   margin-left-20'>货物重量</view>
         <input placeholder='请输入货物吨数' bindinput='goodsweight' name='gdsweight' class='h4-5 text-right flex-1' type='number'></input>
       </view>
@@ -218,8 +218,8 @@
 
       <navigator url='/pages/addmembers/addmembers' wx:if='{{memberlist.length==0}}'>
         <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-          <image class='icon-30' src='{{uploadpath}}resource/{{res.zhondian}}'></image>
-          <view class='txt-black h4-5 flex-1  margin-left-20'>终点联系人</view>
+          <image class='icon-35' src='{{uploadpath}}resource/{{res.zhondian}}'></image>
+          <view class='txt-black h4-5 flex-1  margin-left-10'>终点联系人</view>
           <input class='h4-5 txt-black text-right' style='width:260rpx;' disabled='false' bindinput='startcontact' name='stcontact' placeholder='请选择起点联系人' value='{{memberlist[startcontact_idx].name}}'></input>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
         </view>
@@ -228,8 +228,8 @@
       <view wx:if='{{memberlist.length>0}}'>
         <picker range='{{memberlist}}' bindchange='bindendcontact' range-key='name'>
           <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
-            <image class='icon-30' src='{{uploadpath}}resource/{{res.zhondian}}'></image>
-            <view class='txt-black h4-5 flex-1  margin-left-20'>终点联系人</view>
+            <image class='icon-35' src='{{uploadpath}}resource/{{res.zhondian}}'></image>
+            <view class='txt-black h4-5 flex-1  margin-left-10'>终点联系人</view>
             <input class='h4-5 txt-black text-right' style='width:260rpx;' disabled='false' bindinput='endcontact' name='edcontact' placeholder='请选择终点联系人' value='{{memberlist[endcontact_idx].name}}'></input>
             <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
           </view>
@@ -237,7 +237,7 @@
       </view>
 
       <view class='flex-row   flex-1 padding-40   bor_btm'>
-        <image class='icon-30' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
+        <image class='icon-25' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
         <view class='txt-black h4-5   margin-left-20'>备注</view>
         <textarea placeholder='暂无备注（限制字数140字）' bindinput='bindremark' name='remark' style='height:100rpx;width:400rpx; border-radius:10rpx;' class='h5 bg-gray padding-20 txt-black   margin-left-30'></textarea>
       </view>

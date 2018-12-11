@@ -229,6 +229,7 @@ class Content extends AppBase {
   confirm(e) {
     var data = e.detail.value;
     var weight = this.Base.getMyData().weight;
+    var totaldun = this.Base.getMyData().totaldun;
     console.log(weight);
 
     if (data.tonnage == "") {
@@ -239,10 +240,10 @@ class Content extends AppBase {
       this.Base.info("请输入联系电话");
       return;
     }
-    if (parseInt(data.tonnage) > parseInt(weight)) {
-      this.Base.info("不能大于剩余吨数");
-      return;
-    }
+    // if (parseInt(data.tonnage) > parseInt(weight)) {
+    //   this.Base.info("不能大于剩余吨数");
+    //   return;
+    // }
     if (parseInt(data.tonnage) > parseInt(weight)) {
       this.Base.info("不能大于剩余吨数");
       return;
@@ -270,6 +271,8 @@ class Content extends AppBase {
         tonnage: tonnage,
         driver_phone: driverphone,
         vehicle: vehicle,
+        newstatus:"Y",
+        drivernewstatus:"N",
         member_name: info.companyname,
         carriage_driver: driverinfo.name,
         openid: UserInfo.openid

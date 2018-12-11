@@ -1,6 +1,10 @@
 
-<view  >
+
+<navigator url='/pages/usercategory/usercategory' wx:if='{{list.length==0}}'  class='txt-blue text-center'>点此进入</navigator>
+
+<navigator wx:if='{{list.length>0}}'  url='/pages/usercategory/usercategory'>
   <view class="flex-row flex-center" style='' ><view class="flex-1 text-center" style='text-algin:center'>最新发布</view></view>
+
  <navigator url='/pages/usercategory/usercategory'  wx:for='{{list}}' wx:key='k' class='mid margin-top-60 margin-bottom-40' >
 
   <view class='flex-row flex-column  '>
@@ -58,4 +62,4 @@
     <view class=' h5'>公里</view>
   </view>
  </navigator>
-</view>
+</navigator>

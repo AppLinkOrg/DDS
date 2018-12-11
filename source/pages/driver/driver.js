@@ -24,7 +24,7 @@ class Content extends AppBase {
     this.Base.Page = this;
 
     //options.id=5;
-    this.Base.setMyData({ today: this.Base.util.FormatDate(new Date())})
+    this.Base.setMyData({ today: this.Base.util.FormatDate(new Date()), todayspan:Date.parse(new Date()) / 1000})
 
     wx.setStorageSync("lastlogin", "D");
 
@@ -49,9 +49,13 @@ class Content extends AppBase {
 
 
     })
-
+    this.Base.setMyData({
+      list:[],ybm:[],dwc:[]
+    })
+    this.Countdown();
+    this.one();
+    this.binddwc();
     super.onLoad(options);
-
   }
 
 
@@ -81,7 +85,8 @@ class Content extends AppBase {
         driverinfo
       });
     });
-    orderapi.applylist({}, (list1) => {
+    // 
+    orderapi.applylist({ }, (list1) => {
       orderapi.list({
         getall: "Y"
       }, (list) => {
@@ -320,7 +325,8 @@ class Content extends AppBase {
 
         });
         orderapi.applylist({
-          transport_name: "待完成"
+          transport_name: "待完成",
+          drivernewstatus:"Y",
         }, () => {
 
           this.Base.setMyData({
@@ -336,17 +342,22 @@ class Content extends AppBase {
 
         });
 
-        this.Countdown(list);
+       
 
         this.Base.setMyData({
           list
         });
 
-        this.one(ybm);
-        this.binddwc(dwc);
+        
 
 
 
+      });
+    })
+
+    orderapi.applylist({ drivernewstatus: "Y", transport:"N"},(waitlist)=>{
+      this.Base.setMyData({
+        waitlist
       });
     })
 
@@ -365,10 +376,12 @@ class Content extends AppBase {
     clearInterval(this.timer);
   }
 
-  Countdown(list) {
+  Countdown() {
     var that = this;
+    
     this.timer = setInterval(() => {
-      var orderapi = new OrderApi();
+      
+      var list=this.Base.getMyData().list;
       var days = new Array()
       var sj = new Array();
       var xs = new Array();
@@ -387,13 +400,15 @@ class Content extends AppBase {
         sj: sj,
         xs: xs
       })
-    }, 100000);
+    }, 1000);
 
   }
   one(ybm) {
     var that = this;
+    
     this.timer = setInterval(() => {
-      var orderapi = new OrderApi();
+      var ybm = this.Base.getMyData().ybm;
+      
       var days = new Array()
       var sj = new Array();
       var xs = new Array();
@@ -417,15 +432,18 @@ class Content extends AppBase {
       content.setMyData({
         days1: days,
         sj1: sj,
-        xs1: xs
+        xs1: xs,
+        sjc: sjc
       })
-    }, 100000);
+      //console.log( sjc + "啊啊啊");
+    }, 1000);
 
   }
   binddwc(dwc) {
     var that = this;
+    
     this.timer = setInterval(() => {
-      var orderapi = new OrderApi();
+      var dwc = this.Base.getMyData().dwc;
       var days = new Array()
       var sj = new Array();
       var xs = new Array();
@@ -443,20 +461,21 @@ class Content extends AppBase {
         mydata = mydata.replace(/-/g, '/');
         var sjc = Date.parse(mydata) / 1000;
 
-        //console.log("阿萨斯" + sjc + "奥术大师" + dqsj + "反对的" + dwc[i].order_end_time);
+        
         var sjj = sjc - dqsj;
         days[i] = parseInt((sjj + 3600 * 24) / (3600 * 24));
         xs[i] = parseInt((sjj) / 3600);
         sj[i] = utils.sjc(sjj, 'm:s')
-        
+        //console.log(sjj + "wwwwwwwwwwwwwwwwwwww" );
       }
       content.setMyData({
         days2: days,
         sj2: sj,
-        xs2: xs
+        xs2: xs,
+        sjj:sjj
       })
       // console.log(days2 + "mmm" + sj2 + "ssss" + xs2);
-    }, 100000);
+    }, 1000);
  }
 
   newtask(e) {
@@ -515,6 +534,12 @@ class Content extends AppBase {
     }
   }
   tobecompleted(e) {
+
+    var orderapi = new OrderApi();
+    orderapi.updateton({}, (updateton) => {
+      this.Base.setMyData({ updateton })
+    })
+
     var driverinfo = this.Base.getMyData().driverinfo;
     if (driverinfo == null || driverinfo.status != "A") {
       wx.showModal({

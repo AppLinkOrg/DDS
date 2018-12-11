@@ -7,14 +7,15 @@
     
     <!-- <view class='num txt-white h6 text-center'>{{applylist.length}}</view> -->
     <!-- <image class='num' src='{{uploadpath}}resource/{{res.xiaoxitishi}}'></image> -->
-      <view class='xiaoxi text-center flex-row flex-column'>
+      <view wx:if='{{applylist.length>0}}' class='xiaoxi text-center flex-row flex-column'>
       <view class='txt-white h6 nm' style='margin-top:2rpx;padding-right:8rpx;'>{{applylist.length}}</view>
       <image class='num' src='{{uploadpath}}resource/{{res.xiaoxitishi}}'></image>
       </view>
   </view>
 
   <view class='flex-row flex-center padding-20 bg-white' hidden='{{allshow!="1"}}'>
-    <view class='flex-1 h4-5 txt-black'>共有 {{list.length}} 条任务</view>
+    <view wx:if='{{list!=null}}' class='flex-1 h4-5 txt-black'>共有 {{list.length}} 条任务</view>
+    <view wx:if='{{list==null}}' class='flex-1 h4-5 txt-black'>共有 0 条任务</view>
     <picker class='' bindchange='bindpickerstate' range='{{statuslist}}' range-key='odrstatusname'>
       <view class='flex-row flex-center'>
         <view wx:if='{{state_id==0}}'>所有发布</view>
@@ -27,7 +28,8 @@
   </view>
 
   <view class='flex-row flex-center padding-20 bg-white' hidden='{{mineshow!="2"}}'>
-    <view class='flex-1 h4-5 txt-black'>共有 {{minelist.length}} 条任务</view>
+    <view wx:if='{{minelist!=null}}' class='flex-1 h4-5 txt-black'>共有 {{minelist.length}} 条任务</view>
+    <view wx:if='{{minelist==null}}' class='flex-1 h4-5 txt-black'>共有 0 条任务</view>
     <picker class='' bindchange='bindpickerstate' range='{{statuslist}}' range-key='odrstatusname'>
       <view class='flex-row flex-center'>
         <view wx:if='{{state_id==0}}'>所有发布</view>

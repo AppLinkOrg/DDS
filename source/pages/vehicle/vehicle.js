@@ -15,10 +15,11 @@ class Content extends AppBase {
   }
   //界面标题
   setPageTitle() {
+    
     wx.setNavigationBarTitle({
       title: '车辆列表',
-
     });
+
   }
   onMyShow() {
     var that = this;

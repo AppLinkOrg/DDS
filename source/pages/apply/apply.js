@@ -158,9 +158,9 @@ class Content extends AppBase {
        content: '您是否需要取消本次报名？',
        showCancel: true,
        cancelText: '取消',
-       cancelColor: 'EE2222',
+       cancelColor: '#EE2222',
        confirmText: '确定',
-       confirmColor: '2699EC',
+       confirmColor: '#2699EC',
        success: function (res) {
          if (res.confirm) {
            var orderapi = new OrderApi();

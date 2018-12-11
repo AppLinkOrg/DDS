@@ -43,11 +43,18 @@ class Content extends AppBase {
   uploadimg(e) {
     var that = this;
     var id = e.currentTarget.id;
-    this.Base.uploadImage("driver", (ret) => {
+    this.Base.uploadImage("driver",
+    
+    
+    
+     (ret) => {
       that.Base.setMyData({
         photo: ret
       });
-    }, 1);
+    }
+    
+    
+    ,undefined, 1);
   }
   photo(e) {
     var photo = e.detail.value;
@@ -64,8 +71,22 @@ class Content extends AppBase {
       that.Base.setMyData({
         idphoto: ret
       });
-    }, 1);
+    }, undefined, 1);
   }
+  // uploadimg(e) {
+  //   var that = this;
+  //   var id = e.currentTarget.id;
+
+  //   this.Base.uploadImage("driver", (ret) => {
+
+  //     that.Base.setMyData({
+
+  //       photo: ret
+
+  //     });
+  //   }, 1);
+  // }
+
   idphoto(e) {
     var idphoto = e.detail.value;
     console.log(photo);
@@ -107,7 +128,6 @@ class Content extends AppBase {
     var openid=UserInfo.openid;
     var that = this;
     
-   
     var certificateapi = new CertificateApi();
     
     certificateapi.updetedriver({
@@ -118,19 +138,35 @@ class Content extends AppBase {
       dirlicense_img: photo,
       idcard_img: idphoto
     }, (updetedriver) => {
-      var pages = getCurrentPages();
-      var beforePage = pages[pages.length - 2];
-      wx.navigateBack({
-        success() {
-          beforePage.onLoad();
-          wx.showToast({
-
-            title: '成功',
-            icon: 'success',
-            duration: 2000
-          })
+      wx.showModal({
+        title: '',
+        content: '提交成功',
+        showCancel: false,
+        cancelText: '取消',
+        cancelColor: '#EE2222',
+        confirmText: '确定',
+        confirmColor: '#2699EC',
+        success: function (res) {
+          if (res.confirm) {
+            wx.navigateBack({
+              
+            })
+          }
         }
-      })
+      });
+      // var pages = getCurrentPages();
+      // var beforePage = pages[pages.length - 2];
+      // wx.navigateBack({
+      //   success() {
+      //     beforePage.onLoad();
+      //     wx.showModal({
+      //       showCancel: false,
+      //       title: '',
+      //       content: '提交成功',
+      //     })
+      //   }
+      // })
+
     });
   }
 

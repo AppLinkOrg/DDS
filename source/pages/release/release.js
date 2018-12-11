@@ -138,6 +138,7 @@ class Content extends AppBase {
 
   openRoute() {
     var route = this.Base.getMyData().route;
+    console.log(route);
     if (route != undefined) {
       wx.navigateTo({
         url: '/pages/route/route?callbackid=route&route=' + JSON.stringify(route),

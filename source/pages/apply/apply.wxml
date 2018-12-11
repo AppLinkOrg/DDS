@@ -2,7 +2,7 @@
   <view class="asd flex-1  " style='width:95%'>
     <view class="flex-center flex-row margin-top-20" style='justify-content:center'>
       <view class="margin-left-20  ">
-        <image class='icon-15' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
+        <image class='icon-30' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
       </view>
       <view class="margin-left-10 h4  " style='color:#222222'>{{applyinfo.order_companyname}}</view>
     </view>
@@ -31,7 +31,7 @@
             <!-- <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>起点距您666公里</view> -->
           </view>
           <view style='width:90rpx;  border-left:1px dotted #919191;display:flex;justify-content: center'>
-            <image class='icon-30' src='{{uploadpath}}resource/{{res.daohan}} '></image>
+            <image class='icon-30' src='{{uploadpath}}resource/{{res.daohan}} ' bindtap='openMap' id="{{applyinfo.order_startaddress}}"></image>
           </view>
         </view>
       </view>
@@ -45,7 +45,7 @@
             <view class=" margin-top-10 h5" style=' margin-left:60rpx'>总里程：{{info.distance}}</view>
           </view>
           <view style='width:90rpx;  border-left:1px dotted #919191;display:flex;justify-content: center'>
-            <image class='icon-30' src='{{uploadpath}}resource/{{res.daohan}} '></image>
+            <image class='icon-30' src='{{uploadpath}}resource/{{res.daohan}} ' bindtap='openMap' id="{{applyinfo.order_targetaddress}}"></image>
           </view>
         </view>
       </view>
@@ -54,7 +54,7 @@
   <view class="asd flex-1" style='width:95%'>
     <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
       <view class="margin-left-20">
-        <image class='icon-17' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
+        <image class='icon-25' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
       </view>
       <view class="flex-1 margin-left-20">货运类型</view>
       <view class="margin-right-20">{{applyinfo.order_stuff_type_id}}</view>
@@ -63,7 +63,7 @@
   <view class="asd flex-1" style='width:95%'  bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
     <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
       <view class="margin-left-20">
-        <image class='icon-17' src='{{uploadpath}}resource/{{res.dianhua}}'></image>
+        <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
       </view>
       <view class="flex-1 margin-left-20">报名联系人</view>
       <view class="margin-right-20">{{enrollinfo.name}}</view>
@@ -74,7 +74,7 @@
   <view class="asd flex-1" style='width:95%' bindtap='phoneCall' id='{{startinfo.member_phone}}'>
     <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
       <view class="margin-left-20">
-        <image class='icon-17' src='{{uploadpath}}resource/{{res.dianhua}}'></image>
+        <image class='icon-25' src='{{uploadpath}}resource/{{res.qidian}}'></image>
       </view>
       <view class="flex-1 margin-left-20">起点联系人</view>
       <view class="margin-right-20">{{startinfo.name}}</view>
@@ -85,7 +85,7 @@
   <view class="asd flex-1" style='width:95%' bindtap='phoneCall' id='{{endinfo.member_phone}}'>
     <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
       <view class="margin-left-20">
-        <image class='icon-17' src='{{uploadpath}}resource/{{res.dianhua}}'></image>
+        <image class='icon-25' src='{{uploadpath}}resource/{{res.zhondian}}'></image>
       </view>
       <view class="flex-1 margin-left-20">终点联系人</view>
       <view class="margin-right-20">{{endinfo.name}}</view>
@@ -96,18 +96,19 @@
   <view class="asd flex-1" style='width:95%' >
     <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
       <view class="margin-left-20">
-        <image class='icon-17' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
+        <image class='icon-20' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
       </view>
       <view class="flex-1 margin-left-20">备注</view>
       <view class="margin-right-20" wx:if='{{applyinfo.order_remark!="undefined"}}'>{{applyinfo.order_remark}}</view>
       <view class="margin-right-20" wx:if='{{applyinfo.order_remark=="undefined"}}'></view>
     </view>
     <view>
+
       <view class="flex-wrap">
         <view class="" style='margin:30rpx'>报名资料</view>
         <view class="flex-row  flex-center">
           <view class='margin-left-20'>
-            <image class='icon-17' src='{{uploadpath}}resource/{{res.huoche}}'></image>
+            <image class='icon-25' src='{{uploadpath}}resource/{{res.huowuzhgongl}}'></image>
           </view>
           <view class="flex-1 margin-left-20">货运吨数</view>
           <view class="margin-right-20">
@@ -117,7 +118,7 @@
 
        <view class="flex-row  margin-top-10 flex-center">
           <view class='margin-left-20'>
-            <image class='icon-17' src='{{uploadpath}}resource/{{res.huanche}}'></image>
+            <image class='icon-25' src='{{uploadpath}}resource/{{res.sijidianhua}}'></image>
           </view>
           <view class="flex-1  margin-left-20">司机电话</view>
           <view class="flex-row  flex-center  margin-right-20">
@@ -127,7 +128,7 @@
 
         <view class="flex-row  margin-top-10 flex-center">
           <view class='margin-left-20'>
-            <image class='icon-17' src='{{uploadpath}}resource/{{res.huanche}}'></image>
+            <image class='icon-25' src='{{uploadpath}}resource/{{res.huanche}}'></image>
           </view>
           <view class="flex-1  margin-left-20">报名车辆</view>
           <view class="flex-row  flex-center  margin-right-20">

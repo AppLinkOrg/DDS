@@ -59,6 +59,11 @@ class Content extends AppBase {
     });
   }
   Determineduse(e){
+    var orderapi = new OrderApi();
+    orderapi.updatedrivernewstatus({}, (updatedrivernewstatus) => {
+      this.Base.setMyData({ updatedrivernewstatus })
+    })
+    
     console.log(e);
     var that = this;
     wx.showModal({

@@ -76,8 +76,8 @@ class Content extends AppBase {
       orderby: "r_main.created_date desc",
       getall: "Y"
     }, (list) => {
-
-      orderapi.applylist({ }, (applylist) => {
+      var memberinfo = this.Base.getMyData().memberinfo;
+      orderapi.applylist({ newstatus: "Y",member_id: memberinfo.id }, (applylist) => {
         for (var i = 0; i < list.length; i++) {
           all[i] = 0;
           for (var j = 0; j < applylist.length; j++) {
@@ -104,7 +104,8 @@ class Content extends AppBase {
       orderby: "r_main.created_date desc"
 
     }, (minelist) => {
-      orderapi.applylist({}, (applylist) => {
+      var memberinfo=this.Base.getMyData().memberinfo;
+      orderapi.applylist({ newstatus: "Y", member_id: memberinfo.id}, (applylist) => {
         for (var i = 0; i < minelist.length; i++) {
           num[i] = 0;
           for (var j = 0; j < applylist.length; j++) {
@@ -201,6 +202,11 @@ class Content extends AppBase {
     }
   }
   mine(e) {
+     var orderapi=new OrderApi();
+    orderapi.updatenewstatus({ }, (updatenewstatus) =>{
+      this.Base.setMyData({ updatenewstatus})
+    })
+    
     var errinfo = this.Base.getMyData().errinfo;
     if (errinfo == null || errinfo.status != "A") {
       wx.showModal({

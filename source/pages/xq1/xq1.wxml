@@ -4,7 +4,7 @@
     <view class="asd flex-1  " style='width:95%'>
       <view class="flex-center flex-row margin-top-20" style='justify-content:center'>
         <view class="margin-left-20  ">
-          <image class='icon-15' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
+          <image class='icon-30' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
         <view class="margin-left-10 h4  " style='color:#222222'>{{applyinfo.order_companyname}}</view>
       </view>
@@ -37,11 +37,11 @@
             <view class="flex-row column flex-1">
               <view class='flex-row flex-center'>
                 <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.green}}'></image>
-                <view class="margin-left-20">{{applyinfo.order_targetaddress}}</view>
+                <view class="margin-left-20">{{applyinfo.order_startaddress}}</view>
               </view>
               <!-- <view class=" margin-top-10 h5" style='; margin-left:60rpx'>起点距您206公里</view> -->
             </view>
-            <view style='width:90rpx; display:flex;justify-content: center'>
+            <view style='width:90rpx; display:flex;justify-content: center' bindtap='openMap' id="{{applyinfo.order_startaddress}}">
               <image class='icon-30' src='{{uploadpath}}resource/{{res.daohan}} '></image>
             </view>
           </view>
@@ -51,12 +51,12 @@
             <view class="flex-row column flex-1">
               <view class='flex-row flex-center'>
                 <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
-                <view class="margin-left-20">{{applyinfo.order_startaddress}}</view>
+                <view class="margin-left-20">{{applyinfo.order_targetaddress}}</view>
               </view>
               <view class=" margin-top-10 h5" style='; margin-left:60rpx'>总里程：{{applyinfo.order_distance}}</view>
             </view>
-            <view style='width:90rpx;  display:flex;justify-content: center'>
-              <image class='icon-30' src='{{uploadpath}}resource/{{res.daohan}} '></image>
+            <view style='width:90rpx;  display:flex;justify-content: center' bindtap='openMap' id="{{applyinfo.order_targetaddress}}">
+              <image class='icon-30' src='{{uploadpath}}resource/{{res.daohan}} ' ></image>
             </view>
           </view>
         </view>
@@ -65,7 +65,7 @@
     <view class="asd flex-1" style='width:95%'>
       <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
         <view class="margin-left-20">
-          <image class='icon-17' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
+          <image class='icon-25' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
         </view>
         <view class="flex-1 margin-left-20">货运类型</view>
         <view class="margin-right-20" style=''>{{applyinfo.order_stuff_type_id}}</view>
@@ -85,7 +85,7 @@
     <view class="asd flex-1" style='width:95%' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
       <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
         <view class="margin-left-20">
-          <image class='icon-17' src='{{uploadpath}}resource/{{res.dianhua}}'></image>
+          <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
         </view>
         <view class="flex-1 margin-left-20">报名联系人</view>
         <view class="margin-right-20" style=''>{{enrollinfo.name}}</view>
@@ -96,7 +96,7 @@
     <view class="asd flex-1" style='width:95%' bindtap='phoneCall' id='{{startinfo.member_phone}}'>
       <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
         <view class="margin-left-20">
-          <image class='icon-17' src='{{uploadpath}}resource/{{res.dianhua}}'></image>
+          <image class='icon-25' src='{{uploadpath}}resource/{{res.qidian}}'></image>
         </view>
         <view class="flex-1 margin-left-20">起点联系人</view>
         <view class="margin-right-20" style=''>{{startinfo.name}}</view>
@@ -107,7 +107,7 @@
     <view class="asd flex-1" style='width:95%' bindtap='phoneCall' id='{{endinfo.member_phone}}'>
       <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
         <view class="margin-left-20">
-          <image class='icon-17' src='{{uploadpath}}resource/{{res.dianhua}}'></image>
+          <image class='icon-25' src='{{uploadpath}}resource/{{res.zhondian}}'></image>
         </view>
         <view class="flex-1 margin-left-20">终点联系人</view>
         <view class="margin-right-20" style=''>{{endinfo.name}}</view>
@@ -118,11 +118,11 @@
     <view class="asd flex-1" style='width:95%'>
       <view class="flex-row column margin-top-20 " style=' margin-bottom:30rpx'>
         <view class="margin-left-20 flex-row flex-center">
-          <image class='icon-17' src='{{uploadpath}}resource/{{res.xianji}}'></image>
+          <image class='icon-25' src='{{uploadpath}}resource/{{res.xianji}}'></image>
 
           <view class=" margin-left-20 flex-1">添加过磅单</view>
 
-          <image class='icon-20 margin-right-20' bindtap='uploadimg' wx:if='{{applyinfo.photo==""}}' src='{{uploadpath}}resource/{{res.tianjia}}'></image>
+          <image class='icon-25 margin-right-20' bindtap='uploadimg' wx:if='{{applyinfo.photo==""}}' src='{{uploadpath}}resource/{{res.tianjia}}'></image>
 
         </view>
 
@@ -186,7 +186,7 @@
     </view>
     <view class="asd flex-1" style='width:95%'>
       <view class="flex-row  margin-top-20 " style=' margin-bottom:30rpx'>
-        <image class='icon-17 margin-left-20' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
+        <image class='icon-25 margin-left-20' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
         <view class=" margin-left-20">备注</view>
         <view class="margin-left-20 margin-right-20 flex-1 padding-10" wx:if='{{applyinfo.order_remark!="undefined"}}' style='border:1rpx solid #CECFCE;border-radius:10rpx;min-height:100rpx;'>{{applyinfo.order_remark}}</view>
         <view class="margin-left-20 margin-right-20 flex-1 padding-10" wx:if='{{applyinfo.order_remark=="undefined"}}' style='border:1rpx solid #CECFCE;border-radius:10rpx;min-height:100rpx;'></view>

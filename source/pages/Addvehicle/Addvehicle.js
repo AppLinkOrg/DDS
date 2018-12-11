@@ -21,7 +21,7 @@ class Content extends AppBase {
       that.Base.setMyData({
         photo: ret
       });
-    }, 1);
+    },undefined, 1);
   }
   photo(e) {
     var photo = e.detail.value;

@@ -15,21 +15,21 @@
           <view class="">{{month1}}/{{day1}}</view>
         </view>
         <view class="flex-1 flex-row  flex-bottom" style='justify-content:center;'>
-          <view class="margin-left-20" style='font-size:40rpx !important;'>{{weight}}</view>
+          <view class="margin-left-20" style='font-size:30rpx !important;'>{{totaldun}}/{{weight}}</view>
           <view class="">吨</view>
         </view>
       </view>
       <view class=' flex-center margin-top-20   flex-row ' style='width:100%;justify-content:center; margin-bottom:30rpx'>
         <view class="flex-1 h4-5 text-center" style=''>报名时间</view>
         <view class="flex-1   h4-5 text-center">截止时间</view>
-        <view class="flex-1  h4-5 text-center">剩下吨数</view>
+        <view class="flex-1  h4-5 text-center">已运吨数</view>
       </view>
 
     </view>
     <view class="asd flex-1  " style='width:95%'>
       <view class="flex-center flex-row margin-top-20" style='justify-content:center'>
         <view class="margin-left-20  ">
-          <image class='icon-15' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
+          <image class='icon-30' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
         <view class="margin-left-10 h4  " style='color:#222222'>{{companyname}}</view>
 
@@ -59,7 +59,7 @@
               <!-- <view class=" margin-top-10 h5" style=' margin-left:60rpx'>起点距您206公里</view> -->
             </view>
 
-            <navigator url='/pages/maps/maps' style='width:90rpx;  border-left:1px solid #F3F3F3;display:flex;justify-content: center'>
+            <navigator bindtap='openMap' id="{{startaddress}}" style='width:90rpx;  border-left:1px solid #F3F3F3;display:flex;justify-content: center'>
               <image class='icon-30' src='{{uploadpath}}resource/{{res.daohan}} '></image>
             </navigator>
 
@@ -76,10 +76,10 @@
                 <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
                 <view class="margin-left-20">{{targetaddress}}</view>
               </view>
-              <view class=" margin-top-10 h5" style=' margin-left:60rpx'>总里程{{milestone}}公里</view>
+              <view class=" margin-top-10 h5" style=' margin-left:60rpx'>总里程{{distance}}</view>
             </view>
 
-            <navigator url='/pages/maps/maps' style='width:90rpx;  border-left:1px solid #F3F3F3;display:flex;justify-content: center'>
+            <navigator bindtap='openMap' id="{{targetaddress}}" style='width:90rpx;  border-left:1px solid #F3F3F3;display:flex;justify-content: center'>
               <image class='icon-30' src='{{uploadpath}}resource/{{res.daohan}} '></image>
             </navigator>
 
@@ -95,7 +95,7 @@
     <view class="asd flex-1" style='width:95%'>
       <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
         <view class="margin-left-20">
-          <image class='icon-17' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
+          <image class='icon-25' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
         </view>
         <view class="flex-1 margin-left-20">货运类型</view>
         <view class="margin-right-20">{{stuff_type_id}}</view>
@@ -105,7 +105,7 @@
     <view class="asd flex-1" style='width:95%'>
       <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
         <view class="margin-left-20">
-          <image class='icon-17' src='{{uploadpath}}resource/{{res.dianhua}}'></image>
+          <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
         </view>
         <view class="flex-1 margin-left-20">报名联系人</view>
         <view class="margin-right-20">{{enrollinfo.name}}</view>
@@ -116,7 +116,7 @@
     <view class="asd flex-1" style='width:95%'>
       <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
         <view class="margin-left-20">
-          <image class='icon-17' src='{{uploadpath}}resource/{{res.dianhua}}'></image>
+          <image class='icon-25' src='{{uploadpath}}resource/{{res.qidian}}'></image>
         </view>
         <view class="flex-1 margin-left-20">起点联系人</view>
         <view class="margin-right-20">{{startinfo.name}}</view>
@@ -127,7 +127,7 @@
     <view class="asd flex-1" style='width:95%'>
       <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
         <view class="margin-left-20">
-          <image class='icon-17' src='{{uploadpath}}resource/{{res.dianhua}}'></image>
+          <image class='icon-25' src='{{uploadpath}}resource/{{res.zhondian}}'></image>
         </view>
         <view class="flex-1 margin-left-20">终点联系人</view>
         <view class="margin-right-20">{{endinfo.name}}</view>
@@ -138,7 +138,7 @@
     <view class="asd flex-1" style='width:95%'>
       <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
         <view class="margin-left-20">
-          <image class='icon-17' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
+          <image class='icon-20' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
         </view>
         <view class="flex-1 margin-left-20">备注</view>
         <!-- <view class="   margin-right-10   " style='width:30% '>{{remark}}</view> -->
@@ -150,20 +150,20 @@
           <view class="" style='margin:30rpx'>报名资料</view>
 
           <view class="flex-row  flex-center margin-top-20">
-              <image class='margin-left-20  icon-20' src='{{uploadpath}}resource/{{res.huoche}}'></image>
+              <image class='margin-left-20  icon-25' src='{{uploadpath}}resource/{{res.huowuzhgongl}}'></image>
             <view class="flex-1 txt-black margin-left-20">货运吨数</view>
               <input class='' placeholder='请输入货运吨数' type='number' bindinput='tonnage' name="tonnage" style='text-align:right;margin-right:20rpx'></input>
           </view>
           
           <view class="flex-row  flex-center margin-top-20">
-            <image class='margin-left-20  icon-20' src='{{uploadpath}}resource/{{res.huoche}}'></image>
+            <image class='margin-left-20  icon-25' src='{{uploadpath}}resource/{{res.sijidianhua}}'></image>
             <view class="flex-1 txt-black margin-left-20">司机电话</view>
               <input class='' placeholder='请输入联系电话' type='number' bindinput='binddriver' name="driverphone" style='text-align:right;margin-right:20rpx'></input>
           </view>
 
           <picker wx:if="{{vehiclelist.length>0}}" range='{{vehiclelist}}' bindchange='bindenroll' range-key='carnumber'> 
             <view class='flex-row flex-center flex-1 margin-left-20 margin-top-20   bor_btm'>
-              <image class='icon-17' src='{{uploadpath}}resource/{{res.huanche}}'></image>
+              <image class='icon-25' src='{{uploadpath}}resource/{{res.huanche}}'></image>
               <view class='txt-black  flex-1  margin-left-20'>选择车辆</view>
               <input class=' txt-black text-right' disabled='true'  bindinput='enrollcontact' name='elcontact' placeholder='请选择车辆' value='{{elcontact}}'></input>
               <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
@@ -186,8 +186,8 @@
           </navigator>
 
 
-          <button form-type='submit' style='margin-top:118rpx' class="h4 txt-white " type='bak_ble'>报名</button>
-
+          <button wx:if='{{totaldun<weight}}' form-type='submit' style='margin-top:118rpx' class="h4 txt-white " type='bak_ble'>报名</button>
+          <button wx:if='{{totaldun>=weight}}' form-type='submit' style='margin-top:118rpx' class="h4 txt-white " type='bak_ble'>已无待运货物</button>
 
         </view>
 

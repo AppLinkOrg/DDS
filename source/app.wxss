@@ -482,6 +482,10 @@ button[disabled][type=primary] {
   width: 60rpx;
   height: 60rpx;
 }
+.icon-35{
+  width: 70rpx;
+  height: 70rpx;
+}
 .icon-40{
   width: 80rpx;
   height: 80rpx;

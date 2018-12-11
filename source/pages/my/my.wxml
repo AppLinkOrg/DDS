@@ -14,10 +14,10 @@
   <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>
 
-<navigator class='flex-row flex-center padding-30 bg-white hig_btm' bindtap='phoneCall' id='13221231231'>
+<navigator class='flex-row flex-center padding-30 bg-white hig_btm' >
   <image class='icon-20' src='{{uploadpath}}resource/{{res.dianhua}}'></image>
   <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>联系电话</view> 
-  <view class='txt-black h4-5 txt-bold'>13221231231</view>
+  <view class='txt-black h4-5 txt-bold'>{{memberinfo.mobile}}</view>
 </navigator>
 
 <navigator  bindtap='mycar' class='flex-row flex-center padding-30 bg-white hig_btm'>

@@ -45,7 +45,7 @@ class Content extends AppBase {
         that.Base.setMyData({
           photo: ret
         });
-    }, 1);
+    }, undefined, 1);
   }
   confirm(e){
     var data = e.detail.value;
@@ -82,9 +82,21 @@ class Content extends AppBase {
         //      beforePage.onLoad();
         //    }
         //  })
-        wx.reLaunch({
-          url: '/pages/mine/mine',
-        })
+      wx.showModal({
+        title: '',
+        content: '提交成功',
+        showCancel: false,
+        cancelText: '取消',
+        cancelColor: '#EE2222',
+        confirmText: '确定',
+        confirmColor: '#2699EC',
+        success: function (res) {
+          if (res.confirm) {
+            wx.navigateBack({
+            })
+          }
+        }
+      });
      });
   }
   enterprisename(e) {
