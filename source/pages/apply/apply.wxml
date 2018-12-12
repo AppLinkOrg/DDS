@@ -42,7 +42,7 @@
               <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
               <view class="margin-left-20">{{applyinfo.order_targetaddress}}</view>
             </view>
-            <view class=" margin-top-10 h5" style=' margin-left:60rpx'>总里程：{{info.distance}}</view>
+            <view class=" margin-top-10 h5" style=' margin-left:60rpx'>总里程：{{applyinfo.order_distance}}</view>
           </view>
           <view style='width:90rpx;  border-left:1px dotted #919191;display:flex;justify-content: center'>
             <image class='icon-30' src='{{uploadpath}}resource/{{res.daohan}} ' bindtap='openMap' id="{{applyinfo.order_targetaddress}}"></image>

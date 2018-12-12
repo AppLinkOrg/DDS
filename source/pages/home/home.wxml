@@ -42,10 +42,13 @@
   </view>
 
   <navigator url='/pages/noticelist/noticelist' class='padding-20 bg-gray flex-row flex-center'>
-    <view>
       <image class='icon' src='{{uploadpath}}resource/{{res.gonggao}}'></image>
-    </view>
-    <view class='bg-white h4-5 padding-10 margin-left-20 txt-gray' style='border-radius:10rpx;width:86%'>关于xxx的通知</view>
+    <swiper class="txt-black swiper_container bg-white" style='border-radius:10rpx;margin-left:20rpx;' vertical="true" autoplay="false" circular="true" interval="3000">
+      <swiper-item wx:for="{{messagelist}}" wx:key="k" wx:for-index="idx">
+        <view class=' h4-5 txt-gray padding-left-20' >{{item.mess_title}}</view>
+      </swiper-item>
+    </swiper>
+    
   </navigator>
 
 </view>
@@ -171,8 +174,8 @@
       <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
         <view class='flex-row '>
           <view class='font-left'>{{item.applycount}}</view>
-          <view class='font-mid padding-top-40 margin-left-10'>/{{item.carcount}}</view>
-          <view class='txt-bold padding-top-60 margin-left-10'>辆</view>
+          <view class='txt-bold h4 padding-top-60 margin-left-10'>/{{item.carcount}}</view>
+          <view class='txt-bold h4 padding-top-60 margin-left-10'>辆</view>
         </view>
       </view>
 

@@ -691,7 +691,7 @@ class Content extends AppBase {
     console.log(companyname);
     orderapi.create({
       status: "A",
-      taskstatus: "1",
+      taskstatus: "3",
       cmptask: check,
       open_id:UserInfo.openid,
       enroll_start: startdate + " " + starttime,

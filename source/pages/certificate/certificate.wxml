@@ -2,6 +2,11 @@
   <view class='h4 txt-primary txt-bold txt-center' wx:if='{{driverinfo.status=="I"}}'>您的认证申请已提交，请耐心等待审核！</view>
 </view>
 
+<view wx:if='{{driverinfo.status=="S"}}' class=''>
+  <view class='h4 txt-red txt-bold txt-center padding-20'>您的认证未通过审核，请仔细核对资料并重新提交申请！</view>
+  <!-- <view class='I_bottom padding-30 txt-white bg-bck_ble text-center' bindtap='Yes'>确定</view> -->
+</view>
+
 <form bindsubmit="confirm" bindreset="formReset" report-submit="{{true}}">
   <view  wx:if='{{driverinfo.status==null}}'>
     <view class="flex-row  column">

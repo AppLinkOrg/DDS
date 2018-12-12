@@ -31,6 +31,9 @@ class Content extends AppBase {
     orderapi.enterpriseinfo( {} , (errinfo) => {
       this.Base.setMyData({ errinfo })
     })
+    // orderapi.qrcode({id:3,filename:'a.png'}, (qrcode) => {
+    //   this.Base.setMyData({ qrcode })
+    // })
   }
   setPageTitle(instinfo) {
     var title = "企业认证";
@@ -92,7 +95,8 @@ class Content extends AppBase {
         confirmColor: '#2699EC',
         success: function (res) {
           if (res.confirm) {
-            wx.navigateBack({
+            wx.reLaunch({
+              url: '/pages/mine/mine',
             })
           }
         }
@@ -122,9 +126,27 @@ class Content extends AppBase {
   }
   // updateprove
   Yes(e){
-  wx.navigateTo({
+  wx.reLaunch({
     url: '/pages/mine/mine',
   })
+  }
+  againalter(e) {
+    wx.showModal({
+      title: '修改资料',
+      content: '您是否需要修改资料并重新等待审核？',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#EE2222',
+      confirmText: '确定',
+      confirmColor: '#2699EC',
+      success: function (res) {
+        if (res.confirm) {
+          wx.navigateTo({
+            url: '/pages/updateprove/updateprove',
+          })
+        }
+      }
+    });
   }
 }
 var content = new Content();
@@ -137,5 +159,6 @@ body.enterprisename = content.enterprisename;
 body.creditcode = content.creditcode; 
 body.photo = content.photo;
 body.uploadimg = content.uploadimg; 
-body.Yes = content.Yes;
+body.Yes = content.Yes; 
+body.againalter = content.againalter; 
 Page(body)

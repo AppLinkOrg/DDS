@@ -21,7 +21,9 @@
             <image class='icon-100 ' src='{{uploadpath}}Renzheng/{{errinfo.authenticateimg}}'></image>
           </view>
 
-          <image wx:if='{{photo!=undefined}}' class='photo img' mode='aspectFit' src='{{uploadpath}}Renzheng/{{photo}}'></image>
+
+
+          <image wx:if='{{photo!=undefined}}' class='photo img' mode='aspectFit' src='{{uploadpath}}Renzheng/{{photo}}'></image> 
 
           <input hidden='true' name="photo" value="{{photo}}"></input>
 

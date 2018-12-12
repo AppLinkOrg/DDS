@@ -51,6 +51,10 @@ class Content extends AppBase {
         statuslist
       })
     })
+    //var orderapi = new OrderApi();
+    orderapi.messagelist({ orderby: 'r_main.seq' }, (messagelist) => {
+      this.Base.setMyData({ messagelist })
+    })
 
   }
   onMyShow() {
@@ -77,7 +81,8 @@ class Content extends AppBase {
       getall: "Y"
     }, (list) => {
       var memberinfo = this.Base.getMyData().memberinfo;
-      orderapi.applylist({ newstatus: "Y",member_id: memberinfo.id }, (applylist) => {
+      
+      orderapi.applylist({ newstatus: "Y" }, (applylist) => {
         for (var i = 0; i < list.length; i++) {
           all[i] = 0;
           for (var j = 0; j < applylist.length; j++) {
@@ -102,10 +107,10 @@ class Content extends AppBase {
     orderapi.list({
       open_id: UserInfo.openid,
       orderby: "r_main.created_date desc"
-
+//, member_id: memberinfo.id
     }, (minelist) => {
       var memberinfo=this.Base.getMyData().memberinfo;
-      orderapi.applylist({ newstatus: "Y", member_id: memberinfo.id}, (applylist) => {
+      orderapi.applylist({ newstatus: "Y"}, (applylist) => {
         for (var i = 0; i < minelist.length; i++) {
           num[i] = 0;
           for (var j = 0; j < applylist.length; j++) {

@@ -11,12 +11,12 @@
       <view class='flex-2 h4-5  {{tab==2?"aa":"bb"}} padding-20' bindtap='changetab' id="2">待完成</view>
 
       <view class='xiaoxi' wx:if='{{waitlist.length>0}}'>
-      <view class='txt-white h6 nm' style='margin-left:11rpx;'>{{waitlist.length}}</view>
-      <image class='num' src='{{uploadpath}}resource/{{res.xiaoxitishi}}'></image>
+        <view class='txt-white h6 nm' style='margin-left:11rpx;'>{{waitlist.length}}</view>
+        <image class='num' src='{{uploadpath}}resource/{{res.xiaoxitishi}}'></image>
       </view>
 
       <!-- <view class='num txt-white h6 text-center'>{{dwc.length}}</view> -->
-      
+
     </view>
 
     <view style='height:70rpx;' class="flex-row flex-center bg  " hidden='{{tab!=0}}'>
@@ -30,14 +30,17 @@
     </view>
 
     <navigator url='/pages/noticelist/noticelist' class='padding-20 bg-gray flex-row flex-center'>
-      <view>
-        <image class='icon' src='{{uploadpath}}resource/{{res.gonggao}}'></image>
-      </view>
-      <view class='bg-white h5 padding-10 margin-left-20 txt-gray' style='border-radius:10rpx;width:86%'>关于xxx的通知</view>
+      <image class='icon' src='{{uploadpath}}resource/{{res.gonggao}}'></image>
+      <swiper class="txt-black swiper_container bg-white" style='border-radius:10rpx;margin-left:20rpx;' vertical="true" autoplay="false" circular="true" interval="3000">
+        <swiper-item wx:for="{{messagelist}}" wx:key="k" wx:for-index="idx">
+          <view class=' h4-5 txt-gray padding-left-20'>{{item.mess_title}}</view>
+        </swiper-item>
+      </swiper>
+
     </navigator>
   </view>
   <!--新任务区域-->
-  <navigator wx:for="{{list}}" wx:for-index="idx" wx:key='k' bindtap='newtask' id='{{item.id}}'  class="nr1  flex-center flex-wrap margin-top" style='margin-top:100rpx' hidden='{{tab!=0}}' wx:if="{{item.taskstatus_name=='报名中'&&item.status=='A'&&days[idx]>0}}">
+  <navigator wx:for="{{list}}" wx:for-index="idx" wx:key='k' bindtap='newtask' id='{{item.id}}' class="nr1  flex-center flex-wrap margin-top" style='margin-top:100rpx' hidden='{{tab!=0}}' wx:if="{{item.taskstatus_name=='报名中'&&item.status=='A'&&days[idx]>0}}">
     <view class="asd flex-1  " style='width:95%'>
 
 
@@ -47,22 +50,22 @@
 
         </view>
         <view class="margin-left-20  " style=''>订单编号</view>
-        <view class="margin-left-20 txt-red" >{{item.orderno}}</view>
+        <view class="margin-left-20 txt-red">{{item.orderno}}</view>
       </view>
 
       <view class="flex-center flex-row margin-top-20">
         <view class="margin-left-20  ">
           <image class='icon-30 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
-        <view class="margin-left-20 h4 txt-black" >{{item.companyname}}</view>
+        <view class="margin-left-20 h4 txt-black">{{item.companyname}}</view>
       </view>
 
       <view style=' margin-bottom:30rpx ' class="flex-center flex-row margin-top-20">
         <view class="margin-left-20  ">
           <image class='icon-20 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
         </view>
-        <view class="margin-left-20  " >距离报名结束还剩:</view>
-        <view class="margin-left-20 txt-red" >{{days[idx]-1}}天 {{xs[idx]}}:{{sj[idx]}}</view>
+        <view class="margin-left-20  ">距离报名结束还剩:</view>
+        <view class="margin-left-20 txt-red">{{days[idx]-1}}天 {{xs[idx]}}:{{sj[idx]}}</view>
       </view>
 
     </view>
@@ -88,8 +91,8 @@
       </view>
       <view class=' flex-center margin-top-20   flex-row ' style='width:100%;  margin-bottom:30rpx'>
         <view class="flex-1 h4-5 " style='margin-left:60rpx'>预计收入</view>
-        <view class="flex-1  margin-left-30 h4-5 txt-gray" >截止时间</view>
-        <view class="flex-1 margin-left-30 h4-5 txt-gray" >报名车辆</view>
+        <view class="flex-1  margin-left-30 h4-5 txt-gray">截止时间</view>
+        <view class="flex-1 margin-left-30 h4-5 txt-gray">报名车辆</view>
       </view>
 
     </view>
@@ -97,15 +100,29 @@
 
     <view class="asd flex-1" style=' width:95%'>
       <view class="flex-wrap" style=' margin-bottom:30rpx'>
-        <view class="flex-row margin-top:10">
-          <view class="margin-left-20  " id="z1" style='margin-top:15rpx'></view>
+        <!-- <view class="flex-row margin-top:10">
+          <view class="margin-left-20   " id="z1" style='margin-top:15rpx'></view>
           <view class="margin-left-20">{{item.startaddress}}</view>
+        </view> -->
+
+
+        <view class='flex-row flex-center margin-top-20'>
+          <image class='icon-10 margin-left-20 margin-right-20' src='{{uploadpath}}resource/{{res.green}}'></image>
+          <view class='  ' style='width:600rpx;'>{{item.startaddress}}</view>
         </view>
+
+
         <!-- <view class=" margin-top-10 h5 txt-gray" style='margin-left:60rpx'>起点距您206公里</view> -->
-        <view class="flex-row">
+        <!-- <view class="flex-row">
           <view class="margin-left-20 " id="z2" style='margin-top:30rpx'></view>
           <view class="margin-left-20 margin-top-10">{{item.targetaddress}}</view>
+        </view> -->
+
+        <view class='flex-row flex-center margin-top-20'>
+          <image class='icon-10 margin-left-20 margin-right-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
+          <view class='  ' style='width:600rpx;'>{{item.targetaddress}}</view>
         </view>
+
         <view class="margin-left-30 h5 margin-top-10 txt-gray" style=' margin-left:60rpx'>总里程{{item.distance}}</view>
       </view>
 
@@ -118,7 +135,7 @@
           <image class='icon-20 ' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
         </view>
         <view class="flex-1 margin-left-20">货运类型</view>
-        <view class="margin-right-20 txt-gray" >{{item.stuff_type_id}}</view>
+        <view class="margin-right-20 txt-gray">{{item.stuff_type_id}}</view>
       </view>
     </view>
 
@@ -143,18 +160,18 @@
   </view>
 
 
-<!--已报名区域-->
-  <navigator wx:for="{{ybm}}" wx:for-index="idx" wx:key='k' id='{{item.id}}' bindtap='registered'  class="nr1  flex-center flex-wrap margin-top" hidden='{{tab!=1}}' wx:if="{{item.openid==UserInfo.openid&&item.transport_name=='已报名'}}">
+  <!--已报名区域-->
+  <navigator wx:for="{{ybm}}" wx:for-index="idx" wx:key='k' id='{{item.id}}' bindtap='registered' class="nr1  flex-center flex-wrap margin-top" hidden='{{tab!=1}}' wx:if="{{item.openid==UserInfo.openid&&item.transport_name=='已报名'}}">
     <view class="asd flex-1  " style='width:95%'>
 
-<view class='flex-row flex-center'>
-      <view style=' margin-bottom:30rpx ;margin-top:30rpx ' class="flex-center flex-row  flex-1">
-        <view class="margin-left-20  " >订单编号</view>
-        <view class="margin-left-20 margin-right-20 " style='color:red'>{{ybm[idx].order_orderno}}</view>
-      </view>
+      <view class='flex-row flex-center'>
+        <view style=' margin-bottom:30rpx ;margin-top:30rpx ' class="flex-center flex-row  flex-1">
+          <view class="margin-left-20  ">订单编号</view>
+          <view class="margin-left-20 margin-right-20 " style='color:red'>{{ybm[idx].order_orderno}}</view>
+        </view>
 
-      <image wx:if='{{xs1[idx]<0}}' class='icon-75' src='{{uploadpath}}resource/{{res.chaoshi}}'></image>
-</view>
+        <image wx:if='{{xs1[idx]<0}}' class='icon-75' src='{{uploadpath}}resource/{{res.chaoshi}}'></image>
+      </view>
       <view class="flex-center flex-row margin-top-20">
         <view class="margin-left-20  ">
           <image class='icon-30 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
@@ -162,20 +179,20 @@
         <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{ybm[idx].order_companyname}}</view>
       </view>
 
-    <view style=' margin-bottom:30rpx ;margin-top:30rpx ' class="flex-center flex-row ">
+      <view style=' margin-bottom:30rpx ;margin-top:30rpx ' class="flex-center flex-row ">
         <view class="margin-left-20  ">
           <image class='icon-20 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
         </view>
-        <view class="margin-left-20 flex-1 " >运输时间</view>
+        <view class="margin-left-20 flex-1 ">运输时间</view>
         <view class=" margin-right-20 " style='color:red'>{{month1[idx]}}/{{day1[idx]}} {{hh1[idx]}}:{{mm1[idx]}} - {{month2[idx]}}/{{day2[idx]}} {{hh2[idx]}}:{{mm2[idx]}}</view>
       </view>
     </view>
 
 
     <view class="asd flex-1" style='width:95%'>
-    <view class=' flex-center margin-top-20   flex-row ' style='width:100%;  margin-bottom:30rpx'>
+      <view class=' flex-center margin-top-20   flex-row ' style='width:100%;  margin-bottom:30rpx'>
         <view class="flex-1 h4-5 txt-gray padding-left-30" style=''>预计收入</view>
-        <view class="flex-1   h4-5 txt-gray" >距报名结束还剩</view>
+        <view class="flex-1   h4-5 txt-gray">距报名结束还剩</view>
       </view>
       <view class=' flex-center   flex-row '>
         <view class="flex-1 flex-row flex-bottom">
@@ -184,13 +201,13 @@
         </view>
 
         <view class="flex-1  flex-row column " wx:if='{{xs1[idx]>=0}}' style='text-algin:center'>
-          <view class=''  style='font-size:50rpx !important; color:#F9B725'>{{days1[idx]-1}}天</view>
-          <view class=''  style='font-size:50rpx !important; color:#F9B725'>{{xs1[idx]}}:{{sj1[idx]}}</view>
+          <view class='' style='font-size:50rpx !important; color:#F9B725'>{{days1[idx]-1}}天</view>
+          <view class='' style='font-size:50rpx !important; color:#F9B725'>{{xs1[idx]}}:{{sj1[idx]}}</view>
           <!-- <view class='margin-left-30' wx:if='{{xs1<0}}'  style='font-size:70rpx !important; color:#F9B725'>00:00:00</view> -->
         </view>
 
         <view class="flex-1  flex-row column " wx:if='{{xs1[idx]<0}}' style='text-algin:center'>
-          <view class='margin-left-20'   style='font-size:50rpx !important; color:#F9B725'>00:00:00</view>
+          <view class='margin-left-20' style='font-size:50rpx !important; color:#F9B725'>00:00:00</view>
         </view>
 
       </view>
@@ -229,7 +246,7 @@
         <view class="margin-left-20  ">
 
         </view>
-        <view class="margin-left-20  " >订单编号</view>
+        <view class="margin-left-20  ">订单编号</view>
         <view class="margin-left-20 margin-right-20 " style='color:red'>{{dwc[idx].order_orderno}}</view>
       </view>
 
@@ -246,7 +263,7 @@
         <view class="margin-left-20  ">
           <image class='icon-20 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
         </view>
-        <view class="margin-left-20 flex-1 " >运输时间</view>
+        <view class="margin-left-20 flex-1 ">运输时间</view>
         <view class=" margin-right-20 " style='color:red'>{{item.month3}}/{{item.day3}} {{item.hh3}}:{{item.mm3}} - {{item.month4}}/{{item.day4}} {{item.hh4}}:{{item.mm4}}</view>
       </view>
 
@@ -255,9 +272,9 @@
 
 
     <view class="asd flex-1" style='width:95%'>
-    <view class=' flex-center margin-top-20   flex-row ' style='width:100%;  margin-bottom:30rpx'>
-        <view class="flex-1 h4-5 txt-gray padding-left-30" >预计收入</view>
-        <view class="flex-1   h4-5 txt-gray" >距任务结束还剩</view>
+      <view class=' flex-center margin-top-20   flex-row ' style='width:100%;  margin-bottom:30rpx'>
+        <view class="flex-1 h4-5 txt-gray padding-left-30">预计收入</view>
+        <view class="flex-1   h4-5 txt-gray">距任务结束还剩</view>
       </view>
       <view class=' flex-center margin-top-20  flex-row '>
         <view class="flex-1 flex-row flex-bottom">
@@ -265,13 +282,13 @@
           <view class="">元/吨</view>
         </view>
         <view class="flex-1  flex-row column  " wx:if='{{xs2[idx]>=0}}' style='text-algin:center'>
-          <view class=''  style='font-size:50rpx !important; color:#F9B725'>{{days2[idx]-1}}天 </view>
-          <view class=''  style='font-size:50rpx !important; color:#F9B725'>{{xs2[idx]}}:{{sj2[idx]}}</view>
+          <view class='' style='font-size:50rpx !important; color:#F9B725'>{{days2[idx]-1}}天 </view>
+          <view class='' style='font-size:50rpx !important; color:#F9B725'>{{xs2[idx]}}:{{sj2[idx]}}</view>
           <!-- <view class='margin-left-30' wx:if='{{xs1<0}}'  style='font-size:70rpx !important; color:#F9B725'>00:00:00</view> -->
         </view>
 
         <view class="flex-1  flex-row column " wx:if='{{xs2[idx]<0}}' style='text-algin:center'>
-          <view class='margin-left-20'   style='font-size:50rpx !important; color:#F9B725'>00:00:00</view>
+          <view class='margin-left-20' style='font-size:50rpx !important; color:#F9B725'>00:00:00</view>
         </view>
 
       </view>

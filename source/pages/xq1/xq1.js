@@ -27,17 +27,15 @@ class Content extends AppBase {
     //options.id=5;
     super.onLoad(options);
     this.Base.setMyData({
-      
     })
   
     super.onLoad(options);
   }
 
-
   //界面标题
   setPageTitle() {
     wx.setNavigationBarTitle({
-      title: '报名详情',
+      title: '待完成详情',
     });
   }
 
@@ -175,9 +173,10 @@ class Content extends AppBase {
     var applyinfo=this.Base.getMyData().applyinfo;
     console.log(applyinfo.id);
     applyapi.uploaddan({ apply_id: applyinfo.id, photo: photo, photo2: photo2, photo3: photo3, photo4: photo4, photo5: photo5, photo6: photo6, photo7: photo7, photo8: photo8, photo9: photo9 }, (uploaddan) => {
-        //  wx.reLaunch({
-        //    url: '/pages/driver/driver',
-        //  })
+          wx.reLaunch({
+            url: '/pages/driver/driver',
+          })
+          this.onMyShow();
       wx.showToast({
         title: '提交成功,请等待发布方确认',
       })

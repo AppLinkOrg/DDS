@@ -23,7 +23,7 @@ class Content extends AppBase {
   onMyShow() {
     var that = this;
     var orderapi = new OrderApi();
-    orderapi.applylist({ transport:"L" },(applylist)=>{
+    orderapi.applylist({ transport: "L",  },(applylist)=>{
        this.Base.setMyData({ applylist})
       })
   }

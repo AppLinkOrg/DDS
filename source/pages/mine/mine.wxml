@@ -19,7 +19,7 @@
 
 <navigator class='flex-row flex-center padding-30 bg-white hig_btm'>
   <image class='icon-20' src='{{uploadpath}}resource/{{res.mine}}'></image>
-  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>西安实打实大声道</view>
+  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>我的电话</view>
   <view class='txt-black h4-5 txt-bold'>{{memberinfo.mobile}}</view>
 </navigator>
 

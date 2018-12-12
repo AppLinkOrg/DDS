@@ -56,7 +56,7 @@
               <view class=" margin-top-10 h5" style='; margin-left:60rpx'>总里程：{{applyinfo.order_distance}}</view>
             </view>
             <view style='width:90rpx;  display:flex;justify-content: center' bindtap='openMap' id="{{applyinfo.order_targetaddress}}">
-              <image class='icon-30' src='{{uploadpath}}resource/{{res.daohan}} ' ></image>
+              <image class='icon-30' src='{{uploadpath}}resource/{{res.daohan}} '></image>
             </view>
           </view>
         </view>
@@ -127,7 +127,7 @@
         </view>
 
         <view class='padding-left-20 margin-20 flex-row   ' style=''>
-          
+
           <view class=''>
             <image wx:if='{{photo[0]!=undefined}}' name='photo' bindtap='viewPhoto' id='{{uploadpath}}photo/{{photo[0]}}' style='width:200rpx;height:200rpx;' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{photo[0]}}'></image>
 
@@ -149,25 +149,25 @@
 
             <!-- <image wx:if='{{photo[9]!=undefined}}' name='photo10' bindtap='viewPhoto' id='{{uploadpath}}photo/{{photo[9]}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{photo[9]}}'></image> -->
           </view>
-          
+
           <view class='' wx:if='{{applyinfo.photo!=""}}'>
-            <image  bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo}}'></image>
 
-            <image  bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo2}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo2}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo2}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo2}}'></image>
 
-            <image  bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo3}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo3}}'></image>
-            
-            <image  bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo4}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo4}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo3}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo3}}'></image>
 
-            <image  bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo5}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo5}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo4}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo4}}'></image>
 
-            <image  bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo6}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo6}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo5}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo5}}'></image>
 
-            <image  bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo7}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo7}}'></image>
-            
-            <image  bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo8}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo8}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo6}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo6}}'></image>
 
-            <image  bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo9}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo9}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo7}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo7}}'></image>
+
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo8}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo8}}'></image>
+
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo9}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo9}}'></image>
 
           </view>
 
@@ -191,12 +191,14 @@
         <view class="margin-left-20 margin-right-20 flex-1 padding-10" wx:if='{{applyinfo.order_remark!="undefined"}}' style='border:1rpx solid #CECFCE;border-radius:10rpx;min-height:100rpx;'>{{applyinfo.order_remark}}</view>
         <view class="margin-left-20 margin-right-20 flex-1 padding-10" wx:if='{{applyinfo.order_remark=="undefined"}}' style='border:1rpx solid #CECFCE;border-radius:10rpx;min-height:100rpx;'></view>
       </view>
+       <!-- <image src='http://cmsdev.app-link.org/alucard263096/dds/api/order/qrcode?id={{applyinfo.id}}&filename=a.png'></image> -->
       <view>
         <view class="flex-wrap" wx:if='{{applyinfo.photo==""}}'>
           <button class="h4 bm" style='margin-top:118rpx' id="anniu" form-type='submit'>确认到达目的地</button>
         </view>
       </view>
+      
     </view>
   </view>
-  
+
 </form>

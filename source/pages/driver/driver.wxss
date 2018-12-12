@@ -36,7 +36,14 @@
 page {
   background-color: #f3f3f3;
 }
-
+.swiper_container {
+   height: 50rpx;
+   width: 120vw;
+  }
+  .icon{
+  width: 60rpx;
+  height: 50rpx;
+} 
 .asd {
   border-radius: 8rpx;
   background-size: 100% 100%;

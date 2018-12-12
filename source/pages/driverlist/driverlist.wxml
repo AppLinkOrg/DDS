@@ -16,7 +16,7 @@
       <view class='flex-row flex-center'>
         <view class='flex-row flex-center flex-1'>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.enterprise}}'></image>
-          <view class='flex-1 margin-left-20 h4 txt-black'>{{item.carriage_driver}}</view>
+          <view class='flex-1 margin-left-20 h4 txt-black'>{{item.carriage_driver_name}}</view>
         </view>
 
         <navigator class='flex-row flex-center margin-top-20' id='{{item.driver_phone}}' bindtap='phoneCall'>
@@ -56,7 +56,7 @@
       <view class='flex-row flex-center'>
         <view class='flex-row flex-center flex-1'>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.enterprise}}'></image>
-          <view class='flex-1 margin-left-20 h4 txt-black'>{{item.carriage_driver}}</view>
+          <view class='flex-1 margin-left-20 h4 txt-black'>{{item.carriage_driver_name}}</view>
         </view>
 
         <navigator class='flex-row flex-center margin-top-20' id='{{item.driver_phone}}' bindtap='phoneCall'>
@@ -94,7 +94,7 @@
       <view class='flex-row flex-center'>
         <view class='flex-row flex-center flex-1'>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.enterprise}}'></image>
-          <view class='flex-1 margin-left-20 h4 txt-black'>{{item.carriage_driver}}</view>
+          <view class='flex-1 margin-left-20 h4 txt-black'>{{item.carriage_driver_name}}</view>
         </view>
 
         <navigator class='flex-row flex-center margin-top-20' id='{{item.driver_phone}}' bindtap='phoneCall'>

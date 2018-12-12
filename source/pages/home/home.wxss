@@ -2,10 +2,7 @@ Page{
   padding-top:230rpx;
   margin-bottom: 100rpx;
 }
-.icon{
-  width: 50rpx;
-  height: 40rpx;
-} 
+
 .column{
   align-content: center;
   flex-direction:column;
@@ -26,6 +23,14 @@ line-height:50rpx;
 border:4rpx solid red;
 border-radius:50rpx;
 }
+.swiper_container {
+   height: 50rpx;
+   width: 120vw;
+  }
+  .icon{
+  width: 60rpx;
+  height: 50rpx;
+} 
 .mid{
   margin-left: 20rpx;
   margin-right: 20rpx;
@@ -83,7 +88,6 @@ background: #CFCECF;
   position: absolute;
   margin-left:150rpx;
 }
-
 
 .num{
   width: 45rpx;
