@@ -1,4 +1,4 @@
-// pages/historydetail/historydetail.js
+// pages/changyon/changyon.js
 import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api.js";
@@ -28,7 +28,7 @@ class Content extends AppBase {
     })
 
     console.log(11111111);
-    
+
   }
   onMyShow() {
     var that = this;
@@ -85,7 +85,7 @@ class Content extends AppBase {
       orderinfo.start_time;
       console.log(orderinfo.start_time);
       this.Base.setMyData({ orderinfo, month1, day1, hh1, mm1, month, day, hh, mm });
-      
+
       orderapi.memberinfo({ id: orderinfo.enroll_id }, (enrollinfo) => {
         this.Base.setMyData({ enrollinfo });
       });
@@ -104,7 +104,7 @@ class Content extends AppBase {
       title: title,
     })
   }
-  toreedit(e){
+  toreedit(e) {
     wx.showModal({
       title: '再次发布',
       content: '您是否需要重新编辑并发布运输单?',
@@ -117,7 +117,7 @@ class Content extends AppBase {
         if (res.confirm) {
           var id = e.currentTarget.id;
           wx.navigateTo({
-            url: '/pages/reedit/reedit?id='+id,
+            url: '/pages/reedit/reedit?id=' + id,
           })
         }
       }

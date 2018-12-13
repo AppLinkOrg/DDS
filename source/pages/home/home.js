@@ -24,6 +24,7 @@ class Content extends AppBase {
     this.Base.setMyData({
       allshow: 1,
       state_id: 0,
+      state_id_mine:0,
       today: this.Base.util.FormatDate(new Date()),
       time: this.Base.util.FormatDateTime(new Date()),
       timestamp : timestamp / 1000
@@ -78,7 +79,8 @@ class Content extends AppBase {
     })
     orderapi.list({
       orderby: "r_main.created_date desc",
-      getall: "Y"
+      getall: "Y",
+      taskstatus:"1,2,3,5"
     }, (list) => {
       var memberinfo = this.Base.getMyData().memberinfo;
       
@@ -106,7 +108,8 @@ class Content extends AppBase {
 
     orderapi.list({
       open_id: UserInfo.openid,
-      orderby: "r_main.created_date desc"
+      orderby: "r_main.created_date desc",
+      taskstatus: "1,2,3,5,"
 //, member_id: memberinfo.id
     }, (minelist) => {
       var memberinfo=this.Base.getMyData().memberinfo;
@@ -136,6 +139,7 @@ class Content extends AppBase {
       allshow: 1,
       mineshow: 1
     });
+    //this.onMyShow();
   }
   bindmine(e) {
     console.log(e);
@@ -165,9 +169,41 @@ class Content extends AppBase {
       });
     });
     var UserInfo = this.Base.getMyData().UserInfo;
+    // orderapi.list({
+    //   open_id: UserInfo.openid,
+    //   taskstatus: state_id,
+    //   orderby: "r_main.created_date desc"
+    // }, (minelist) => {
+    //   this.Base.setMyData({
+    //     minelist
+    //   });
+    // });
+
+  }
+
+  bindminepickerstate(e) {
+    console.log(e);
+    var statuslist = this.Base.getMyData().statuslist;
+    this.Base.setMyData({
+      state_idx1: e.detail.value,
+      state_id_mine: statuslist[e.detail.value].id,
+      state_name1: statuslist[e.detail.value].odrstatusname
+    });
+    var state_id_mine = this.Base.getMyData().state_id_mine;
+    var orderapi = new OrderApi();
+    // orderapi.list({
+    //   taskstatus: state_id1,
+    //   orderby: "r_main.created_date desc",
+    //   getall: "Y"
+    // }, (list) => {
+    //   this.Base.setMyData({
+    //     list
+    //   });
+    // });
+    var UserInfo = this.Base.getMyData().UserInfo;
     orderapi.list({
       open_id: UserInfo.openid,
-      taskstatus: state_id,
+      taskstatus: state_id_mine,
       orderby: "r_main.created_date desc"
     }, (minelist) => {
       this.Base.setMyData({
@@ -246,7 +282,8 @@ body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
 body.bindall = content.bindall;
 body.bindmine = content.bindmine;
-body.bindpickerstate = content.bindpickerstate;
+body.bindpickerstate = content.bindpickerstate; 
+body.bindminepickerstate = content.bindminepickerstate; 
 body.one = content.one;
 body.mine = content.mine;
 Page(body)

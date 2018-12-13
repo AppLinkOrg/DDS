@@ -12,12 +12,15 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
-    
+    this.Base.setMyData({
+      today: this.Base.util.FormatDate(new Date())
+    })
   }
   onMyShow() {
     var that = this;
     var orderapi=new OrderApi();
-    orderapi.list({ taskstatus:"4"}, (list) => {
+    //taskstatus: "1",taskstatus:"4"
+    orderapi.list({ }, (list) => {
       this.Base.setMyData({ list });
     });
     var UserInfo = this.Base.getMyData().UserInfo;

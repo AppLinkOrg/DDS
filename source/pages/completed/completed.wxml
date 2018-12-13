@@ -5,14 +5,14 @@
 
 <view wx:if='{{applylist.length>0}}'>
 
-  <navigator url='/pages/xq1/xq1?cats=[{{item.id}}]' wx:for='{{applylist}}' wx:key='k' class="nr1  flex-center flex-wrap margin-top-20">
+  <navigator url='/pages/driverhistory/driverhistory?id={{item.id}}' wx:for='{{applylist}}' wx:key='k' class="nr1  flex-center flex-wrap margin-top-20">
     <view class="asd flex-1  " style='width:95%'>
       <view class="flex-center flex-row margin-top-20">
         <view class="margin-left-20  ">
           <image class='icon-15 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
         <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{item.member_name}}</view>
-        <view class="margin-right-20" style='color:#BBBBBB '>运输单编号:{{item.order_orderno}}</view>
+        <view class="margin-right-20" style=' '>运输单编号:{{item.order_orderno}}</view>
 
       </view>
       <view class=' flex-center margin-top-20  flex-row '>
@@ -21,14 +21,14 @@
           <view class="">元/吨</view>
         </view>
         <view class="flex-1  flex-row flex-bottom  flex-center " style='text-algin:center;justify-content:center'>
-          <view class='margin-left-30' style='font-size:70rpx !important; color:#F9B725;'>{{item.order_weight}} </view>
+          <view class='margin-left-30' style='font-size:98rpx !important; color:#F9B725;'>{{item.tonnage}} </view>
           <view>吨</view>
         </view>
 
       </view>
       <view class=' flex-center  margin-top-20    flex-row ' style='width:100%;  margin-bottom:30rpx;'>
-        <view class="flex-1 h4-5 flex-row  " style='justify-content:center'>预计收入</view>
-        <view class="flex-1  flex-row  h4-5" style='justify-content:center;'>总收入</view>
+        <view class="flex-1 h4-5 flex-row  " style='justify-content:center'>运输单价</view>
+        <view class="flex-1  flex-row  h4-5" style='justify-content:center;'>运输吨数</view>
 
       </view>
 
@@ -48,7 +48,7 @@
           <view class="margin-left-20 " id="z2" style='margin-top:30rpx'></view>
           <view class="margin-left-20 margin-top-10">{{item.order_targetaddress}}</view>
         </view>
-        <view class="margin-left-30 h5 margin-top-10" style='color:#BBBBBB ; margin-left:60rpx'>总里程251公里</view>
+        <view class="margin-left-30 h5 margin-top-10 txt-gray" style=' margin-left:60rpx'>总里程{{item.order_distance}}</view>
       </view>
 
     </view>

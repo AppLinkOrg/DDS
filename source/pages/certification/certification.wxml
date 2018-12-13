@@ -7,7 +7,7 @@
 <view wx:if='{{errinfo.status=="N"}}' class=''>
   <view class='h4 txt-red txt-bold txt-center padding-20'>您的认证未通过审核，请仔细核对资料并重新提交申请！</view>
 
-  <view class='I_bottom padding-30 txt-white bg-bck_ble text-center' bindtap='Yes'>确定</view>
+  <view class='bottom padding-30 txt-white bg-bck_ble text-center' bindtap='againalter'>重新认证</view>
 </view>
 
 <view wx:if="{{errinfo==null}}">
@@ -20,7 +20,7 @@
 
       <view class='flex-row column padding-40'>
         <view>统一社会信用代码</view>
-        <input class='padding-20 margin-top-20 ctc_border' name='creditcode' bindinput='creditcode' type='number' placeholder='请输入统一社会信用代码'></input>
+        <input class='padding-20 margin-top-20 ctc_border' name='creditcode' bindinput='creditcode'  placeholder='请输入统一社会信用代码'></input>
       </view>
 
       <view class='flex-row column padding-40'>

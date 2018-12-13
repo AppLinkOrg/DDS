@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/youke/youke",
+    "pages/changyon/changyon",
+    "pages/reedit/reedit",
+    "pages/driverhistory/driverhistory",
     "pages/updateprove/updateprove",
     "pages/vehicle/vehicle",
     "pages/driver/driver",

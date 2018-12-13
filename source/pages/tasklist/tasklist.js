@@ -121,9 +121,9 @@ class Content extends AppBase {
        content: '您是否需要取消本次报名？',
        showCancel: true,
        cancelText: '否',
-       cancelColor: '',
+       cancelColor: '#EE2222',
        confirmText: '是',
-       confirmColor: '',
+       confirmColor: '#2699EC',
        success: function(res) {
          if(res.confirm){
            var orderapi = new OrderApi();
@@ -152,9 +152,9 @@ class Content extends AppBase {
       content: '您是否选择完成任务',
       showCancel: true,
       cancelText: '否',
-      cancelColor: '',
+      cancelColor: '#EE2222',
       confirmText: '是',
-      confirmColor: '',
+      confirmColor: '#2699EC',
       success: function (res) {
         if (res.confirm) {
           var orderapi = new OrderApi();

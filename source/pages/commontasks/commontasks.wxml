@@ -6,7 +6,7 @@
 
 
 
-<navigator url='/pages/historydetail/historydetail?id={{item.id}}' wx:if='{{list.length>0}}' wx:for='{{list}}' wx:key='k' class='mid margin-top-40 margin-bottom-40'>
+<navigator url='/pages/changyon/changyon?id={{item.id}}' wx:if='{{list.length>0}}' wx:for='{{list}}' wx:key='k' class='mid margin-top-40 margin-bottom-40'>
   <view class='h4 txt-black txt-bold text-center padding-top-20'>{{item.companyname}}</view>
     <view class='flex-row flex-center padding-40'>
       <view>任务编号：</view>
@@ -27,7 +27,7 @@
   <view class='flex-row flex-center margin-top'>
     <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
       <view class='flex-row '>
-        <view class='font-left'>{{item.applycount}}</view>
+        <view class='font-left'>0</view>
         <view class='font-mid padding-top-40 margin-left-10'>/{{item.carcount}}</view>
         <view class='txt-bold padding-top-60 margin-left-10'>辆</view>
       </view>

@@ -5,8 +5,6 @@
     <view class='h4 txt-black margin-top'>{{orderinfo.companyname}}</view>
     <view class='flex-row flex-center margin-top-20'>
 
-
-
       <view class='h5'>报名截止时间：</view>
       <view class='h5'>{{orderinfo.enroll_deadline}}</view>
     </view>
@@ -15,26 +13,39 @@
   </view>
 
   <view class='flex-row flex-center margin-top-20'>
+
     <view class='flex-row flex-column flex-1' style='border-right:1rpx solid #CFCECF'>
-      <view class='flex-row '>
+      
         <!-- <view wx:if='{{mineshow=="2"}}' class='font-left'>{{mine}}</view> -->
-        <view  class='font-left'>{{orderinfo.applycount}}</view>
-        <view class='font-mid padding-top-40 margin-left-10'>/{{orderinfo.carcount}}</view>
-        <view class='txt-bold padding-top-60 margin-left-10'>辆</view>
+        
+      <view class='flex-row '>
+        <view class='font-left padding-top-40'>{{orderinfo.applycount}}/{{orderinfo.carcount}}</view>
+        <view class='txt-bold padding-top-60  margin-left-10'>辆</view>
+      </view>
+
+    </view>
+
+    <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
+      <view class='flex-row '>
+        <view class='font-mid padding-top-40'>{{orderinfo.unitprice}}</view>
+        <view class='txt-bold padding-top-60 margin-left-10'>元/吨</view>
       </view>
     </view>
 
     <view class='flex-row flex-column flex-1 '>
       <view class='flex-row '>
-        <view class='font-right'>{{orderinfo.unitprice}}</view>
-        <view class='txt-bold padding-top-60 margin-left-10'>元/吨</view>
+        <view class='font-right padding-top-40'>{{orderinfo.totaldun}}/{{orderinfo.weight}}</view>
+        <view class='txt-bold padding-top-60  margin-left-10'>吨</view>
+        
       </view>
     </view>
+
   </view>
 
   <view class='flex-row flex-center padding-10 bor_btm'>
     <view class='flex-1 text-center font-bottom margin-bottom-10'>已报名</view>
     <view class='flex-1 text-center font-bottom margin-bottom-10'>预计运费</view>
+    <view class='flex-1 text-center font-bottom margin-bottom-10'>已运吨数</view>
   </view>
 
   <view class='padding-40 bor_btm'>
@@ -146,8 +157,8 @@
 </view>
 
 
-<navigator bindtap='Deleteorder' wx:if='{{orderinfo.open_id==UserInfo.openid||applylist[0].photo==""||applylist.length==0}}' class='cancel_btn bg-bck_ble txt-white text-center'>取消本次任务</navigator>
+<navigator bindtap='Deleteorder' wx:if='{{orderinfo.member_id==memberinfo.id||applylist[0].photo==""||applylist.length==0}}' class='cancel_btn bg-bck_ble txt-white text-center'>取消本次任务</navigator>
 
-<navigator bindtap='update' wx:if='{{applylist[0].photo!=""&&applylist.length>0}}' class='cancel_btn bg-bck_ble txt-white text-center'>完成本次任务</navigator>
+<navigator bindtap='update' wx:if='{{orderinfo.member_id==memberinfo.id&&applylist[0].photo!=""&&applylist.length>0}}' class='cancel_btn bg-bck_ble txt-white text-center'>完成本次任务</navigator>
 
 <!-- <button type='bak_ble' hover-class='txt-white' class='txt-white cancel_btn'>取消本次任务</button> -->

@@ -65,7 +65,7 @@ class Content extends AppBase {
     api.certificatexq({}, (driverinfo) => {
       this.Base.setMyData({ driverinfo });
     });
-    orderapi.vehiclelist({}, (vehiclelist) => {
+    orderapi.vehiclelist({ status:"A"}, (vehiclelist) => {
       this.Base.setMyData({ vehiclelist})
     })
 
@@ -235,9 +235,18 @@ class Content extends AppBase {
       driverphone: e.detail.value
     })
   }
+  // num(e){
+  //   var driverphone = e.detail.value;
+  //   this.Base.setMyData({
+  //     driverphone: e.detail.value
+  //   })
+  // }
   confirm(e) {
+    var memberinfo = this.Base.getMyData().memberinfo;
+    console.log("这句话" + memberinfo.mobile);
+    //return;
     var driverinfo = this.Base.getMyData().driverinfo;
-    console.log("sssss" + driverinfo.id)
+    //console.log("sssss" + driverinfo.id)
 
     var data = e.detail.value;
     var weight = this.Base.getMyData().weight;
@@ -259,7 +268,7 @@ class Content extends AppBase {
     //   this.Base.info("不能大于剩余吨数");
     //   return;
     // }
-    if (data.tonnage > weight) {
+    if (parseInt(data.tonnage) > parseInt(weight) - parseInt(totaldun)) {
       this.Base.info("不能大于剩余吨数");
       return;
     }
@@ -267,8 +276,25 @@ class Content extends AppBase {
       this.Base.info("请选择车辆");
       return;
     }
-    var tonnage = this.Base.getMyData().tonnage; 
-    var driverphone = this.Base.getMyData().driverphone; 
+    var drivermobile = data.driverphone;
+    //console.log("萨克斯开始开始222222" + drivermobile)
+    var tonnage = this.Base.getMyData().tonnage;
+    // var driverphone = this.Base.getMyData().driverphone; 
+    //  if(driverphone==""){
+    //    this.Base.setMyData({
+    //      drivermobile : memberinfo.mobile
+    //    }) 
+       
+    //  }
+    //  else{
+    //    this.Base.setMyData({
+    //      drivermobile :driverphone
+    //    })
+    //   // console.log("萨克斯开始开始"+drivermobile)
+    //  }
+    //var driverphone = this.Base.getMyData().driverphone; 
+    //var drivermobile = this.Base.getMyData().drivermobile;
+    console.log("lllllllllllllllllllllllll" + drivermobile);
     var UserInfo = this.Base.getMyData().UserInfo;
     var orderid = this.Base.getMyData().id;
     var vehicle = this.Base.getMyData().elcontact;
@@ -283,7 +309,7 @@ class Content extends AppBase {
         transport: "Y",
         orderid: orderid,
         tonnage: tonnage,
-        driver_phone: driverphone,
+        driver_phone: drivermobile,
         vehicle: vehicle,
         newstatus:"Y",
         drivernewstatus:"N",
@@ -352,4 +378,5 @@ body.confirm = content.confirm;
 body.enrollcontact = content.enrollcontact;
 body.bindenroll = content.bindenroll; 
 body.btnshowtost = content.btnshowtost;
+body.num = content.num;
 Page(body)

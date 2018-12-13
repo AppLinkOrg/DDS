@@ -31,7 +31,7 @@
 
 <navigator bindtap='lishi' class='flex-row flex-center padding-30 bg-white bor_btm'>
   <image class='icon-20' src='{{uploadpath}}resource/{{res.taskhistory}}'></image>
-  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>任务历史</view>
+  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>历史任务</view>
   <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>
 

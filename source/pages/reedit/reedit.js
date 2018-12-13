@@ -1,4 +1,4 @@
-// pages/release/release.js
+// pages/reedit/reedit.js
 import {
   AppBase
 } from "../../appbase";
@@ -28,10 +28,12 @@ class Content extends AppBase {
         goodslist
       });
     });
-     var UserInfo = this.Base.getMyData().UserInfo;
-     orderapi.enterpriseinfo({}, (errinfo) => {
-       this.Base.setMyData({ errinfo })
-     })
+    var UserInfo = this.Base.getMyData().UserInfo;
+    orderapi.enterpriseinfo({}, (errinfo) => {
+      this.Base.setMyData({
+        errinfo
+      })
+    })
     this.Base.setMyData({
       startdate: "",
       starttime: "",
@@ -41,8 +43,8 @@ class Content extends AppBase {
       tstdate: "",
       today: this.Base.util.FormatDate(new Date())
     });
-    
-    
+
+
     // var errinfo = this.Base.getMyData().errinfo;
     // if (errinfo == null || errinfo.status == "I") {
     //   wx.showModal({
@@ -62,7 +64,7 @@ class Content extends AppBase {
     //     }
     //   });
     // }
-    
+
   }
   onMyShow() {
     var that = this;
@@ -70,32 +72,44 @@ class Content extends AppBase {
       title: '任务发布',
     });
     var orderapi = new OrderApi();
-     var UserInfo = this.Base.getMyData().UserInfo;
-     orderapi.enterpriseinfo({}, (errinfo) => {
-       this.Base.setMyData({ errinfo });
-       if (errinfo == null || errinfo.status != "A") {
-         wx.showModal({
-           title: '未认证',
-           content: '请您进行企业认证',
-           showCancel: false,
-           //cancelText: '取消',
-           cancelColor: '#EE2222',
-           confirmText: '确定',
-           confirmColor: '#2699EC',
-           duration: 300,
-           success: function (res) {
-             if (res.confirm) {
-               wx.reLaunch({
-                 url: '/pages/certification/certification',
-               })
-             }
-           }
-         });
-       }
-     })
+    var UserInfo = this.Base.getMyData().UserInfo;
+    orderapi.info({
+      id: this.Base.options.id
+    }, (orderinfo) => {
+      this.Base.setMyData({
+        orderinfo
+      })
+    });
+
+    orderapi.enterpriseinfo({}, (errinfo) => {
+      this.Base.setMyData({
+        errinfo
+      });
+      if (errinfo == null || errinfo.status != "A") {
+        wx.showModal({
+          title: '未认证',
+          content: '请您进行企业认证',
+          showCancel: false,
+          //cancelText: '取消',
+          cancelColor: '#EE2222',
+          confirmText: '确定',
+          confirmColor: '#2699EC',
+          duration: 300,
+          success: function(res) {
+            if (res.confirm) {
+              wx.reLaunch({
+                url: '/pages/certification/certification',
+              })
+            }
+          }
+        });
+      }
+    })
 
     orderapi.memberlist({}, (memberlist) => {
-      this.Base.setMyData({ memberlist });
+      this.Base.setMyData({
+        memberlist
+      });
     });
 
   }
@@ -155,7 +169,7 @@ class Content extends AppBase {
     console.log(callbackid);
     var that = this;
     if (callbackid == "route") {
-      var route=data.route;
+      var route = data.route;
       var startaddress = route[0].address;
       var startlat = route[0].location.lat;
       var startlng = route[0].location.lng;
@@ -165,7 +179,7 @@ class Content extends AppBase {
       var distance = data.distance;
       var duration = data.duration;
       that.Base.setMyData({
-        route:route,
+        route: route,
         startaddress,
         startlat,
         startlng,
@@ -524,7 +538,7 @@ class Content extends AppBase {
       remark: e.detail.value
     })
   }
-  
+
   // bindcompanyname(e) {
   //   var companyname = e.detail.value;
   //   console.log(companyname);
@@ -554,7 +568,7 @@ class Content extends AppBase {
   //     distance: e.detail.value
   //   })
   // }
-  
+
 
 
   confirm(e) {
@@ -569,7 +583,7 @@ class Content extends AppBase {
         cancelColor: '#EE2222',
         confirmText: '确定',
         confirmColor: '#2699EC',
-        success: function (res) {
+        success: function(res) {
           if (res.confirm) {
             wx.navigateTo({
               url: '/pages/certification/certification',
@@ -578,7 +592,7 @@ class Content extends AppBase {
         }
       });
     }
-    if (errinfo == null || errinfo.status != "A"){
+    if (errinfo == null || errinfo.status != "A") {
       this.Base.info("您暂未进行认证，请先认证!");
       return;
     }
@@ -638,19 +652,19 @@ class Content extends AppBase {
       this.Base.info("请输入运输费用");
       return;
     }
-     if (data.elcontact == "") {
-       this.Base.info("请选择报名联系人");
-       return;
-     }
-     if (data.stcontact == "") {
-       this.Base.info("请选择起点联系人");
-       return;
-     }
-     if (data.edcontact == "") {
-       this.Base.info("请选择终点联系人");
-       return;
-     }
-    
+    if (data.elcontact == "") {
+      this.Base.info("请选择报名联系人");
+      return;
+    }
+    if (data.stcontact == "") {
+      this.Base.info("请选择起点联系人");
+      return;
+    }
+    if (data.edcontact == "") {
+      this.Base.info("请选择终点联系人");
+      return;
+    }
+    var orderinfo = this.Base.getMyData().orderinfo;
     var startdate = this.Base.getMyData().startdate;
     var starttime = this.Base.getMyData().starttime;
     var enddate = this.Base.getMyData().enddate;
@@ -659,41 +673,47 @@ class Content extends AppBase {
     var tsttime = this.Base.getMyData().tsttime;
     var tstendtime = this.Base.getMyData().tstendtime;
     var tstenddate = this.Base.getMyData().tstenddate;
-    var carnum = this.Base.getMyData().carnum;
-    var startaddress = this.Base.getMyData().startaddress;
+    var carnum = data.carnumber;
+
+    var startaddress = data.startaddress;
+    var targetaddress = data.endaddress;
     var startlat = this.Base.getMyData().startlat;
     var startlng = this.Base.getMyData().startlng;
-    var targetaddress = this.Base.getMyData().targetaddress;
+
+
     var targetlat = this.Base.getMyData().targetlat;
     var targetlng = this.Base.getMyData().targetlng;
-    var distance = this.Base.getMyData().distance;
+
+    var distance = data.juli;
+
     var duration = this.Base.getMyData().duration;
     var etptime = this.Base.getMyData().etptime;
-    var gdsweight = this.Base.getMyData().gdsweight;
+
+    var gdsweight = data.gdsweight;
     var goodstype = this.Base.getMyData().goodstype;
-    var tstcost = this.Base.getMyData().tstcost;
+    var tstcost = data.tstcost;
 
     var elcontact = this.Base.getMyData().elcontact;
     var enroll_id = this.Base.getMyData().enroll_id;
     var stcontact = this.Base.getMyData().stcontact;
     var start_id = this.Base.getMyData().startcontact_id;
-    var end_id = this.Base.getMyData().endcontact_id; 
+    var end_id = this.Base.getMyData().endcontact_id;
     var edcontact = this.Base.getMyData().edcontact;
     var remark = this.Base.getMyData().remark;
     var today = this.Base.getMyData().today;
     var time = this.Base.getMyData().time;
-    var check = this.Base.getMyData().check;
+    //var check = this.Base.getMyData().check;
     var orderapi = new OrderApi();
     var UserInfo = this.Base.getMyData().UserInfo;
-    if(errinfo!=null){
+    if (errinfo != null) {
       var companyname = this.Base.getMyData().errinfo.enterprisename;
     }
     console.log(companyname);
     orderapi.create({
       status: "A",
       taskstatus: "3",
-      cmptask: check,
-      open_id:UserInfo.openid,
+      //cmptask: check,
+      open_id: UserInfo.openid,
       enroll_start: startdate + " " + starttime,
       enroll_deadline: enddate + " " + endtime,
       start_time: tstdate + " " + tsttime,
@@ -716,22 +736,20 @@ class Content extends AppBase {
       end_contact: edcontact,
       enroll_id: enroll_id,
       start_id: start_id,
-      end_id:end_id,
+      end_id: end_id,
       remark: remark,
       companyname: companyname
     }, (create) => {
-      
-        wx.reLaunch({
+
+      wx.reLaunch({
           url: '/pages/home/home'
-        })
-        this.onMyShow();
-        
-          wx.showToast({
-            title: '发布成功',
-            duration: 1000
-          });
-      
-      
+        }),
+        wx.showToast({
+          title: '发布成功',
+          duration: 1000
+        });
+
+
 
     })
   }
@@ -749,14 +767,14 @@ class Content extends AppBase {
       })
     }
   }
-  checkchange(e) {
-    var check = e.detail.value;
-    console.log(check);
-    this.Base.setMyData({
-      check: e.detail.value
-    })
-  }
-  bindALL(e){
+  // checkchange(e) {
+  //   var check = e.detail.value;
+  //   console.log(check);
+  //   this.Base.setMyData({
+  //     check: e.detail.value
+  //   })
+  // }
+  bindALL(e) {
     var errinfo = this.Base.getMyData().errinfo;
     if (errinfo == null || errinfo.status == "A") {
       this.Base.setMyData({
@@ -770,12 +788,11 @@ class Content extends AppBase {
         cancelColor: '#EE2222',
         confirmText: '确定',
         confirmColor: '#2699EC',
-        success: function (res) {
+        success: function(res) {
           if (res.confirm) {
             wx.reLaunch({
               url: '/pages/certification/certification',
             })
-
           }
         }
       });
@@ -787,7 +804,7 @@ var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.bindALL = content.bindALL;
 body.onMyShow = content.onMyShow;
-body.checkchange = content.checkchange; 
+//body.checkchange = content.checkchange;
 // body.binddistance = content.binddistance; 
 body.bindgoods = content.bindgoods;
 body.bindstartdate = content.bindstartdate;
@@ -825,6 +842,6 @@ body.endaddress = content.endaddress;
 body.start = content.start;
 body.end = content.end;
 body.ttstart = content.ttstart;
-body.openRoute = content.openRoute;  
+body.openRoute = content.openRoute;
 // body.bindcompanyname = content.bindcompanyname;
 Page(body)

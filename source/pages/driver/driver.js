@@ -283,8 +283,8 @@ class Content extends AppBase {
                 console.log(6666666);
                 ybm.push(list1[b]);
               }
-              
-              if (list[a].id == list1[b].order_id && list1[b].transport_name == "待完成" && driverinfo.name == list1[b].carriage_driver) {
+              //&& driverinfo.name == list1[b].carriage_driver
+              if (list[a].id == list1[b].order_id && list1[b].transport_name == "待完成" ) {
                 console.log(list1[b])
                 console.log(6666666);
                 dwc.push(list1[b]);
@@ -382,9 +382,12 @@ class Content extends AppBase {
     this.Base.setMyData({
       tab: e.currentTarget.id
     });
+    this.onMyShow();
   }
-  onHide() {
+  onUnload() {
+    console.log(66666);
     clearInterval(this.timer);
+ 
   }
 
   Countdown() {
@@ -406,11 +409,13 @@ class Content extends AppBase {
         xs[i] = parseInt((sjj) / 3600);
         sj[i] = utils.sjc(sjj, 'm:s')
       }
+      
       content.setMyData({
         days: days,
         sj: sj,
         xs: xs
       })
+
     }, 1000);
 
   }
@@ -431,19 +436,33 @@ class Content extends AppBase {
         var mydata = ybm[i].order_enroll_deadline;
         mydata = mydata.replace(/-/g, '/');
         var sjc = Date.parse(mydata) / 1000;
-        //console.log("1111111111" + sjc + "" + dqsj + "" + ybm[i].order_enroll_deadline);
+        
         var sjj = sjc - dqsj;
-        days[i] = parseInt((sjj + 3600 * 24) / (3600 * 24));
-        xs[i] = parseInt((sjj) / 3600);
-        sj[i] = utils.sjc(sjj, 'm:s')
-        //console.log(days + "三神山" + sjc + "啊啊啊" + sjj);
-        //console.log()
+    
+        if (sjj <= 0) {
+          days[i] = 0,
+            xs[i] = "00",
+            sj[i] = "00:00"
+        }
+        else {
+          days[i] = parseInt((sjj + 3600 * 24) / (3600 * 24));
+          xs[i] = parseInt((sjj) / 3600);
+          sj[i] = utils.sjc(sjj, 'm:s');
+        }
+
+        // days[i] = parseInt((sjj + 3600 * 24) / (3600 * 24));
+        // xs[i] = parseInt((sjj) / 3600);
+        // sj[i] = utils.sjc(sjj, 'm:s')
+        
       }
-      content.setMyData({
-        days1: days,
-        sj1: sj,
-        xs1: xs
-      })
+       
+        content.setMyData({
+          days1: days,
+          sj1: sj,
+          xs1: xs
+        })
+      
+      
       //console.log( sjc + "啊啊啊");
     }, 1000);
 
@@ -471,16 +490,30 @@ class Content extends AppBase {
         var sjc = Date.parse(mydata) / 1000;
 
         var sjj = sjc - dqsj;
-        days[i] = parseInt((sjj + 3600 * 24) / (3600 * 24));
-        xs[i] = parseInt((sjj) / 3600);
-        sj[i] = utils.sjc(sjj, 'm:s')
-        //console.log(sjj + "wwwwwwwwwwwwwwwwwwww" );
+        console.log(sjc + "wwwwwwwwwwwwwwwwwwww");
+
+        if (sjj <= 0){
+          days[i]=0,
+          xs[i]="00",
+          sj[i]="00:00"
+        }
+        else{
+          days[i] = parseInt((sjj + 3600 * 24) / (3600 * 24));
+          xs[i] = parseInt((sjj) / 3600);
+          sj[i] = utils.sjc(sjj, 'm:s');
+        }
+        
       }
-      content.setMyData({
-        days2: days,
-        sj2: sj,
-        xs2: xs
-      })
+     
+           
+        content.setMyData({
+          days2: days,
+          sj2: sj,
+          xs2: xs
+        })
+     
+
+      
       // console.log(days2 + "mmm" + sj2 + "ssss" + xs2);
     }, 1000);
   }
