@@ -14,9 +14,8 @@
         <view class='txt-white h6 nm' style='margin-left:11rpx;'>{{waitlist.length}}</view>
         <image class='num' src='{{uploadpath}}resource/{{res.xiaoxitishi}}'></image>
       </view>
-
+      
       <!-- <view class='num txt-white h6 text-center'>{{dwc.length}}</view> -->
-
     </view>
 
     <view style='height:70rpx;' class="flex-row flex-center bg  " hidden='{{tab!=0}}'>

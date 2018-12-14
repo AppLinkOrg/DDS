@@ -677,12 +677,12 @@ class Content extends AppBase {
 
     var startaddress = data.startaddress;
     var targetaddress = data.endaddress;
-    var startlat = this.Base.getMyData().startlat;
-    var startlng = this.Base.getMyData().startlng;
+    var startlat = this.Base.getMyData().orderinfo.startlat;
+    var startlng = this.Base.getMyData().orderinfo.startlng;
 
 
-    var targetlat = this.Base.getMyData().targetlat;
-    var targetlng = this.Base.getMyData().targetlng;
+    var targetlat = this.Base.getMyData().orderinfo.targetlat;
+    var targetlng = this.Base.getMyData().orderinfo.targetlng;
 
     var distance = data.juli;
 

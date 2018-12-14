@@ -191,7 +191,10 @@
         <view class="margin-left-20 margin-right-20 flex-1 padding-10" wx:if='{{applyinfo.order_remark!="undefined"}}' style='border:1rpx solid #CECFCE;border-radius:10rpx;min-height:100rpx;'>{{applyinfo.order_remark}}</view>
         <view class="margin-left-20 margin-right-20 flex-1 padding-10" wx:if='{{applyinfo.order_remark=="undefined"}}' style='border:1rpx solid #CECFCE;border-radius:10rpx;min-height:100rpx;'></view>
       </view>
-       <!-- <image src='http://cmsdev.app-link.org/alucard263096/dds/api/order/qrcode?id={{applyinfo.id}}&filename=a.png'></image> -->
+     
+     <view class='flex-row flex-column'>
+       <image bindtap='viewPhoto' id='http://cmsdev.app-link.org/alucard263096/dds/api/order/qrcode?id={{id}}&filename=a.png' class='icon-100' src='http://cmsdev.app-link.org/alucard263096/dds/api/order/qrcode?id={{id}}&filename=a.png'></image>
+     </view>
       <view>
         <view class="flex-wrap" wx:if='{{applyinfo.photo==""}}'>
           <button class="h4 bm" style='margin-top:118rpx' id="anniu" form-type='submit'>确认到达目的地</button>

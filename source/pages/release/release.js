@@ -661,11 +661,13 @@ class Content extends AppBase {
     var tstenddate = this.Base.getMyData().tstenddate;
     var carnum = this.Base.getMyData().carnum;
     var startaddress = this.Base.getMyData().startaddress;
+    var targetaddress = this.Base.getMyData().targetaddress;
     var startlat = this.Base.getMyData().startlat;
     var startlng = this.Base.getMyData().startlng;
-    var targetaddress = this.Base.getMyData().targetaddress;
+    
     var targetlat = this.Base.getMyData().targetlat;
     var targetlng = this.Base.getMyData().targetlng;
+
     var distance = this.Base.getMyData().distance;
     var duration = this.Base.getMyData().duration;
     var etptime = this.Base.getMyData().etptime;
@@ -686,7 +688,7 @@ class Content extends AppBase {
     var orderapi = new OrderApi();
     var UserInfo = this.Base.getMyData().UserInfo;
     if(errinfo!=null){
-      var companyname = this.Base.getMyData().errinfo.enterprisename;
+      var companyname = this.Base.getMyData().errinfo.id;
     }
     console.log(companyname);
     orderapi.create({
@@ -700,11 +702,15 @@ class Content extends AppBase {
       end_time: tstenddate + " " + tstendtime,
       submit_date: today,
       startaddress: startaddress,
+
       startlat: startlat,
       startlng: startlng,
+
       targetaddress: targetaddress,
+
       targetlat: targetlat,
       targetlng: targetlng,
+
       distance: distance,
       duration: duration,
       weight: gdsweight,
@@ -721,9 +727,9 @@ class Content extends AppBase {
       companyname: companyname
     }, (create) => {
       
-        wx.reLaunch({
-          url: '/pages/home/home'
-        })
+        // wx.reLaunch({
+        //   url: '/pages/home/home'
+        // })
         this.onMyShow();
         
           wx.showToast({
