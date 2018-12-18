@@ -64,7 +64,7 @@
     <view class='flex-row column'>
       <view class='flex-row '>
         <view class='padding-20 flex-1'>
-          <view class='txt-black h4'>{{item.companyname}}</view>
+          <view class='txt-black h4'>{{item.enterprise_id_name}}</view>
           <view class='h4-5 margin-top-20'>运输单号：{{item.orderno}}</view>
         </view>
 
@@ -146,7 +146,7 @@
     <view class='flex-row column'>
       <view class='flex-row '>
         <view class='padding-20 flex-1'>
-          <view class='txt-black h4'>{{item.companyname}}</view>
+          <view class='txt-black h4'>{{item.enterprise_id_name}}</view>
           <view class='h4-5 margin-top-20'>运输单号：{{item.orderno}}</view>
         </view>
 

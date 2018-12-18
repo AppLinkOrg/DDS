@@ -180,7 +180,7 @@
         <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
           <image class='icon-30' src='{{uploadpath}}resource/{{res.baoming}}'></image>
           <view class='txt-black h5 flex-1  margin-left-20'>报名联系人</view>
-          <input class='h4-5 txt-black text-right' style='width:260rpx;' disabled='false' bindinput='startcontact' name='stcontact' placeholder='请选择起点联系人' value='{{memberlist[startcontact_idx].name}}'></input>
+          <input class='h4-5 txt-black text-right' style='width:260rpx;' disabled='false' bindinput='startcontact' name='stcontact' placeholder='请选择报名联系人' value='{{memberlist[startcontact_idx].name}}'></input>
           <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
         </view>
       </navigator>
@@ -196,7 +196,7 @@
         </picker>
       </view>
 
-      <navigator url='/pages/addmembers/addmembers' wx:if='{{memberlist.length==0}}'>
+      <!-- <navigator url='/pages/addmembers/addmembers' wx:if='{{memberlist.length==0}}'>
         <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
           <image class='icon-30' src='{{uploadpath}}resource/{{res.qidian}}'></image>
           <view class='txt-black h4-5 flex-1  margin-left-20'>起点联系人</view>
@@ -234,7 +234,7 @@
             <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
           </view>
         </picker>
-      </view>
+      </view> -->
 
       <view class='flex-row   flex-1 padding-40   bor_btm'>
         <image class='icon-25' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>

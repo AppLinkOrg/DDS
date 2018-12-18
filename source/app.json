@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/youke/youke",
+    "pages/my/my",
+    "pages/certificate/certificate",
+    "pages/updatedriver/updatedriver",
     "pages/changyon/changyon",
     "pages/reedit/reedit",
     "pages/driverhistory/driverhistory",
@@ -10,9 +13,7 @@
     "pages/weighingsheet/weighingsheet",
     "pages/home/home",
     "pages/Addvehicle/Addvehicle",
-    "pages/certificate/certificate",
     "pages/mine/mine",
-    "pages/my/my",
     "pages/auth/auth",
     "pages/usercategory/usercategory",
     "pages/release/release",

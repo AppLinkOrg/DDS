@@ -295,7 +295,7 @@ class Content extends AppBase {
     //var driverphone = this.Base.getMyData().driverphone; 
     //var drivermobile = this.Base.getMyData().drivermobile;
     console.log("lllllllllllllllllllllllll" + drivermobile);
-    var UserInfo = this.Base.getMyData().UserInfo;
+    
     var orderid = this.Base.getMyData().id;
     var vehicle = this.Base.getMyData().elcontact;
     var that = this;
@@ -313,7 +313,7 @@ class Content extends AppBase {
         vehicle: vehicle,
         newstatus:"Y",
         drivernewstatus:"N",
-        member_name: info.companyname,
+        member_name: info.enterprise_id_name,
         
         carriage_driver: driverinfo.id,
         

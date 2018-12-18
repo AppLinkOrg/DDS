@@ -3,7 +3,6 @@
   <view class="nr1  flex-center flex-wrap margin-top-20">
 
 
-
     <view class="asd flex-1" style='width:95%'>
       <view class=' flex-center margin-top-20  flex-row '>
         <view class="flex-1 flex-wrap nr1 flex-center " style='border-right:1px solid #F3F3F3; '>
@@ -30,13 +29,11 @@
         <view class="margin-left-20  ">
           <image class='icon-30' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
-        <view class="margin-left-10 h4  " style='color:#222222'>{{companyname}}</view>
-
+        <view class="margin-left-10 h4  " style='color:#222222'>{{info.enterprise_id_name}}</view>
       </view>
 
       <view style=' margin-bottom:30rpx ' class=" flex-row flex-center margin-top-20">
-
-        <view class="margin-left-20  " >运输时间:</view>
+        <view class="margin-left-20  ">运输时间:</view>
         <view class="margin-left-20 flex-1 ">{{month2}}/{{day2}} {{hh2}}:{{mm2}}</view>
         <view>———</view>
         <view class="margin-left-20  margin-right-20">{{month3}}/{{day3}} {{hh3}}:{{mm3}}</view>
@@ -113,7 +110,7 @@
       </view>
     </view>
 
-    <view class="asd flex-1" style='width:95%' bindtap='phoneCall' id='{{startinfo.member_phone}}'>
+    <!-- <view class="asd flex-1" style='width:95%' bindtap='phoneCall' id='{{startinfo.member_phone}}'>
       <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
         <view class="margin-left-20">
           <image class='icon-25' src='{{uploadpath}}resource/{{res.qidian}}'></image>
@@ -133,7 +130,7 @@
         <view class="margin-right-20">{{endinfo.name}}</view>
         <view class="margin-right-20">{{endinfo.member_phone}}</view>
       </view>
-    </view>
+    </view> -->
 
     <view class="asd flex-1" style='width:95%'>
       <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
@@ -143,33 +140,33 @@
         <view class="flex-1 margin-left-20">备注</view>
         <!-- <view class="   margin-right-10   " style='width:30% '>{{remark}}</view> -->
         <view class="margin-right-10" wx:if='{{remark!="undefined"}}'>{{remark}}</view>
-      <view class="margin-right-10" wx:if='{{remark=="undefined"}}'></view>
+        <view class="margin-right-10" wx:if='{{remark=="undefined"}}'></view>
       </view>
       <view>
         <view class="">
           <view class="" style='margin:30rpx'>报名资料</view>
 
           <view class="flex-row  flex-center margin-top-20">
-              <image class='margin-left-20  icon-25' src='{{uploadpath}}resource/{{res.huowuzhgongl}}'></image>
+            <image class='margin-left-20  icon-25' src='{{uploadpath}}resource/{{res.huowuzhgongl}}'></image>
             <view class="flex-1 txt-black margin-left-20">货运吨数</view>
-              <input class='' placeholder='请输入货运吨数' type='number' bindinput='tonnage' name="tonnage" style='text-align:right;margin-right:20rpx'></input>
+            <input class='' placeholder='请输入货运吨数' type='number' bindinput='tonnage' name="tonnage" style='text-align:right;margin-right:20rpx'></input>
           </view>
-          
+
           <view class="flex-row  flex-center margin-top-20">
             <image class='margin-left-20  icon-25' src='{{uploadpath}}resource/{{res.sijidianhua}}'></image>
             <view class="flex-1 txt-black margin-left-20">司机电话</view>
-              <input class='' placeholder='请输入联系电话'   bindgetphonenumber='getPhoneNo' open-type='getPhoneNumber' value='{{memberinfo.mobile}}' type='number' bindinput='binddriver' name="driverphone" style='text-align:right;margin-right:20rpx'></input>
-              <!-- <button class='h6 margin-top-10' style='width:170rpx;' size='mini' bindgetphonenumber='getPhoneNo' open-type='getPhoneNumber'>获取手机</button> -->
+            <input class='' placeholder='请输入联系电话' bindgetphonenumber='getPhoneNo' open-type='getPhoneNumber' value='{{memberinfo.mobile}}' type='number' bindinput='binddriver' name="driverphone" style='text-align:right;margin-right:20rpx'></input>
+            <!-- <button class='h6 margin-top-10' style='width:170rpx;' size='mini' bindgetphonenumber='getPhoneNo' open-type='getPhoneNumber'>获取手机</button> -->
           </view>
 
-          <picker wx:if="{{vehiclelist.length>0}}" range='{{vehiclelist}}' bindchange='bindenroll' range-key='carnumber'> 
+          <picker wx:if="{{vehiclelist.length>0}}" range='{{vehiclelist}}' bindchange='bindenroll' range-key='carnumber'>
             <view class='flex-row flex-center flex-1 margin-left-20 margin-top-20   bor_btm'>
               <image class='icon-25' src='{{uploadpath}}resource/{{res.huanche}}'></image>
               <view class='txt-black  flex-1  margin-left-20'>选择车辆</view>
-              <input class=' txt-black text-right' disabled='true'  bindinput='enrollcontact' name='elcontact' placeholder='请选择车辆' value='{{elcontact}}'></input>
+              <input class=' txt-black text-right' disabled='true' bindinput='enrollcontact' name='elcontact' placeholder='请选择车辆' value='{{elcontact}}'></input>
               <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
             </view>
-          </picker> 
+          </picker>
 
           <navigator url="/pages/Addvehicle/Addvehicle" wx:if="{{vehiclelist.length==0}}" class="flex-row  margin-top-10 flex-center">
             <view class='margin-left-20'>
@@ -187,7 +184,7 @@
 
           <button wx:if='{{totaldun < weight&&applycount < carcount}}' form-type='submit' style='margin-top:118rpx' class="h4 txt-white " type='bak_ble'>报名</button>
           <button wx:if='{{totaldun>=weight||applycount >= carcount}}' bindtap='btnshowtost' style='margin-top:118rpx' class="h4 txt-white " type='bak_ble'>无法报名
-        </button>
+          </button>
           <!-- <button wx:if='{{applycount >= carcount}}' style='margin-top:118rpx' class="h4 txt-white " type='bak_ble'>报名人数已满</button> -->
 
         </view>

@@ -4,6 +4,7 @@
 
 <view wx:if='{{driverinfo.status=="S"}}' class=''>
   <view class='h4 txt-red txt-bold txt-center padding-20'>您的认证未通过审核，请仔细核对资料并重新提交申请！</view>
+  <view class='bottom padding-30 txt-white bg-bck_ble text-center' bindtap='againalter'>重新认证</view>
   <!-- <view class='I_bottom padding-30 txt-white bg-bck_ble text-center' bindtap='Yes'>确定</view> -->
 </view>
 
@@ -64,4 +65,6 @@
       <image class='photo' mode='aspectFit' src='{{uploadpath}}driver/{{driverinfo.idcard_img}}'></image>
     </view>
   </view>
+  
+  <view class='bottom padding-30 txt-white bg-bck_ble text-center' bindtap='againalter'>重新认证</view>
 </view>

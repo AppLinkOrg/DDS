@@ -56,7 +56,7 @@
         <view class="margin-left-20  ">
           <image class='icon-30 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
-        <view class="margin-left-20 h4 txt-black">{{item.companyname}}</view>
+        <view class="margin-left-20 h4 txt-black">{{item.enterprise_id_name}}</view>
       </view>
 
       <view style=' margin-bottom:30rpx ' class="flex-center flex-row margin-top-20">
@@ -175,7 +175,7 @@
         <view class="margin-left-20  ">
           <image class='icon-30 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
-        <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{ybm[idx].order_companyname}}</view>
+        <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{ybm[idx].member_name}}</view>
       </view>
 
       <view style=' margin-bottom:30rpx ;margin-top:30rpx ' class="flex-center flex-row ">
@@ -253,7 +253,7 @@
         <view class="margin-left-20  ">
           <image class='icon-30 ' src='{{uploadpath}}resource/{{res.gonsi}}'></image>
         </view>
-        <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{dwc[idx].order_companyname}}</view>
+        <view class="margin-left-20 h4 flex-1 " style='color:#222222'>{{dwc[idx].member_name}}</view>
 
 
       </view>

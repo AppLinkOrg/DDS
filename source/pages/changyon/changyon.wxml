@@ -127,7 +127,7 @@
       <image class='icon-20' src='{{uploadpath}}resource/{{res.phone_icon}}'></image>
     </view>
 
-    <view class='flex-row flex-center flex-1 padding-40   bor_btm' bindtap='phoneCall' id='{{startinfo.member_phone}}'>
+    <!-- <view class='flex-row flex-center flex-1 padding-40   bor_btm' bindtap='phoneCall' id='{{startinfo.member_phone}}'>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
       <view class='txt-black h5 flex-1 margin-left-20'>{{orderinfo.start_contact}}</view>
       <view class='txt-black h5 flex-1 margin-left-20'>{{startinfo.member_phone}}</view>
@@ -139,7 +139,7 @@
       <view class='txt-black h5 flex-1 margin-left-20'>{{orderinfo.end_contact}}</view>
       <view class='txt-black h5 flex-1 margin-left-20'>{{endinfo.member_phone}}</view>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.phone_icon}}'></image>
-    </view>
+    </view> -->
 
     <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
       <view class=' flex-row flex-center '>

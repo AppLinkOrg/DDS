@@ -3,6 +3,7 @@ import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api.js";
 import { CertificateApi } from "../../apis/certificate.api.js";
+import { OrderApi } from "../../apis/order.api.js";
 
 class Content extends AppBase {
   constructor() {
@@ -10,7 +11,7 @@ class Content extends AppBase {
   }
   onLoad(options) {
     this.Base.Page = this;
-    
+
     super.onLoad(options);
 
   }
@@ -26,13 +27,13 @@ class Content extends AppBase {
 
     var api = new CertificateApi();
     var UserInfo = this.Base.getMyData().UserInfo;
-    api.certificatexq({  }, (driverinfo) => {
+    api.certificatexq({}, (driverinfo) => {
       that.Base.setMyData({
         driverinfo
       });
     })
-         
- 
+
+
   }
   name(e) {
     var name = e.detail.value;
@@ -44,17 +45,15 @@ class Content extends AppBase {
     var that = this;
     var id = e.currentTarget.id;
     this.Base.uploadImage("driver",
-    
-    
-    
-     (ret) => {
-      that.Base.setMyData({
-        photo: ret
-      });
-    }
-    
-    
-    ,undefined, 1);
+
+      (ret) => {
+        that.Base.setMyData({
+          photo: ret
+        });
+      }
+
+
+      , undefined, 1);
   }
   photo(e) {
     var photo = e.detail.value;
@@ -120,24 +119,25 @@ class Content extends AppBase {
       this.Base.info("请上传身份证照片");
       return;
     }
-    var idphoto = this.Base.getMyData().idphoto;
-    var photo = this.Base.getMyData().photo;
-    var name = this.Base.getMyData().name;
-    var idcard = this.Base.getMyData().idcard;
+    var idphoto = data.idphoto;
+    var photo = data.photo;
+    var name = data.name;
+    var idcard = data.idcard;
     var UserInfo = this.Base.getMyData().UserInfo;
-    var openid=UserInfo.openid;
+    var openid = UserInfo.openid;
     var that = this;
-    
-    var certificateapi = new CertificateApi();
-    
-    certificateapi.updetedriver({
+    var memberinfo=this.Base.getMyData().memberinfo;
+    var order = new OrderApi();
+
+    order.updriver({
       status: "I",
+      member_id: memberinfo.id,
       name: name,
       idcard: idcard,
-      openid:openid,
+      openid: openid,
       dirlicense_img: photo,
       idcard_img: idphoto
-    }, (updetedriver) => {
+    }, (updriver) => {
       wx.showModal({
         title: '',
         content: '提交成功',
@@ -146,13 +146,13 @@ class Content extends AppBase {
         cancelColor: '#EE2222',
         confirmText: '确定',
         confirmColor: '#2699EC',
-        success: function (res) {
-          if (res.confirm) {
-            wx.navigateBack({
-              
-            })
-          }
-        }
+        // success: function (res) {
+        //   if (res.confirm) {
+        //     wx.navigateBack({
+
+        //     })
+        //   }
+        // }
       });
       // var pages = getCurrentPages();
       // var beforePage = pages[pages.length - 2];
@@ -193,7 +193,7 @@ var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
 body.confirm = content.confirm;
-body.name=content.name;
+body.name = content.name;
 body.idcard = content.idcard;
 body.idphoto = content.idphoto;
 body.iduploadimg = content.iduploadimg;

@@ -642,14 +642,14 @@ class Content extends AppBase {
        this.Base.info("请选择报名联系人");
        return;
      }
-     if (data.stcontact == "") {
-       this.Base.info("请选择起点联系人");
-       return;
-     }
-     if (data.edcontact == "") {
-       this.Base.info("请选择终点联系人");
-       return;
-     }
+    //  if (data.stcontact == "") {
+    //    this.Base.info("请选择起点联系人");
+    //    return;
+    //  }
+    //  if (data.edcontact == "") {
+    //    this.Base.info("请选择终点联系人");
+    //    return;
+    //  }
     
     var startdate = this.Base.getMyData().startdate;
     var starttime = this.Base.getMyData().starttime;
@@ -677,10 +677,10 @@ class Content extends AppBase {
 
     var elcontact = this.Base.getMyData().elcontact;
     var enroll_id = this.Base.getMyData().enroll_id;
-    var stcontact = this.Base.getMyData().stcontact;
-    var start_id = this.Base.getMyData().startcontact_id;
-    var end_id = this.Base.getMyData().endcontact_id; 
-    var edcontact = this.Base.getMyData().edcontact;
+    // var stcontact = this.Base.getMyData().stcontact;
+    // var start_id = this.Base.getMyData().startcontact_id;
+    // var end_id = this.Base.getMyData().endcontact_id; 
+    // var edcontact = this.Base.getMyData().edcontact;
     var remark = this.Base.getMyData().remark;
     var today = this.Base.getMyData().today;
     var time = this.Base.getMyData().time;
@@ -718,27 +718,22 @@ class Content extends AppBase {
       stuff_type_id: goodstype,
       unitprice: tstcost,
       enroll_contact: elcontact,
-      start_contact: stcontact,
-      end_contact: edcontact,
       enroll_id: enroll_id,
-      start_id: start_id,
-      end_id:end_id,
+      // start_contact: stcontact,
+      // end_contact: edcontact,
+      // start_id: start_id,
+      // end_id:end_id,
       remark: remark,
-      companyname: companyname
+      enterprise_id: companyname
     }, (create) => {
-      
-        // wx.reLaunch({
-        //   url: '/pages/home/home'
-        // })
+         wx.reLaunch({
+           url: '/pages/home/home'
+         })
         this.onMyShow();
-        
           wx.showToast({
             title: '发布成功',
             duration: 1000
           });
-      
-      
-
     })
   }
 
