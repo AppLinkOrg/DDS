@@ -289,9 +289,16 @@ class Content extends AppBase {
                 console.log(6666666);
                 dwc.push(list1[b]);
               }
+              
               if (list[a].id == list1[b].order_id && UserInfo.openid == list1[b].openid) {
                 list[a].status = "O";
               }
+
+              if (list[a].id == list1[b].order_id && UserInfo.openid == list1[b].openid&&list1[b].transport=='L')
+              {
+                list[a].status = "A";
+              }
+
             }
             if (list[a].taskstatus_name == "报名中" && list[a].status == "A" && days[a] > 0) {
               num++;

@@ -3,7 +3,7 @@
   <view class=''>暂未添加车辆</view>
 </view>
 
-<view class="margin-20 bg-white asd padding-left-40" wx:for="{{vehiclelist}}" wx:key="k" wx:if='{{vehiclelist.length>0}}'>
+<navigator url='/pages/Addvehicle/Addvehicle?id={{item.id}}' class="margin-20 bg-white asd padding-left-40" wx:for="{{vehiclelist}}" wx:key="k" wx:if='{{vehiclelist.length>0}}'>
   <view class="margin-top-20  ">
     <view class="flex-row flex-center margin-top-20 ">
       <view class="flex-1 h4 txt-black txt-bold " style=''>{{item.vehicletype}}</view>
@@ -15,12 +15,13 @@
         <view style='color:#8B8B8B;font-size: 100rpx !important' class='txt'>{{item.load}}</view>
         <view class='h4-5'>吨</view>
       </view>
-      <view class='flex-row flex-center     flex-1  bg-orange padding-5' style='border-radius:7rpx; margin-left:50rpx;height:80rpx;margin-right:90rpx '>
+      <view class='flex-row flex-center  flex-1  bg-orange padding-5' style='border-radius:7rpx; margin-left:50rpx;height:80rpx;margin-right:90rpx '>
         <view class='padding-10 margin-left-10 h4 margin-right-10 txt-bold txt-black text-center' style='border:2rpx solid black;border-radius:7rpx;width:220rpx'>{{item.carnumber}}
         </view>
       </view>
     </view>
   </view>
-</view>
+</navigator>
+
 
 <navigator url='/pages/Addvehicle/Addvehicle?cats=[{{item.id}}]' class="h4 bm" id="anniu">添加车辆</navigator>

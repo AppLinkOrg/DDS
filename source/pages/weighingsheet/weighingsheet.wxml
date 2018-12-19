@@ -1,8 +1,23 @@
 <!--pages/weighingsheet/weighingsheet.wxml-->
 
 <view class='flex-row flex-column padding-40' >
-<image src='{{uploadpath}}photo/{{applyinfo.photo}}'></image>
-<image class='margin-top' src='{{uploadpath}}photo/{{applyinfo.photo2}}'></image>
-<image class='margin-top' src='{{uploadpath}}photo/{{applyinfo.photo3}}'></image>
-<image class='margin-top' src='{{uploadpath}}photo/{{applyinfo.photo4}}'></image>
+<image  class='margin-top {{applyinfo.p1==" "?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.p1}}'></image>
+<image  class='margin-top {{applyinfo.p2==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.p2}}'></image>
+<image  class='margin-top {{applyinfo.p3==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.p3}}'></image>
+<image  class='margin-top {{applyinfo.p4==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.p4}}'></image>
+<image  class='margin-top {{applyinfo.p5==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.p5}}'></image>
+<image  class='margin-top {{applyinfo.p6==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.p6}}'></image>
+<image  class='margin-top {{applyinfo.p7==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.p7}}'></image>
+<image  class='margin-top {{applyinfo.p8==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.p8}}'></image>
+<image  class='margin-top {{applyinfo.p9==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.p9}}'></image>
+
+<image  class='margin-top {{applyinfo.photo==undefined?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.photo}}'></image>
+<image  class='margin-top {{applyinfo.photo2==undefined?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.photo2}}'></image>
+<image  class='margin-top {{applyinfo.photo3==undefined?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.photo3}}'></image>
+<image  class='margin-top {{applyinfo.photo4==undefined?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.photo4}}'></image>
+<image  class='margin-top {{applyinfo.photo5==undefined?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.photo5}}'></image>
+<image  class='margin-top {{applyinfo.photo6==undefined?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.photo6}}'></image>
+<image  class='margin-top {{applyinfo.photo7==undefined?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.photo7}}'></image>
+<image  class='margin-top {{applyinfo.photo8==undefined?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.photo8}}'></image>
+<image  class='margin-top {{applyinfo.photo9==undefined?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.photo9}}'></image>
 </view>

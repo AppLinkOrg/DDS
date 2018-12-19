@@ -1,9 +1,19 @@
 // pages/tasklist/tasklist.js
-import { AppBase } from "../../appbase";
-import { ApiConfig } from "../../apis/apiconfig";
-import { InstApi } from "../../apis/inst.api.js";
-import { OrderApi } from "../../apis/order.api.js";
-import { date } from "../../apis/order.api.js";
+import {
+  AppBase
+} from "../../appbase";
+import {
+  ApiConfig
+} from "../../apis/apiconfig";
+import {
+  InstApi
+} from "../../apis/inst.api.js";
+import {
+  OrderApi
+} from "../../apis/order.api.js";
+import {
+  date
+} from "../../apis/order.api.js";
 class Content extends AppBase {
   constructor() {
     super();
@@ -11,36 +21,44 @@ class Content extends AppBase {
   onLoad(options) {
     this.Base.Page = this;
     //options.id=5;
-    
+
     super.onLoad(options);
     var orderapi = new OrderApi();
     orderapi.goodslist({}, (goodslist) => {
-      this.Base.setMyData({ goodslist });
+      this.Base.setMyData({
+        goodslist
+      });
     });
     var timestamp = Date.parse(new Date());
-    orderapi.info({ }, (orderinfo) => {
-      this.Base.setMyData({ orderinfo });
+    orderapi.info({}, (orderinfo) => {
+      this.Base.setMyData({
+        orderinfo
+      });
     });
     this.Base.setMyData({
-      allshow:this.Base.options.allshow,
-      mineshow:this.Base.options.mineshow,
+      allshow: this.Base.options.allshow,
+      mineshow: this.Base.options.mineshow,
       mine: this.Base.options.mine,
-      all:this.Base.options.all,
+      all: this.Base.options.all,
       timestamp: timestamp / 1000
     })
-  
+
     console.log(11111111);
   }
   onMyShow() {
     var that = this;
-    var orderapi=new OrderApi();
+    var orderapi = new OrderApi();
 
     var UserInfo = this.Base.getMyData().UserInfo;
-    
-    orderapi.info({id:that.Base.options.id}, (orderinfo) => {
-      
+
+
+
+    orderapi.info({
+      id: that.Base.options.id
+    }, (orderinfo) => {
+
       var data1 = new Date(Date.parse(orderinfo.start_time.replace(/-/g, "/")));
-      var month1=data1.getMonth()+1;
+      var month1 = data1.getMonth() + 1;
       var day1 = data1.getDate();
       var hh1 = data1.getHours();
       var mm1 = data1.getMinutes();
@@ -65,7 +83,7 @@ class Content extends AppBase {
       if (month < 10) {
         month = "0" + month;
       }
-      if (day< 10) {
+      if (day < 10) {
         day = "0" + day;
       }
       if (hh < 10) {
@@ -82,30 +100,67 @@ class Content extends AppBase {
       console.log(mm1);
       orderinfo.start_time;
       console.log(orderinfo.start_time);
-      this.Base.setMyData({ orderinfo, month1, day1, hh1, mm1, month, day, hh, mm });
+      this.Base.setMyData({
+        orderinfo,
+        month1,
+        day1,
+        hh1,
+        mm1,
+        month,
+        day,
+        hh,
+        mm
+      });
 
-      orderapi.memberinfo({ id: orderinfo.enroll_id}, (enrollinfo) => {
-        this.Base.setMyData({ enrollinfo });
+      orderapi.memberinfo({
+        id: orderinfo.enroll_id
+      }, (enrollinfo) => {
+        this.Base.setMyData({
+          enrollinfo
+        });
       });
-      orderapi.memberinfo({ id: orderinfo.start_id }, (startinfo) => {
-        this.Base.setMyData({ startinfo });
+      orderapi.memberinfo({
+        id: orderinfo.start_id
+      }, (startinfo) => {
+        this.Base.setMyData({
+          startinfo
+        });
       });
-      orderapi.memberinfo({ id: orderinfo.end_id }, (endinfo) => {
-        this.Base.setMyData({ endinfo });
+      orderapi.memberinfo({
+        id: orderinfo.end_id
+      }, (endinfo) => {
+        this.Base.setMyData({
+          endinfo
+        });
       });
-      orderapi.applylist({  orderid: orderinfo.id }, (applylist) => {
-        this.Base.setMyData({ applylist });
+
+      orderapi.applylist({
+        orderid: orderinfo.id
+      }, (applylist) => {
+        this.Base.setMyData({
+          applylist
+        });
       });
-      
+
+
+      orderapi.applylist({
+        transport: "N",
+        orderid: orderinfo.id
+      }, (toapplylist) => {
+        this.Base.setMyData({
+          toapplylist
+        });
+      });
+
     });
-   
-    
+
+
     // var orderinfo = that.Base.getMyData().orderinfo;
-    
+
     // orderapi.memberlist({ name: orderinfo.orderinfo.carcount }, (enrolllist) => {
     //   this.Base.setMyData({ enrolllist });
     // });
-    
+
   }
   setPageTitle(instinfo) {
     var title = "任务详情";
@@ -113,38 +168,47 @@ class Content extends AppBase {
       title: title,
     })
   }
-  Deleteorder(e){
+
+  Deleteorder(e) {
     console.log(e);
-    var that=this;
-     wx.showModal({
-       title: '',
-       content: '您是否需要取消本次报名？',
-       showCancel: true,
-       cancelText: '否',
-       cancelColor: '#EE2222',
-       confirmText: '是',
-       confirmColor: '#2699EC',
-       success: function(res) {
-         if(res.confirm){
-           var orderapi = new OrderApi();
-           orderapi.updataorder({ id: that.Base.options.id }, (updataorder) => {
-             that.Base.setMyData({ 
-               updataorder
+    var that = this;
+    var toapplylist = this.Base.getMyData().toapplylist;
+    if (toapplylist != "") {
+      wx.showToast({
+        icon:'none',
+        title: '司机正在运输中，无法取消订单'
+      })
+    } else {
+      wx.showModal({
+        title: '',
+        content: '您是否需要取消本次报名？',
+        showCancel: true,
+        cancelText: '否',
+        cancelColor: '#EE2222',
+        confirmText: '是',
+        confirmColor: '#2699EC',
+        success: function(res) {
+          if (res.confirm) {
+            var orderapi = new OrderApi();
+            orderapi.updataorder({
+              id: that.Base.options.id
+            }, (updataorder) => {
+              that.Base.setMyData({
+                updataorder
               });
 
               wx.reLaunch({
                 url: '/pages/home/home',
               })
-           });
-         }
-       }
-     })
-    
+            });
+          }
+        }
+      })
+    }
   }
 
 
-  update(e){
-    
+  update(e) {
     console.log(e);
     var that = this;
     wx.showModal({
@@ -155,10 +219,12 @@ class Content extends AppBase {
       cancelColor: '#EE2222',
       confirmText: '是',
       confirmColor: '#2699EC',
-      success: function (res) {
+      success: function(res) {
         if (res.confirm) {
           var orderapi = new OrderApi();
-          orderapi.updatataskstatus({ id: that.Base.options.id }, (updatataskstatus) => {
+          orderapi.updatataskstatus({
+            id: that.Base.options.id
+          }, (updatataskstatus) => {
             that.Base.setMyData({
               updatataskstatus
             });
@@ -175,15 +241,32 @@ class Content extends AppBase {
     var orderinfo = this.Base.getMyData().orderinfo;
     var startaddress = this.Base.getMyData().orderinfo.startaddress;
     var targetaddress = this.Base.getMyData().orderinfo.targetaddress;
-    console.log("NNNNNNNNNN" +orderinfo.startaddress);
+    console.log("NNNNNNNNNN" + orderinfo.startaddress);
 
-    var route=[
-      
-      { "title": startaddress,  "address": orderinfo.startaddress, "type": 0, "location": { "lat": orderinfo.startlat, "lng": orderinfo.startlng } }, 
+    var route = [
+
+      {
+        "title": startaddress,
+        "address": orderinfo.startaddress,
+        "type": 0,
+        "location": {
+          "lat": orderinfo.startlat,
+          "lng": orderinfo.startlng
+        }
+      },
 
       //{ "address": startaddress, "type": 0, "location": { "lat": orderinfo.startlat, "lng": orderinfo.startlng } }, 
-    
-      { "title": targetaddress, "address": orderinfo.targetaddress, "type": 0, "location": { "lat": orderinfo.targetlat, "lng": orderinfo.targetlng } }];
+
+      {
+        "title": targetaddress,
+        "address": orderinfo.targetaddress,
+        "type": 0,
+        "location": {
+          "lat": orderinfo.targetlat,
+          "lng": orderinfo.targetlng
+        }
+      }
+    ];
 
     if (route != undefined) {
       wx.navigateTo({
@@ -196,14 +279,14 @@ class Content extends AppBase {
         url: '/pages/route/route?callbackid=route',
       })
     }
-    
+
   }
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
-body.Deleteorder = content.Deleteorder; 
+body.Deleteorder = content.Deleteorder;
 body.update = content.update;
 body.openRoute = content.openRoute;
 Page(body)

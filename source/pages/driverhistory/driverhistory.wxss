@@ -1,1 +1,6 @@
 /* pages/driverhistory/driverhistory.wxss */
+.img_null{
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}

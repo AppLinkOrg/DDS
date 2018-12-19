@@ -5,7 +5,7 @@
 </view>
 
 <view wx:if='{{list.length>0}}'>
-  <navigator url='/pages/historydetail/historydetail?id={{item.id}}' wx:if='{{item.taskstatus==4||item.enroll_deadline<=today}}' class='mid margin-top  margin-bottom-40 ' wx:for='{{list}}' wx:key='k'>
+  <navigator url='/pages/historydetail/historydetail?id={{item.id}}'  class='mid margin-top  margin-bottom-40 ' wx:for='{{list}}' wx:key='k'>
     <view class='h4 txt-black txt-bold text-center padding-top-20'>{{item.companyname}}</view>
     <view class='flex-row flex-center padding-40'>
       <view>任务编号：</view>

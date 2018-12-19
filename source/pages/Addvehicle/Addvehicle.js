@@ -14,6 +14,7 @@ class Content extends AppBase {
     super.onLoad(options);
 
   }
+
   uploadimg(e) {
     var that = this;
     var id = e.currentTarget.id;
@@ -40,6 +41,11 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
+    var orderapi=new OrderApi();
+    orderapi.vehicleinfo({id:this.Base.options.id},(info)=>{
+      this.Base.setMyData({info})
+    })
+
   }
   carnumber(e){
     var carnumber = e.detail.value;
@@ -111,6 +117,57 @@ class Content extends AppBase {
         }
       })
     });
+  } 
+  update(e) {
+    console.log(6666666);
+    var data = e.detail.value;
+    if (data.carnum == "") {
+      this.Base.info("请输入车牌号码");
+      return;
+    }
+    if (data.cartype == "") {
+      this.Base.info("请输入车牌类型");
+      return;
+    }
+    if (data.carload == "") {
+      this.Base.info("请输入车辆载重");
+      return;
+    }
+    if (data.carphoto == "") {
+      this.Base.info("请上传图片");
+      return;
+    }
+    var carnumber = data.carnum;
+    var vehicletype = data.cartype;
+    var load = data.carload;
+    var that = this;
+    var photo = data.carphoto;
+    var UserInfo = this.Base.getMyData().UserInfo;
+    var orderapi = new OrderApi();
+    var memberinfo = this.Base.getMyData().memberinfo; 
+    orderapi.updatecar({
+      member_id: memberinfo.id,
+      openid: UserInfo.openid,
+      status: "I",
+      carnumber: carnumber,
+      vehicletype: vehicletype,
+      load: load,
+      reviewimg: photo
+    }, (updatecar) => {
+      var pages = getCurrentPages();
+      var beforePage = pages[pages.length - 2];
+      // wx.navigateBack({
+      //   success() {
+      //     beforePage.onLoad();
+      //     wx.showToast({
+
+      //       title: '添加成功',
+      //       icon: 'success',
+      //       duration: 2000
+      //     })
+      //   }
+      // })
+    });
   }
 }
 var content = new Content();
@@ -122,5 +179,6 @@ body.load = content.load;
 body.vehicletype = content.vehicletype;
 body.confirm=content.confirm;
 body.photo = content.photo;
-body.uploadimg = content.uploadimg;
+body.uploadimg = content.uploadimg; 
+body.update = content.update;
 Page(body)

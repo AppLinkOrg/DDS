@@ -2,7 +2,8 @@
 
 page {
   background-color: #f3f3f3;
-  padding-bottom: 50rpx;
+  padding-bottom: 80rpx;
+
 }
 
 .asd {
@@ -54,8 +55,16 @@ page {
   color: white;
   line-height: 100rpx;
   margin-bottom: 0rpx;
+  border-radius: 0;
 }
 
 image {
   margin-top: 8rpx;
+}
+
+.btn{
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
 }

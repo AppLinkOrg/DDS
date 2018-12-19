@@ -131,6 +131,7 @@ class Content extends AppBase {
       tab: e.currentTarget.id
     });
   }
+
   uploadimg(e) {
     var that = this;
     var id = e.currentTarget.id;
@@ -143,24 +144,25 @@ class Content extends AppBase {
     }, () => {}, 9);
   }
 
+
+  startuploadimg(e) {
+    var that = this;
+    var id = e.currentTarget.id;
+    var start_photo = [];
+    this.Base.uploadImage("photo", (ret) => {
+      start_photo.push(ret);
+      that.Base.setMyData({
+        start_photo
+      });
+    }, () => { }, 9);
+  }
+
   Getover(e) {
     var data = e.detail.value;
     if (data.photo == "") {
-      this.Base.info("请至少添加一张过磅单");
+      this.Base.info("请至少添加一张终点过磅单");
       return;
     }
-    // if (data.photo2 == "") {
-    //   this.Base.info("请至少添加张过磅单");
-    //   return;
-    // }
-    // if (data.photo3 == "") {
-    //   this.Base.info("请添加四张过磅单");
-    //   return;
-    // }
-    // if (data.photo4 == "") {
-    //   this.Base.info("请添加四张过磅单");
-    //   return;
-    // }
     var applyapi = new ApplyApi();
     var photo = this.Base.getMyData().photo[0];
     var photo2 = this.Base.getMyData().photo[1];
@@ -183,6 +185,37 @@ class Content extends AppBase {
       })
     });
   }
+
+
+  start_Getover(e) {
+    var data = e.detail.value;
+    if (data.p1 == "") {
+      this.Base.info("请至少添加一张起点过磅单");
+      return;
+    }
+    var applyapi = new ApplyApi();
+    var p1 = data.p1;
+    var p2 = data.p2;
+    var p3 = data.p3;
+    var p4 = data.p4;
+    var p5 = data.p5;
+    var p6 = data.p6;
+    var p7 = data.p7;
+    var p8 = data.p8;
+    var p9 = data.p9;
+    var applyinfo = this.Base.getMyData().applyinfo;
+    console.log(applyinfo.id);
+    applyapi.updatestart({ apply_id: applyinfo.id, p1: p1, p2: p2, p3: p3, p4: p4, p5: p5, p6: p6, p7: p7, p8: p8, p9: p9 }, (updatestart) => {
+      wx.reLaunch({
+        url: '/pages/driver/driver',
+      })
+      this.onMyShow();
+      wx.showToast({
+        title: '提交成功,请等待发布方确认',
+      })
+    });
+  }
+
    photo(e) {
      var photo = e.detail.value;
      console.log(photo);
@@ -221,10 +254,12 @@ body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
 body.qwe = content.qwe;
 body.changetab = content.changetab;
-body.uploadimg = content.uploadimg;
+body.uploadimg = content.uploadimg; 
+body.startuploadimg = content.startuploadimg; 
 body.photo = content.photo;
 body.photo2 = content.photo2;
 body.photo3 = content.photo3;
-body.photo4 = content.photo4;
+body.photo4 = content.photo4; 
 body.Getover = content.Getover;
+body.start_Getover = content.start_Getover;
 Page(body)

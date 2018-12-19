@@ -314,9 +314,7 @@ class Content extends AppBase {
         newstatus:"Y",
         drivernewstatus:"N",
         member_name: info.enterprise_id_name,
-        
         carriage_driver: driverinfo.id,
-        
         openid: UserInfo.openid
       }, (addapply) => {
         var driverinfo = this.Base.getMyData().driverinfo;
