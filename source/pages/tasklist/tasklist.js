@@ -151,7 +151,10 @@ class Content extends AppBase {
           toapplylist
         });
       });
-
+      
+      orderapi.applylist({ transport: "L", orderid: this.Base.options.id }, (completedlist) => {
+        this.Base.setMyData({ completedlist });
+      });
     });
 
 

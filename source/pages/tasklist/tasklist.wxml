@@ -105,17 +105,17 @@
 
   <view class='flex-row column'>
 
-    <navigator url='/pages/driverlist/driverlist?id={{orderinfo.id}}'  wx:if='{{mineshow=="2"}}' class='flex-row flex-center flex-1 padding-40   bor_btm'>
+    <navigator url='/pages/driverlist/driverlist?id={{orderinfo.id}}&type=N'  wx:if='{{mineshow=="2"}}' class='flex-row flex-center flex-1 padding-40   bor_btm'>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.driver}}'></image>
       <view class='txt-gray h5 flex-1 margin-left-20'>司机列表</view>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
     </navigator>
 
-    <view class='flex-row flex-center flex-1 padding-40   bor_btm' bindtap='openRoute'>
+    <navigator class='flex-row flex-center flex-1 padding-40   bor_btm' bindtap='openRoute'>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
       <view class='txt-gray h5 flex-1 margin-left-20'>地图</view>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
-    </view>
+    </navigator>
 
     <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
@@ -157,8 +157,8 @@
 </view>
 
 
-<navigator bindtap='Deleteorder' wx:if='{{orderinfo.member_id==memberinfo.id&&toapplylist.length==0}}' class='cancel_btn bg-bck_ble txt-white text-center'>取消本次任务</navigator>
+<navigator bindtap='Deleteorder' wx:if='{{orderinfo.member_id==memberinfo.id&&toapplylist.length==0&&completedlist.length==0}}' class='cancel_btn bg-bck_ble txt-white text-center'>取消本次任务</navigator>
 <!-- &&applylist[0].photo!=""&&applylist.length>0 -->
-<navigator bindtap='update' wx:if='{{orderinfo.member_id==memberinfo.id&&toapplylist.length!=0}}' class='cancel_btn bg-bck_ble txt-white text-center'>完成本次任务</navigator>
+<navigator bindtap='update' wx:if='{{orderinfo.member_id==memberinfo.id&&toapplylist.length!=0||completedlist.length!=0}}' class='cancel_btn bg-bck_ble txt-white text-center'>完成本次任务</navigator>
 
 <!-- <button type='bak_ble' hover-class='txt-white' class='txt-white cancel_btn'>取消本次任务</button> -->

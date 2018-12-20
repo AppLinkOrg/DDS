@@ -13,9 +13,19 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
+    
     this.Base.setMyData({
-      ctt: 1,id:this.Base.options.id
+      id:this.Base.options.id,type:this.Base.options.type
     })
+    // console.log("sssssssssssssssssssss" + this.Base.options.type);
+    // return;
+    
+    if (this.Base.options.type == "Y"){
+      this.Base.setMyData({ waitcpd: 2 })
+    }
+    else{
+      this.Base.setMyData({ctt:1})
+    }
     console.log(11111);
   }
   onMyShow() {
@@ -141,11 +151,11 @@ class Content extends AppBase {
   weightsheet(e) {
     var tobecpdlist = this.Base.getMyData().tobecpdlist;
     var photo = e.currentTarget.dataset.index;
-
+    var p1 = e.currentTarget.dataset.p1;
     console.log("sssssssssss" + photo);
 
     var id = e.currentTarget.id;
-    if (photo=="") {
+    if (photo==""&&p1=="") {
       wx.showModal({
         title: '',
         content: '该司机暂未添加过磅单',

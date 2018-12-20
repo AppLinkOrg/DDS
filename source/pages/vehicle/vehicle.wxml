@@ -12,7 +12,7 @@
     </view>
     <view style=' ' class="flex-center flex-row ">
       <view class="flex-row   flex-bottom  flex-1" style=''>
-        <view style='color:#8B8B8B;font-size: 100rpx !important' class='txt'>{{item.load}}</view>
+        <view style='color:#8B8B8B;font-size: 100rpx !important' class='txt'>{{item.carload}}</view>
         <view class='h4-5'>吨</view>
       </view>
       <view class='flex-row flex-center  flex-1  bg-orange padding-5' style='border-radius:7rpx; margin-left:50rpx;height:80rpx;margin-right:90rpx '>

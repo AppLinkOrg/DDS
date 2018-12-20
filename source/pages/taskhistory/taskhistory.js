@@ -20,7 +20,7 @@ class Content extends AppBase {
     var that = this;
     var orderapi=new OrderApi();
     //taskstatus: "1",taskstatus:"4"
-    orderapi.list({ }, (list) => {
+    orderapi.list({ taskstatus:4 }, (list) => {
       this.Base.setMyData({ list });
     });
     var UserInfo = this.Base.getMyData().UserInfo;

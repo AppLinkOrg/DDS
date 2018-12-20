@@ -298,7 +298,7 @@ class Content extends AppBase {
               {
                 list[a].status = "A";
               }
-
+              
             }
             if (list[a].taskstatus_name == "报名中" && list[a].status == "A" && days[a] > 0) {
               num++;

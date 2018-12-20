@@ -6,7 +6,7 @@
     <view class="flex-row column">
       <view>车牌号码</view>
       <view class="flex-row flex-center margin-top-20">
-        <input class='padding-20 ' placeholder="请输入车牌号码" bindinput='carnumber' name="carnumber" style='border:1px solid #CECFCE;width:95%'></input>
+        <input class='padding-20 ' placeholder="请输入车牌号码" maxlength='7' bindinput='carnumber' name="carnumber" style='border:1px solid #CECFCE;width:95%'></input>
       </view>
     </view>
 
@@ -71,7 +71,7 @@
     <view>行驶证</view>
     <view class=' margin-top-20  padding-10' bindtap='uploadimg' style='border:1rpx solid #CECFCE;border-radius:10rpx'>
        <view class='img flex-row flex-column padding-top-100' style='line-height' wx:if='{{photo==undefined}}'>
-          <image class='icon-100 ' src='{{uploadpath}}vehicle/{{info.reviewimg}}'></image>
+          <image class='icon-100 '  src='{{uploadpath}}vehicle/{{info.reviewimg}}'></image>
         </view> 
       <image wx:if='{{photo!=undefined}}' class='photo img' mode='aspectFit' src='{{uploadpath}}vehicle/{{photo}}'></image>
       <input hidden='true' name="carphoto" value="{{photo}}"></input>

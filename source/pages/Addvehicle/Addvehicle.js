@@ -100,22 +100,30 @@ class Content extends AppBase {
       status:"I",
       carnumber: carnumber,
       vehicletype: vehicletype,
-      load: load,
+      carload: load,
       reviewimg: photo
     }, (addvehicle) => {
       var pages = getCurrentPages();
       var beforePage = pages[pages.length - 2];
-      wx.navigateBack({
-        success() {
-          beforePage.onLoad();
-          wx.showToast({
 
-            title: '添加成功',
-            icon: 'success',
-            duration: 2000
-          })
-        }
-      })
+      if (addvehicle.code == 0) {
+        wx.navigateBack({
+          success() {
+            beforePage.onLoad();
+            wx.showToast({
+
+              title: '添加成功',
+              icon: 'success',
+              duration: 2000
+            })
+          }
+        })
+      } else {
+        this.Base.info(addvehicle.result);
+      }
+      
+      
+
     });
   } 
   update(e) {
@@ -156,6 +164,9 @@ class Content extends AppBase {
     }, (updatecar) => {
       var pages = getCurrentPages();
       var beforePage = pages[pages.length - 2];
+      
+
+
       // wx.navigateBack({
       //   success() {
       //     beforePage.onLoad();

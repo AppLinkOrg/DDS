@@ -1,6 +1,6 @@
 <!--pages/driverlist/driverlist.wxml-->
 <view class='flex-row flex-center top  bg-bck_ble'>
-  <view class='flex-1 text-center padding-20 txt-gray_white {{ctt==1?"to-white":""}}' bindtap='bindcontact'>已报名</view>
+  <view class='flex-1 text-center padding-20 txt-gray_white {{ctt==1?"to-white":""}}' hidden='{{type=="Y"}}' bindtap='bindcontact'>已报名</view>
   <view class='flex-1 text-center padding-20 txt-gray_white {{waitcpd==2?"to-white":""}}' bindtap='bindwaitcompleted'>待完成</view>
   <view class='flex-1 text-center padding-20 txt-gray_white {{cpd==3?"to-white":""}}' bindtap='bindcompleted'>已完成</view>
 </view>
@@ -11,6 +11,7 @@
     <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.driverlist_icon}}'></image>
     <view class=''>暂无报名人员</view>
   </view>
+
   <view class=' mid margin-40' wx:for='{{applylist}}' wx:key='k'>
     <view class='padding-40' style='border-bottom:1rpx solid #CFCECF'>
       <view class='flex-row flex-center'>
@@ -33,9 +34,12 @@
         <view class='flex-row flex-center    bg-orange' style='border-radius:7rpx; height:80rpx;'>
           <view class='padding-10 margin-left-10 margin-right-10 txt-bold txt-black' style='border:2rpx solid black;border-radius:7rpx;'>{{item.vehicle}}</view>
         </view>
-        
+
       </view>
+      <view>运输单编号：{{item.order_orderno}}</view>
+      <view>报名单编号：{{item.applyno}}</view>
     </view>
+
     <view class='flex-row flex-center margin-20'>
       <navigator class='flex-1 padding-10 bg-red text-center txt-white h5 margin-right-10' bindtap='Refuse' style='border-radius:10rpx;'>拒绝使用此车</navigator>
       <navigator class='flex-1 padding-10 bg-green text-center txt-white h5 margin-left-10' bindtap='Determineduse' style='border-radius:10rpx;'>确定使用此车</navigator>
@@ -74,9 +78,12 @@
           <view class='padding-10 margin-left-10 margin-right-10 txt-bold txt-black' style='border:2rpx solid black;border-radius:7rpx;'>{{item.vehicle}}</view>
         </view>
       </view>
+      <view>运输单编号：{{item.order_orderno}}</view>
+      <view>报名单编号：{{item.applyno}}</view>
     </view>
+
     <view class='flex-row flex-center margin-20'>
-      <navigator  id='{{item.id}}' bindtap='weightsheet' data-index='{{item.photo}}' class='flex-1 padding-10 bg-red text-center txt-white h5 margin-right-10' style='border-radius:10rpx;'>查看过磅单</navigator>
+      <navigator id='{{item.id}}' bindtap='weightsheet' data-index='{{item.photo}}' data-p1='{{item.p1}}' class='flex-1 padding-10 bg-red text-center txt-white h5 margin-right-10' style='border-radius:10rpx;'>查看过磅单</navigator>
       <navigator class='flex-1 padding-10 bg-green text-center txt-white h5 margin-left-10' style='border-radius:10rpx;' bindtap='addcompleted'>确认已到达</navigator>
     </view>
 
@@ -112,8 +119,11 @@
           <view class='padding-10 margin-left-10 margin-right-10 txt-bold txt-black' style='border:2rpx solid black;border-radius:7rpx;'>{{item.vehicle}}</view>
         </view>
       </view>
+      <view>运输单编号：{{item.order_orderno}}</view>
+      <view>报名单编号：{{item.applyno}}</view>
     </view>
 
 
   </view>
+
 </view>

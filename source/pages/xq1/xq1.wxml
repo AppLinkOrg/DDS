@@ -102,7 +102,7 @@
         <view class="margin-left-20 flex-row flex-center">
           <image class='icon-25' src='{{uploadpath}}resource/{{res.xianji}}'></image>
           <view class=" margin-left-20 flex-1">添加起点过磅单</view>
-          <image class='icon-25 margin-right-20' bindtap='startuploadimg' wx:if='{{applyinfo.photo==""}}' src='{{uploadpath}}resource/{{res.tianjia}}'></image>
+          <image class='icon-25 margin-right-20' bindtap='startuploadimg' wx:if='{{applyinfo.p1==""}}' src='{{uploadpath}}resource/{{res.tianjia}}'></image>
         </view>
         <view class='padding-left-20 margin-20 flex-row   ' style=''>
           <view class=''>
@@ -128,23 +128,23 @@
           </view>
 
           <view class='' wx:if='{{applyinfo.p1!=""}}'>
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p1}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p1}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p1}}'  class='startimg margin-5 {{applyinfo.p1==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p1}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p2}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p2}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p2}}'  class='startimg margin-5 {{applyinfo.p2==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p2}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p3}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p3}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p3}}' class='startimg margin-5 {{applyinfo.p3==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p3}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p4}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p4}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p4}}'  class='startimg margin-5 {{applyinfo.p4==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p4}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p5}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p5}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p5}}'  class='startimg margin-5 {{applyinfo.p5==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p5}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p6}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p6}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p6}}'  class='startimg margin-5 {{applyinfo.p6==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p6}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p7}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p7}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p7}}'  class='startimg margin-5 {{applyinfo.p7==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p7}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p8}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p8}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p8}}'  class='startimg margin-5 {{applyinfo.p8==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p8}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p9}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p9}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p9}}'  class='startimg margin-5 {{applyinfo.p9==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p9}}'></image>
           </view>
 
           <!-- <view class='flex-row flex-column padding-top-' bindtap='uploadimg' style='line-height' wx:if='{{photo==undefined}}'>
@@ -172,7 +172,7 @@
         <view class="margin-left-20 flex-row flex-center">
           <image class='icon-25' src='{{uploadpath}}resource/{{res.xianji}}'></image>
           <view class=" margin-left-20 flex-1">添加终点过磅单</view>
-          <image class='icon-25 margin-right-20' bindtap='uploadimg' wx:if='{{applyinfo.photo==""}}' src='{{uploadpath}}resource/{{res.tianjia}}'></image>
+          <image class='icon-25 margin-right-20' bindtap='uploadimg' wx:if='{{applyinfo.photo==""&&applyinfo.p1!=""}}' src='{{uploadpath}}resource/{{res.tianjia}}'></image>
         </view>
         <view class='padding-left-20 margin-20 flex-row   ' style=''>
           <view class=''>
@@ -198,23 +198,23 @@
           </view>
 
           <view class='' wx:if='{{applyinfo.photo!=""}}'>
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo}}'   class='startimg margin-5 {{applyinfo.photo==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo2}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo2}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo2}}'   class='startimg margin-5 {{applyinfo.photo2==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo2}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo3}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo3}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo3}}'   class='startimg margin-5 {{applyinfo.photo3==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo3}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo4}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo4}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo4}}'  class='startimg margin-5 {{applyinfo.photo4==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo4}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo5}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo5}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo5}}'   class='startimg margin-5 {{applyinfo.photo5==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo5}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo6}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo6}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo6}}'   class='startimg margin-5 {{applyinfo.photo6==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo6}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo7}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo7}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo7}}'   class='startimg margin-5 {{applyinfo.photo7==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo7}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo8}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo8}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo8}}'   class='startimg margin-5 {{applyinfo.photo8==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo8}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo9}}' style='width:200rpx;height:200rpx' class='margin-5' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo9}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo9}}'   class='startimg margin-5 {{applyinfo.photo9==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo9}}'></image>
 
           </view>
 
