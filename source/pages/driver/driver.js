@@ -19,12 +19,10 @@ class Content extends AppBase {
   constructor() {
     super();
   }
+
   onLoad(options) {
-
     this.Base.Page = this;
-
-    //options.id=5;
-
+    //options.id=5; 
     this.Base.setMyData({
       today: this.Base.util.FormatDate(new Date()),
       todayspan: Date.parse(new Date()) / 1000
@@ -35,6 +33,7 @@ class Content extends AppBase {
         driverinfo
       });
     });
+
     wx.setStorageSync("lastlogin", "D");
 
     this.setData({
@@ -112,7 +111,7 @@ class Content extends AppBase {
       //carriage_driver: driverinfo.id
       var memberinfo=this.Base.getMyData().memberinfo;
 
-      orderapi.applylist({ carriage_driver: driverinfo.id}, (list1) => {
+      orderapi.applylist({ carriage_driver: driverinfo.id,transport:"Y,N"}, (list1) => {
         orderapi.list({
           getall: "Y",
           mylat: location.location.lat,
@@ -289,15 +288,21 @@ class Content extends AppBase {
                 console.log(6666666);
                 dwc.push(list1[b]);
               }
-              
-              if (list[a].id == list1[b].order_id && UserInfo.openid == list1[b].openid) {
+              if (list[a].id == list1[b].order_id && UserInfo.openid == list1[b].openid && list1[b].transport == "Y"&&list1[b].contype=="B" ) {
                 list[a].status = "O";
               }
 
-              if (list[a].id == list1[b].order_id && UserInfo.openid == list1[b].openid&&list1[b].transport=='L')
-              {
+              if (list[a].id == list1[b].order_id && UserInfo.openid == list1[b].openid && list1[b].transport == "L" && list1[b].contype == "A" ) {
                 list[a].status = "A";
               }
+              
+              
+
+              
+
+              
+
+              
               
             }
             if (list[a].taskstatus_name == "报名中" && list[a].status == "A" && days[a] > 0) {

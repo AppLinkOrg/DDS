@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/youke/youke",
+    "pages/updatecar/updatecar",
     "pages/dirhistory/dirhistory",
     "pages/my/my",
     "pages/certificate/certificate",

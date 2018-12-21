@@ -244,7 +244,8 @@ class Content extends AppBase {
   }
   mine(e) {
      var orderapi=new OrderApi();
-    orderapi.updatenewstatus({ }, (updatenewstatus) =>{
+     var id=e.currentTarget.id;
+    orderapi.updatenewstatus({id:id }, (updatenewstatus) =>{
       this.Base.setMyData({ updatenewstatus})
     })
     

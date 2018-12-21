@@ -135,7 +135,13 @@ class Content extends AppBase {
       confirmColor: '#2699EC',
       success: function (res) {
         if (res.confirm) {
-          var orderapi = new OrderApi();
+          var orderapi = new OrderApi(); 
+          // var id =e.currentTarget.id;
+          // orderapi.updateyundan({ id: id }, (updateyundan) => {
+          //   that.Base.setMyData({
+          //     updateyundan
+          //   });
+          // });
           var tobecpdlist = that.Base.getMyData().tobecpdlist;
           orderapi.addcompleted({ id: tobecpdlist[0].id }, (addcompleted) => {
             that.Base.setMyData({
@@ -143,6 +149,10 @@ class Content extends AppBase {
             });
             that.onMyShow();
           });
+          
+
+
+
         }
       }
     })

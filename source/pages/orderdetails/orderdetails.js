@@ -307,6 +307,7 @@ class Content extends AppBase {
       orderapi.addapply({
         status: "A",
         transport: "Y",
+        contype:"B",
         orderid: orderid,
         tonnage: tonnage,
         driver_phone: drivermobile,

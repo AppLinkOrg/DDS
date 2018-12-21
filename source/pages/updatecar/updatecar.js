@@ -1,4 +1,4 @@
-// pages/driver/driver.js
+// pages/updatecar/updatecar.js
 import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api.js";
@@ -22,7 +22,7 @@ class Content extends AppBase {
       that.Base.setMyData({
         photo: ret
       });
-    },undefined, 1);
+    }, undefined, 1);
   }
   photo(e) {
     var photo = e.detail.value;
@@ -41,15 +41,15 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
-    var orderapi=new OrderApi();
-    orderapi.vehicleinfo({id:this.Base.options.id},(info)=>{
-      this.Base.setMyData({info})
+    var orderapi = new OrderApi();
+    orderapi.vehicleinfo({ id: this.Base.options.id }, (info) => {
+      this.Base.setMyData({ info })
     })
 
   }
-  carnumber(e){
+  carnumber(e) {
     var carnumber = e.detail.value;
-  
+
     this.Base.setMyData({
       carnumber: e.detail.value
     })
@@ -68,81 +68,57 @@ class Content extends AppBase {
       vehicletype: e.detail.value
     })
   }
-  confirm(e){
+  
+  update(e) {
     console.log(6666666);
-    var data=e.detail.value;
-    if (data.carnumber == "") {
-        this.Base.info("请输入车牌号码");
-        return;
-      }
-    if (data.vehicletype == "") {
+    var data = e.detail.value;
+    if (data.carnum == "") {
+      this.Base.info("请输入车牌号码");
+      return;
+    }
+    if (data.cartype == "") {
       this.Base.info("请输入车牌类型");
       return;
     }
-    if (data.load == "") {
+    if (data.carload == "") {
       this.Base.info("请输入车辆载重");
       return;
     }
-    if (data.photo == "") {
+    if (data.carphoto == "") {
       this.Base.info("请上传图片");
       return;
     }
-    var carnumber = this.Base.getMyData().carnumber;
-    var vehicletype = this.Base.getMyData().vehicletype;
-    var load = this.Base.getMyData().load;
-    var that =this;
-    var photo = this.Base.getMyData().photo;
+    var carnumber = data.carnum;
+    var vehicletype = data.cartype;
+    var load = data.carload;
+    var that = this;
+    var photo = data.carphoto;
+    var info = this.Base.getMyData().info;
     var UserInfo = this.Base.getMyData().UserInfo;
-    var orderapi=new OrderApi();
-
-    orderapi.addvehicle({
+    var orderapi = new OrderApi();
+    var memberinfo = this.Base.getMyData().memberinfo;
+    orderapi.updatecar({
+      member_id: memberinfo.id,
+      id: info.id,
       openid: UserInfo.openid,
-      status:"I",
+      status: "I",
       carnumber: carnumber,
       vehicletype: vehicletype,
       carload: load,
       reviewimg: photo
-    }, (addvehicle) => {
-      var pages = getCurrentPages();
-      var beforePage = pages[pages.length - 2];
+    }, (updatecar) => {
 
-      if (addvehicle.code == 0) {
-        wx.navigateBack({
-          success() {
-            beforePage.onLoad();
-            wx.showToast({
+       wx.navigateBack({
+         success() {
+           wx.showToast({
 
-              title: '添加成功',
-              icon: 'success',
-              duration: 2000
-            })
-          }
-        })
-      } else {
-        this.Base.info(addvehicle.result);
-      }
-      
-      
-
-    });
-  } 
-  againalter(e) {
-    var that=this;
-    wx.showModal({
-      title: '修改资料',
-      content: '您是否需要重新提交资料并等待审核？',
-      showCancel: true,
-      cancelText: '取消',
-      cancelColor: '#EE2222',
-      confirmText: '确定',
-      confirmColor: '#2699EC',
-      success: function (res) {
-        if (res.confirm) {
-          wx.navigateTo({
-            url: '/pages/updatecar/updatecar?id='+that.Base.options.id,
-          })
-        }
-      }
+             title: '提交成功',
+             icon: 'success',
+             duration: 2000
+           })
+           that.onMyShow();
+         }
+       })
     });
   }
 }
@@ -153,8 +129,7 @@ body.onMyShow = content.onMyShow;
 body.carnumber = content.carnumber;
 body.load = content.load;
 body.vehicletype = content.vehicletype;
-body.confirm=content.confirm;
 body.photo = content.photo;
-body.uploadimg = content.uploadimg; 
-body.againalter = content.againalter;
+body.uploadimg = content.uploadimg;
+body.update = content.update;
 Page(body)
