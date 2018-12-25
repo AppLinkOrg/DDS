@@ -5,24 +5,29 @@
 </view>
 
 <view wx:if='{{list.length>0}}'>
-  <navigator url='/pages/historydetail/historydetail?id={{item.id}}'  class='mid margin-top  margin-bottom-40 ' wx:for='{{list}}' wx:key='k'>
+  <navigator url='/pages/historydetail/historydetail?id={{item.id}}' class='mid margin-top  margin-bottom-40 ' wx:for='{{list}}' wx:key='k'>
     <view class='h4 txt-black txt-bold text-center padding-top-20'>{{item.companyname}}</view>
     <view class='flex-row flex-center padding-40'>
       <view>任务编号：</view>
       <view class='flex-1'>{{item.orderno}}</view>
     </view>
     <view class='flex-row column '>
-      <view class='flex-row flex-center margin-left-30'><image class='icon-17 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image><view class='h4-5 margin-left-10'>运输开始时间：{{item.start_time}}</view></view>
-      <view class='flex-row flex-center margin-left-30 margin-top-20'><image class='icon-17 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image><view class='h4-5 margin-left-10'>运输结束时间：{{item.end_time}}</view></view>
+      <view class='flex-row flex-center margin-left-30'>
+        <image class='icon-17 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
+        <view class='h4-5 margin-left-10'>运输开始时间：{{item.start_time}}</view>
+      </view>
+      <view class='flex-row flex-center margin-left-30 margin-top-20'>
+        <image class='icon-17 ' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
+        <view class='h4-5 margin-left-10'>运输结束时间：{{item.end_time}}</view>
+      </view>
     </view>
 
-    
 
-<view class='flex-row flex-column '>
 
+    <view class='flex-row flex-column '>
 
       <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{item.enroll_deadline_timespan>timestamp||item.taskstatus==4}}'>{{item.taskstatus_name}}</view>
-    <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{item.enroll_deadline_timespan<=timestamp||item.taskstatus!=4}}'>报名截止</view>
+      <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{item.enroll_deadline_timespan<=timestamp||item.taskstatus!=4}}'>报名截止</view>
     </view>
 
 
@@ -48,18 +53,24 @@
       <view class='flex-1 text-center font-bottom margin-bottom-10'>预计运费</view>
     </view>
     <view class='padding-20 ' style='border-bottom:1rpx solid #CFCECF'>
+
+
       <view class='flex-row  margin-top-20'>
         <view>
           <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
         </view>
-        <view class='margin-left-20 h4-5 txt-gray' style='width:600rpx;'>{{item.startaddress}}</view>
+        <view class='margin-left-20 h4-5 txt-gray' style='width:600rpx;'>{{item.start_company}}</view>
       </view>
+
+
       <view class='flex-row  margin-top-20'>
         <view>
           <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
         </view>
-        <view class='margin-left-20 h4-5 txt-gray' style='width:600rpx;'>{{item.targetaddress}}</view>
+        <view class='margin-left-20 h4-5 txt-gray' style='width:600rpx;'>{{item.end_company}}</view>
       </view>
+
+
     </view>
     <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.cargotype}}'></image>

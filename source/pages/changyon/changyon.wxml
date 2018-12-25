@@ -23,8 +23,8 @@
       <view class='flex-row '>
 
 
-        
-        <view  class='font-left'>0</view>
+
+        <view class='font-left'>0</view>
 
 
         <view class='font-mid padding-top-40 margin-left-10'>/{{orderinfo.carcount}}</view>
@@ -51,14 +51,31 @@
     <view class='flex-row column margin-left-20 '>
       <view class='flex-row flex-center '>
         <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
+        <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>起点企业</view>
+      </view>
+      <view class='h4 txt-black padding-top-10 padding-left-30'>{{orderinfo.start_company}}</view>
+    </view>
+
+
+    <view class='flex-row column margin-left-20 '>
+      <view class='flex-row flex-center '>
+        <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
         <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>装车地址</view>
       </view>
       <view class='h4 txt-black padding-top-10 padding-left-30'>{{orderinfo.startaddress}}</view>
     </view>
 
 
-
     <view class='flex-row column margin-left-20 margin-top-20'>
+      <view class='flex-row flex-center '>
+        <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
+        <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>终点企业</view>
+      </view>
+      <view class='h4 txt-black padding-top-10 padding-left-30'>{{orderinfo.end_company}}</view>
+    </view>
+
+
+    <view class='flex-row column margin-left-20 '>
       <view class='flex-row flex-center '>
         <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
         <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>目的地址</view>

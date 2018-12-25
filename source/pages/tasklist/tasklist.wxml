@@ -15,9 +15,9 @@
   <view class='flex-row flex-center margin-top-20'>
 
     <view class='flex-row flex-column flex-1' style='border-right:1rpx solid #CFCECF'>
-      
-        <!-- <view wx:if='{{mineshow=="2"}}' class='font-left'>{{mine}}</view> -->
-        
+
+      <!-- <view wx:if='{{mineshow=="2"}}' class='font-left'>{{mine}}</view> -->
+
       <view class='flex-row '>
         <view class='font-left padding-top-40'>{{orderinfo.applycount}}/{{orderinfo.carcount}}</view>
         <view class='txt-bold padding-top-60  margin-left-10'>辆</view>
@@ -36,7 +36,7 @@
       <view class='flex-row '>
         <view class='font-right padding-top-40'>{{orderinfo.totaldun}}/{{orderinfo.weight}}</view>
         <view class='txt-bold padding-top-60  margin-left-10'>吨</view>
-        
+
       </view>
     </view>
 
@@ -51,12 +51,30 @@
   <view class='padding-40 bor_btm'>
 
 
+
+
+    <view class='flex-row column margin-left-20 '>
+      <view class='flex-row flex-center '>
+        <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
+        <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>起点企业名:</view>
+      </view>
+      <view class='h4 txt-black padding-top-10 padding-left-30'>{{orderinfo.start_company}}</view>
+    </view>
+
     <view class='flex-row column margin-left-20 '>
       <view class='flex-row flex-center '>
         <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
         <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>装车地址</view>
       </view>
       <view class='h4 txt-black padding-top-10 padding-left-30'>{{orderinfo.startaddress}}</view>
+    </view>
+
+    <view class='flex-row column margin-left-20 '>
+      <view class='flex-row flex-center '>
+        <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
+        <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>终点企业名:</view>
+      </view>
+      <view class='h4 txt-black padding-top-10 padding-left-30'>{{orderinfo.end_company}}</view>
     </view>
 
 
@@ -105,7 +123,7 @@
 
   <view class='flex-row column'>
 
-    <navigator url='/pages/driverlist/driverlist?id={{orderinfo.id}}&type=N'  wx:if='{{mineshow=="2"}}' class='flex-row flex-center flex-1 padding-40   bor_btm'>
+    <navigator url='/pages/driverlist/driverlist?id={{orderinfo.id}}&type=N' wx:if='{{mineshow=="2"}}' class='flex-row flex-center flex-1 padding-40   bor_btm'>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.driver}}'></image>
       <view class='txt-gray h5 flex-1 margin-left-20'>司机列表</view>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>

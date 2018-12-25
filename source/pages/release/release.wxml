@@ -1,10 +1,10 @@
 <!--pages/release/release.wxml-->
 
-<view class='mid margin-top  ' >
+<view class='mid margin-top  '>
   <form bindsubmit="confirm" bindreset="formReset" report-submit="{{true}}">
 
     <view class='flex-row flex-column bor_btm '>
-      
+
 
       <image class='icon-top' src='{{uploadpath}}resource/{{res.car_pic}}'></image>
       <view class='txt-black txt-bold h3 flex-1 margin-40'>开始创建新的任务</view>
@@ -51,6 +51,17 @@
     <view class='padding-40 bor_btm'>
 
       <view class='flex-row column margin-left-20 '>
+
+        <view class='flex-row flex-center '>
+          <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
+          <view class=' h4-5 txt-gray margin-left-20' style='width:600rpx;'>起点企业</view>
+        </view>
+        <view class='h4 txt-black padding-top-10 padding-left-30 '>
+          <input placeholder='请输入起点企业名'  name='start_company'  ></input>
+        </view>
+
+
+
         <view class='flex-row flex-center '>
           <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
           <view class=' h4-5 txt-gray margin-left-20' style='width:600rpx;'>装车地址</view>
@@ -58,25 +69,48 @@
         <view class='h4 txt-black padding-top-10 padding-left-30 '>
           <input placeholder='请输入详细地址' disabled='false' name='startaddress' readonly value='{{startaddress}}' bindtap='openRoute'></input>
         </view>
+
+
       </view>
+
       <!-- bindtap='openRoute' -->
       <view class='flex-row column margin-left-20 margin-top-20'>
+
+        <view class='flex-row flex-center '>
+          <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
+          <view class=' h4-5 txt-gray margin-left-20' style='width:600rpx;'>终点企业：</view>
+        </view>
+
+        <view class='h4 txt-black padding-top-10 padding-left-30 '>
+          <input placeholder='请输入终点企业名'  name='end_company' ></input>
+        </view>
+
+
+
+
+
         <view class='flex-row flex-center '>
           <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
           <view class=' h4-5 txt-gray margin-left-20' style='width:600rpx;'>目的地址</view>
         </view>
+
         <view class='h4 txt-black padding-top-10 padding-left-30 '>
           <input placeholder='请输入详细地址' disabled='false' name='endaddress' readonly value='{{targetaddress}}' bindtap='openRoute'></input>
         </view>
+
         <view class='flex-row flex-center margin-top-10'>
           <view class='flex-row flex-center '>距离：
             <input class='h4-5 flex-1 ' name='juli' bindinput='binddistance' placeholder='— —' value='{{distance}}'></input>
           </view>
+
           <view class='flex-row flex-center'>时间：
             <input class='h4-5 flex-1 ' placeholder='— —' value='{{duration}}'></input>
           </view>
 
         </view>
+
+
+
       </view>
     </view>
 

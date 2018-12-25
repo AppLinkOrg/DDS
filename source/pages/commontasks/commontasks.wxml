@@ -51,13 +51,13 @@
       <view>
         <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
       </view>
-      <view class='margin-left-20 h4-5 txt-gray' style='width:600rpx;'>{{item.startaddress}}</view>
+      <view class='margin-left-20 h4-5 txt-gray' style='width:600rpx;'>{{item.start_company}}</view>
     </view>
     <view class='flex-row  margin-top-20'>
       <view>
         <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
       </view>
-      <view class='margin-left-20 h4-5 txt-gray' style='width:600rpx;'>{{item.targetaddress}}</view>
+      <view class='margin-left-20 h4-5 txt-gray' style='width:600rpx;'>{{item.end_company}}</view>
     </view>
   </view>
   <view class='flex-row flex-center flex-1 padding-40   bor_btm'>

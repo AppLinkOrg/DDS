@@ -113,8 +113,8 @@
           <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
         </view>
         <view class='flex-row column margin-left-20'>
-          <view class='h4-5 txt-gray'>始发地</view>
-          <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.startaddress}}</view>
+          <view class='h4-5 txt-gray'>起点企业名</view>
+          <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.start_company}}</view>
         </view>
       </view>
       <view class='flex-row  margin-top-20'>
@@ -122,8 +122,8 @@
           <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
         </view>
         <view class='flex-row column margin-left-20'>
-          <view class='h4-5 txt-gray'>目的地</view>
-          <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.targetaddress}}</view>
+          <view class='h4-5 txt-gray'>终点企业名</view>
+          <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.end_company}}</view>
         </view>
       </view>
     </view>
@@ -132,7 +132,6 @@
       <view class='h4-5'>{{item.distance}}</view>
     </view>
   </navigator>
-
 
 </view>
 
@@ -199,8 +198,8 @@
         </view>
 
         <view class='flex-row column margin-left-20'>
-          <view class='h4-5 txt-gray'>始发地</view>
-          <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.startaddress}}</view>
+          <view class='h4-5 txt-gray'>起点企业名</view>
+          <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.start_company}}</view>
         </view>
       </view>
 
@@ -211,8 +210,8 @@
         </view>
 
         <view class='flex-row column margin-left-20'>
-          <view class='h4-5 txt-gray'>目的地</view>
-          <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.targetaddress}}</view>
+          <view class='h4-5 txt-gray'>终点企业名</view>
+          <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.end_company}}</view>
         </view>
       </view>
 
