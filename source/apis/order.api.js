@@ -1039,7 +1039,6 @@ export class OrderApi {
 
     if (showLoading)
       ApiConfig.ShowLoading();
-
     var header = ApiConfig.GetHeader();
     console.log(header);
     console.log(json);
