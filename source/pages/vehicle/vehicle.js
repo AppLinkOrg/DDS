@@ -25,7 +25,7 @@ class Content extends AppBase {
     var that = this;
     var UserInfo = this.Base.getMyData().UserInfo;
     var orderapi = new OrderApi();
-    orderapi.vehiclelist({}, (vehiclelist) => {
+    orderapi.vehiclelist({status:"A,I"}, (vehiclelist) => {
       this.Base.setMyData({ vehiclelist });
   })}
   

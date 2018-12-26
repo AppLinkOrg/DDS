@@ -8,8 +8,8 @@
       <view class='h5'>报名截止时间：</view>
       <view class='h5'>{{orderinfo.enroll_deadline}}</view>
     </view>
-    <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{orderinfo.enroll_deadline_timespan>timestamp}}'>{{orderinfo.taskstatus_name}}</view>
-    <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{orderinfo.enroll_deadline_timespan<=timestamp}}'>报名截止</view>
+    <view class='text-center txt-red h5 signup margin-top-20' >{{orderinfo.taskstatus_name}}</view>
+    <!-- <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{orderinfo.enroll_deadline_timespan<=timestamp}}'>报名截止</view> -->
   </view>
 
   <view class='flex-row flex-center margin-top-20'>

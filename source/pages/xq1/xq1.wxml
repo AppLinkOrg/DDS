@@ -36,6 +36,8 @@
       <view class="" style=''>
         <view class="flex-row flex-center margin-top:10">
           <view class="flex-row column flex-1">
+
+          <view class='margin-left-60 '>起点企业：{{applyinfo.order_start_company}}</view>
             <view class='flex-row flex-center'>
               <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.green}}'></image>
               <view class="margin-left-20">{{applyinfo.order_startaddress}}</view>
@@ -50,6 +52,8 @@
       <view class="" style=''>
         <view class="flex-row flex-center margin-top:10">
           <view class="flex-row column flex-1">
+
+          <view class='margin-left-60 margin-top-20'>终点企业：{{applyinfo.order_end_company}}</view>
             <view class='flex-row flex-center'>
               <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
               <view class="margin-left-20">{{applyinfo.order_targetaddress}}</view>

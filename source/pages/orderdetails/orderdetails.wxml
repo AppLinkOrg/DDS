@@ -49,11 +49,13 @@
         <view class="" style=''>
           <view class="flex-row flex-center margin-top-10">
             <view class="flex-row column flex-1">
+              <view class='margin-left-60'>起点企业：{{start_company}}</view>
               <view class='flex-row flex-center'>
                 <image class='icon-10 margin-left-20 margin-right-20' src='{{uploadpath}}resource/{{res.green}}'></image>
                 <view class="">{{startaddress}}</view>
               </view>
-              <!-- <view class=" margin-top-10 h5" style=' margin-left:60rpx'>起点距您206公里</view> -->
+
+
             </view>
 
             <navigator bindtap='openMap' id="{{startaddress}}" style='width:90rpx;  border-left:1px solid #F3F3F3;display:flex;justify-content: center'>
@@ -69,6 +71,7 @@
         <view class="" style=''>
           <view class="flex-row flex-center margin-top-10">
             <view class="flex-row column flex-1">
+              <view class='margin-left-60 margin-top-20'>终点企业：{{end_company}}</view>
               <view class='flex-row flex-center'>
                 <image class='icon-10 margin-left-20 margin-right-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
                 <view class="">{{targetaddress}}</view>
@@ -87,7 +90,6 @@
       </view>
 
     </view>
-
 
     <view class="asd flex-1" style='width:95%'>
       <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
@@ -146,19 +148,6 @@
         <view class="">
           <view class="" style='margin:30rpx'>报名资料</view>
 
-          <view class="flex-row  flex-center margin-top-20">
-            <image class='margin-left-20  icon-25' src='{{uploadpath}}resource/{{res.huowuzhgongl}}'></image>
-            <view class="flex-1 txt-black margin-left-20">货运吨数</view>
-            <input class='' placeholder='请输入货运吨数' type='number' bindinput='tonnage' name="tonnage" style='text-align:right;margin-right:20rpx'></input>
-          </view>
-
-          <view class="flex-row  flex-center margin-top-20">
-            <image class='margin-left-20  icon-25' src='{{uploadpath}}resource/{{res.sijidianhua}}'></image>
-            <view class="flex-1 txt-black margin-left-20">司机电话</view>
-            <input class='' placeholder='请输入联系电话' bindgetphonenumber='getPhoneNo' open-type='getPhoneNumber' value='{{memberinfo.mobile}}' type='number' bindinput='binddriver' name="driverphone" style='text-align:right;margin-right:20rpx'></input>
-            <!-- <button class='h6 margin-top-10' style='width:170rpx;' size='mini' bindgetphonenumber='getPhoneNo' open-type='getPhoneNumber'>获取手机</button> -->
-          </view>
-
           <picker wx:if="{{vehiclelist.length>0}}" range='{{vehiclelist}}' bindchange='bindenroll' range-key='carnumber'>
             <view class='flex-row flex-center flex-1 margin-left-20 margin-top-20   bor_btm'>
               <image class='icon-25' src='{{uploadpath}}resource/{{res.huanche}}'></image>
@@ -180,6 +169,27 @@
             </view>
             <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
           </navigator>
+
+          <view class="flex-row  flex-center margin-top-20">
+            <image class='margin-left-20  icon-25' src='{{uploadpath}}resource/{{res.huowuzhgongl}}'></image>
+            <view class="flex-1 txt-black margin-left-20">核载吨数</view>
+            <input class='' disabled='false' type='number' value='{{enroll_carload}}'  name="tonnage" style='text-align:right;margin-right:20rpx'></input>
+          </view>
+
+          <view class="flex-row  flex-center margin-top-20">
+            <image class='margin-left-20  icon-25' src='{{uploadpath}}resource/{{res.huowuzhgongl}}'></image>
+            <view class="flex-1 txt-black margin-left-20">货运吨数</view>
+            <input class='' placeholder='请输入货运吨数' type='number' bindinput='tonnage' name="tonnage" style='text-align:right;margin-right:20rpx'></input>
+          </view>
+
+          <view class="flex-row  flex-center margin-top-20">
+            <image class='margin-left-20  icon-25' src='{{uploadpath}}resource/{{res.sijidianhua}}'></image>
+            <view class="flex-1 txt-black margin-left-20">司机电话</view>
+            <input class='' placeholder='请输入联系电话' bindgetphonenumber='getPhoneNo' open-type='getPhoneNumber' value='{{memberinfo.mobile}}' type='number' bindinput='binddriver' name="driverphone" style='text-align:right;margin-right:20rpx'></input>
+            <!-- <button class='h6 margin-top-10' style='width:170rpx;' size='mini' bindgetphonenumber='getPhoneNo' open-type='getPhoneNumber'>获取手机</button> -->
+          </view>
+
+
 
 
           <button wx:if='{{totaldun < weight&&applycount < carcount}}' form-type='submit' style='margin-top:118rpx' class="h4 txt-white " type='bak_ble'>报名</button>

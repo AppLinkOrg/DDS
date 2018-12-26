@@ -219,6 +219,7 @@ class Content extends AppBase {
     this.Base.setMyData({
       enroll_idx: e.detail.value,
       enroll_id: vehiclelist[e.detail.value].id,
+      enroll_carload: vehiclelist[e.detail.value].carload,
       elcontact: vehiclelist[e.detail.value].carnumber
     });
   }
@@ -247,7 +248,9 @@ class Content extends AppBase {
     //return;
     var driverinfo = this.Base.getMyData().driverinfo;
     //console.log("sssss" + driverinfo.id)
-
+    var enroll_carload = this.Base.getMyData().enroll_carload;
+    console.log("fffffffffffffffffff" + enroll_carload)
+    //return;
     var data = e.detail.value;
     var weight = this.Base.getMyData().weight;
     var totaldun = this.Base.getMyData().totaldun;
@@ -268,8 +271,16 @@ class Content extends AppBase {
     //   this.Base.info("不能大于剩余吨数");
     //   return;
     // }
-    if (parseInt(data.tonnage) > parseInt(weight) - parseInt(totaldun)) {
+    if (parseInt(data.tonnage) > parseInt(weight) - parseInt(totaldun) ) {
       this.Base.info("不能大于剩余吨数");
+      return;
+    }
+    if (parseInt(data.tonnage) > parseInt(enroll_carload) ) {
+      this.Base.info("不能大于车辆核载吨数");
+      return;
+    }
+    if ( parseInt(data.tonnage)<=0){
+      this.Base.info("请填写大于零的数字");
       return;
     }
     if (this.Base.getMyData().elcontact == null) {
@@ -301,8 +312,8 @@ class Content extends AppBase {
     var that = this;
     var api = new CertificateApi();
     var UserInfo = this.Base.getMyData().UserInfo;
-    var orderapi = new OrderApi(); 
-    
+    var orderapi = new OrderApi();
+    var enroll_carload = this.Base.getMyData().enroll_carload;
     var info=this.Base.getMyData().info;
       orderapi.addapply({
         status: "A",
@@ -316,6 +327,7 @@ class Content extends AppBase {
         drivernewstatus:"N",
         member_name: info.enterprise_id_name,
         carriage_driver: driverinfo.id,
+        car_load: enroll_carload,
         openid: UserInfo.openid
       }, (addapply) => {
         var driverinfo = this.Base.getMyData().driverinfo;
@@ -350,7 +362,6 @@ class Content extends AppBase {
              });
         }
       });
-    
 
   }
   onUnload() {
@@ -362,7 +373,6 @@ wx.showToast({
   icon: 'none',
   image: '',
   duration: 1500,
-  
 })
   }
 }

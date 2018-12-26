@@ -22,7 +22,7 @@ class Content extends AppBase {
     var that = this;
     var orderapi = new OrderApi();
     var UserInfo=this.Base.getMyData().UserInfo;
-    orderapi.memberlist({ }, (memberlist) => {
+    orderapi.memberlist({ status:"A"}, (memberlist) => {
       this.Base.setMyData({ memberlist });
     });
   }
