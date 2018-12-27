@@ -45,6 +45,9 @@ class Content extends AppBase {
     orderapi.vehicleinfo({id:this.Base.options.id},(info)=>{
       this.Base.setMyData({info})
     })
+    orderapi.vehiclelist({ all:"Y"}, (vehiclelist) => {
+      this.Base.setMyData({ vehiclelist })
+    })
 
   }
   carnumber(e){
@@ -71,6 +74,13 @@ class Content extends AppBase {
   confirm(e){
     console.log(6666666);
     var data=e.detail.value;
+    var vehiclelist = this.Base.getMyData().vehiclelist;
+    for (var i = 0; i < vehiclelist.length; i++) {
+      if (data.carnumber == vehiclelist[i].carnumber) {
+        this.Base.info("该车牌已被认证,请重新输入");
+        return;
+      }
+    }
     if (data.carnumber == "") {
         this.Base.info("请输入车牌号码");
         return;
@@ -87,6 +97,7 @@ class Content extends AppBase {
       this.Base.info("请上传图片");
       return;
     }
+
     var carnumber = this.Base.getMyData().carnumber;
     var vehicletype = this.Base.getMyData().vehicletype;
     var load = this.Base.getMyData().load;
@@ -94,6 +105,7 @@ class Content extends AppBase {
     var photo = this.Base.getMyData().photo;
     var UserInfo = this.Base.getMyData().UserInfo;
     var orderapi=new OrderApi();
+
 
     orderapi.addvehicle({
       openid: UserInfo.openid,
@@ -111,7 +123,6 @@ class Content extends AppBase {
           success() {
             beforePage.onLoad();
             wx.showToast({
-
               title: '添加成功',
               icon: 'success',
               duration: 2000
@@ -122,8 +133,6 @@ class Content extends AppBase {
         this.Base.info(addvehicle.result);
       }
       
-      
-
     });
   } 
   againalter(e) {

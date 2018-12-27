@@ -14,7 +14,6 @@
         <view class='txt-white h6 nm' style='margin-left:11rpx;'>{{waitlist.length}}</view>
         <image class='num' src='{{uploadpath}}resource/{{res.xiaoxitishi}}'></image>
       </view>
-
       <!-- <view class='num txt-white h6 text-center'>{{dwc.length}}</view> -->
     </view>
 
@@ -35,14 +34,12 @@
           <view class=' h4-5 txt-gray padding-left-20'>{{item.mess_title}}</view>
         </swiper-item>
       </swiper>
-
     </navigator>
+
   </view>
   <!--新任务区域-->
   <navigator wx:for="{{list}}" wx:for-index="idx" wx:key='k' bindtap='newtask' id='{{item.id}}' class="nr1  flex-center flex-wrap margin-top" style='margin-top:100rpx' hidden='{{tab!=0}}' wx:if="{{item.taskstatus_name=='报名中'&&item.status=='A'&&days[idx]>0}}">
     <view class="asd flex-1  " style='width:95%'>
-
-
 
       <view style=' margin-bottom:30rpx ' class="flex-center flex-row margin-top-20">
         <view class="margin-left-20  ">
@@ -68,7 +65,6 @@
       </view>
 
     </view>
-
 
     <view class="asd flex-1" style='width:95%'>
 
@@ -109,7 +105,7 @@
 
         <view class='flex-row flex-center margin-top-20'>
           <image class='icon-10 margin-left-20 margin-right-20' src='{{uploadpath}}resource/{{res.green}}'></image>
-          <view class='  ' style='width:600rpx;'>{{item.startaddress}}</view>
+          <view class='  ' style='width:600rpx;'>{{item.start_company}}</view>
         </view>
 
 
@@ -121,7 +117,7 @@
 
         <view class='flex-row flex-center margin-top-20'>
           <image class='icon-10 margin-left-20 margin-right-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
-          <view class='  ' style='width:600rpx;'>{{item.targetaddress}}</view>
+          <view class='  ' style='width:600rpx;'>{{item.end_company}}</view>
         </view>
 
         <view class="margin-left-30 h5 margin-top-10 txt-gray" style=' margin-left:60rpx'>总里程{{item.distance}}</view>
@@ -144,7 +140,7 @@
 
   </navigator>
 
-  <view wx:if='{{list.length==0}}' class='flex-row flex-column' hidden='{{tab!=0}}'>
+  <view wx:if='{{num==0}}' class='flex-row flex-column' hidden='{{tab!=0}}'>
     <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.nocontent_icon}}'></image>
     <view class=''>暂无历史任务</view>
   </view>
@@ -230,12 +226,12 @@
       <view class="flex-wrap" style=' margin-bottom:30rpx'>
         <view class="flex-row margin-top:10">
           <view class="margin-left-20  " id="z1" style='margin-top:15rpx'></view>
-          <view class="margin-left-20">{{ybm[idx].order_startaddress}}</view>
+          <view class="margin-left-20">{{ybm[idx].order_start_company}}</view>
         </view>
         <!-- <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>起点距您206公里</view> -->
         <view class="flex-row">
           <view class="margin-left-20 " id="z2" style='margin-top:30rpx'></view>
-          <view class="margin-left-20 margin-top-10">{{ybm[idx].order_targetaddress}}</view>
+          <view class="margin-left-20 margin-top-10">{{ybm[idx].order_end_company}}</view>
         </view>
         <view class="margin-left-30 h5 margin-top-10 txt-gray" style=' margin-left:60rpx'>总里程：{{ybm[idx].order_distance}}</view>
       </view>
@@ -318,12 +314,12 @@
         <view class="flex-wrap" style=' margin-bottom:30rpx'>
           <view class="flex-row margin-top:10">
             <view class="margin-left-20  " id="z1" style='margin-top:15rpx'></view>
-            <view class="margin-left-20">{{dwc[idx].order_startaddress}}</view>
+            <view class="margin-left-20">{{dwc[idx].order_start_company}}</view>
           </view>
           <!-- <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>起点距您206公里</view> -->
           <view class="flex-row">
             <view class="margin-left-20 " id="z2" style='margin-top:30rpx'></view>
-            <view class="margin-left-20 margin-top-10">{{dwc[idx].order_targetaddress}}</view>
+            <view class="margin-left-20 margin-top-10">{{dwc[idx].order_end_company}}</view>
           </view>
           <view class="margin-left-30 h5 margin-top-10 txt-gray" style=' margin-left:60rpx'>总里程：{{dwc[idx].order_distance}}</view>
         </view>

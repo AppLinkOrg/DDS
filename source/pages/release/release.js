@@ -98,7 +98,7 @@ class Content extends AppBase {
       }
     })
 
-    orderapi.memberlist({}, (memberlist) => {
+    orderapi.memberlist({status:"A"}, (memberlist) => {
       this.Base.setMyData({
         memberlist
       });

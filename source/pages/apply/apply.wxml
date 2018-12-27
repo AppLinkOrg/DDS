@@ -27,11 +27,14 @@
 
           <view class="flex-row column flex-1">
 
-          <view class='margin-left-60 '>起点企业：{{applyinfo.order_start_company}}</view>
+
             <view class='flex-row flex-center'>
               <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.green}}'></image>
-              <view class="margin-left-20">{{applyinfo.order_startaddress}}</view>
+              <view class=' margin-left-20'>起点企业：{{applyinfo.order_start_company}}</view>
             </view>
+
+            <view class="margin-left-60">{{applyinfo.order_startaddress}}</view>
+
             <!-- <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>起点距您666公里</view> -->
           </view>
           <view style='width:90rpx;  border-left:1px dotted #919191;display:flex;justify-content: center'>
@@ -42,11 +45,15 @@
       <view class="" style=''>
         <view class="flex-row flex-center margin-top:10">
           <view class="flex-row column flex-1">
-          <view class='margin-left-60 margin-top-20'>终点企业：{{applyinfo.order_end_company}}</view>
+
+            
+            
             <view class='flex-row flex-center'>
               <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
-              <view class="margin-left-20">{{applyinfo.order_targetaddress}}</view>
+              <view class='margin-left-20 '>终点企业：{{applyinfo.order_end_company}}</view>
             </view>
+<view class="margin-left-60">{{applyinfo.order_targetaddress}}</view>
+
             <view class=" margin-top-10 h5" style=' margin-left:60rpx'>总里程：{{applyinfo.order_distance}}</view>
           </view>
           <view style='width:90rpx;  border-left:1px dotted #919191;display:flex;justify-content: center'>
@@ -65,7 +72,7 @@
       <view class="margin-right-20">{{applyinfo.order_stuff_type_id}}</view>
     </view>
   </view>
-  <view class="asd flex-1" style='width:95%'  bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
+  <view class="asd flex-1" style='width:95%' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
     <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
       <view class="margin-left-20">
         <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
@@ -98,7 +105,7 @@
     </view>
   </view> -->
 
-  <view class="asd flex-1" style='width:95%' >
+  <view class="asd flex-1" style='width:95%'>
     <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
       <view class="margin-left-20">
         <image class='icon-20' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
@@ -111,25 +118,6 @@
 
       <view class="flex-wrap">
         <view class="" style='margin:30rpx'>报名资料</view>
-        <view class="flex-row  flex-center">
-          <view class='margin-left-20'>
-            <image class='icon-25' src='{{uploadpath}}resource/{{res.huowuzhgongl}}'></image>
-          </view>
-          <view class="flex-1 margin-left-20">货运吨数</view>
-          <view class="margin-right-20">
-            {{applyinfo.tonnage}}吨
-          </view>
-        </view>
-
-        <view class="flex-row  margin-top-10 flex-center">
-          <view class='margin-left-20'>
-            <image class='icon-25' src='{{uploadpath}}resource/{{res.sijidianhua}}'></image>
-          </view>
-          <view class="flex-1  margin-left-20">司机电话</view>
-          <view class="flex-row  flex-center  margin-right-20">
-            <view>{{applyinfo.driver_phone}}</view>
-          </view>
-        </view>
 
         <view class="flex-row  margin-top-10 flex-center">
           <view class='margin-left-20'>
@@ -140,6 +128,40 @@
             <view>{{applyinfo.vehicle}}</view>
           </view>
         </view>
+
+
+
+        <view class="flex-row  flex-center">
+          <view class='margin-left-20'>
+            <image class='icon-25' src='{{uploadpath}}resource/{{res.huowuzhgongl}}'></image>
+          </view>
+          <view class="flex-1 margin-left-20">货运吨数</view>
+          <view class="margin-right-20">
+            {{applyinfo.tonnage}}吨
+          </view>
+        </view>
+
+        <view class="flex-row  flex-center">
+          <view class='margin-left-20'>
+            <image class='icon-25' src='{{uploadpath}}resource/{{res.huowuzhgongl}}'></image>
+          </view>
+          <view class="flex-1 margin-left-20">核载吨数</view>
+          <view class="margin-right-20">
+            {{applyinfo.car_load}}吨
+          </view>
+        </view>
+
+        <view class="flex-row   flex-center">
+          <view class='margin-left-20'>
+            <image class='icon-25' src='{{uploadpath}}resource/{{res.sijidianhua}}'></image>
+          </view>
+          <view class="flex-1  margin-left-20">司机电话</view>
+          <view class="flex-row  flex-center  margin-right-20">
+            <view>{{applyinfo.driver_phone}}</view>
+          </view>
+        </view>
+
+        
 
         <view bindtap='Deleteorder' class="h4 bm" style='margin-top:118rpx' id="anniu">取消报名</view>
       </view>

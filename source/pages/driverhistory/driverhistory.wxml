@@ -65,7 +65,7 @@
   </view>
 
   <view class="asd " style='width:100%'>
-    <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
+    <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
       <view class="margin-left-20">
         <image class='icon-25' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
       </view>
@@ -85,7 +85,7 @@
     </view> -->
 
   <view class="asd " style='width:100%' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
-    <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
+    <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
       <view class="margin-left-20">
         <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
       </view>
@@ -94,6 +94,38 @@
       <view class="margin-right-20" style=''>{{enrollinfo.member_phone}}</view>
     </view>
   </view>
+
+  <view class="asd " style='width:100%' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
+    <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
+      <view class="margin-left-20">
+        <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
+      </view>
+      <view class="flex-1 margin-left-20">运输车辆车牌号</view>
+      <view class="margin-right-20" style=''>{{applyinfo.vehicle}}</view>
+    </view>
+  </view>
+
+  <view class="asd " style='width:100%' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
+    <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
+      <view class="margin-left-20">
+        <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
+      </view>
+      <view class="flex-1 margin-left-20">运输车辆核载吨数</view>
+      <view class="margin-right-20" style=''>{{applyinfo.car_load}}吨</view>
+    </view>
+  </view>
+
+<view class="asd " style='width:100%' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
+    <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
+      <view class="margin-left-20">
+        <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
+      </view>
+      <view class="flex-1 margin-left-20">运输车辆运输吨数</view>
+      <view class="margin-right-20" style=''>{{applyinfo.tonnage}}吨</view>
+    </view>
+  </view>
+
+
 
 
   <form bindsubmit="start_Getover" bindreset="formReset" report-submit="{{true}}">
@@ -192,11 +224,11 @@
       </view>
 
 
-      <view class='btn'>
+      <!-- <view class='btn'>
         <view class="flex-wrap" wx:if='{{applyinfo.photo==""&&applyinfo.p1!=""}}'>
           <button class="h4 bm" style='margin-top:118rpx' id="anniu" form-type='submit'>确认到达目的地</button>
         </view>
-      </view>
+      </view> -->
 
       <!-- <view>
         <view class="flex-wrap" wx:if='{{applyinfo.photo==""}}'>

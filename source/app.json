@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/youke/youke",
+    "pages/my/my",
     "pages/updatecar/updatecar",
     "pages/dirhistory/dirhistory",
-    "pages/my/my",
     "pages/certificate/certificate",
     "pages/updatedriver/updatedriver",
     "pages/changyon/changyon",

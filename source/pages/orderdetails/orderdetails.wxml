@@ -49,12 +49,15 @@
         <view class="" style=''>
           <view class="flex-row flex-center margin-top-10">
             <view class="flex-row column flex-1">
-              <view class='margin-left-60'>起点企业：{{start_company}}</view>
+
+
+
+
               <view class='flex-row flex-center'>
                 <image class='icon-10 margin-left-20 margin-right-20' src='{{uploadpath}}resource/{{res.green}}'></image>
-                <view class="">{{startaddress}}</view>
+                <view class=''>起点企业：{{start_company}}</view>
               </view>
-
+              <view class="margin-left-60">{{startaddress}}</view>
 
             </view>
 
@@ -66,16 +69,17 @@
 
         </view>
 
-
-
         <view class="" style=''>
           <view class="flex-row flex-center margin-top-10">
             <view class="flex-row column flex-1">
-              <view class='margin-left-60 margin-top-20'>终点企业：{{end_company}}</view>
+
+
               <view class='flex-row flex-center'>
                 <image class='icon-10 margin-left-20 margin-right-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
-                <view class="">{{targetaddress}}</view>
+                <view class=' margin-top-20'>终点企业：{{end_company}}</view>
               </view>
+              <view class="margin-left-60">{{targetaddress}}</view>
+
               <view class=" margin-top-10 h5" style=' margin-left:60rpx'>总里程{{distance}}</view>
             </view>
 
@@ -84,7 +88,6 @@
             </navigator>
 
           </view>
-
 
         </view>
       </view>
@@ -173,7 +176,7 @@
           <view class="flex-row  flex-center margin-top-20">
             <image class='margin-left-20  icon-25' src='{{uploadpath}}resource/{{res.huowuzhgongl}}'></image>
             <view class="flex-1 txt-black margin-left-20">核载吨数</view>
-            <input class='' disabled='false' type='number' value='{{enroll_carload}}'  name="tonnage" style='text-align:right;margin-right:20rpx'></input>
+            <input class='' disabled='false' type='number' value='{{enroll_carload}}' name="tonnage" style='text-align:right;margin-right:20rpx'></input>
           </view>
 
           <view class="flex-row  flex-center margin-top-20">

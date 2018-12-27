@@ -8,35 +8,32 @@
       <view class='h5'>报名截止时间：</view>
       <view class='h5'>{{orderinfo.enroll_deadline}}</view>
     </view>
-    <view class='text-center txt-red h5 signup margin-top-20' >{{orderinfo.taskstatus_name}}</view>
+    <view class='text-center txt-red h5 signup margin-top-20'>{{orderinfo.taskstatus_name}}</view>
     <!-- <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{orderinfo.enroll_deadline_timespan<=timestamp}}'>报名截止</view> -->
+  </view>
+
+  <view wx:if='{{mineshow=="2"}}' class='flex-row flex-column flex-1 padding-40   bor_btm'>
+    <navigator url='/pages/driverlist/driverlist?id={{orderinfo.id}}&type=N'>
+      <image class='icon-30' src='{{uploadpath}}resource/{{res.driver}}'></image>
+    </navigator>
+    <view class='flex-1 margin-top-20 txt-bold' style='color:#1EBFAE;font-size:30rpx'>查看已报名司机列表</view>
+    <!-- <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image> -->
   </view>
 
   <view class='flex-row flex-center margin-top-20'>
 
     <view class='flex-row flex-column flex-1' style='border-right:1rpx solid #CFCECF'>
-
-      <!-- <view wx:if='{{mineshow=="2"}}' class='font-left'>{{mine}}</view> -->
-
       <view class='flex-row '>
-        <view class='font-left padding-top-40'>{{orderinfo.applycount}}/{{orderinfo.carcount}}</view>
-        <view class='txt-bold padding-top-60  margin-left-10'>辆</view>
+        <view class='font-left padding-top-40'>{{orderinfo.applycount}}</view>
+        <view class='font-bottom ' style='padding-top:100rpx;color:#4085ff'>/{{orderinfo.carcount}}</view>
+        <view class='txt-bold   margin-left-10' style='padding-top:100rpx'>辆</view>
       </view>
-
     </view>
-
+  
     <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
       <view class='flex-row '>
         <view class='font-mid padding-top-40'>{{orderinfo.unitprice}}</view>
-        <view class='txt-bold padding-top-60 margin-left-10'>元/吨</view>
-      </view>
-    </view>
-
-    <view class='flex-row flex-column flex-1 '>
-      <view class='flex-row '>
-        <view class='font-right padding-top-40'>{{orderinfo.totaldun}}/{{orderinfo.weight}}</view>
-        <view class='txt-bold padding-top-60  margin-left-10'>吨</view>
-
+        <view class='txt-bold margin-left-10' style='padding-top:100rpx'>元/吨</view>
       </view>
     </view>
 
@@ -45,13 +42,18 @@
   <view class='flex-row flex-center padding-10 bor_btm'>
     <view class='flex-1 text-center font-bottom margin-bottom-10'>已报名</view>
     <view class='flex-1 text-center font-bottom margin-bottom-10'>预计运费</view>
-    <view class='flex-1 text-center font-bottom margin-bottom-10'>已运吨数</view>
   </view>
 
+  <view class='flex-row flex-column  '>
+    <view class='flex-row'>
+      <view class='font-right padding-top-40'>{{orderinfo.totaldun}}/{{orderinfo.weight}}</view>
+      <view class='txt-bold margin-left-10' style='padding-top:100rpx'>吨</view>
+    </view>
+  </view>
+
+  <view class=' text-center font-bottom padding-bottom-20 margin-top-10' style='border-bottom:1rpx solid #E8E8E8'>已运吨数</view>
+
   <view class='padding-40 bor_btm'>
-
-
-
 
     <view class='flex-row column margin-left-20 '>
       <view class='flex-row flex-center '>
@@ -123,12 +125,6 @@
 
   <view class='flex-row column'>
 
-    <navigator url='/pages/driverlist/driverlist?id={{orderinfo.id}}&type=N' wx:if='{{mineshow=="2"}}' class='flex-row flex-center flex-1 padding-40   bor_btm'>
-      <image class='icon-20' src='{{uploadpath}}resource/{{res.driver}}'></image>
-      <view class='txt-gray h5 flex-1 margin-left-20'>司机列表</view>
-      <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
-    </navigator>
-
     <navigator class='flex-row flex-center flex-1 padding-40   bor_btm' bindtap='openRoute'>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
       <view class='txt-gray h5 flex-1 margin-left-20'>地图</view>
@@ -173,7 +169,6 @@
     </view>
   </view>
 </view>
-
 
 <navigator bindtap='Deleteorder' wx:if='{{orderinfo.member_id==memberinfo.id&&toapplylist.length==0&&completedlist.length==0}}' class='cancel_btn bg-bck_ble txt-white text-center'>取消本次任务</navigator>
 <!-- &&applylist[0].photo!=""&&applylist.length>0 -->

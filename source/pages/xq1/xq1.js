@@ -159,11 +159,16 @@ class Content extends AppBase {
 
   Getover(e) {
     var data = e.detail.value;
+    if (data.end_load == "") {
+      this.Base.info("请填写终点过磅单载重");
+      return;
+    }
     if (data.photo == "") {
       this.Base.info("请至少添加一张终点过磅单");
       return;
     }
-    var applyapi = new ApplyApi();
+    var applyapi = new ApplyApi(); 
+    var end_load = data.end_load;
     var photo = this.Base.getMyData().photo[0];
     var photo2 = this.Base.getMyData().photo[1];
     var photo3 = this.Base.getMyData().photo[2];
@@ -175,7 +180,7 @@ class Content extends AppBase {
     var photo9 = this.Base.getMyData().photo[8];
     var applyinfo=this.Base.getMyData().applyinfo;
     console.log(applyinfo.id);
-    applyapi.uploaddan({ apply_id: applyinfo.id, photo: photo, photo2: photo2, photo3: photo3, photo4: photo4, photo5: photo5, photo6: photo6, photo7: photo7, photo8: photo8, photo9: photo9 }, (uploaddan) => {
+    applyapi.uploaddan({ apply_id: applyinfo.id, end_load: end_load, photo: photo, photo2: photo2, photo3: photo3, photo4: photo4, photo5: photo5, photo6: photo6, photo7: photo7, photo8: photo8, photo9: photo9 }, (uploaddan) => {
           wx.reLaunch({
             url: '/pages/driver/driver',
           })
@@ -189,11 +194,16 @@ class Content extends AppBase {
 
   start_Getover(e) {
     var data = e.detail.value;
+    if (data.gbdload == "") {
+      this.Base.info("请填写起点过磅单载重");
+      return;
+    }
     if (data.p1 == "") {
       this.Base.info("请至少添加一张起点过磅单");
       return;
     }
     var applyapi = new ApplyApi();
+    var gbdload = data.gbdload;
     var p1 = data.p1;
     var p2 = data.p2;
     var p3 = data.p3;
@@ -205,7 +215,7 @@ class Content extends AppBase {
     var p9 = data.p9;
     var applyinfo = this.Base.getMyData().applyinfo;
     console.log(applyinfo.id);
-    applyapi.updatestart({ apply_id: applyinfo.id, p1: p1, p2: p2, p3: p3, p4: p4, p5: p5, p6: p6, p7: p7, p8: p8, p9: p9 }, (updatestart) => {
+    applyapi.updatestart({ apply_id: applyinfo.id, start_load: gbdload ,p1: p1, p2: p2, p3: p3, p4: p4, p5: p5, p6: p6, p7: p7, p8: p8, p9: p9 }, (updatestart) => {
       wx.reLaunch({
         url: '/pages/driver/driver',
       })
@@ -214,6 +224,19 @@ class Content extends AppBase {
         title: '提交成功,请等待发布方确认',
       })
     });
+  }
+
+  toast(e){
+    var applyinfo=this.Base.getMyData().applyinfo;
+
+    if (applyinfo.p1==""){
+      wx.showToast({
+        title: '请先提交起点过磅单',
+        icon:'none',
+        content: ''
+      })
+    }
+
   }
 
    photo(e) {
@@ -262,4 +285,5 @@ body.photo3 = content.photo3;
 body.photo4 = content.photo4; 
 body.Getover = content.Getover;
 body.start_Getover = content.start_Getover;
+body.toast = content.toast;
 Page(body)

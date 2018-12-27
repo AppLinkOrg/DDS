@@ -17,8 +17,8 @@ height: 25rpx;
 }
 .txt-white{
   color: white;
-  border-bottom: 4rpx  solid white;
-  border-bottom-width: thick;
+  /* border-bottom: 4rpx  solid white;
+  border-bottom-width: thick; */
 }
 .signup{
 width:170rpx;

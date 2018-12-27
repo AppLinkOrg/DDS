@@ -37,11 +37,15 @@
         <view class="flex-row flex-center margin-top:10">
           <view class="flex-row column flex-1">
 
-          <view class='margin-left-60 '>起点企业：{{applyinfo.order_start_company}}</view>
+
+
             <view class='flex-row flex-center'>
               <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.green}}'></image>
-              <view class="margin-left-20">{{applyinfo.order_startaddress}}</view>
+              <view class='margin-left-20 '>起点企业：{{applyinfo.order_start_company}}</view>
             </view>
+            <view class="margin-left-60">{{applyinfo.order_startaddress}}</view>
+
+
             <!-- <view class=" margin-top-10 h5" style='; margin-left:60rpx'>起点距您206公里</view> -->
           </view>
           <view style='width:90rpx; display:flex;justify-content: center' bindtap='openMap' id="{{applyinfo.order_startaddress}}">
@@ -53,13 +57,17 @@
         <view class="flex-row flex-center margin-top:10">
           <view class="flex-row column flex-1">
 
-          <view class='margin-left-60 margin-top-20'>终点企业：{{applyinfo.order_end_company}}</view>
+
             <view class='flex-row flex-center'>
               <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
-              <view class="margin-left-20">{{applyinfo.order_targetaddress}}</view>
+              <view class='margin-left-20 '>终点企业：{{applyinfo.order_end_company}}</view>
+
             </view>
+            <view class="margin-left-60">{{applyinfo.order_targetaddress}}</view>
+
             <view class=" margin-top-10 h5" style='; margin-left:60rpx'>总里程：{{applyinfo.order_distance}}</view>
           </view>
+
           <view style='width:90rpx;  display:flex;justify-content: center' bindtap='openMap' id="{{applyinfo.order_targetaddress}}">
             <image class='icon-30' src='{{uploadpath}}resource/{{res.daohan}} '></image>
           </view>
@@ -69,7 +77,7 @@
   </view>
 
   <view class="asd " style='width:100%'>
-    <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
+    <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
       <view class="margin-left-20">
         <image class='icon-25' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
       </view>
@@ -89,7 +97,7 @@
     </view> -->
 
   <view class="asd " style='width:100%' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
-    <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
+    <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
       <view class="margin-left-20">
         <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
       </view>
@@ -99,8 +107,37 @@
     </view>
   </view>
 
+  <view class="asd " style='width:100%' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
+    <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
+      <view class="margin-left-20">
+        <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
+      </view>
+      <view class="flex-1 margin-left-20">运输车辆车牌号</view>
+      <view class="margin-right-20" style=''>{{applyinfo.vehicle}}</view>
+    </view>
+  </view>
 
-  <form bindsubmit="start_Getover" bindreset="formReset" report-submit="{{true}}" >
+  <view class="asd " style='width:100%' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
+    <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
+      <view class="margin-left-20">
+        <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
+      </view>
+      <view class="flex-1 margin-left-20">运输车辆核载吨数</view>
+      <view class="margin-right-20" style=''>{{applyinfo.car_load}}吨</view>
+    </view>
+  </view>
+
+<view class="asd " style='width:100%' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
+    <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
+      <view class="margin-left-20">
+        <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
+      </view>
+      <view class="flex-1 margin-left-20">运输车辆运输吨数</view>
+      <view class="margin-right-20" style=''>{{applyinfo.tonnage}}吨</view>
+    </view>
+  </view>
+
+  <form bindsubmit="start_Getover" bindreset="formReset" report-submit="{{true}}">
     <view class="asd " style='width:100%'>
       <view class="flex-row column margin-top-20 " style=' margin-bottom:30rpx'>
         <view class="margin-left-20 flex-row flex-center">
@@ -132,23 +169,23 @@
           </view>
 
           <view class='' wx:if='{{applyinfo.p1!=""}}'>
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p1}}'  class='startimg margin-5 {{applyinfo.p1==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p1}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p1}}' class='startimg margin-5 {{applyinfo.p1==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p1}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p2}}'  class='startimg margin-5 {{applyinfo.p2==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p2}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p2}}' class='startimg margin-5 {{applyinfo.p2==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p2}}'></image>
 
             <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p3}}' class='startimg margin-5 {{applyinfo.p3==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p3}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p4}}'  class='startimg margin-5 {{applyinfo.p4==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p4}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p4}}' class='startimg margin-5 {{applyinfo.p4==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p4}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p5}}'  class='startimg margin-5 {{applyinfo.p5==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p5}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p5}}' class='startimg margin-5 {{applyinfo.p5==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p5}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p6}}'  class='startimg margin-5 {{applyinfo.p6==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p6}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p6}}' class='startimg margin-5 {{applyinfo.p6==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p6}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p7}}'  class='startimg margin-5 {{applyinfo.p7==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p7}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p7}}' class='startimg margin-5 {{applyinfo.p7==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p7}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p8}}'  class='startimg margin-5 {{applyinfo.p8==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p8}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p8}}' class='startimg margin-5 {{applyinfo.p8==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p8}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p9}}'  class='startimg margin-5 {{applyinfo.p9==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p9}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p9}}' class='startimg margin-5 {{applyinfo.p9==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p9}}'></image>
           </view>
 
           <!-- <view class='flex-row flex-column padding-top-' bindtap='uploadimg' style='line-height' wx:if='{{photo==undefined}}'>
@@ -167,10 +204,30 @@
         <input hidden='fales' name="p9" value="{{start_photo[8]}}"></input>
       </view>
     </view>
-     <button wx:if='{{applyinfo.p1==""}}' class="h4 bm btn" style='margin-top:118rpx' id="anniu" form-type='submit'>提交起点过磅单</button>
+
+
+    <view class="asd " style='width:100%'>
+      <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
+        <view class="margin-left-20">
+          <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
+        </view>
+        <view class="flex-1 margin-left-20">起点过磅单载重</view>
+        <view wx:if='{{applyinfo.start_load==""}}' style='border:1rpx solid #E8E8E8;border-radius:10rpx'>
+          <input placeholder='请填写起点过磅单载重' class='h5 padding-10' name='gbdload'></input>
+        </view>
+
+        <view wx:if='{{applyinfo.start_load!=""}}' style='border:1rpx solid #E8E8E8;border-radius:10rpx'>
+          <input placeholder='请填写起点过磅单载重' value='{{applyinfo.start_load}}' disabled='false' class='h5 padding-10' name='gbdload'></input>
+        </view>
+
+      </view>
+    </view>
+
+
+    <button wx:if='{{applyinfo.p1==""}}' class="h4 bm btn" style='margin-top:118rpx' id="anniu" form-type='submit'>提交起点过磅单</button>
   </form>
 
-  <form bindsubmit="Getover" bindreset="formReset" report-submit="{{true}}" >
+  <form bindsubmit="Getover" bindreset="formReset" report-submit="{{true}}">
     <view class="asd " style='width:100%'>
       <view class="flex-row column margin-top-20 " style=' margin-bottom:30rpx'>
         <view class="margin-left-20 flex-row flex-center">
@@ -202,23 +259,23 @@
           </view>
 
           <view class='' wx:if='{{applyinfo.photo!="undefined"}}'>
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo}}'   class='startimg margin-5 {{applyinfo.photo=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo}}' class='startimg margin-5 {{applyinfo.photo==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo2}}'   class='startimg margin-5 {{applyinfo.photo2=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo2}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo2}}' class='startimg margin-5 {{applyinfo.photo2==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo2}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo3}}'   class='startimg margin-5 {{applyinfo.photo3=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo3}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo3}}' class='startimg margin-5 {{applyinfo.photo3==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo3}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo4}}'  class='startimg margin-5 {{applyinfo.photo4=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo4}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo4}}' class='startimg margin-5 {{applyinfo.photo4==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo4}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo5}}'   class='startimg margin-5 {{applyinfo.photo5=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo5}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo5}}' class='startimg margin-5 {{applyinfo.photo5==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo5}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo6}}'   class='startimg margin-5 {{applyinfo.photo6=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo6}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo6}}' class='startimg margin-5 {{applyinfo.photo6==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo6}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo7}}'   class='startimg margin-5 {{applyinfo.photo7==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo7}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo7}}' class='startimg margin-5 {{applyinfo.photo7==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo7}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo8}}'   class='startimg margin-5 {{applyinfo.photo8=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo8}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo8}}' class='startimg margin-5 {{applyinfo.photo8==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo8}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo9}}'   class='startimg margin-5 {{applyinfo.photo9=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo9}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo9}}' class='startimg margin-5 {{applyinfo.photo9==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo9}}'></image>
 
           </view>
 
@@ -240,6 +297,21 @@
     </view>
 
     <view class="asd " style='width:100%'>
+      <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
+        <view class="margin-left-20">
+          <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
+        </view>
+        <view class="flex-1 margin-left-20">终点过磅单载重</view>
+        <view wx:if='{{applyinfo.end_load==""}}' style='border:1rpx solid #E8E8E8;border-radius:10rpx'>
+          <input placeholder='请填写终点过磅单载重' disabled='{{applyinfo.p1==""}}' bindtap='toast' class='h5 padding-10' name='end_load'></input>
+        </view>
+        <view wx:if='{{applyinfo.end_load!=""}}' style='border:1rpx solid #E8E8E8;border-radius:10rpx'>
+          <input placeholder='请填写终点过磅单载重' disabled='fales' value='{{applyinfo.end_load}}' class='h5 padding-10' name='end_load'></input>
+        </view>
+      </view>
+    </view>
+
+    <view class="asd " style='width:100%'>
       <view class="flex-row  margin-top-20 " style=' margin-bottom:30rpx'>
         <image class='icon-25 margin-left-20' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
         <view class=" margin-left-20">备注</view>
@@ -254,7 +326,7 @@
 
       <view class='btn'>
         <view class="flex-wrap" wx:if='{{applyinfo.photo==""&&applyinfo.p1!=""}}'>
-          <button class="h4 bm"  style='margin-top:118rpx' id="anniu" form-type='submit'>确认到达目的地</button>
+          <button class="h4 bm" style='margin-top:118rpx' id="anniu" form-type='submit'>确认到达目的地</button>
         </view>
       </view>
 

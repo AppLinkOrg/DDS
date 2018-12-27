@@ -31,9 +31,41 @@ class Content extends AppBase {
       title: title,
     })
   }
+
+
+  binddeleted(e) {
+    var that = this;
+    var orderapi = new OrderApi();
+    var memberinfo = this.Base.getMyData().memberinfo;
+    var id = e.currentTarget.id;
+    //console.log(id+"ssssssssssssss");
+    //return;
+    wx.showModal({
+      title: '',
+      content: '确认删除此常用任务?',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#EE2222',
+      confirmText: '确定',
+      confirmColor: '#2699EC',
+      success: function (res) {
+        if (res.confirm) {
+
+          orderapi.updatechanyon({ id: id }, (updatechanyon) => {
+            that.Base.setMyData({
+              updatechanyon
+            });
+            that.onMyShow();
+          });
+
+        }
+      }
+    });
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
+body.binddeleted = content.binddeleted;
 Page(body)

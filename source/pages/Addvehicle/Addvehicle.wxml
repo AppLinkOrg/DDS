@@ -19,7 +19,7 @@
       <view class='margin-top'>
         <view>载重 (吨)</view>
         <view class="flex-row column margin-top-20">
-          <input class='padding-20' placeholder="请填写该车辆的核定载重" bindinput='load' name="load" style='border:1px solid #CECFCE;'></input>
+          <input class='padding-20' placeholder="请填写该车辆的核定载重" type='number' bindinput='load' name="load" style='border:1px solid #CECFCE;'></input>
         </view>
       </view>
 
