@@ -124,6 +124,51 @@ class Content extends AppBase {
     });
   }
 
+  openRoute() {
+    var orderinfo = this.Base.getMyData().orderinfo;
+    var startaddress = this.Base.getMyData().orderinfo.startaddress;
+    var targetaddress = this.Base.getMyData().orderinfo.targetaddress;
+    console.log("NNNNNNNNNN" + orderinfo.startaddress);
+
+    var route = [
+
+      {
+        "title": startaddress,
+        "address": orderinfo.startaddress,
+        "type": 0,
+        "location": {
+          "lat": orderinfo.startlat,
+          "lng": orderinfo.startlng
+        }
+      },
+
+      //{ "address": startaddress, "type": 0, "location": { "lat": orderinfo.startlat, "lng": orderinfo.startlng } }, 
+
+      {
+        "title": targetaddress,
+        "address": orderinfo.targetaddress,
+        "type": 0,
+        "location": {
+          "lat": orderinfo.targetlat,
+          "lng": orderinfo.targetlng
+        }
+      }
+    ];
+
+    if (route != undefined) {
+      wx.navigateTo({
+        url: '/pages/route/route?callbackid=route&route=' + JSON.stringify(route),
+      })
+
+    } else {
+
+      wx.navigateTo({
+        url: '/pages/route/route?callbackid=route',
+      })
+    }
+
+  }
+
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -131,5 +176,6 @@ body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
 body.Deleteorder = content.Deleteorder;
 body.update = content.update;
-body.toreedit = content.toreedit;
+body.toreedit = content.toreedit; 
+body.openRoute = content.openRoute; 
 Page(body)

@@ -127,7 +127,7 @@ class Content extends AppBase {
     var that = this;
     wx.showModal({
       title: '',
-      content: '您是否确认该司机已完成？',
+      content: '您是否确认该司机已完成？是否已查看过磅单？',
       showCancel: true,
       cancelText: '取消',
       cancelColor: '#EE2222',

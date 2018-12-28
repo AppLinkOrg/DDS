@@ -184,7 +184,7 @@
           <view class="flex-row  flex-center margin-top-20">
             <image class='margin-left-20  icon-25' src='{{uploadpath}}resource/{{res.hezaidunshu}}'></image>
             <view class="flex-1 txt-black margin-left-20">核载吨数</view>
-            <input class='' disabled='false' type='number' value='{{enroll_carload}}' name="tonnage" style='text-align:right;margin-right:20rpx'></input>
+            <input class='' disabled='false' type='number' value='{{enroll_carload}}' name="atonnage" style='text-align:right;margin-right:20rpx'></input>
           </view>
 
           
@@ -195,8 +195,6 @@
             <input class='' placeholder='请输入联系电话' bindgetphonenumber='getPhoneNo' open-type='getPhoneNumber' value='{{memberinfo.mobile}}' type='number' bindinput='binddriver' name="driverphone" style='text-align:right;margin-right:20rpx'></input>
             <!-- <button class='h6 margin-top-10' style='width:170rpx;' size='mini' bindgetphonenumber='getPhoneNo' open-type='getPhoneNumber'>获取手机</button> -->
           </view>
-
-
 
 
           <button wx:if='{{totaldun < weight&&applycount < carcount}}' form-type='submit' style='margin-top:118rpx' class="h4 txt-white " type='bak_ble'>报名</button>

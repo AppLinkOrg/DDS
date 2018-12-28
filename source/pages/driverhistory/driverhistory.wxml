@@ -36,10 +36,16 @@
       <view class="" style=''>
         <view class="flex-row flex-center margin-top:10">
           <view class="flex-row column flex-1">
+
+
+
             <view class='flex-row flex-center'>
               <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.green}}'></image>
-              <view class="margin-left-20">{{applyinfo.order_startaddress}}</view>
+              <view class='margin-left-20 '>起点企业：{{applyinfo.order_start_company}}</view>
             </view>
+            <view class="margin-left-60">{{applyinfo.order_startaddress}}</view>
+
+
             <!-- <view class=" margin-top-10 h5" style='; margin-left:60rpx'>起点距您206公里</view> -->
           </view>
           <view style='width:90rpx; display:flex;justify-content: center' bindtap='openMap' id="{{applyinfo.order_startaddress}}">
@@ -50,12 +56,18 @@
       <view class="" style=''>
         <view class="flex-row flex-center margin-top:10">
           <view class="flex-row column flex-1">
+
+
             <view class='flex-row flex-center'>
               <image class='icon-10 margin-left-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
-              <view class="margin-left-20">{{applyinfo.order_targetaddress}}</view>
+              <view class='margin-left-20 '>终点企业：{{applyinfo.order_end_company}}</view>
+
             </view>
+            <view class="margin-left-60">{{applyinfo.order_targetaddress}}</view>
+
             <view class=" margin-top-10 h5" style='; margin-left:60rpx'>总里程：{{applyinfo.order_distance}}</view>
           </view>
+
           <view style='width:90rpx;  display:flex;justify-content: center' bindtap='openMap' id="{{applyinfo.order_targetaddress}}">
             <image class='icon-30' src='{{uploadpath}}resource/{{res.daohan}} '></image>
           </view>
@@ -98,7 +110,7 @@
   <view class="asd " style='width:100%' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
     <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
       <view class="margin-left-20">
-        <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
+        <image class='icon-25' src='{{uploadpath}}resource/{{res.chepai_icon}}'></image>
       </view>
       <view class="flex-1 margin-left-20">运输车辆车牌号</view>
       <view class="margin-right-20" style=''>{{applyinfo.vehicle}}</view>
@@ -108,7 +120,7 @@
   <view class="asd " style='width:100%' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
     <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
       <view class="margin-left-20">
-        <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
+        <image class='icon-25' src='{{uploadpath}}resource/{{res.hezaidunshu}}'></image>
       </view>
       <view class="flex-1 margin-left-20">运输车辆核载吨数</view>
       <view class="margin-right-20" style=''>{{applyinfo.car_load}}吨</view>
@@ -118,7 +130,7 @@
 <view class="asd " style='width:100%' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
     <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
       <view class="margin-left-20">
-        <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
+        <image class='icon-25' src='{{uploadpath}}resource/{{res.yunshudunshu}}'></image>
       </view>
       <view class="flex-1 margin-left-20">运输车辆运输吨数</view>
       <view class="margin-right-20" style=''>{{applyinfo.tonnage}}吨</view>
