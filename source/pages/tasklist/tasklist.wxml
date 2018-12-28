@@ -172,6 +172,6 @@
 
 <navigator bindtap='Deleteorder' wx:if='{{orderinfo.member_id==memberinfo.id&&toapplylist.length==0&&completedlist.length==0}}' class='cancel_btn bg-bck_ble txt-white text-center'>取消本次任务</navigator>
 <!-- &&applylist[0].photo!=""&&applylist.length>0 -->
-<navigator bindtap='update' wx:if='{{orderinfo.member_id==memberinfo.id&&toapplylist.length!=0||completedlist.length!=0}}' class='cancel_btn bg-bck_ble txt-white text-center'>完成本次任务</navigator>
+<navigator bindtap='update' wx:if='{{orderinfo.member_id==memberinfo.id&&toapplylist.length!=0&&completedlist.length!=0}}' class='cancel_btn bg-bck_ble txt-white text-center'>完成本次任务</navigator>
 
 <!-- <button type='bak_ble' hover-class='txt-white' class='txt-white cancel_btn'>取消本次任务</button> -->

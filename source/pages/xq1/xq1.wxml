@@ -110,7 +110,7 @@
   <view class="asd " style='width:100%' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
     <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
       <view class="margin-left-20">
-        <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
+        <image class='icon-25' src='{{uploadpath}}resource/{{res.chepai_icon}}'></image>
       </view>
       <view class="flex-1 margin-left-20">运输车辆车牌号</view>
       <view class="margin-right-20" style=''>{{applyinfo.vehicle}}</view>
@@ -120,7 +120,7 @@
   <view class="asd " style='width:100%' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
     <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
       <view class="margin-left-20">
-        <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
+        <image class='icon-25' src='{{uploadpath}}resource/{{res.hezaidunshu}}'></image>
       </view>
       <view class="flex-1 margin-left-20">运输车辆核载吨数</view>
       <view class="margin-right-20" style=''>{{applyinfo.car_load}}吨</view>
@@ -130,7 +130,7 @@
 <view class="asd " style='width:100%' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
     <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
       <view class="margin-left-20">
-        <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
+        <image class='icon-25' src='{{uploadpath}}resource/{{res.yunshudunshu}}'></image>
       </view>
       <view class="flex-1 margin-left-20">运输车辆运输吨数</view>
       <view class="margin-right-20" style=''>{{applyinfo.tonnage}}吨</view>
@@ -209,15 +209,15 @@
     <view class="asd " style='width:100%'>
       <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
         <view class="margin-left-20">
-          <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
+          <image class='icon-25' src='{{uploadpath}}resource/{{res.qidianzaizhong}}'></image>
         </view>
         <view class="flex-1 margin-left-20">起点过磅单载重</view>
-        <view wx:if='{{applyinfo.start_load==""}}' style='border:1rpx solid #E8E8E8;border-radius:10rpx'>
-          <input placeholder='请填写起点过磅单载重' class='h5 padding-10' name='gbdload'></input>
+        <view wx:if='{{applyinfo.start_load==""}}' class='margin-right-20' style='border:1rpx solid #E8E8E8;border-radius:10rpx'>
+          <input placeholder='请填写起点过磅单载重' class='h5 padding-10 ' name='gbdload'></input>
         </view>
 
-        <view wx:if='{{applyinfo.start_load!=""}}' style='border:1rpx solid #E8E8E8;border-radius:10rpx'>
-          <input placeholder='请填写起点过磅单载重' value='{{applyinfo.start_load}}' disabled='false' class='h5 padding-10' name='gbdload'></input>
+        <view wx:if='{{applyinfo.start_load!=""}}' class='margin-right-20' style='border:1rpx solid #E8E8E8;border-radius:10rpx'>
+          <input placeholder='请填写起点过磅单载重' value='{{applyinfo.start_load}}' disabled='false' class='h5 padding-10 margin-right-20' name='gbdload'></input>
         </view>
 
       </view>
@@ -299,13 +299,13 @@
     <view class="asd " style='width:100%'>
       <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
         <view class="margin-left-20">
-          <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
+          <image class='icon-25' src='{{uploadpath}}resource/{{res.zhondianzaizhong}}'></image>
         </view>
         <view class="flex-1 margin-left-20">终点过磅单载重</view>
-        <view wx:if='{{applyinfo.end_load==""}}' style='border:1rpx solid #E8E8E8;border-radius:10rpx'>
+        <view wx:if='{{applyinfo.end_load==""}}' class='margin-right-20' style='border:1rpx solid #E8E8E8;border-radius:10rpx'>
           <input placeholder='请填写终点过磅单载重' disabled='{{applyinfo.p1==""}}' bindtap='toast' class='h5 padding-10' name='end_load'></input>
         </view>
-        <view wx:if='{{applyinfo.end_load!=""}}' style='border:1rpx solid #E8E8E8;border-radius:10rpx'>
+        <view wx:if='{{applyinfo.end_load!=""}}' class='margin-right-20' style='border:1rpx solid #E8E8E8;border-radius:10rpx'>
           <input placeholder='请填写终点过磅单载重' disabled='fales' value='{{applyinfo.end_load}}' class='h5 padding-10' name='end_load'></input>
         </view>
       </view>
@@ -322,8 +322,7 @@
       <view class='flex-row flex-column margin-bottom-40'>
         <image bindtap='viewPhoto' id='http://cmsdev.app-link.org/alucard263096/dds/api/order/qrcode?id={{id}}&filename=a.png' class='icon-100' src='http://cmsdev.app-link.org/alucard263096/dds/api/order/qrcode?id={{id}}&filename=a.png'></image>
       </view>
-
-
+      
       <view class='btn'>
         <view class="flex-wrap" wx:if='{{applyinfo.photo==""&&applyinfo.p1!=""}}'>
           <button class="h4 bm" style='margin-top:118rpx' id="anniu" form-type='submit'>确认到达目的地</button>
