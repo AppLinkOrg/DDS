@@ -110,8 +110,11 @@ class Content extends AppBase {
       //console.log("MMMMMMMMMMMM" + id)
       //carriage_driver: driverinfo.id
       var memberinfo=this.Base.getMyData().memberinfo;
-
-      orderapi.applylist({ carriage_driver: driverinfo.id,transport:"Y,N"}, (list1) => {
+      var driver_id=6553598;
+      if (driverinfo!=undefined){
+        driver_id=driverinfo.id;
+      }
+      orderapi.applylist({ carriage_driver: driver_id,transport:"Y,N"}, (list1) => {
         orderapi.list({
           getall: "Y",
           mylat: location.location.lat,
@@ -399,11 +402,16 @@ class Content extends AppBase {
   onUnload() {
     console.log(66666);
     clearInterval(this.timer);
+    clearInterval(this.timer1);
+    clearInterval(this.timer2);
  
   }
 
   Countdown() {
     var that = this;
+
+    console.log(this.time);
+    clearInterval(this.time);
 
     this.timer = setInterval(() => {
 
@@ -434,7 +442,9 @@ class Content extends AppBase {
   one(ybm) {
     var that = this;
 
-    this.timer = setInterval(() => {
+    console.log(this.time1);
+    clearInterval(this.time1);
+    this.timer1 = setInterval(() => {
       var ybm = this.Base.getMyData().ybm;
 
       var days = new Array()
@@ -481,8 +491,9 @@ class Content extends AppBase {
   }
   binddwc(dwc) {
     var that = this;
-
-    this.timer = setInterval(() => {
+    console.log(this.time2);
+    clearInterval(this.time2);
+    this.timer2 = setInterval(() => {
       var dwc = this.Base.getMyData().dwc;
       var days = new Array()
       var sj = new Array();
@@ -623,6 +634,8 @@ class Content extends AppBase {
 }
 var tab = null;
 var timer = 1;
+var timer1 = 1;
+var timer2 = 1;
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;

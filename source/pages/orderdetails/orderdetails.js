@@ -341,62 +341,84 @@ class Content extends AppBase {
     var orderapi = new OrderApi();
     var enroll_carload = this.Base.getMyData().enroll_carload;
 
-    var api = new WechatApi();
-    api.prepay({
-      },
-      (ret) => {
-        ret.success = function() {
 
-          var info = this.Base.getMyData().info;
-          orderapi.addapply({
-            status: "A",
-            transport: "Y",
-            contype: "B",
-            orderid: orderid,
-            tonnage: tonnage,
-            driver_phone: drivermobile,
-            vehicle: vehicle,
-            newstatus: "Y",
-            drivernewstatus: "N",
-            member_name: info.enterprise_id_name,
-            carriage_driver: driverinfo.id,
-            car_load: enroll_carload,
-            openid: UserInfo.openid
-          }, (addapply) => {
-            var driverinfo = this.Base.getMyData().driverinfo;
-            if (driverinfo == null || driverinfo.status != "A") {
-              wx.showModal({
-                title: '未认证',
-                content: '您是否需要前往企业认证',
-                showCancel: true,
-                cancelText: '取消',
-                cancelColor: '#EE2222',
-                confirmText: '确定',
-                confirmColor: '#2699EC',
-                success: function(res) {
-                  if (res.confirm) {
-                    wx.navigateTo({
-                      url: '/pages/certificate/certificate',
-                    })
-                  }
-                }
-              });
-            } else {
-              wx.navigateBack({
-
+    var info = this.Base.getMyData().info;
+    orderapi.addapply({
+      status: "A",
+      transport: "Y",
+      contype: "B",
+      orderid: orderid,
+      tonnage: tonnage,
+      driver_phone: drivermobile,
+      vehicle: vehicle,
+      newstatus: "Y",
+      drivernewstatus: "N",
+      member_name: info.enterprise_id_name,
+      carriage_driver: driverinfo.id,
+      car_load: enroll_carload,
+      openid: UserInfo.openid
+    }, (addapply) => {
+      var driverinfo = this.Base.getMyData().driverinfo;
+      if (driverinfo == null || driverinfo.status != "A") {
+        wx.showModal({
+          title: '未认证',
+          content: '您是否需要前往企业认证',
+          showCancel: true,
+          cancelText: '取消',
+          cancelColor: '#EE2222',
+          confirmText: '确定',
+          confirmColor: '#2699EC',
+          success: function(res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '/pages/certificate/certificate',
               })
-              // ({
-              //   url: '/pages/driver/driver'
-              // }),
-              wx.showToast({
-                title: '报名成功',
-                duration: 1000
-              });
             }
+          }
+        });
+      } else {
+
+        if(ret.code==0){
+
+          wx.navigateBack({
+
+          })
+          // ({
+          //   url: '/pages/driver/driver'
+          // }),
+          wx.showToast({
+            title: '报名成功',
+            duration: 1000
+          });
+
+        }else{
+          var api = new WechatApi();
+          api.prepay({
+            id:ret.return
+          },
+            (ret) => {
+              ret.success = function () {
+
+                wx.navigateBack({
+
+                })
+                // ({
+                //   url: '/pages/driver/driver'
+                // }),
+                wx.showToast({
+                  title: '报名成功',
+                  duration: 1000
+                });
+              }
+            wx.requestPayment(ret)
           });
         }
-        wx.requestPayment(ret);
-      });
+
+
+
+      }
+    });
+
   }
   onUnload() {
     clearInterval();

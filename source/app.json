@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/applypaylist/applypaylist",
+    "pages/orderpaylist/orderpaylist",
     "pages/youke/youke",
     "pages/my/my",
     "pages/updatecar/updatecar",
