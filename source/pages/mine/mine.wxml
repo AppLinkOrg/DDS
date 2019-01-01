@@ -1,52 +1,54 @@
 <!--pages/mine/mine.wxml-->
-<navigator url='/pages/certification/certification' class='flex-row flex-center bg-white padding-30 bor_btm' >
-  <view>
+<navigator url='/pages/certification/certification' class='flex-row flex-center bg-white padding-30 bor_btm'>
+  <view class='flex-row flex-column'>
     <image class='icon-60 radius-50' src='{{UserInfo.avatarUrl}}'></image>
-  </view>
-  <view class='flex-1 flex-row column padding-left-30'>
-    <view class='txt-bold txt-black h4'>{{UserInfo.nickName}}</view>
-    <view wx:if='{{errlist.length==0}}'class='txt-red txt-bold h5'>未认证</view>
-    <view  wx:for='{{errlist}}' wx:key='k'>
-    <view wx:if='{{item.status=="I"}}' class='txt-red txt-bold h5'>未认证</view>
-    <view wx:if='{{item.status=="N"}}' class='txt-red txt-bold h5'>{{item.status_name}}</view>
-    <view wx:if='{{item.status=="A"}}' class='txt-primary txt-bold h5'>{{item.status_name}}</view>
+    <view wx:if='{{errinfo==null}}' class='txt-red text-center h6 orange'>未认证</view>
+    <view >
+      <view wx:if='{{errinfo.status=="I"}}' class='txt-red text-center  h6 orange'>{{errinfo.status_name}}</view>
+      <view wx:if='{{errinfo.status=="N"}}' class='txt-red  text-center h6 red'>{{errinfo.status_name}}</view>
+      <view wx:if='{{errinfo.status=="A"}}' class='txt-primary text-center h6 blue'>{{errinfo.status_name}}</view>
     </view>
   </view>
+
+  <view class='flex-1 padding-left-30'>
+    <view class='txt-bold txt-black h4'>{{UserInfo.nickName}}</view>
+  </view>
+
   <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>
 
-<navigator class='flex-row flex-center padding-30 bg-white hig_btm' bindtap='phoneCall' id='17608463082'>
-<image class='icon-20' src='{{uploadpath}}resource/{{res.mine}}'></image>
-<view class='txt-black txt-bold margin-left-20 h5 flex-1'>西安实打实大声道</view>
-<view class='txt-black h5 txt-bold'>17608463082</view>
+<navigator class='flex-row flex-center padding-30 bg-white hig_btm'>
+  <image class='icon-20' src='{{uploadpath}}resource/{{res.mine}}'></image>
+  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>我的电话</view>
+  <view class='txt-black h4-5 txt-bold'>{{memberinfo.mobile}}</view>
 </navigator>
 
-<navigator url='/pages/commontasks/commontasks' class='flex-row flex-center padding-30 bg-white hig_btm'>
-<image class='icon-20' src='{{uploadpath}}resource/{{res.commontask}}'></image>
-<view class='txt-black txt-bold margin-left-20 h5 flex-1'>常用任务</view>
-<image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
+<navigator bindtap='tishi' class='flex-row flex-center padding-30 bg-white hig_btm'>
+  <image class='icon-20' src='{{uploadpath}}resource/{{res.commontask}}'></image>
+  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>常用任务</view>
+  <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>
 
-<navigator url='/pages/taskhistory/taskhistory' class='flex-row flex-center padding-30 bg-white bor_btm'>
-<image class='icon-20' src='{{uploadpath}}resource/{{res.taskhistory}}'></image>
-<view class='txt-black txt-bold margin-left-20 h5 flex-1'>任务历史</view>
-<image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
+<navigator bindtap='lishi' class='flex-row flex-center padding-30 bg-white bor_btm'>
+  <image class='icon-20' src='{{uploadpath}}resource/{{res.taskhistory}}'></image>
+  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>历史任务</view>
+  <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>
 
-<navigator url='/pages/team/team' class='flex-row flex-center padding-30 bg-white bor_btm'>
-<image class='icon-20' src='{{uploadpath}}resource/{{res.team}}'></image>
-<view class='txt-black txt-bold margin-left-20 h5 flex-1'>团队成员</view>
-<image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
+<navigator bindtap='chenyuan' class='flex-row flex-center padding-30 bg-white bor_btm'>
+  <image class='icon-20' src='{{uploadpath}}resource/{{res.team}}'></image>
+  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>团队成员</view>
+  <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>
 
 <navigator bindtap='Cutstatus' class='flex-row flex-center padding-30 bg-white bor_btm'>
-<image class='icon-20' src='{{uploadpath}}resource/{{res.team}}'></image>
-<view class='txt-black txt-bold margin-left-20 h5 flex-1'>身份切换</view>
-<image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
+  <image class='icon-20' src='{{uploadpath}}resource/{{res.qiehuan}}'></image>
+  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>身份切换</view>
+  <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>
 
 <navigator url='/pages/aboutus/aboutus' class='flex-row flex-center padding-30 bg-white '>
-<image class='icon-20' src='{{uploadpath}}resource/{{res.aboutus}}'></image>
-<view class='txt-black txt-bold margin-left-20 h5 flex-1'>关于我们</view>
-<image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
+  <image class='icon-20' src='{{uploadpath}}resource/{{res.aboutus}}'></image>
+  <view class='txt-black txt-bold margin-left-20 h4-5 flex-1'>关于我们</view>
+  <image class='icon-30' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
 </navigator>

@@ -24,22 +24,17 @@ class Content extends AppBase {
   onMyShow() {
     var that = this;
 
-    that.Base.setMyData({
-     zt: this.Base.options.zt
-    });
     var api = new CertificateApi();
     var UserInfo = this.Base.getMyData().UserInfo;
-    api.riverlist({ openid: UserInfo.openid }, (list) => {
+    api.certificatexq({  }, (driverinfo) => {
       that.Base.setMyData({
-        list
+        driverinfo
       });
     })
          
  
   }
   name(e) {
-
-
     var name = e.detail.value;
     this.Base.setMyData({
       name: e.detail.value
@@ -48,11 +43,18 @@ class Content extends AppBase {
   uploadimg(e) {
     var that = this;
     var id = e.currentTarget.id;
-    this.Base.uploadImage("driver", (ret) => {
+    this.Base.uploadImage("driver",
+    
+    
+    
+     (ret) => {
       that.Base.setMyData({
         photo: ret
       });
-    }, 1);
+    }
+    
+    
+    ,undefined, 1);
   }
   photo(e) {
     var photo = e.detail.value;
@@ -69,8 +71,22 @@ class Content extends AppBase {
       that.Base.setMyData({
         idphoto: ret
       });
-    }, 1);
+    }, undefined, 1);
   }
+  // uploadimg(e) {
+  //   var that = this;
+  //   var id = e.currentTarget.id;
+
+  //   this.Base.uploadImage("driver", (ret) => {
+
+  //     that.Base.setMyData({
+
+  //       photo: ret
+
+  //     });
+  //   }, 1);
+  // }
+
   idphoto(e) {
     var idphoto = e.detail.value;
     console.log(photo);
@@ -112,7 +128,6 @@ class Content extends AppBase {
     var openid=UserInfo.openid;
     var that = this;
     
-   
     var certificateapi = new CertificateApi();
     
     certificateapi.updetedriver({
@@ -122,27 +137,56 @@ class Content extends AppBase {
       openid:openid,
       dirlicense_img: photo,
       idcard_img: idphoto
-    
-
     }, (updetedriver) => {
-         
-      
-      var pages = getCurrentPages();
-      var beforePage = pages[pages.length - 2];
-      wx.navigateBack({
-        success() {
-          beforePage.onLoad();
-          wx.showToast({
-
-            title: '成功',
-            icon: 'success',
-            duration: 2000
-          })
+      wx.showModal({
+        title: '',
+        content: '提交成功',
+        showCancel: false,
+        cancelText: '取消',
+        cancelColor: '#EE2222',
+        confirmText: '确定',
+        confirmColor: '#2699EC',
+        success: function (res) {
+          if (res.confirm) {
+            wx.navigateBack({
+              
+            })
+          }
         }
-      })
+      });
+      // var pages = getCurrentPages();
+      // var beforePage = pages[pages.length - 2];
+      // wx.navigateBack({
+      //   success() {
+      //     beforePage.onLoad();
+      //     wx.showModal({
+      //       showCancel: false,
+      //       title: '',
+      //       content: '提交成功',
+      //     })
+      //   }
+      // })
+
     });
   }
-
+  againalter(e) {
+    wx.showModal({
+      title: '修改资料',
+      content: '您是否需要修改资料并重新等待审核？',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#EE2222',
+      confirmText: '确定',
+      confirmColor: '#2699EC',
+      success: function (res) {
+        if (res.confirm) {
+          wx.navigateTo({
+            url: '/pages/updatedriver/updatedriver',
+          })
+        }
+      }
+    });
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -155,4 +199,5 @@ body.idphoto = content.idphoto;
 body.iduploadimg = content.iduploadimg;
 body.photo = content.photo;
 body.uploadimg = content.uploadimg;
+body.againalter = content.againalter;
 Page(body)

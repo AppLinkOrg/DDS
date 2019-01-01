@@ -18,3 +18,13 @@
   color: white;
   background: rgb(128, 140, 173);
 }
+.I_bottom{
+  position: fixed;
+  bottom: 0;
+  width: 99%;
+}
+.bottom{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

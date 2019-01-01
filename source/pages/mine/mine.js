@@ -17,9 +17,10 @@ class Content extends AppBase {
     var that = this;
     var orderapi = new OrderApi();
     var UserInfo = this.Base.getMyData().UserInfo;
-    orderapi.enterpriselist({ member_id:UserInfo.nickName }, (errlist) => {
-      this.Base.setMyData({ errlist })
+    orderapi.enterpriseinfo({  }, (errinfo) => {
+      this.Base.setMyData({ errinfo })
     })
+    
   }
   Cutstatus(e){
     wx.showModal({
@@ -39,10 +40,93 @@ class Content extends AppBase {
       }
     });
   }
+  tishi(e) {
+    var errinfo = this.Base.getMyData().errinfo;
+    
+    if (errinfo == null || errinfo.status != "A") {
+      wx.showModal({
+        title: '未认证',
+        content: '您是否需要前往企业认证',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#EE2222',
+        confirmText: '确定',
+        confirmColor: '#2699EC',
+        success: function (res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/certification/certification',
+            })
+          }
+        }
+      });
+    }
+    
+    else{
+      wx.navigateTo({
+        url: '/pages/commontasks/commontasks',
+      })
+    }
+  }
+  lishi(e){
+    var errinfo = this.Base.getMyData().errinfo;
+    if (errinfo == null || errinfo.status != "A") {
+      wx.showModal({
+        title: '未认证',
+        content: '您是否需要前往企业认证',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#EE2222',
+        confirmText: '确定',
+        confirmColor: '#2699EC',
+        success: function (res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/certification/certification',
+            })
+          }
+        }
+      });
+    }
+    else {
+      wx.navigateTo({
+        url: '/pages/taskhistory/taskhistory',
+      })
+    }
+  }
+  chenyuan(e) {
+    var errinfo = this.Base.getMyData().errinfo;
+    if (errinfo == null || errinfo.status != "A") {
+      wx.showModal({
+        title: '未认证',
+        content: '您是否需要前往企业认证',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#EE2222',
+        confirmText: '确定',
+        confirmColor: '#2699EC',
+        success: function (res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/certification/certification',
+            })
+          }
+        }
+      });
+    }
+    else {
+      wx.navigateTo({
+        url: '/pages/team/team',
+      })
+    }
+  } 
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow; 
 body.Cutstatus = content.Cutstatus; 
+body.tishi = content.tishi;
+body.lishi = content.lishi; 
+body.chenyuan = content.chenyuan; 
 Page(body)

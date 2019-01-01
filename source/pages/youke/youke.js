@@ -41,11 +41,8 @@ class Content extends AppBase {
       },
     });
     var orderapi = new OrderApi();
-    orderapi.list({}, (list) => {
+    orderapi.list({getall:"Y"}, (list) => {
       this.Base.setMyData({ list });
-    });
-    orderapi.list({ member_id: 1 }, (minelist) => {
-      this.Base.setMyData({ minelist });
     });
   }
   bindall(e) {

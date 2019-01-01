@@ -13,7 +13,13 @@ Page {
   align-content: center;
   flex-direction: column;
 }
-
+.signup{
+width:170rpx;
+height:50rpx;
+line-height:50rpx;
+border:4rpx solid red;
+border-radius:50rpx;
+}
 .icon_lower {
   width: 30rpx;
   height: 25rpx;

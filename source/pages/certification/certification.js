@@ -22,15 +22,18 @@ class Content extends AppBase {
       //     }
       //   }
       // })
-    
+
   }
   onMyShow() {
     var that = this;
     var orderapi = new OrderApi();
     var UserInfo = this.Base.getMyData().UserInfo;
-    orderapi.enterpriselist({ member_id: UserInfo.nickName }, (errlist) => {
-      this.Base.setMyData({ errlist })
+    orderapi.enterpriseinfo( {} , (errinfo) => {
+      this.Base.setMyData({ errinfo })
     })
+    // orderapi.qrcode({id:3,filename:'a.png'}, (qrcode) => {
+    //   this.Base.setMyData({ qrcode })
+    // })
   }
   setPageTitle(instinfo) {
     var title = "企业认证";
@@ -45,7 +48,7 @@ class Content extends AppBase {
         that.Base.setMyData({
           photo: ret
         });
-    }, 1);
+    }, undefined, 1);
   }
   confirm(e){
     var data = e.detail.value;
@@ -70,18 +73,34 @@ class Content extends AppBase {
     console.log(UserInfo.nickName);
     orderapi.authenticate({
        status: "I",
-       member_id: UserInfo.nickName,
+       open_id: UserInfo.openid,
        enterprisename: enterprisename,
        creditcode: creditcode,
        authenticateimg:photo
     }, (authenticate) => {
-         var pages = getCurrentPages(); 
-         var beforePage = pages[pages.length - 2];
-         wx.navigateBack({
-           success(){
-             beforePage.onLoad();
-           }
-         })
+        //  var pages = getCurrentPages(); 
+        //  var beforePage = pages[pages.length - 2];
+        //  wx.reLaunch({
+        //    success(){
+        //      beforePage.onLoad();
+        //    }
+        //  })
+      wx.showModal({
+        title: '',
+        content: '提交成功',
+        showCancel: false,
+        cancelText: '取消',
+        cancelColor: '#EE2222',
+        confirmText: '确定',
+        confirmColor: '#2699EC',
+        success: function (res) {
+          if (res.confirm) {
+            wx.reLaunch({
+              url: '/pages/mine/mine',
+            })
+          }
+        }
+      });
      });
   }
   enterprisename(e) {
@@ -105,6 +124,30 @@ class Content extends AppBase {
       photo: e.detail.value
     })
   }
+  // updateprove
+  Yes(e){
+  wx.reLaunch({
+    url: '/pages/mine/mine',
+  })
+  }
+  againalter(e) {
+    wx.showModal({
+      title: '修改资料',
+      content: '您是否需要修改资料并重新等待审核？',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#EE2222',
+      confirmText: '确定',
+      confirmColor: '#2699EC',
+      success: function (res) {
+        if (res.confirm) {
+          wx.navigateTo({
+            url: '/pages/updateprove/updateprove',
+          })
+        }
+      }
+    });
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -115,5 +158,7 @@ body.confirm = content.confirm;
 body.enterprisename = content.enterprisename;
 body.creditcode = content.creditcode; 
 body.photo = content.photo;
-body.uploadimg = content.uploadimg;
+body.uploadimg = content.uploadimg; 
+body.Yes = content.Yes; 
+body.againalter = content.againalter; 
 Page(body)

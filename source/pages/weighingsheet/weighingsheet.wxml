@@ -1,0 +1,23 @@
+<!--pages/weighingsheet/weighingsheet.wxml-->
+
+<view class='flex-row flex-column padding-40' >
+<image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p1}}' class='margin-top {{applyinfo.p1==" "?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.p1}}'></image>
+<image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p2}}'  class='margin-top {{applyinfo.p2==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.p2}}'></image>
+<image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p3}}'  class='margin-top {{applyinfo.p3==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.p3}}'></image>
+<image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p4}}'  class='margin-top {{applyinfo.p4==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.p4}}'></image>
+<image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p5}}'  class='margin-top {{applyinfo.p5==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.p5}}'></image>
+<image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p6}}'  class='margin-top {{applyinfo.p6==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.p6}}'></image>
+<image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p7}}'  class='margin-top {{applyinfo.p7==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.p7}}'></image>
+<image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p8}}'  class='margin-top {{applyinfo.p8==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.p8}}'></image>
+<image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p9}}'  class='margin-top {{applyinfo.p9==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.p9}}'></image>
+
+<image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo}}'  class='margin-top {{applyinfo.photo==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.photo}}'></image>
+<image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo2}}'  class='margin-top {{applyinfo.photo2==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.photo2}}'></image>
+<image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo3}}'  class='margin-top {{applyinfo.photo3==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.photo3}}'></image>
+<image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo4}}'  class='margin-top {{applyinfo.photo4==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.photo4}}'></image>
+<image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo5}}'  class='margin-top {{applyinfo.photo5==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.photo5}}'></image>
+<image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo6}}'  class='margin-top {{applyinfo.photo6==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.photo6}}'></image>
+<image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo7}}'  class='margin-top {{applyinfo.photo7==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.photo7}}'></image>
+<image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo8}}'  class='margin-top {{applyinfo.photo8==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.photo8}}'></image>
+<image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo9}}'  class='margin-top {{applyinfo.photo9==""?"img":""}}' src='{{uploadpath}}photo/{{applyinfo.photo9}}'></image>
+</view>

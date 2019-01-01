@@ -2,10 +2,7 @@ Page{
   padding-top:230rpx;
   margin-bottom: 100rpx;
 }
-.icon{
-  width: 50rpx;
-  height: 40rpx;
-} 
+
 .column{
   align-content: center;
   flex-direction:column;
@@ -16,8 +13,8 @@ height: 25rpx;
 }
 .txt-white{
   color: white;
-  border-bottom: 4rpx  solid white;
-  border-bottom-width: thick;
+  /* border-bottom: 4rpx  solid white;
+  border-bottom-width: thick; */
 }
 .signup{
 width:170rpx;
@@ -26,6 +23,14 @@ line-height:50rpx;
 border:4rpx solid red;
 border-radius:50rpx;
 }
+.swiper_container {
+   height: 50rpx;
+   width: 120vw;
+  }
+  .icon{
+  width: 60rpx;
+  height: 50rpx;
+} 
 .mid{
   margin-left: 20rpx;
   margin-right: 20rpx;
@@ -70,4 +75,51 @@ background: #CFCECF;
   width: 240rpx;
   margin-top: 150rpx;
   margin-left: 20rpx;
+}
+.chaoshi{
+  border-top-right-radius: 10rpx;
+}
+
+.reddot{
+  background: red;
+  border-radius: 50%;
+  height:24rpx;
+  width:24rpx;
+  position: absolute;
+  margin-left:150rpx;
+}
+
+.num{
+  width: 45rpx;
+  height: 45rpx;
+  border-radius: 50%;
+}
+.nm{
+  position: absolute;
+  z-index: 120;
+  /* top: 10rpx;
+  right: 101rpx; */
+}
+.xiaoxi{
+  position: fixed;
+  z-index: 100;
+  right: 90rpx;
+  top: 7rpx;
+}
+.all_whiteblock{
+  position: fixed;
+  top: 72rpx;
+  z-index: 150;
+  height: 15rpx;
+  width: 50%;
+  background: white;
+}
+.mine_whiteblock{
+  position: fixed;
+  top: 72rpx;
+  right: 0;
+  z-index: 150;
+  height: 15rpx;
+  width: 50%;
+  background: white;
 }

@@ -14,6 +14,7 @@ class Content extends AppBase {
     super.onLoad(options);
 
   }
+
   uploadimg(e) {
     var that = this;
     var id = e.currentTarget.id;
@@ -21,7 +22,7 @@ class Content extends AppBase {
       that.Base.setMyData({
         photo: ret
       });
-    }, 1);
+    },undefined, 1);
   }
   photo(e) {
     var photo = e.detail.value;
@@ -40,6 +41,14 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
+    var orderapi=new OrderApi();
+    orderapi.vehicleinfo({id:this.Base.options.id},(info)=>{
+      this.Base.setMyData({info})
+    })
+    orderapi.vehiclelist({ all:"Y"}, (vehiclelist) => {
+      this.Base.setMyData({ vehiclelist })
+    })
+
   }
   carnumber(e){
     var carnumber = e.detail.value;
@@ -65,6 +74,13 @@ class Content extends AppBase {
   confirm(e){
     console.log(6666666);
     var data=e.detail.value;
+    var vehiclelist = this.Base.getMyData().vehiclelist;
+    for (var i = 0; i < vehiclelist.length; i++) {
+      if (data.carnumber == vehiclelist[i].carnumber) {
+        this.Base.info("该车牌已被认证,请重新输入");
+        return;
+      }
+    }
     if (data.carnumber == "") {
         this.Base.info("请输入车牌号码");
         return;
@@ -81,6 +97,7 @@ class Content extends AppBase {
       this.Base.info("请上传图片");
       return;
     }
+
     var carnumber = this.Base.getMyData().carnumber;
     var vehicletype = this.Base.getMyData().vehicletype;
     var load = this.Base.getMyData().load;
@@ -89,27 +106,52 @@ class Content extends AppBase {
     var UserInfo = this.Base.getMyData().UserInfo;
     var orderapi=new OrderApi();
 
+
     orderapi.addvehicle({
       openid: UserInfo.openid,
       status:"I",
       carnumber: carnumber,
       vehicletype: vehicletype,
-      load: load,
+      carload: load,
       reviewimg: photo
     }, (addvehicle) => {
       var pages = getCurrentPages();
       var beforePage = pages[pages.length - 2];
-      wx.navigateBack({
-        success() {
-          beforePage.onLoad();
-          wx.showToast({
 
-            title: '添加成功',
-            icon: 'success',
-            duration: 2000
+      if (addvehicle.code == 0) {
+        wx.navigateBack({
+          success() {
+            beforePage.onLoad();
+            wx.showToast({
+              title: '添加成功',
+              icon: 'success',
+              duration: 2000
+            })
+          }
+        })
+      } else {
+        this.Base.info(addvehicle.result);
+      }
+      
+    });
+  } 
+  againalter(e) {
+    var that=this;
+    wx.showModal({
+      title: '修改资料',
+      content: '您是否需要重新提交资料并等待审核？',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#EE2222',
+      confirmText: '确定',
+      confirmColor: '#2699EC',
+      success: function (res) {
+        if (res.confirm) {
+          wx.navigateTo({
+            url: '/pages/updatecar/updatecar?id='+that.Base.options.id,
           })
         }
-      })
+      }
     });
   }
 }
@@ -122,5 +164,6 @@ body.load = content.load;
 body.vehicletype = content.vehicletype;
 body.confirm=content.confirm;
 body.photo = content.photo;
-body.uploadimg = content.uploadimg;
+body.uploadimg = content.uploadimg; 
+body.againalter = content.againalter;
 Page(body)

@@ -1,122 +1,142 @@
 /* pages/driver/driver.wxss */
-.bg{
 
-  background-color: #FFFFFF;
-}
-page{
-
- background-color: #F3F3F3;
-
-}
- .asd{
-  
-
-  border-radius: 8rpx;
-  background-size: 100% 100%;
-  background-color: #FFFFFF;
-  border-bottom: 1px dotted #919191;
-  }
-  
-  .nr1{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:100%;height:100%;}
-.yi{
-
- width: 100px;
-    height: 100px;
-    border: 0 solid #ffffff;
-    border-radius: 500px;
-    box-shadow: 4px 1px 1px #cccccc;
-
+.bg {
+  background-color: #fff;
 }
 
-#z1{
- width: 10px;
-height: 10px;
-background-color:#39E9A2;
-border-radius: 50%;     
- -moz-border-radius: 50%;  
--webkit-border-radius: 50%;
-
+page {
+  background-color: #f3f3f3;
 }
-#z2{
- width: 10px;
-height: 10px;
-background-color:#FFB61B;
-border-radius: 50%;     
- -moz-border-radius: 50%;  
--webkit-border-radius: 50%;
 
+.asd {
+  /* border-radius: 8rpx;
+  background-size: 100% 100%; *//* background-color: #fff; *//* border-bottom: 1px dotted #919191; */
+  box-shadow: 1rpx 2rpx 25rpx 2rpx rgb(173, 173, 173);
+  border-radius: 10rpx;
 }
-#anniu{
-background-color: #353A4D;
 
+.nr1 {
+  /* display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%; */
 }
-.bm{
-width:100%;height:100rpx;text-align:center; color:white; line-height:100rpx ;margin-bottom:0rpx;
-position: fixed;
-bottom:0;
 
+.yi {
+  width: 100px;
+  height: 100px;
+  border: 0 solid #fff;
+  border-radius: 500px;
+  box-shadow: 4px 1px 1px #ccc;
 }
-image{
 
-margin-top:8rpx
-
+#z1 {
+  width: 10px;
+  height: 10px;
+  background-color: #39e9a2;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
 }
-.aa{
 
-margin-left:70rpx;font-weight:bold;color:#F7B81F
+#z2 {
+  width: 10px;
+  height: 10px;
+  background-color: #ffb61b;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
 }
-.bb{
 
-margin-left:70rpx;font-weight:bold;color:#909090
-
+#anniu {
+  background-color: #353a4d;
 }
-#yj{
-border-radius:40rpx;
 
+.bm {
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+  color: white;
+  line-height: 100rpx;
+  margin-bottom: 0rpx;
+  position: fixed;
+  bottom: 0;
 }
-.rz{
-color: #24c689;
-border:1px solid #24c689;
 
+image {
+  margin-top: 8rpx;
 }
-.sh{
-color: #E2B778;
-border:1px solid #E2B778;
 
+.aa {
+  margin-left: 70rpx;
+  font-weight: bold;
+  color: #f7b81f;
 }
-.rz1{
-color: #24c689;
 
-
+.bb {
+  margin-left: 70rpx;
+  font-weight: bold;
+  color: #909090;
 }
-.sh1{
-color: #E2B778;
 
-
+.status_color_A {
+  color: #24c689;
+  border: 2px solid #24c689;
+  border-radius: 40rpx;
+  width: 150rpx;
+  line-height: 50rpx;
+  height: 50rpx;
 }
-#cp{
-background-color: #FBB51E;
 
+.status_color_I {
+  color: #e2b778;
+  border: 2px solid #e2b778;
+  border-radius: 40rpx;
+  width: 150rpx;
+  line-height: 50rpx;
+  height: 50rpx;
 }
-.sjx{
-  width:180rpx;
-  height:180rpx;
-  background-color: #39E9A2;
+
+#cp {
+  background-color: #fbb51e;
+}
+
+.sjx {
+  width: 180rpx;
+  height: 180rpx;
+  background-color: #39e9a2;
   color: #fff;
   /* Rotate div */
-  transform:rotate(45deg);
-  -ms-transform:rotate(45deg); /* Internet Explorer */
-  -moz-transform:rotate(45deg); /* Firefox */
-  /*-webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
-  -o-transform:rotate(45deg); /* Opera */
-
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg); /* Internet Explorer */
+  -moz-transform: rotate(45deg); /* Firefox *//*-webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
+  -o-transform: rotate(45deg); /* Opera */
   position: absolute;
   left: -20px;
   top: 20px;
 }
 
 .text {
-  
-  
-  bottom:0px;
+  bottom: 0px;
+}
+
+.null_icon {
+  height: 180rpx;
+  width: 200rpx;
+  margin-top: 150rpx;
+  opacity: 0.7;
+}
+
+.ded {
+  width: 35rpx;
+  padding-top: 42rpx;
+  padding-bottom: 42rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
 }

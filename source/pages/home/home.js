@@ -20,12 +20,24 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
+    var timestamp = Date.parse(new Date());
     this.Base.setMyData({
       allshow: 1,
       state_id: 0,
-      today: this.Base.util.FormatDate(new Date())
+      state_id_mine:0,
+      today: this.Base.util.FormatDate(new Date()),
+      time: this.Base.util.FormatDateTime(new Date()),
+      timestamp : timestamp / 1000
     });
-
+    
+    // console.log("当前时间戳为：" + timestamp);
+    // var n = timestamp * 1000;
+    // var date = new Date(n);
+    // console.log("当前时间为：" + n);
+    var today = this.Base.util.FormatDate(new Date());
+    var time = this.Base.util.FormatDateTime(new Date());
+    console.log("当前日期为："+today);
+    console.log("当前时间为：" + time);
     wx.setStorageSync("lastlogin", "Q");
 
     var orderapi = new OrderApi();
@@ -40,20 +52,39 @@ class Content extends AppBase {
         statuslist
       })
     })
+    //var orderapi = new OrderApi();
+    orderapi.messagelist({ orderby: 'r_main.seq' }, (messagelist) => {
+      this.Base.setMyData({ messagelist })
+    })
 
   }
   onMyShow() {
     var that = this;
-    var orderapi = new OrderApi();
     var num = [];
-    var UserInfo = this.Base.getMyData().UserInfo;
     var all = [];
-   
-    orderapi.list({
-      orderby: "r_main.created_date desc"
-    }, (list) => {
+    var UserInfo = this.Base.getMyData().UserInfo;
+    var orderapi = new OrderApi();
+    // orderapi.enterpriselist({
+    //   open_id: UserInfo.openid
+    // }, (errlist) => {
+    //   this.Base.setMyData({
+    //     errlist
+    //   })
 
-      orderapi.applylist({}, (applylist) => {
+    // })
+    orderapi.enterpriseinfo({}, (errinfo) => {
+      this.Base.setMyData({
+        errinfo
+      })
+    })
+    orderapi.list({
+      orderby: "r_main.created_date desc",
+      getall: "Y",
+      taskstatus:"1,2,3,5"
+    }, (list) => {
+      var memberinfo = this.Base.getMyData().memberinfo;
+      
+      orderapi.applylist({ newstatus: "Y" }, (applylist) => {
         for (var i = 0; i < list.length; i++) {
           all[i] = 0;
           for (var j = 0; j < applylist.length; j++) {
@@ -68,7 +99,7 @@ class Content extends AppBase {
           all: all
         });
       });
-      
+
       this.Base.setMyData({
         list
       });
@@ -76,10 +107,13 @@ class Content extends AppBase {
     });
 
     orderapi.list({
-      member_id_name: UserInfo.nickName,
-      orderby: "r_main.created_date desc"
+      open_id: UserInfo.openid,
+      orderby: "r_main.created_date desc",
+      taskstatus: "1,2,3,5,"
+//, member_id: memberinfo.id
     }, (minelist) => {
-      orderapi.applylist({}, (applylist) => {
+      var memberinfo=this.Base.getMyData().memberinfo;
+      orderapi.applylist({ newstatus: "Y"}, (applylist) => {
         for (var i = 0; i < minelist.length; i++) {
           num[i] = 0;
           for (var j = 0; j < applylist.length; j++) {
@@ -105,6 +139,7 @@ class Content extends AppBase {
       allshow: 1,
       mineshow: 1
     });
+    //this.onMyShow();
   }
   bindmine(e) {
     console.log(e);
@@ -126,17 +161,50 @@ class Content extends AppBase {
     var orderapi = new OrderApi();
     orderapi.list({
       taskstatus: state_id,
-      orderby: "r_main.created_date"
+      orderby: "r_main.created_date desc",
+      getall: "Y"
     }, (list) => {
       this.Base.setMyData({
         list
       });
     });
     var UserInfo = this.Base.getMyData().UserInfo;
+    // orderapi.list({
+    //   open_id: UserInfo.openid,
+    //   taskstatus: state_id,
+    //   orderby: "r_main.created_date desc"
+    // }, (minelist) => {
+    //   this.Base.setMyData({
+    //     minelist
+    //   });
+    // });
+
+  }
+
+  bindminepickerstate(e) {
+    console.log(e);
+    var statuslist = this.Base.getMyData().statuslist;
+    this.Base.setMyData({
+      state_idx1: e.detail.value,
+      state_id_mine: statuslist[e.detail.value].id,
+      state_name1: statuslist[e.detail.value].odrstatusname
+    });
+    var state_id_mine = this.Base.getMyData().state_id_mine;
+    var orderapi = new OrderApi();
+    // orderapi.list({
+    //   taskstatus: state_id1,
+    //   orderby: "r_main.created_date desc",
+    //   getall: "Y"
+    // }, (list) => {
+    //   this.Base.setMyData({
+    //     list
+    //   });
+    // });
+    var UserInfo = this.Base.getMyData().UserInfo;
     orderapi.list({
-      member_id_name: UserInfo.nickName,
-      taskstatus: state_id,
-      orderby: "r_main.created_date"
+      open_id: UserInfo.openid,
+      taskstatus: state_id_mine,
+      orderby: "r_main.created_date desc"
     }, (minelist) => {
       this.Base.setMyData({
         minelist
@@ -144,20 +212,69 @@ class Content extends AppBase {
     });
 
   }
-  one(e){
-    var orderapi = new OrderApi();
-    var UserInfo=this.Base.getMyData().UserInfo;
-    orderapi.enterpriselist({ member_id: UserInfo.nickName }, (errlist) => {
-      this.Base.setMyData({ errlist })
-
-      console.log(errlist[0].status);
+  one(e) {
+    var errinfo = this.Base.getMyData().errinfo;
+    if (errinfo == null || errinfo.status != "A") {
+      wx.showModal({
+        title: '未认证',
+        content: '您是否需要前往企业认证',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#EE2222',
+        confirmText: '确定',
+        confirmColor: '#2699EC',
+        success: function(res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/certification/certification',
+            })
+          }
+        }
+      });
+    } else {
+      var id = e.currentTarget.id;
+      var name = e.currentTarget.dataset.index;
+      console.log(555555555555555555555);
+      console.log(name);
+      wx.navigateTo({
+        url: '/pages/tasklist/tasklist?id=' + id + '&mineshow=' + 1 + '&all=' + name
+      })
+      // & all='+{{all[idx]}}
+    }
+  }
+  mine(e) {
+     var orderapi=new OrderApi();
+     var id=e.currentTarget.id;
+    orderapi.updatenewstatus({id:id }, (updatenewstatus) =>{
+      this.Base.setMyData({ updatenewstatus})
     })
-    var errlist = this.Base.getMyData().errlist;
-     if(status!="B"){
-       wx.showToast({
-         title: 'ssss',
-       })
-     }
+    
+    var errinfo = this.Base.getMyData().errinfo;
+    if (errinfo == null || errinfo.status != "A") {
+      wx.showModal({
+        title: '未认证',
+        content: '您是否需要前往企业认证',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#EE2222',
+        confirmText: '确定',
+        confirmColor: '#2699EC',
+        success: function(res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/certification/certification',
+            })
+          }
+        }
+      });
+    } else {
+      var id = e.currentTarget.id;
+      var mine = e.currentTarget.dataset.index;
+      wx.navigateTo({
+        url: '/pages/tasklist/tasklist?id=' + id + '&mineshow=' + 2 + '&mine=' + mine
+      })
+      // & all='+{{all[idx]}}
+    }
   }
 }
 var content = new Content();
@@ -166,6 +283,8 @@ body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
 body.bindall = content.bindall;
 body.bindmine = content.bindmine;
-body.bindpickerstate = content.bindpickerstate;
+body.bindpickerstate = content.bindpickerstate; 
+body.bindminepickerstate = content.bindminepickerstate; 
 body.one = content.one;
+body.mine = content.mine;
 Page(body)

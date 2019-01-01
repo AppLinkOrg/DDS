@@ -17,8 +17,8 @@ height: 25rpx;
 }
 .txt-white{
   color: white;
-  border-bottom: 4rpx  solid white;
-  border-bottom-width: thick;
+  /* border-bottom: 4rpx  solid white;
+  border-bottom-width: thick; */
 }
 .signup{
 width:170rpx;
@@ -65,4 +65,10 @@ background: #CFCECF;
   font-weight: bold;
   color: rgb(177, 174, 174);
   
+}
+.null_icon {
+  height: 200rpx;
+  width: 240rpx;
+  margin-top: 150rpx;
+  margin-left: 60rpx;
 }

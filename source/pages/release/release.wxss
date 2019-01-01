@@ -82,6 +82,10 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked {
   background: rgb(163, 205, 245);
   
 }
+.icon-top{
+  width: 710rpx;
+  height: 200rpx;
+}
 
 /* .hover_cancel_btn{
   position: fixed;
