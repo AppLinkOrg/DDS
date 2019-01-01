@@ -17,6 +17,10 @@ import {
 import {
   CertificateApi
 } from "../../apis/certificate.api.js";
+import {
+  WechatApi
+} from "../../apis/wechat.api";
+
 class Content extends AppBase {
   constructor() {
     super();
@@ -58,15 +62,25 @@ class Content extends AppBase {
         list
       });
     })
-     orderapi.info({id:this.Base.options.id}, (info) => {
-       this.Base.setMyData({ info })
-     })
+    orderapi.info({
+      id: this.Base.options.id
+    }, (info) => {
+      this.Base.setMyData({
+        info
+      })
+    })
 
     api.certificatexq({}, (driverinfo) => {
-      this.Base.setMyData({ driverinfo });
+      this.Base.setMyData({
+        driverinfo
+      });
     });
-    orderapi.vehiclelist({ status:"A"}, (vehiclelist) => {
-      this.Base.setMyData({ vehiclelist})
+    orderapi.vehiclelist({
+      status: "A"
+    }, (vehiclelist) => {
+      this.Base.setMyData({
+        vehiclelist
+      })
     })
 
     var month;
@@ -89,10 +103,10 @@ class Content extends AppBase {
 
     var api = new OrderApi();
     api.info({
-      
+
       id: this.Base.getMyData().id
     }, (info) => {
-      
+
       var data1 = new Date(Date.parse(info.enroll_start.replace(/-/g, "/")));
       var data2 = new Date(Date.parse(info.enroll_deadline.replace(/-/g, "/")));
       var data3 = new Date(Date.parse(info.start_time.replace(/-/g, "/")));
@@ -196,21 +210,33 @@ class Content extends AppBase {
 
       this.Base.setMyData(info);
       console.log("编号" + info.enroll_id)
-      orderapi.memberinfo({ id: info.enroll_id }, (enrollinfo) => {
-        this.Base.setMyData({ enrollinfo });
+      orderapi.memberinfo({
+        id: info.enroll_id
+      }, (enrollinfo) => {
+        this.Base.setMyData({
+          enrollinfo
+        });
       });
 
-      orderapi.memberinfo({ id: info.start_id }, (startinfo) => {
-        this.Base.setMyData({ startinfo });
+      orderapi.memberinfo({
+        id: info.start_id
+      }, (startinfo) => {
+        this.Base.setMyData({
+          startinfo
+        });
       });
 
-      orderapi.memberinfo({ id: info.end_id }, (endinfo) => {
-        this.Base.setMyData({ endinfo });
+      orderapi.memberinfo({
+        id: info.end_id
+      }, (endinfo) => {
+        this.Base.setMyData({
+          endinfo
+        });
       });
 
     });
 
-    
+
   }
 
 
@@ -254,7 +280,7 @@ class Content extends AppBase {
     var data = e.detail.value;
     var weight = this.Base.getMyData().weight;
     var totaldun = this.Base.getMyData().totaldun;
-    var carcount=this.Base.getMyData().carcount;
+    var carcount = this.Base.getMyData().carcount;
     var applycount = this.Base.getMyData.applycount;
     console.log(weight);
 
@@ -266,20 +292,20 @@ class Content extends AppBase {
       this.Base.info("请输入联系电话");
       return;
     }
-    
+
     // if (parseInt(data.tonnage) > parseInt(weight)) {
     //   this.Base.info("不能大于剩余吨数");
     //   return;
     // }
-    if (parseInt(data.tonnage) > parseInt(weight) - parseInt(totaldun) ) {
+    if (parseInt(data.tonnage) > parseInt(weight) - parseInt(totaldun)) {
       this.Base.info("不能大于剩余吨数");
       return;
     }
-    if (parseInt(data.tonnage) > parseInt(enroll_carload) ) {
+    if (parseInt(data.tonnage) > parseInt(enroll_carload)) {
       this.Base.info("不能大于车辆核载吨数");
       return;
     }
-    if ( parseInt(data.tonnage)<=0){
+    if (parseInt(data.tonnage) <= 0) {
       this.Base.info("请填写大于零的数字");
       return;
     }
@@ -295,7 +321,7 @@ class Content extends AppBase {
     //    this.Base.setMyData({
     //      drivermobile : memberinfo.mobile
     //    }) 
-       
+
     //  }
     //  else{
     //    this.Base.setMyData({
@@ -306,7 +332,7 @@ class Content extends AppBase {
     //var driverphone = this.Base.getMyData().driverphone; 
     //var drivermobile = this.Base.getMyData().drivermobile;
     console.log("lllllllllllllllllllllllll" + drivermobile);
-    
+
     var orderid = this.Base.getMyData().id;
     var vehicle = this.Base.getMyData().elcontact;
     var that = this;
@@ -314,66 +340,74 @@ class Content extends AppBase {
     var UserInfo = this.Base.getMyData().UserInfo;
     var orderapi = new OrderApi();
     var enroll_carload = this.Base.getMyData().enroll_carload;
-    var info=this.Base.getMyData().info;
-      orderapi.addapply({
-        status: "A",
-        transport: "Y",
-        contype:"B",
-        orderid: orderid,
-        tonnage: tonnage,
-        driver_phone: drivermobile,
-        vehicle: vehicle,
-        newstatus:"Y",
-        drivernewstatus:"N",
-        member_name: info.enterprise_id_name,
-        carriage_driver: driverinfo.id,
-        car_load: enroll_carload,
-        openid: UserInfo.openid
-      }, (addapply) => {
-        var driverinfo = this.Base.getMyData().driverinfo;
-        if (driverinfo == null || driverinfo.status != "A") {
-           wx.showModal({
-             title: '未认证',
-             content: '您是否需要前往企业认证',
-             showCancel: true,
-             cancelText: '取消',
-             cancelColor: '#EE2222',
-             confirmText: '确定',
-             confirmColor: '#2699EC',
-             success: function (res) {
-               if (res.confirm) {
-                 wx.navigateTo({
-                   url: '/pages/certificate/certificate',
-                 })
-               }
-             }
-           });
-          }
-         else {
-            wx.navigateBack({
-              
-            })
-            // ({
-            //   url: '/pages/driver/driver'
-            // }),
-             wx.showToast({
-               title: '报名成功',
-               duration: 1000
-             });
-        }
-      });
 
+    var api = new WechatApi();
+    api.prepay({
+      },
+      (ret) => {
+        ret.success = function() {
+
+          var info = this.Base.getMyData().info;
+          orderapi.addapply({
+            status: "A",
+            transport: "Y",
+            contype: "B",
+            orderid: orderid,
+            tonnage: tonnage,
+            driver_phone: drivermobile,
+            vehicle: vehicle,
+            newstatus: "Y",
+            drivernewstatus: "N",
+            member_name: info.enterprise_id_name,
+            carriage_driver: driverinfo.id,
+            car_load: enroll_carload,
+            openid: UserInfo.openid
+          }, (addapply) => {
+            var driverinfo = this.Base.getMyData().driverinfo;
+            if (driverinfo == null || driverinfo.status != "A") {
+              wx.showModal({
+                title: '未认证',
+                content: '您是否需要前往企业认证',
+                showCancel: true,
+                cancelText: '取消',
+                cancelColor: '#EE2222',
+                confirmText: '确定',
+                confirmColor: '#2699EC',
+                success: function(res) {
+                  if (res.confirm) {
+                    wx.navigateTo({
+                      url: '/pages/certificate/certificate',
+                    })
+                  }
+                }
+              });
+            } else {
+              wx.navigateBack({
+
+              })
+              // ({
+              //   url: '/pages/driver/driver'
+              // }),
+              wx.showToast({
+                title: '报名成功',
+                duration: 1000
+              });
+            }
+          });
+        }
+        wx.requestPayment(ret);
+      });
   }
   onUnload() {
     clearInterval();
   }
-  btnshowtost(){
-wx.showToast({
-  title: '报名人数或剩余货运吨数已达到上限!',
-  icon: 'none',
-  image: '',
-  duration: 1500,
-})
+  btnshowtost() {
+    wx.showToast({
+      title: '报名人数或剩余货运吨数已达到上限!',
+      icon: 'none',
+      image: '',
+      duration: 1500,
+    })
   }
 }
 var content = new Content();
@@ -381,11 +415,11 @@ var body = content.generateBodyJson();
 
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
-body.tonnage = content.tonnage; 
-body.binddriver = content.binddriver; 
+body.tonnage = content.tonnage;
+body.binddriver = content.binddriver;
 body.confirm = content.confirm;
 body.enrollcontact = content.enrollcontact;
-body.bindenroll = content.bindenroll; 
+body.bindenroll = content.bindenroll;
 body.btnshowtost = content.btnshowtost;
 body.num = content.num;
 Page(body)
