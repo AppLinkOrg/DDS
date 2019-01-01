@@ -11,7 +11,7 @@
 </view>
 
 <view wx:if="{{errinfo==null}}">
-  <form bindsubmit="confirm" bindreset="formReset" report-submit="{{true}}">
+  <form bindsubmit="confirm" bindreset="formReset" report-submit="true">
     <view class=''>
       <view class='flex-row column padding-40'>
         <view>企业名称</view>

@@ -113,7 +113,8 @@ class Content extends AppBase {
       carnumber: carnumber,
       vehicletype: vehicletype,
       carload: load,
-      reviewimg: photo
+      reviewimg: photo,
+      formid: e.detail.formId
     }, (addvehicle) => {
       var pages = getCurrentPages();
       var beforePage = pages[pages.length - 2];

@@ -1,5 +1,5 @@
 <view wx:if='{{info==null}}'>
-  <form bindsubmit="confirm" bindreset="formReset" report-submit="{{true}}">
+  <form bindsubmit="confirm" bindreset="formReset" report-submit="true">
     <view class="flex-row column padding-40">
 
       <view class="flex-row column">

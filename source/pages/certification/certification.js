@@ -76,7 +76,8 @@ class Content extends AppBase {
        open_id: UserInfo.openid,
        enterprisename: enterprisename,
        creditcode: creditcode,
-       authenticateimg:photo
+       authenticateimg:photo,
+       formid: e.detail.formId
     }, (authenticate) => {
         //  var pages = getCurrentPages(); 
         //  var beforePage = pages[pages.length - 2];

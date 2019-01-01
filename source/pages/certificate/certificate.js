@@ -136,7 +136,8 @@ class Content extends AppBase {
       idcard: idcard,
       openid:openid,
       dirlicense_img: photo,
-      idcard_img: idphoto
+      idcard_img: idphoto,
+      formid: e.detail.formId
     }, (updetedriver) => {
       wx.showModal({
         title: '',

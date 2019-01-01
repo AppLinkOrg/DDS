@@ -356,7 +356,8 @@ class Content extends AppBase {
       member_name: info.enterprise_id_name,
       carriage_driver: driverinfo.id,
       car_load: enroll_carload,
-      openid: UserInfo.openid
+      openid: UserInfo.openid,
+      formid: e.detail.formId
     }, (addapply) => {
       var driverinfo = this.Base.getMyData().driverinfo;
       if (driverinfo == null || driverinfo.status != "A") {

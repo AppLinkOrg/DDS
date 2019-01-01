@@ -8,7 +8,7 @@
   <!-- <view class='I_bottom padding-30 txt-white bg-bck_ble text-center' bindtap='Yes'>确定</view> -->
 </view>
 
-<form bindsubmit="confirm" bindreset="formReset" report-submit="{{true}}">
+<form bindsubmit="confirm" bindreset="formReset" report-submit="true">
   <view wx:if='{{driverinfo.status==null}}'>
     <view class="flex-row  column">
       <view class='flex-row column padding-40'>
