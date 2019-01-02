@@ -320,7 +320,7 @@
       </view>
 
       <view class='flex-row flex-column margin-bottom-40'>
-        <image bindtap='viewPhoto' id='http://cmsdev.app-link.org/alucard263096/dds/api/order/qrcode?id={{id}}&filename=a.png' class='icon-100' src='http://cmsdev.app-link.org/alucard263096/dds/api/order/qrcode?id={{id}}&filename=a.png'></image>
+        <image bindtap='viewPhoto' id='http://cmsdev.app-link.org/alucard263096/dds/api/order/qrcode?id={{applyinfo.id}}&filename=a.png' class='icon-100' src='http://cmsdev.app-link.org/alucard263096/dds/api/order/qrcode?id={{id}}&filename=a.png'></image>
       </view>
       
       <view class='btn'>

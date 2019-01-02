@@ -141,7 +141,7 @@
     <view class=''>您还未发布任何信息</view>
   </view>
 <!-- hidden='{{item.enroll_deadline_timespan<=timestamp}}' -->
-  <navigator id='{{item.id}}' data-index='{{num[idx]}}'  bindtap='mine' wx:for='{{minelist}}' wx:key='k' wx:for-index='idx' class='mid margin-top-60 margin-bottom-40'>
+  <navigator id='{{item.id}}' data-index='{{num[idx]}}' bindtap='mine' wx:for='{{minelist}}' wx:key='k' wx:for-index='idx' class='mid margin-top-60 margin-bottom-40'>
     <view class='flex-row column'>
       <view class='flex-row '>
         <view class='padding-20 flex-1'>

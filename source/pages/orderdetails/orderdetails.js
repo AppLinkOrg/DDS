@@ -379,45 +379,47 @@ class Content extends AppBase {
         });
       } else {
 
-        if(ret.code==0){
+        //  if(ret.code==0){
 
-          wx.navigateBack({
+        wx.navigateBack({
 
-          })
-          // ({
-          //   url: '/pages/driver/driver'
-          // }),
-          wx.showToast({
-            title: '报名成功',
-            duration: 1000
-          });
-
-        }else{
-          var api = new WechatApi();
-          api.prepay({
-            id:ret.return
-          },
-            (ret) => {
-              ret.success = function () {
-
-                wx.navigateBack({
-
-                })
-                // ({
-                //   url: '/pages/driver/driver'
-                // }),
-                wx.showToast({
-                  title: '报名成功',
-                  duration: 1000
-                });
-              }
-            wx.requestPayment(ret)
-          });
-        }
+        })
+        // ({
+        //   url: '/pages/driver/driver'
+        // }),
+        wx.showToast({
+          title: '报名成功',
+          duration: 1000
+        });
 
 
+        //测试部分
+        // }else{
+        //  var api = new WechatApi();
+        //  api.prepay({
+        //    id:ret.return
+        //  },
+        //   (ret) => {
+        //     ret.success = function () {
 
+        //      wx.navigateBack({
+
+        //     })
+        // ({
+        //   url: '/pages/driver/driver'
+        // }),
+        //   wx.showToast({
+        //     title: '报名成功',
+        //       duration: 1000
+        //     });
       }
+      // wx.requestPayment(ret)
+      // });
+      // }
+
+
+
+      // }
     });
 
   }
