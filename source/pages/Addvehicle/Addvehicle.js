@@ -75,12 +75,12 @@ class Content extends AppBase {
     console.log(6666666);
     var data=e.detail.value;
     var vehiclelist = this.Base.getMyData().vehiclelist;
-    for (var i = 0; i < vehiclelist.length; i++) {
-      if (data.carnumber == vehiclelist[i].carnumber) {
-        this.Base.info("该车牌已被认证,请重新输入");
-        return;
-      }
-    }
+    // for (var i = 0; i < vehiclelist.length; i++) {
+    //   if (data.carnumber == vehiclelist[i].carnumber) {
+    //     this.Base.info("该车牌已被认证,请重新输入");
+    //     return;
+    //   }
+    // }
     if (data.carnumber == "") {
         this.Base.info("请输入车牌号码");
         return;

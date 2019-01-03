@@ -239,6 +239,13 @@ class Content extends AppBase {
 
   }
 
+  tonnage(e) {
+    var tonnage = e.detail.value;
+    this.Base.setMyData({
+      tonnage: e.detail.value
+    })
+    this.onMyShow();
+  }
 
   bindenroll(e) {
     var vehiclelist = this.Base.getMyData().vehiclelist;
@@ -248,14 +255,10 @@ class Content extends AppBase {
       enroll_carload: vehiclelist[e.detail.value].carload,
       elcontact: vehiclelist[e.detail.value].carnumber
     });
+    this.onMyShow();
   }
 
-  tonnage(e) {
-    var tonnage = e.detail.value;
-    this.Base.setMyData({
-      tonnage: e.detail.value
-    })
-  }
+ 
   binddriver(e) {
     var driverphone = e.detail.value;
     this.Base.setMyData({
@@ -273,6 +276,7 @@ class Content extends AppBase {
     console.log("这句话" + memberinfo.mobile);
     //return;
     var driverinfo = this.Base.getMyData().driverinfo;
+
     //console.log("sssss" + driverinfo.id)
     var enroll_carload = this.Base.getMyData().enroll_carload;
     console.log("fffffffffffffffffff" + enroll_carload)
@@ -313,6 +317,7 @@ class Content extends AppBase {
       this.Base.info("请选择车辆");
       return;
     }
+    this.onMyShow();
     var drivermobile = data.driverphone;
     //console.log("萨克斯开始开始222222" + drivermobile)
     var tonnage = this.Base.getMyData().tonnage;

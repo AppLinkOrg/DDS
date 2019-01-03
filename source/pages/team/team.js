@@ -51,7 +51,7 @@ class Content extends AppBase {
       success: function (res) {
         if (res.confirm) {
 
-          orderapi.updateteam({ member_id: memberinfo.id, id: id }, (updateteam) => {
+          orderapi.updateteam({ member_id: memberinfo.id, idlist: id }, (updateteam) => {
             that.Base.setMyData({
               updateteam
             });
