@@ -85,7 +85,12 @@ class Content extends AppBase {
         //    success(){
         //      beforePage.onLoad();
         //    }
-        //  })
+      //  })
+
+      var certificateapi = new CertificateApi();
+      var instinfo = this.Base.getMyData().instinfo;
+      certificateapi.sendsms({ content: instinfo["sms1"] });
+
       wx.showModal({
         title: '',
         content: '提交成功',

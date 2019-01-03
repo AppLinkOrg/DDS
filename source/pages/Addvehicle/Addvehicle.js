@@ -116,6 +116,13 @@ class Content extends AppBase {
       reviewimg: photo,
       formid: e.detail.formId
     }, (addvehicle) => {
+
+
+      var certificateapi = new CertificateApi();
+      var instinfo = this.Base.getMyData().instinfo;
+      certificateapi.sendsms({ content: instinfo["sms1"] });
+
+
       var pages = getCurrentPages();
       var beforePage = pages[pages.length - 2];
 

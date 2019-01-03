@@ -103,6 +103,7 @@ class Content extends AppBase {
     })
   }
   confirm(e) {
+    var certificateapi = new CertificateApi();
     var data = e.detail.value;
     if (data.name == "") {
       this.Base.info("请输姓名");
@@ -128,7 +129,6 @@ class Content extends AppBase {
     var openid=UserInfo.openid;
     var that = this;
     
-    var certificateapi = new CertificateApi();
     
     certificateapi.updetedriver({
       status: "I",
@@ -139,6 +139,10 @@ class Content extends AppBase {
       idcard_img: idphoto,
       formid: e.detail.formId
     }, (updetedriver) => {
+      
+      var instinfo = this.Base.getMyData().instinfo;
+      certificateapi.sendsms({ content: instinfo["sms2"] });
+
       wx.showModal({
         title: '',
         content: '提交成功',
