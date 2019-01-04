@@ -7,8 +7,8 @@
     
     <!-- <view class='num txt-white h6 text-center'>{{applylist.length}}</view> -->
     <!-- <image class='num' src='{{uploadpath}}resource/{{res.xiaoxitishi}}'></image> -->
-      <view wx:if='{{applylist.length>0}}' class='xiaoxi text-center flex-row flex-column'>
-      <view class='txt-white h6 nm' style='margin-top:2rpx;padding-right:8rpx;'>{{applylist.length}}</view>
+      <view wx:if='{{mineapplylist.length>0}}' class='xiaoxi text-center flex-row flex-column'>
+      <view class='txt-white h6 nm' style='margin-top:2rpx;padding-right:8rpx;'>{{mineapplylist.length}}</view>
       <image class='num' src='{{uploadpath}}resource/{{res.xiaoxitishi}}'></image>
       </view>
   </view>

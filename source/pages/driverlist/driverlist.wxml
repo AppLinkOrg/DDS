@@ -36,7 +36,7 @@
           <view class='flex-row flex-center    bg-orange' style='border-radius:7rpx; height:80rpx;'>
             <view class='padding-10 margin-left-10 margin-right-10 txt-bold txt-black' style='border:2rpx solid black;border-radius:7rpx;'>{{item.vehicle}}</view>
           </view>
-
+          
           <view class='txt-black txt-bold margin-top-10'>核载吨数:{{item.car_load}}吨</view>
         </view>
 

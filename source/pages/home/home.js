@@ -113,24 +113,27 @@ class Content extends AppBase {
 //, member_id: memberinfo.id
     }, (minelist) => {
       var memberinfo=this.Base.getMyData().memberinfo;
-      orderapi.applylist({ newstatus: "Y"}, (applylist) => {
+      for (var i = 0; i < minelist.length; i++) {
+        orderapi.applylist({ newstatus: "Y", order_id: minelist[i].id }, (mineapplylist) => {
         for (var i = 0; i < minelist.length; i++) {
           num[i] = 0;
-          for (var j = 0; j < applylist.length; j++) {
-            if (minelist[i].id == applylist[j].order_id) {
+          for (var j = 0; j < mineapplylist.length; j++) {
+            if (minelist[i].id == mineapplylist[j].order_id) {
               num[i]++;
               console.log(num);
             }
           }
         }
         this.Base.setMyData({
-          applylist,
+          mineapplylist,
           num: num
         });
       });
+      }
       this.Base.setMyData({
         minelist
       });
+      
     });
   }
   bindall(e) {
