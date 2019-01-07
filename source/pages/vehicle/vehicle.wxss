@@ -54,9 +54,7 @@ page {
   -webkit-border-radius: 50%;
 }
 
-#anniu {
-  background-color: #353a4d;
-}
+
 
 .bm {
   width: 100%;
@@ -67,6 +65,7 @@ page {
   margin-bottom: 0rpx;
   position: fixed;
   bottom: 0;
+  background-color: #353a4d;
 }
 
 image {

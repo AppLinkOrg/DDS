@@ -94,6 +94,7 @@ class Content extends AppBase {
       })
     }
   }
+  
   chenyuan(e) {
     var errinfo = this.Base.getMyData().errinfo;
     if (errinfo == null || errinfo.status != "A") {

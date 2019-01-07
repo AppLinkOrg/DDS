@@ -34,4 +34,4 @@
 </view>
 
 
-<navigator url='/pages/Addvehicle/Addvehicle?cats={{item.id}}' class="h4 bm" id="anniu">添加车辆</navigator>
+<navigator   bindtap='toaddcar'  class="h4 bm "  data-cats="{{item.id}}">添加车辆</navigator>

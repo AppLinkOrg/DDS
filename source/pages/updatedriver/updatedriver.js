@@ -146,13 +146,13 @@ class Content extends AppBase {
         cancelColor: '#EE2222',
         confirmText: '确定',
         confirmColor: '#2699EC',
-        // success: function (res) {
-        //   if (res.confirm) {
-        //     wx.navigateBack({
+         success: function (res) {
+           if (res.confirm) {
+            wx.navigateBack({
 
-        //     })
-        //   }
-        // }
+           })
+          }
+         }
       });
       // var pages = getCurrentPages();
       // var beforePage = pages[pages.length - 2];

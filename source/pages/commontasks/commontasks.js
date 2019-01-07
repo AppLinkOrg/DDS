@@ -21,9 +21,9 @@ class Content extends AppBase {
       this.Base.setMyData({ list });
     });
     
-    // orderapi.enterpriselist({ member_id: UserInfo.nickName }, (errlist) => {
-    //   this.Base.setMyData({ errlist })
-    // })
+    //orderapi.orderinfo({ id: this.Base.options.id }, (orderinfo) => {
+      //this.Base.setMyData({ orderinfo })
+     //})
   }
   setPageTitle(instinfo) {
     var title = "常用任务";

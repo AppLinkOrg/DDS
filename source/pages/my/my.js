@@ -25,7 +25,7 @@ class Content extends AppBase {
     var api = new CertificateApi();
     console.log(8888888);
     var UserInfo=this.Base.getMyData().UserInfo;
-    api.certificatexq({ }, (driverinfo) => {
+    api.certificatexq({ status: 'A,I,S' }, (driverinfo) => {
       this.Base.setMyData({ driverinfo });
     });
   }

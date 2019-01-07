@@ -270,10 +270,14 @@
         </picker>
       </view> -->
 
-      <view class='flex-row   flex-1 padding-40   bor_btm'>
+      <view class='flex-row  column flex-1 padding-40   bor_btm'>
+      <view class='flex-row flex-center'>
         <image class='icon-25' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
         <view class='txt-black h4-5   margin-left-20'>备注</view>
-        <textarea placeholder='暂无备注（限制字数140字）' bindinput='bindremark' name='remark' style='height:100rpx;width:400rpx; border-radius:10rpx;' class='h5 bg-gray padding-20 txt-black   margin-left-30'></textarea>
+      </view>
+
+        <textarea placeholder='暂无备注（限制字数140字）' bindinput='bindremark' name='remark' style='height:100rpx;width:500rpx; border-radius:10rpx;' class='h5 bg-gray padding-20 txt-black   margin-left-60 margin-top-20'></textarea>
+
       </view>
 
       <view class='padding-40'>

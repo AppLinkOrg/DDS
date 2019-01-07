@@ -13,27 +13,36 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
+    
+
+  }
+  
+  onMyShow() {
+    var that = this;
+    var orderapi = new OrderApi();
+
     var api = new CertificateApi();
     api.certificatexq({}, (driverinfo) => {
       this.Base.setMyData({
         driverinfo
       });
+
+      orderapi.applylist({ transport: "L", carriage_driver: driverinfo.id }, (applylist) => {
+        this.Base.setMyData({ applylist })
+        //this.onMyShow();
+      })
+
+
     });
 
+    //var driverinfo = this.Base.getMyData().driverinfo;
+    
   }
   //界面标题
   setPageTitle() {
     wx.setNavigationBarTitle({
       title: '历史任务',
     });
-  }
-  onMyShow() {
-    var that = this;
-    var orderapi = new OrderApi();
-    var driverinfo = this.Base.getMyData().driverinfo;
-    orderapi.applylist({ transport: "L", carriage_driver: driverinfo.id },(applylist)=>{
-       this.Base.setMyData({ applylist})
-      })
   }
 }
 var content = new Content();

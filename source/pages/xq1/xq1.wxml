@@ -259,23 +259,23 @@
           </view>
 
           <view class='' wx:if='{{applyinfo.photo!="undefined"}}'>
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo}}' class='startimg margin-5 {{applyinfo.photo==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo}}' class='startimg margin-5 {{applyinfo.photo=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo2}}' class='startimg margin-5 {{applyinfo.photo2==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo2}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo2}}' class='startimg margin-5 {{applyinfo.photo2=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo2}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo3}}' class='startimg margin-5 {{applyinfo.photo3==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo3}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo3}}' class='startimg margin-5 {{applyinfo.photo3=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo3}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo4}}' class='startimg margin-5 {{applyinfo.photo4==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo4}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo4}}' class='startimg margin-5 {{applyinfo.photo4=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo4}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo5}}' class='startimg margin-5 {{applyinfo.photo5==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo5}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo5}}' class='startimg margin-5 {{applyinfo.photo5=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo5}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo6}}' class='startimg margin-5 {{applyinfo.photo6==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo6}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo6}}' class='startimg margin-5 {{applyinfo.photo6=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo6}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo7}}' class='startimg margin-5 {{applyinfo.photo7==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo7}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo7}}' class='startimg margin-5 {{applyinfo.photo7=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo7}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo8}}' class='startimg margin-5 {{applyinfo.photo8==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo8}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo8}}' class='startimg margin-5 {{applyinfo.photo8=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo8}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo9}}' class='startimg margin-5 {{applyinfo.photo9==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo9}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo9}}' class='startimg margin-5 {{applyinfo.photo9=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo9}}'></image>
 
           </view>
 
