@@ -21,6 +21,7 @@
   </label>
 </checkbox-group>
 
+
 <view class='margin-top'>  <button disabled='{{isgrantuser==false||isgrantphonenumber==false}}' type='bak_ble' class='h5 margin-top txt-white' bindtap='gotoLogin' >授权并登录</button>
   </view>
 

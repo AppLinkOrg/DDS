@@ -10,7 +10,7 @@
   <view class='bottom padding-30 txt-white bg-bck_ble text-center' bindtap='againalter'>重新认证</view>
 </view>
 
-<view wx:if="{{errinfo==null}}">
+<view wx:if="{{errinfo==null||errinfo.status=='D'}}">
   <form bindsubmit="confirm" bindreset="formReset" report-submit="true">
     <view class=''>
       <view class='flex-row column padding-40'>

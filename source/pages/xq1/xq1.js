@@ -27,7 +27,9 @@ class Content extends AppBase {
     //options.id=5;
     super.onLoad(options);
     this.Base.setMyData({
-      id:this.Base.options.id
+      id:this.Base.options.id,
+      date: new Date(),
+      rand: (new Date()).getTime()
     })
   
     super.onLoad(options);
@@ -42,7 +44,14 @@ class Content extends AppBase {
 
   onMyShow() {
     console.log(6666666);
-    console.log(this.Base.getMyData().id);
+    var that=this;
+    var mylocation = this.Base.getMyData().mylocation;
+      that.Base.getAddress((addressinfo) => {
+        that.Base.setMyData({ mylocation: addressinfo });
+        
+        
+        
+      });
     
     var orderapi = new OrderApi();
     // orderapi.applyinfo({ id: this.Base.options.orderid},(applyinfo)=>{
@@ -159,6 +168,9 @@ class Content extends AppBase {
 
   Getover(e) {
     var data = e.detail.value;
+    
+    
+    //return;
     if (data.end_load == "") {
       this.Base.info("请填写终点过磅单载重");
       return;
@@ -167,7 +179,14 @@ class Content extends AppBase {
       this.Base.info("请至少添加一张终点过磅单");
       return;
     }
+    
     var applyapi = new ApplyApi(); 
+    var lat = this.Base.getMyData().mylocation.location.lat;
+    var lng = this.Base.getMyData().mylocation.location.lng; 
+    console.log("1111111111111" + lat);
+    var address = this.Base.getMyData().mylocation.address;
+    console.log("55555555555555" + address)
+    
     var end_load = data.end_load;
     var photo = this.Base.getMyData().photo[0];
     var photo2 = this.Base.getMyData().photo[1];
@@ -180,7 +199,7 @@ class Content extends AppBase {
     var photo9 = this.Base.getMyData().photo[8];
     var applyinfo=this.Base.getMyData().applyinfo;
     console.log(applyinfo.id);
-    applyapi.uploaddan({ apply_id: applyinfo.id, end_load: end_load, photo: photo, photo2: photo2, photo3: photo3, photo4: photo4, photo5: photo5, photo6: photo6, photo7: photo7, photo8: photo8, photo9: photo9 }, (uploaddan) => {
+    applyapi.uploaddan({ apply_id: applyinfo.id, end_load: end_load, end_submit_lng: lng, end_submit_lat: lat, end_submit_address:address ,photo: photo, photo2: photo2, photo3: photo3, photo4: photo4, photo5: photo5, photo6: photo6, photo7: photo7, photo8: photo8, photo9: photo9 }, (uploaddan) => {
           wx.reLaunch({
             url: '/pages/driver/driver',
           })
@@ -202,8 +221,18 @@ class Content extends AppBase {
       this.Base.info("请至少添加一张起点过磅单");
       return;
     }
+    var getall=this.Base.getMyData().getall;
+    //console.log("1111111111111" + getall.mylat);
+    //return;
     var applyapi = new ApplyApi();
     var gbdload = data.gbdload;
+    var date = this.Base.getMyData().date;
+    console.log("sssssaaaaaaa" + date);
+    //return;
+    var lat = this.Base.getMyData().mylocation.location.lat;
+    var lng = this.Base.getMyData().mylocation.location.lng;
+    var address = this.Base.getMyData().mylocation.address;
+    console.log("55555555555555" + address)
     var p1 = data.p1;
     var p2 = data.p2;
     var p3 = data.p3;
@@ -215,7 +244,7 @@ class Content extends AppBase {
     var p9 = data.p9;
     var applyinfo = this.Base.getMyData().applyinfo;
     console.log(applyinfo.id);
-    applyapi.updatestart({ apply_id: applyinfo.id, start_load: gbdload ,p1: p1, p2: p2, p3: p3, p4: p4, p5: p5, p6: p6, p7: p7, p8: p8, p9: p9 }, (updatestart) => {
+    applyapi.updatestart({ apply_id: applyinfo.id, start_load: gbdload, start_submit_lng: lng, start_submit_lat: lat, start_submit_address:address ,p1: p1, p2: p2, p3: p3, p4: p4, p5: p5, p6: p6, p7: p7, p8: p8, p9: p9 }, (updatestart) => {
       wx.reLaunch({
         url: '/pages/driver/driver',
       })
@@ -254,6 +283,7 @@ class Content extends AppBase {
       photo2: e.detail.value
     })
   }
+
   photo3(e) {
     var photo3 = e.detail.value;
     console.log(photo3);
@@ -261,6 +291,7 @@ class Content extends AppBase {
       photo3: e.detail.value
     })
   }
+
   photo4(e) {
     var photo4 = e.detail.value;
     console.log(photo4);

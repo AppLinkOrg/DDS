@@ -15,7 +15,7 @@ class Content extends AppBase {
     super.onLoad(options);
     
     this.Base.setMyData({
-      id:this.Base.options.id,type:this.Base.options.type
+      id: this.Base.options.id, type: this.Base.options.type, date: new Date()
     })
     // console.log("sssssssssssssssssssss" + this.Base.options.type);
     // return;
@@ -36,7 +36,9 @@ class Content extends AppBase {
 
     // var id=this.Base.getMyData().id;
     var orderapi=new OrderApi();
-    orderapi.applylist({ transport: "Y", orderid: this.Base.options.id}, (applylist) => {
+    var id=this.Base.getMyData().id;
+    console.log("aaaaaaaa"+id);
+    orderapi.applylist({ transport: "Y", orderid: id}, (applylist) => {
       this.Base.setMyData({ applylist });
     });
     orderapi.applylist({ transport: "N", orderid: this.Base.options.id}, (tobecpdlist) => {
@@ -125,6 +127,7 @@ class Content extends AppBase {
 
   addcompleted(e){
     var that = this;
+    var date=this.Base.getMyData().date;
     wx.showModal({
       title: '',
       content: '您是否确认该司机已完成？是否已查看过磅单？',
@@ -143,7 +146,7 @@ class Content extends AppBase {
           //   });
           // });
           var tobecpdlist = that.Base.getMyData().tobecpdlist;
-          orderapi.addcompleted({ id: tobecpdlist[0].id }, (addcompleted) => {
+          orderapi.addcompleted({ id: tobecpdlist[0].id, company_confirm_time: date }, (addcompleted) => {
             that.Base.setMyData({
               addcompleted
             });

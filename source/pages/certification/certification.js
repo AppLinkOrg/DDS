@@ -3,6 +3,7 @@ import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api.js"; 
 import { OrderApi } from "../../apis/order.api.js"; 
+import { CertificateApi } from "../../apis/certificate.api.js"; 
 
 class Content extends AppBase {
   constructor() {

@@ -276,7 +276,7 @@
         <view class='txt-black h4-5   margin-left-20'>备注</view>
       </view>
 
-        <textarea placeholder='暂无备注（限制字数140字）' bindinput='bindremark' name='remark' style='height:100rpx;width:500rpx; border-radius:10rpx;' class='h5 bg-gray padding-20 txt-black   margin-left-60 margin-top-20'></textarea>
+        <textarea placeholder='暂无备注（限制字数140字）' bindinput='bindremark' name='remark' style='height:200rpx;width:500rpx; border-radius:10rpx;' class='h5 bg-gray padding-10 txt-black   margin-left-60 margin-top-20'></textarea>
 
       </view>
 

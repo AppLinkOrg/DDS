@@ -169,9 +169,9 @@
     </view>
   </view>
 </view>
-
+<block wx:if="{{loaded==true}}">
 <navigator bindtap='Deleteorder' wx:if='{{mineshow=="2"&&toapplylist.length==0&&completedlist.length==0}}' class='cancel_btn bg-bck_ble txt-white text-center'>取消本次任务</navigator>
 <!-- &&applylist[0].photo!=""&&applylist.length>0 -->
 <navigator bindtap='update' wx:if='{{mineshow=="2"&&toapplylist.length!=0||completedlist.length!=0}}' class='cancel_btn bg-bck_ble txt-white text-center'>完成本次任务</navigator>
-
+</block>
 <!-- <button type='bak_ble' hover-class='txt-white' class='txt-white cancel_btn'>取消本次任务</button> -->

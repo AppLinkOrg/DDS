@@ -34,7 +34,6 @@ class Content extends AppBase {
 
     })
 
-
   }
   //界面标题
   setPageTitle() {
@@ -51,7 +50,6 @@ class Content extends AppBase {
     })
   }
 
-
   onMyShow() {
     var that = this;
     var UserInfo = this.Base.getMyData().UserInfo;
@@ -60,6 +58,11 @@ class Content extends AppBase {
     api.certificatelist({}, (list) => {
       that.Base.setMyData({
         list
+      });
+    })
+    orderapi.applylist({ transport:'Y,N'}, (apylist) => {
+      that.Base.setMyData({
+        apylist
       });
     })
     orderapi.info({
@@ -207,7 +210,6 @@ class Content extends AppBase {
       info.carcount = parseInt(info.carcount);
       info.totaldun = parseInt(info.totaldun);
       info.weight = parseInt(info.weight);
-
       this.Base.setMyData(info);
       console.log("编号" + info.enroll_id)
       orderapi.memberinfo({
@@ -233,10 +235,7 @@ class Content extends AppBase {
           endinfo
         });
       });
-
     });
-
-
   }
 
   tonnage(e) {
@@ -258,7 +257,6 @@ class Content extends AppBase {
     this.onMyShow();
   }
 
- 
   binddriver(e) {
     var driverphone = e.detail.value;
     this.Base.setMyData({
@@ -276,6 +274,9 @@ class Content extends AppBase {
     console.log("这句话" + memberinfo.mobile);
     //return;
     var driverinfo = this.Base.getMyData().driverinfo;
+    var apylist=this.Base.getMyData().apylist;
+    
+
 
     //console.log("sssss" + driverinfo.id)
     var enroll_carload = this.Base.getMyData().enroll_carload;
@@ -287,7 +288,12 @@ class Content extends AppBase {
     var carcount = this.Base.getMyData().carcount;
     var applycount = this.Base.getMyData.applycount;
     console.log(weight);
-
+    for (var i = 0; i < apylist.length; i++) {
+      if (apylist[i].vehicle == data.elcontact) {
+        this.Base.info("请该车辆已报,请联系平台或者联系同车队使用人员");
+        return;
+      }
+    }
     if (data.tonnage == "") {
       this.Base.info("请输入客运吨数");
       return;

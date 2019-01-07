@@ -139,7 +139,6 @@
 
 
 
-
   <form bindsubmit="start_Getover" bindreset="formReset" report-submit="{{true}}">
     <view class="asd " style='width:100%'>
       <view class="flex-row column margin-top-20 " style=' margin-bottom:30rpx'>
@@ -152,23 +151,23 @@
 
 
           <view class='' wx:if='{{applyinfo.p1!=""}}'>
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p1}}' class='startimg margin-5 {{applyinfo.p1==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p1}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p1}}' class='startimg margin-5 {{applyinfo.p1==""||applyinfo.p1=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p1}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p2}}' class='startimg margin-5 {{applyinfo.p2==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p2}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p2}}' class='startimg margin-5 {{applyinfo.p2==""||applyinfo.p2=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p2}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p3}}' class='startimg margin-5 {{applyinfo.p3==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p3}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p3}}' class='startimg margin-5 {{applyinfo.p3==""||applyinfo.p3=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p3}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p4}}' class='startimg margin-5 {{applyinfo.p4==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p4}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p4}}' class='startimg margin-5 {{applyinfo.p4==""||applyinfo.p4=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p4}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p5}}' class='startimg margin-5 {{applyinfo.p5==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p5}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p5}}' class='startimg margin-5 {{applyinfo.p5==""||applyinfo.p5=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p5}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p6}}' class='startimg margin-5 {{applyinfo.p6==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p6}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p6}}' class='startimg margin-5 {{applyinfo.p6==""||applyinfo.p6=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p6}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p7}}' class='startimg margin-5 {{applyinfo.p7==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p7}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p7}}' class='startimg margin-5 {{applyinfo.p7==""||applyinfo.p7=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p7}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p8}}' class='startimg margin-5 {{applyinfo.p8==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p8}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p8}}' class='startimg margin-5 {{applyinfo.p8==""||applyinfo.p8=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p8}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p9}}' class='startimg margin-5 {{applyinfo.p9==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p9}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.p9}}' class='startimg margin-5 {{applyinfo.p9==""||applyinfo.p9=="undefined"?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.p9}}'></image>
           </view>
 
           <!-- <view class='flex-row flex-column padding-top-' bindtap='uploadimg' style='line-height' wx:if='{{photo==undefined}}'>
@@ -194,23 +193,23 @@
 
 
           <view class='' wx:if='{{applyinfo.photo!="undefined"}}'>
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo}}' class='startimg margin-5 {{applyinfo.photo==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo}}' class='startimg margin-5 {{applyinfo.photo=="undefined"||applyinfo.photo==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo2}}' class='startimg margin-5 {{applyinfo.photo2==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo2}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo2}}' class='startimg margin-5 {{applyinfo.photo2=="undefined"||applyinfo.photo2==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo2}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo3}}' class='startimg margin-5 {{applyinfo.photo3==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo3}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo3}}' class='startimg margin-5 {{applyinfo.photo3=="undefined"||applyinfo.photo3==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo3}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo4}}' class='startimg margin-5 {{applyinfo.photo4==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo4}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo4}}' class='startimg margin-5 {{applyinfo.photo4=="undefined"||applyinfo.photo4==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo4}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo5}}' class='startimg margin-5 {{applyinfo.photo5==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo5}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo5}}' class='startimg margin-5 {{applyinfo.photo5=="undefined"||applyinfo.photo5==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo5}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo6}}' class='startimg margin-5 {{applyinfo.photo6==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo6}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo6}}' class='startimg margin-5 {{applyinfo.photo6=="undefined"||applyinfo.photo6==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo6}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo7}}' class='startimg margin-5 {{applyinfo.photo7==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo7}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo7}}' class='startimg margin-5 {{applyinfo.photo7=="undefined"||applyinfo.photo7==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo7}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo8}}' class='startimg margin-5 {{applyinfo.photo8==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo8}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo8}}' class='startimg margin-5 {{applyinfo.photo8=="undefined"||applyinfo.photo8==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo8}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo9}}' class='startimg margin-5 {{applyinfo.photo9==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo9}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo9}}' class='startimg margin-5 {{applyinfo.photo9=="undefined"||applyinfo.photo9==""?"null_img":""}}'  mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo9}}'></image>
 
           </view>
 
@@ -232,7 +231,7 @@
       </view>
 
       <view class='flex-row flex-column margin-bottom-40'>
-        <image bindtap='viewPhoto' id='http://cmsdev.app-link.org/alucard263096/dds/api/order/qrcode?id={{applyinfo.id}}&filename=a.png' class='icon-100' src='http://cmsdev.app-link.org/alucard263096/dds/api/order/qrcode?id={{id}}&filename=a.png'></image>
+        <image bindtap='viewPhoto' id='http://cmsdev.app-link.org/alucard263096/dds/api/order/qrcode?id={{applyinfo.id}}&filename={{rand}}a.png' class='icon-100' src='http://cmsdev.app-link.org/alucard263096/dds/api/order/qrcode?id={{applyinfo.id}}&filename={{rand}}a.png'></image>
       </view>
 
 

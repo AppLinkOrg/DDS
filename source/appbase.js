@@ -301,8 +301,10 @@ export class AppBase {
     var data = this.Base.getMyData();
     console.log(data);
 
-    e.detail.session_key = AppBase.session_key;
-    e.detail.openid = AppBase.openid;
+    e.detail.session_key = data.UserInfo.session_key;
+    e.detail.openid = data.UserInfo.openid;
+
+    console.log("edetail");
     console.log(e.detail);
     api.decrypteddata(e.detail, (ret) => {
       console.log(ret);

@@ -2,7 +2,7 @@
 <navigator url='/pages/certification/certification' class='flex-row flex-center bg-white padding-30 bor_btm'>
   <view class='flex-row flex-column'>
     <image class='icon-60 radius-50' src='{{UserInfo.avatarUrl}}'></image>
-    <view wx:if='{{errinfo==null}}' class='txt-red text-center h6 orange'>未认证</view>
+    <view wx:if='{{errinfo==null||errinfo.status=="D"}}' class='txt-red text-center h6 orange'>未认证</view>
     <view >
       <view wx:if='{{errinfo.status=="I"}}' class='txt-red text-center  h6 orange'>{{errinfo.status_name}}</view>
       <view wx:if='{{errinfo.status=="N"}}' class='txt-red  text-center h6 red'>{{errinfo.status_name}}</view>

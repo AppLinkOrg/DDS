@@ -138,6 +138,13 @@ class Content extends AppBase {
       dirlicense_img: photo,
       idcard_img: idphoto
     }, (updriver) => {
+
+      var certificateapi = new CertificateApi();
+      var instinfo = this.Base.getMyData().instinfo;
+      certificateapi.sendsms({ content: instinfo["sms1"] });
+
+
+      
       wx.showModal({
         title: '',
         content: '提交成功',

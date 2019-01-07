@@ -347,7 +347,7 @@ class Content extends AppBase {
           });
           orderapi.applylist({
             member_id: memberinfo.id,
-            transport_name: "待完成",
+            transport: "N",
             drivernewstatus: "Y",
           }, () => {
 

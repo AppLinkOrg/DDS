@@ -26,7 +26,8 @@ class Content extends AppBase {
     var orderapi = new OrderApi();
     orderapi.goodslist({}, (goodslist) => {
       this.Base.setMyData({
-        goodslist
+        goodslist,
+        loaded:false
       });
     });
     var timestamp = Date.parse(new Date());
@@ -153,7 +154,7 @@ class Content extends AppBase {
       });
       
       orderapi.applylist({ transport: "L", orderid: this.Base.options.id }, (completedlist) => {
-        this.Base.setMyData({ completedlist });
+        this.Base.setMyData({ completedlist, loaded:true });
       });
     });
 

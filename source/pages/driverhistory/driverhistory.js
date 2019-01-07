@@ -27,6 +27,7 @@ class Content extends AppBase {
     //options.id=5;
     super.onLoad(options);
     this.Base.setMyData({
+      rand: (new Date()).getTime()
     })
 
     super.onLoad(options);

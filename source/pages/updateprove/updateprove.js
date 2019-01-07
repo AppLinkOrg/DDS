@@ -3,6 +3,7 @@ import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api.js";
 import { OrderApi } from "../../apis/order.api.js";
+import { CertificateApi } from "../../apis/certificate.api.js"; 
 
 class Content extends AppBase {
   constructor() {
@@ -76,7 +77,11 @@ class Content extends AppBase {
       creditcode: creditcode,
       authenticateimg: photo
     }, (updateprove) => {
-      
+
+      var certificateapi = new CertificateApi();
+      var instinfo = this.Base.getMyData().instinfo;
+      certificateapi.sendsms({ content: instinfo["sms1"] });
+
       wx.showModal({
         title: '',
         content: '提交成功',
