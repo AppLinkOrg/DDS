@@ -104,11 +104,11 @@ class Content extends AppBase {
   }
   confirm(e) {
 
-    var certificateapi = new CertificateApi();
-    var instinfo = this.Base.getMyData().instinfo;
-    certificateapi.sendsms({mobile:"17608463082", content: instinfo["sms2"] });
+    // var certificateapi = new CertificateApi();
+    // var instinfo = this.Base.getMyData().instinfo;
+    // certificateapi.sendsms({mobile:"17608463082", content: instinfo["sms2"] });
 
-    return;
+    // return;
 
 
 
@@ -185,11 +185,9 @@ class Content extends AppBase {
     });
   }
   againalter(e) {
-    var certificateapi = new CertificateApi();
-    var instinfo = this.Base.getMyData().instinfo;
-    certificateapi.sendsms({ mobile: "17608463082", content: instinfo["sms2"] });
+    
 
-    return;
+    //return;
     wx.showModal({
       title: '修改资料',
       content: '您是否需要修改资料并重新等待审核？',
@@ -203,6 +201,10 @@ class Content extends AppBase {
           wx.navigateTo({
             url: '/pages/updatedriver/updatedriver',
           })
+
+          var certificateapi = new CertificateApi();
+          var instinfo = that.Base.getMyData().instinfo;
+          certificateapi.sendsms({ mobile: "17608463082", content: instinfo["sms2"] });
         }
       }
     });
