@@ -149,6 +149,7 @@ class Content extends AppBase {
           orderapi.addcompleted({
             id: tobecpdlist[0].id, company_confirm_time: date,
             formid: e.detail.formId }, (addcompleted) => {
+              //that.Base.info(addcompleted.return);
             that.Base.setMyData({
               addcompleted
             });

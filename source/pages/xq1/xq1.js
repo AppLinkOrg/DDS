@@ -214,6 +214,7 @@ class Content extends AppBase {
 
 
   start_Getover(e) {
+    var that=this;
     var data = e.detail.value;
     if (data.gbdload == "") {
       this.Base.info("请填写起点过磅单载重");
@@ -249,6 +250,7 @@ class Content extends AppBase {
     applyapi.updatestart({
       apply_id: applyinfo.id, start_load: gbdload, start_submit_lng: lng, start_submit_lat: lat, start_submit_address: address, p1: p1, p2: p2, p3: p3, p4: p4, p5: p5, p6: p6, p7: p7, p8: p8, p9: p9,
       formid: e.detail.formId }, (updatestart) => {
+        that.Base.info(updatestart.return);
       wx.reLaunch({
         url: '/pages/driver/driver',
       })
