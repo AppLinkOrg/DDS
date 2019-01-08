@@ -161,9 +161,9 @@
           </view>
         </view>
 
-        
-
-        <view bindtap='Deleteorder' class="h4 bm" style='margin-top:118rpx' id="anniu">取消报名</view>
+        <form bindsubmit="Deleteorder" bindreset="formReset" report-submit="{{true}}">
+        <button form-type='submit' class="h4 bm" style='margin-top:118rpx' id="anniu">取消报名</button>
+        </form>
       </view>
     </view>
   </view>

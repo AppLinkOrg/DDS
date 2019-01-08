@@ -75,7 +75,8 @@ class Content extends AppBase {
       status: "I",
       enterprisename: enterprisename,
       creditcode: creditcode,
-      authenticateimg: photo
+      authenticateimg: photo,
+      formid: e.detail.formId
     }, (updateprove) => {
 
       var certificateapi = new CertificateApi();

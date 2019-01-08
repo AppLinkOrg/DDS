@@ -153,6 +153,9 @@ class Content extends AppBase {
     var that = this;
     var applyinfo = this.Base.getMyData().applyinfo;
     // var id = this.Base.getMyData().applyinfo.orderid;
+    //this.Base.info(e.detail.formId);
+    //return;
+
      wx.showModal({
        title: '',
        content: '您是否需要取消本次报名？',
@@ -164,7 +167,10 @@ class Content extends AppBase {
        success: function (res) {
          if (res.confirm) {
            var orderapi = new OrderApi();
-           orderapi.deleteapply({ idlist: applyinfo.id }, (deleteapply) => {
+           orderapi.deleteapply({
+             idlist: applyinfo.id,
+       formid: e.detail.formId }, (deleteapply) => {
+             //that.Base.info(deleteapply.return);
              that.Base.setMyData({
                deleteapply
              });

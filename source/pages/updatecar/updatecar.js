@@ -105,7 +105,8 @@ class Content extends AppBase {
       carnumber: carnumber,
       vehicletype: vehicletype,
       carload: load,
-      reviewimg: photo
+      reviewimg: photo,
+      formid: e.detail.formId
     }, (updatecar) => {
 
        wx.navigateBack({
