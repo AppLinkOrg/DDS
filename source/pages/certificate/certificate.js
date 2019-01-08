@@ -103,6 +103,16 @@ class Content extends AppBase {
     })
   }
   confirm(e) {
+
+    var certificateapi = new CertificateApi();
+    var instinfo = this.Base.getMyData().instinfo;
+    certificateapi.sendsms({mobile:"17608463082", content: instinfo["sms2"] });
+
+    return;
+
+
+
+
     var certificateapi = new CertificateApi();
     var data = e.detail.value;
     if (data.name == "") {
@@ -175,6 +185,11 @@ class Content extends AppBase {
     });
   }
   againalter(e) {
+    var certificateapi = new CertificateApi();
+    var instinfo = this.Base.getMyData().instinfo;
+    certificateapi.sendsms({ mobile: "17608463082", content: instinfo["sms2"] });
+
+    return;
     wx.showModal({
       title: '修改资料',
       content: '您是否需要修改资料并重新等待审核？',
