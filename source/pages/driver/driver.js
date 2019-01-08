@@ -543,10 +543,12 @@ class Content extends AppBase {
 
   newtask(e) {
     var driverinfo = this.Base.getMyData().driverinfo;
+    console.log(driverinfo.status)
+    //return;
     if (driverinfo == null || driverinfo.status != "A") {
       wx.showModal({
         title: '未认证',
-        content: '您是否需要前往企业认证',
+        content: '您是否需要前往司机认证',
         showCancel: true,
         cancelText: '取消',
         cancelColor: '#EE2222',
