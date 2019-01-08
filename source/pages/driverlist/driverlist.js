@@ -146,7 +146,9 @@ class Content extends AppBase {
           //   });
           // });
           var tobecpdlist = that.Base.getMyData().tobecpdlist;
-          orderapi.addcompleted({ id: tobecpdlist[0].id, company_confirm_time: date }, (addcompleted) => {
+          orderapi.addcompleted({
+            id: tobecpdlist[0].id, company_confirm_time: date,
+            formid: e.detail.formId }, (addcompleted) => {
             that.Base.setMyData({
               addcompleted
             });

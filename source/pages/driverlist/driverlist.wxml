@@ -99,7 +99,9 @@
 
     <view class='flex-row flex-center margin-20'>
       <navigator id='{{item.id}}' bindtap='weightsheet' data-index='{{item.photo}}' data-p1='{{item.p1}}' class='flex-1 padding-10 bg-red text-center txt-white h5 margin-right-10' style='border-radius:10rpx;'>查看过磅单</navigator>
-      <navigator class='flex-1 padding-10 bg-green text-center txt-white h5 margin-left-10' style='border-radius:10rpx;' bindtap='addcompleted'>确认已到达</navigator>
+      <form bindsubmit="addcompleted" bindreset="formReset" report-submit="{{true}}">
+      <button class='flex-1 padding-10 bg-green text-center txt-white h5 margin-left-10' style='border-radius:10rpx;' form-type='submit'>确认已到达</button>
+      </form>
     </view>
 
   </view>

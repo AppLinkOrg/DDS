@@ -199,7 +199,9 @@ class Content extends AppBase {
     var photo9 = this.Base.getMyData().photo[8];
     var applyinfo=this.Base.getMyData().applyinfo;
     console.log(applyinfo.id);
-    applyapi.uploaddan({ apply_id: applyinfo.id, end_load: end_load, end_submit_lng: lng, end_submit_lat: lat, end_submit_address:address ,photo: photo, photo2: photo2, photo3: photo3, photo4: photo4, photo5: photo5, photo6: photo6, photo7: photo7, photo8: photo8, photo9: photo9 }, (uploaddan) => {
+    applyapi.uploaddan({
+      apply_id: applyinfo.id, end_load: end_load, end_submit_lng: lng, end_submit_lat: lat, end_submit_address: address, photo: photo, photo2: photo2, photo3: photo3, photo4: photo4, photo5: photo5, photo6: photo6, photo7: photo7, photo8: photo8, photo9: photo9,
+      formid: e.detail.formId }, (uploaddan) => {
           wx.reLaunch({
             url: '/pages/driver/driver',
           })
@@ -244,7 +246,9 @@ class Content extends AppBase {
     var p9 = data.p9;
     var applyinfo = this.Base.getMyData().applyinfo;
     console.log(applyinfo.id);
-    applyapi.updatestart({ apply_id: applyinfo.id, start_load: gbdload, start_submit_lng: lng, start_submit_lat: lat, start_submit_address:address ,p1: p1, p2: p2, p3: p3, p4: p4, p5: p5, p6: p6, p7: p7, p8: p8, p9: p9 }, (updatestart) => {
+    applyapi.updatestart({
+      apply_id: applyinfo.id, start_load: gbdload, start_submit_lng: lng, start_submit_lat: lat, start_submit_address: address, p1: p1, p2: p2, p3: p3, p4: p4, p5: p5, p6: p6, p7: p7, p8: p8, p9: p9,
+      formid: e.detail.formId }, (updatestart) => {
       wx.reLaunch({
         url: '/pages/driver/driver',
       })
