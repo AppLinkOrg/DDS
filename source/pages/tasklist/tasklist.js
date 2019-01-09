@@ -14,6 +14,9 @@ import {
 import {
   date
 } from "../../apis/order.api.js";
+import {
+  CertificateApi
+} from "../../apis/certificate.api.js";
 class Content extends AppBase {
   constructor() {
     super();
@@ -136,6 +139,7 @@ class Content extends AppBase {
       });
 
       orderapi.applylist({
+        transport: "Y", 
         orderid: orderinfo.id
       }, (applylist) => {
         this.Base.setMyData({
@@ -175,7 +179,8 @@ class Content extends AppBase {
 
   Deleteorder(e) {
     console.log(e);
-    var that = this;
+    var that=this;
+   
     var toapplylist = this.Base.getMyData().toapplylist;
     if (toapplylist != "") {
       wx.showToast({
@@ -201,6 +206,24 @@ class Content extends AppBase {
                 updataorder
               });
 
+              var certificateapi = new CertificateApi();
+              var instinfo = that.Base.getMyData().instinfo;
+              var orderapi = new OrderApi();
+              var orderinfo = this.Base.getMyData().orderinfo;
+              orderapi.applylist({
+                transport: "Y",
+                orderid: orderinfo.id
+              }, (applylist) => {
+                this.Base.setMyData({ applylist });
+                for (var i = 0; i < applylist.length; i++) {
+                  console.log("22222222222222" + applylist[i].driver_phone)
+                  //return;
+                  certificateapi.sendsms({ mobile: applylist[i].driver_phone, content: instinfo["sms4"] });
+                }
+              });
+
+              
+
               wx.reLaunch({
                 url: '/pages/home/home',
               })
@@ -213,6 +236,12 @@ class Content extends AppBase {
 
 
   update(e) {
+
+    
+    
+
+
+
     console.log(e);
     var that = this;
     wx.showModal({
@@ -232,6 +261,25 @@ class Content extends AppBase {
             that.Base.setMyData({
               updatataskstatus
             });
+            
+            var that = this;
+            var certificateapi = new CertificateApi();
+            var instinfo = that.Base.getMyData().instinfo;
+            var orderapi = new OrderApi();
+            var orderinfo = that.Base.getMyData().orderinfo;
+            orderapi.applylist({
+              transport: "Y,N",
+              orderid: orderinfo.id
+            }, (applylist) => {
+              this.Base.setMyData({ applylist });
+              for (var i = 0; i < applylist.length; i++) {
+                console.log("22222222222222" + applylist[i].driver_phone)
+
+                certificateapi.sendsms({ mobile: applylist[i].driver_phone, content: instinfo["sms4"] });
+              }
+            });
+            
+
             wx.reLaunch({
               url: '/pages/home/home',
             })

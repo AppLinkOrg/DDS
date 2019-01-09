@@ -3,7 +3,8 @@ import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api.js";
 import { OrderApi } from "../../apis/order.api.js";
-import { ExampleApi } from "../../apis/example.api.js";
+import { ExampleApi } from "../../apis/example.api.js"; 
+import { CertificateApi } from "../../apis/certificate.api.js";
 
 class Content extends AppBase {
   constructor() {
@@ -127,7 +128,9 @@ class Content extends AppBase {
 
   addcompleted(e){
     var that = this;
-    var date=this.Base.getMyData().date;
+
+
+
     wx.showModal({
       title: '',
       content: '您是否确认该司机已完成？是否已查看过磅单？',
@@ -137,6 +140,7 @@ class Content extends AppBase {
       confirmText: '确定',
       confirmColor: '#2699EC',
       success: function (res) {
+        
         if (res.confirm) {
           var orderapi = new OrderApi(); 
           // var id =e.currentTarget.id;
@@ -145,14 +149,49 @@ class Content extends AppBase {
           //     updateyundan
           //   });
           // });
+          var date = that.Base.getMyData().date;
+         
           var tobecpdlist = that.Base.getMyData().tobecpdlist;
+          var id = e.currentTarget.dataset.idx;
+          console.log(id+"yyyyyyyyyyy");
+          //return;
           orderapi.addcompleted({
-            id: tobecpdlist[0].id, company_confirm_time: date,
+            id: tobecpdlist[id].id, company_confirm_time: date,
             formid: e.detail.formId }, (addcompleted) => {
               //that.Base.info(addcompleted.return);
             that.Base.setMyData({
               addcompleted
             });
+
+            //  var tobecpdlist = this.Base.getMyData().tobecpdlist;
+              var photo = e.currentTarget.dataset.index;
+              var p1 = e.currentTarget.dataset.p1;
+
+              if (photo == "" && p1 == ""){
+                var certificateapi = new CertificateApi();
+                var instinfo = that.Base.getMyData().instinfo;
+                var orderapi = new OrderApi();
+                var id = e.currentTarget.dataset.idx;
+                console.log(id + "555555555");
+                var orderinfo = that.Base.getMyData().orderinfo;
+
+                console.log("22222222222222" + tobecpdlist[id].driver_phone)
+
+                certificateapi.sendsms({ mobile: tobecpdlist[id].driver_phone, content: instinfo["sms6"] });
+              }else{
+                var certificateapi = new CertificateApi();
+                var instinfo = that.Base.getMyData().instinfo;
+                var orderapi = new OrderApi();
+                var id = e.currentTarget.dataset.idx;
+                console.log(id + "555555555");
+                var orderinfo = that.Base.getMyData().orderinfo;
+
+                console.log("22222222222222" + tobecpdlist[id].driver_phone)
+
+                certificateapi.sendsms({ mobile: tobecpdlist[id].driver_phone, content: instinfo["sms5"] });
+              }
+              
+
             that.onMyShow();
           });
           

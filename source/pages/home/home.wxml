@@ -7,8 +7,8 @@
     
     <!-- <view class='num txt-white h6 text-center'>{{applylist.length}}</view> -->
     <!-- <image class='num' src='{{uploadpath}}resource/{{res.xiaoxitishi}}'></image> -->
-      <view wx:if='{{mineapplylist.length>0}}' class='xiaoxi text-center flex-row flex-column'>
-      <view class='txt-white h6 nm' style='margin-top:2rpx;padding-right:8rpx;'>{{mineapplylist.length}}</view>
+      <view wx:if='{{num.length>0}}' class='xiaoxi text-center flex-row flex-column'>
+      <view class='txt-white h6 nm' style='margin-top:2rpx;padding-right:8rpx;'>{{num}}</view>
       <image class='num' src='{{uploadpath}}resource/{{res.xiaoxitishi}}'></image>
       </view>
   </view>
@@ -147,6 +147,7 @@
         <view class='padding-20 flex-1'>
           <view class='txt-black h4'>{{item.enterprise_id_name}}</view>
           <view class='h4-5 margin-top-20'>运输单号：{{item.orderno}}</view>
+          
         </view>
 
         <!-- <image wx:if='{{item.enroll_deadline_timespan<=timestamp}}' class='icon-75 chaoshi' src='{{uploadpath}}resource/{{res.chaoshi}}'></image> -->

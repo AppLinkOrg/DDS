@@ -142,7 +142,7 @@ class Content extends AppBase {
 
       var certificateapi = new CertificateApi();
       var instinfo = this.Base.getMyData().instinfo;
-      certificateapi.sendsms({ content: instinfo["sms1"] });
+      certificateapi.sendsms({ content: instinfo["sms2"] });
 
 
       

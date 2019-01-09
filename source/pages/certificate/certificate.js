@@ -110,9 +110,6 @@ class Content extends AppBase {
 
     // return;
 
-
-
-
     var certificateapi = new CertificateApi();
     var data = e.detail.value;
     if (data.name == "") {
@@ -188,6 +185,7 @@ class Content extends AppBase {
     
 
     //return;
+    var that=this;
     wx.showModal({
       title: '修改资料',
       content: '您是否需要修改资料并重新等待审核？',
@@ -202,9 +200,7 @@ class Content extends AppBase {
             url: '/pages/updatedriver/updatedriver',
           })
 
-          var certificateapi = new CertificateApi();
-          var instinfo = that.Base.getMyData().instinfo;
-          certificateapi.sendsms({ mobile: "17608463082", content: instinfo["sms2"] });
+          
         }
       }
     });

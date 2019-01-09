@@ -30,10 +30,6 @@ class Content extends AppBase {
       timestamp : timestamp / 1000
     });
     
-    // console.log("当前时间戳为：" + timestamp);
-    // var n = timestamp * 1000;
-    // var date = new Date(n);
-    // console.log("当前时间为：" + n);
     var today = this.Base.util.FormatDate(new Date());
     var time = this.Base.util.FormatDateTime(new Date());
     console.log("当前日期为："+today);
@@ -84,7 +80,7 @@ class Content extends AppBase {
     }, (list) => {
       var memberinfo = this.Base.getMyData().memberinfo;
 
-      orderapi.applylist({ newstatus: "Y"  }, (applylist) => {
+      orderapi.applylist({ newstatus: "Y" }, (applylist) => {
         for (var i = 0; i < list.length; i++) {
           all[i] = 0;
           for (var j = 0; j < applylist.length; j++) {
@@ -114,7 +110,7 @@ class Content extends AppBase {
     }, (minelist) => {
       var memberinfo=this.Base.getMyData().memberinfo;
       for (var i = 0; i < minelist.length; i++) {
-        orderapi.applylist({ newstatus: "Y", order_id: minelist[i].id }, (mineapplylist) => {
+        orderapi.applylist({  }, (mineapplylist) => {
         for (var i = 0; i < minelist.length; i++) {
           num[i] = 0;
           for (var j = 0; j < mineapplylist.length; j++) {

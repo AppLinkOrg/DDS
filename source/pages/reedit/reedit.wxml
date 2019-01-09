@@ -57,7 +57,7 @@
           <view class=' h4-5 txt-gray margin-left-20' style='width:600rpx;'>起点企业</view>
         </view>
         <view class='h4 txt-black padding-top-10 padding-left-30 '>
-          <input placeholder='请输入起点企业名'  name='start_company'  ></input>
+          <input placeholder='请输入起点企业名' value='{{orderinfo.start_company}}'  name='start_company'  ></input>
         </view>
 
 
@@ -82,7 +82,7 @@
         </view>
 
         <view class='h4 txt-black padding-top-10 padding-left-30 '>
-          <input placeholder='请输入终点企业名'  name='end_company' ></input>
+          <input placeholder='请输入终点企业名' value='{{orderinfo.end_company}}'   name='end_company' ></input>
         </view>
         
         <view class='flex-row flex-center '>
