@@ -213,11 +213,11 @@
         </view>
         <view class="flex-1 margin-left-20">起点过磅单载重</view>
         <view wx:if='{{applyinfo.start_load==""}}' class='margin-right-20' style='border:1rpx solid #E8E8E8;border-radius:10rpx'>
-          <input placeholder='请填写起点过磅单载重' class='h5 padding-10 ' name='gbdload'></input>
+          <input placeholder='请填写起点过磅单载重' type='digit' class='h5 padding-10 ' name='gbdload'></input>
         </view>
 
         <view wx:if='{{applyinfo.start_load!=""}}' class='margin-right-20' style='border:1rpx solid #E8E8E8;border-radius:10rpx'>
-          <input placeholder='请填写起点过磅单载重' value='{{applyinfo.start_load}}' disabled='false' class='h5 padding-10 margin-right-20' name='gbdload'></input>
+          <input placeholder='请填写起点过磅单载重' type='digit' value='{{applyinfo.start_load}}' disabled='false' class='h5 padding-10 margin-right-20' name='gbdload'></input>
         </view>
 
       </view>
@@ -303,10 +303,10 @@
         </view>
         <view class="flex-1 margin-left-20">终点过磅单载重</view>
         <view wx:if='{{applyinfo.end_load==""}}' class='margin-right-20' style='border:1rpx solid #E8E8E8;border-radius:10rpx'>
-          <input placeholder='请填写终点过磅单载重' disabled='{{applyinfo.p1==""}}' bindtap='toast' class='h5 padding-10' name='end_load'></input>
+          <input placeholder='请填写终点过磅单载重' type='digit' disabled='{{applyinfo.p1==""}}' bindtap='toast' class='h5 padding-10' name='end_load'></input>
         </view>
         <view wx:if='{{applyinfo.end_load!=""}}' class='margin-right-20' style='border:1rpx solid #E8E8E8;border-radius:10rpx'>
-          <input placeholder='请填写终点过磅单载重' disabled='fales' value='{{applyinfo.end_load}}' class='h5 padding-10' name='end_load'></input>
+          <input placeholder='请填写终点过磅单载重' type='digit' disabled='fales' value='{{applyinfo.end_load}}' class='h5 padding-10' name='end_load'></input>
         </view>
       </view>
     </view>

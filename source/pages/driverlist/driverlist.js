@@ -91,7 +91,8 @@ class Content extends AppBase {
         if (res.confirm) {
           var exampleapi = new ExampleApi();
           var applylist = that.Base.getMyData().applylist;
-          exampleapi.updatestatus({ id: applylist[0].id }, (updatestatus) => {
+          var id=e.currentTarget.id;
+          exampleapi.updatestatus({ id: id}, (updatestatus) => {
             that.Base.setMyData({ updatestatus });
             that.onMyShow();
           });
@@ -129,7 +130,7 @@ class Content extends AppBase {
   addcompleted(e){
     var that = this;
 
-
+    
 
     wx.showModal({
       title: '',
@@ -174,21 +175,29 @@ class Content extends AppBase {
                 var id = e.currentTarget.dataset.idx;
                 console.log(id + "555555555");
                 var orderinfo = that.Base.getMyData().orderinfo;
+                var memberinfo = that.Base.getMyData().memberinfo;
+                //console.log("22222222222222" + tobecpdlist[id].driver_phone)
+                
+                var sms = instinfo["sms6"];
+                sms = sms.replace("$", tobecpdlist[id].order_orderno);
+                certificateapi.sendsms({ mobile: memberinfo.mobile, content: sms });
 
-                console.log("22222222222222" + tobecpdlist[id].driver_phone)
-
-                certificateapi.sendsms({ mobile: tobecpdlist[id].driver_phone, content: instinfo["sms6"] });
+                //certificateapi.sendsms({ mobile: memberinfo.mobile, content: instinfo["sms6"] });
+                //return;
               }else{
                 var certificateapi = new CertificateApi();
                 var instinfo = that.Base.getMyData().instinfo;
+
                 var orderapi = new OrderApi();
                 var id = e.currentTarget.dataset.idx;
                 console.log(id + "555555555");
                 var orderinfo = that.Base.getMyData().orderinfo;
 
-                console.log("22222222222222" + tobecpdlist[id].driver_phone)
+                var sms = instinfo["sms5"];
+                sms = sms.replace("$", tobecpdlist[id].vehicle);
+                certificateapi.sendsms({ mobile: tobecpdlist[id].driver_phone, content: sms });
 
-                certificateapi.sendsms({ mobile: tobecpdlist[id].driver_phone, content: instinfo["sms5"] });
+                //certificateapi.sendsms({ mobile: tobecpdlist[id].driver_phone, content: instinfo["sms5"] });
               }
               
 

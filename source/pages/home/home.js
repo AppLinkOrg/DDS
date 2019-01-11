@@ -102,35 +102,27 @@ class Content extends AppBase {
 
     });
 
-    orderapi.list({
-      open_id: UserInfo.openid,
-      orderby: "r_main.created_date desc",
-      taskstatus: "1,2,3,5,"
-//, member_id: memberinfo.id
-    }, (minelist) => {
+    orderapi.list({open_id: UserInfo.openid,orderby: "r_main.created_date desc",taskstatus: "1,2,3,5,"}, (minelist) => {
       var memberinfo=this.Base.getMyData().memberinfo;
-      for (var i = 0; i < minelist.length; i++) {
-        orderapi.applylist({  }, (mineapplylist) => {
-        for (var i = 0; i < minelist.length; i++) {
-          num[i] = 0;
-          for (var j = 0; j < mineapplylist.length; j++) {
-            if (minelist[i].id == mineapplylist[j].order_id) {
-              num[i]++;
-              console.log(num);
-            }
-          }
-        }
-        this.Base.setMyData({
-          mineapplylist,
-          num: num
-        });
-      });
-      }
+      
+
+      //for (var i = 0; i < minelist.length; i++) {
+      orderapi.applylist({ transport: "Y", company_id: memberinfo.id }, (mlist) => {
+          this.Base.setMyData({
+            mlist
+          });
+        })
+      //}
+
       this.Base.setMyData({
         minelist
       });
       
     });
+
+    
+
+
   }
   bindall(e) {
     console.log(e);

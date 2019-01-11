@@ -209,24 +209,33 @@ class Content extends AppBase {
               var certificateapi = new CertificateApi();
               var instinfo = that.Base.getMyData().instinfo;
               var orderapi = new OrderApi();
-              var orderinfo = this.Base.getMyData().orderinfo;
+              var orderinfo = that.Base.getMyData().orderinfo;
               orderapi.applylist({
                 transport: "Y",
                 orderid: orderinfo.id
               }, (applylist) => {
-                this.Base.setMyData({ applylist });
+
+                that.Base.setMyData({ applylist });
+
                 for (var i = 0; i < applylist.length; i++) {
                   console.log("22222222222222" + applylist[i].driver_phone)
                   //return;
-                  certificateapi.sendsms({ mobile: applylist[i].driver_phone, content: instinfo["sms4"] });
+
+                  var sms = instinfo["sms4"];
+                  sms = sms.replace("$", applylist[i].vehicle);
+                  certificateapi.sendsms({ mobile: applylist[i].driver_phone,content: sms });
+
                 }
+
+                wx.reLaunch({
+                  url: '/pages/home/home',
+                })
+
               });
 
               
 
-              wx.reLaunch({
-                url: '/pages/home/home',
-              })
+              
             });
           }
         }
@@ -236,11 +245,6 @@ class Content extends AppBase {
 
 
   update(e) {
-
-    
-    
-
-
 
     console.log(e);
     var that = this;
@@ -253,16 +257,13 @@ class Content extends AppBase {
       confirmText: '是',
       confirmColor: '#2699EC',
       success: function(res) {
+
+        
         if (res.confirm) {
           var orderapi = new OrderApi();
           orderapi.updatataskstatus({
             id: that.Base.options.id
           }, (updatataskstatus) => {
-            that.Base.setMyData({
-              updatataskstatus
-            });
-            
-            var that = this;
             var certificateapi = new CertificateApi();
             var instinfo = that.Base.getMyData().instinfo;
             var orderapi = new OrderApi();
@@ -271,18 +272,24 @@ class Content extends AppBase {
               transport: "Y,N",
               orderid: orderinfo.id
             }, (applylist) => {
-              this.Base.setMyData({ applylist });
+              that.Base.setMyData({ applylist });
+
               for (var i = 0; i < applylist.length; i++) {
                 console.log("22222222222222" + applylist[i].driver_phone)
 
-                certificateapi.sendsms({ mobile: applylist[i].driver_phone, content: instinfo["sms4"] });
+                var sms = instinfo["sms4"];
+                sms = sms.replace("$", applylist[i].vehicle);
+                certificateapi.sendsms({ mobile: applylist[i].driver_phone, content: sms });
               }
+
+              wx.reLaunch({
+                url: '/pages/home/home',
+              })
+
             });
             
 
-            wx.reLaunch({
-              url: '/pages/home/home',
-            })
+            
           });
         }
       }

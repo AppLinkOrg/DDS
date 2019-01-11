@@ -121,7 +121,10 @@ class Content extends AppBase {
 
       var certificateapi = new CertificateApi();
       var instinfo = this.Base.getMyData().instinfo;
-      certificateapi.sendsms({ content: instinfo["sms3"] });
+      var sms = instinfo["sms3"];
+      sms = sms.replace("$", carnumber);
+      certificateapi.sendsms({ content: sms });
+
 
 
       var pages = getCurrentPages();

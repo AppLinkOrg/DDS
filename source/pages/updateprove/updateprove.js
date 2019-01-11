@@ -81,7 +81,11 @@ class Content extends AppBase {
 
       var certificateapi = new CertificateApi();
       var instinfo = this.Base.getMyData().instinfo;
-      certificateapi.sendsms({ content: instinfo["sms1"] });
+      var sms = instinfo["sms1"];
+      sms = sms.replace("$", enterprisename);
+      certificateapi.sendsms({ content: sms });
+
+
 
       wx.showModal({
         title: '',
@@ -93,8 +97,8 @@ class Content extends AppBase {
         confirmColor: '#2699EC',
         success: function (res) {
           if (res.confirm) {
-            wx.navigateBack({
-            })
+             wx.navigateBack({
+             })
           }
         }
       });

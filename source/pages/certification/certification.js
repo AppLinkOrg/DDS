@@ -31,7 +31,9 @@ class Content extends AppBase {
     var UserInfo = this.Base.getMyData().UserInfo;
     orderapi.enterpriseinfo( {} , (errinfo) => {
       this.Base.setMyData({ errinfo })
+      
     })
+
     // orderapi.qrcode({id:3,filename:'a.png'}, (qrcode) => {
     //   this.Base.setMyData({ qrcode })
     // })
@@ -90,7 +92,11 @@ class Content extends AppBase {
 
       var certificateapi = new CertificateApi();
       var instinfo = this.Base.getMyData().instinfo;
-      certificateapi.sendsms({ content: instinfo["sms1"] });
+      var sms = instinfo["sms1"];
+      //管理员您好，企业：$，在平台上提交了认证，请审核。
+      //管理员您好，企业：腾讯有限公司，在平台上提交了认证，请审核。
+      sms = sms.replace("$", enterprisename);
+      certificateapi.sendsms({ content: sms });
 
       wx.showModal({
         title: '',

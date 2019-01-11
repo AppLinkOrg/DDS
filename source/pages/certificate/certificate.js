@@ -148,7 +148,11 @@ class Content extends AppBase {
     }, (updetedriver) => {
       
       var instinfo = this.Base.getMyData().instinfo;
-      certificateapi.sendsms({ content: instinfo["sms2"] });
+      var sms = instinfo["sms2"];
+      sms = sms.replace("$", name);
+      certificateapi.sendsms({ content: sms });
+
+
 
       wx.showModal({
         title: '',
