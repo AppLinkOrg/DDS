@@ -391,13 +391,14 @@ class Content extends AppBase {
       } else {
 
         var orderno = this.Base.getMyData().orderno;
+        var member_mobile = this.Base.getMyData().member_mobile;
         console.log("lllllllllllllllllllllllll" + orderno);
         var certificateapi = new CertificateApi();
         var instinfo = that.Base.getMyData().instinfo;
         var sms = instinfo["sms7"];
         sms = sms.replace("$", orderno);
 
-        certificateapi.sendsms({  content: sms });
+        certificateapi.sendsms({ mobile: member_mobile,  content: sms });
 
         //  if(ret.code==0){
 

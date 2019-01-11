@@ -180,6 +180,7 @@ class Content extends AppBase {
                 
                 var sms = instinfo["sms6"];
                 sms = sms.replace("$", tobecpdlist[id].order_orderno);
+                console.log(memberinfo.mobile);
                 certificateapi.sendsms({ mobile: memberinfo.mobile, content: sms });
 
                 //certificateapi.sendsms({ mobile: memberinfo.mobile, content: instinfo["sms6"] });
