@@ -180,7 +180,6 @@ class Content extends AppBase {
   Deleteorder(e) {
     console.log(e);
     var that=this;
-   
     var toapplylist = this.Base.getMyData().toapplylist;
     if (toapplylist != "") {
       wx.showToast({
@@ -200,8 +199,12 @@ class Content extends AppBase {
           if (res.confirm) {
             var orderapi = new OrderApi();
             orderapi.updataorder({
-              id: that.Base.options.id
+              id: that.Base.options.id,
+              formid: e.detail.formId
             }, (updataorder) => {
+              console.log(updataorder);
+              // that.Base.info(updataorder.return);
+              // return;
               that.Base.setMyData({
                 updataorder
               });
@@ -209,12 +212,12 @@ class Content extends AppBase {
               var certificateapi = new CertificateApi();
               var instinfo = that.Base.getMyData().instinfo;
               var orderapi = new OrderApi();
-              var orderinfo = this.Base.getMyData().orderinfo;
+              var orderinfo = that.Base.getMyData().orderinfo;
               orderapi.applylist({
                 transport: "Y",
                 orderid: orderinfo.id
               }, (applylist) => {
-                this.Base.setMyData({ applylist });
+                that.Base.setMyData({ applylist });
                 for (var i = 0; i < applylist.length; i++) {
                   console.log("22222222222222" + applylist[i].driver_phone)
                   //return;
