@@ -60,7 +60,9 @@ class Content extends AppBase {
         list
       });
     })
-    orderapi.applylist({ transport:'Y,N'}, (apylist) => {
+    orderapi.applylist({
+      transport: 'Y,N'
+    }, (apylist) => {
       that.Base.setMyData({
         apylist
       });
@@ -274,8 +276,8 @@ class Content extends AppBase {
     console.log("这句话" + memberinfo.mobile);
     //return;
     var driverinfo = this.Base.getMyData().driverinfo;
-    var apylist=this.Base.getMyData().apylist;
-    
+    var apylist = this.Base.getMyData().apylist;
+
 
 
     //console.log("sssss" + driverinfo.id)
@@ -341,7 +343,7 @@ class Content extends AppBase {
     //   // console.log("萨克斯开始开始"+drivermobile)
     //  }
     //var driverphone = this.Base.getMyData().driverphone; 
-    
+
     //return;
     var orderid = this.Base.getMyData().id;
     var vehicle = this.Base.getMyData().elcontact;
@@ -353,8 +355,11 @@ class Content extends AppBase {
 
 
     var info = this.Base.getMyData().info;
+    console.log(info.member_mobile + "yyyyyyyyyyyyyyyyyyyyyyy");
+    //return;
     orderapi.addapply({
       status: "A",
+      mobile: info.member_mobile,
       transport: "Y",
       contype: "B",
       orderid: orderid,
@@ -369,7 +374,7 @@ class Content extends AppBase {
       car_load: enroll_carload,
       openid: UserInfo.openid,
       formid: e.detail.formId
-    }, (addapply) => {
+    }, (ret) => {
       var driverinfo = this.Base.getMyData().driverinfo;
       if (driverinfo == null || driverinfo.status != "A") {
         wx.showModal({
@@ -380,6 +385,7 @@ class Content extends AppBase {
           cancelColor: '#EE2222',
           confirmText: '确定',
           confirmColor: '#2699EC',
+
           success: function(res) {
             if (res.confirm) {
               wx.navigateTo({
@@ -390,57 +396,55 @@ class Content extends AppBase {
         });
       } else {
 
-        var orderno = this.Base.getMyData().orderno;
-        var member_mobile = this.Base.getMyData().member_mobile;
-        console.log("lllllllllllllllllllllllll" + orderno);
-        var certificateapi = new CertificateApi();
-        var instinfo = that.Base.getMyData().instinfo;
-        var sms = instinfo["sms7"];
-        sms = sms.replace("$", orderno);
+        if (ret.code == 0) {
 
-        certificateapi.sendsms({ mobile: member_mobile,  content: sms });
+          wx.navigateBack({
 
-        //  if(ret.code==0){
+            })
+            // ({
+            //   url: '/pages/driver/driver'
+            // }),
+            wx.showToast({
+              title: '报名成功',
+              duration: 1000
+            });
 
-        wx.navigateBack({
+          //测试部分
+        } else {
+          var api = new WechatApi();
 
-        })
-        // ({
-        //   url: '/pages/driver/driver'
-        // }),
-        wx.showToast({
-          title: '报名成功',
-          duration: 1000
-        });
+          api.prepay({
+              id: ret.return
+            },
+            (ret) => {
+              ret.success = function() {
+                wx.navigateBack({
+                  })
+                  wx.showToast({
+                    title: '报名成功',
+                    duration: 1000
+                  });
+              }
+              wx.requestPayment(ret)
+            });
+
+          var orderno = this.Base.getMyData().orderno;
+          var member_mobile = this.Base.getMyData().member_mobile;
+          console.log("lllllllllllllllllllllllll" + orderno);
+          var certificateapi = new CertificateApi();
+          var instinfo = that.Base.getMyData().instinfo;
+          var sms = instinfo["sms7"];
+          sms = sms.replace("$", orderno);
+
+          certificateapi.sendsms({
+            mobile: member_mobile,
+            content: sms
+          });
 
 
-        //测试部分
-        // }else{
-        //  var api = new WechatApi();
-        //  api.prepay({
-        //    id:ret.return
-        //  },
-        //   (ret) => {
-        //     ret.success = function () {
+        }
 
-        //      wx.navigateBack({
-
-        //     })
-        // ({
-        //   url: '/pages/driver/driver'
-        // }),
-        //   wx.showToast({
-        //     title: '报名成功',
-        //       duration: 1000
-        //     });
       }
-      // wx.requestPayment(ret)
-      // });
-      // }
-
-
-
-      // }
     });
 
   }

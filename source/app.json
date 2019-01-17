@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/youke/youke",
+    "pages/agreement/agreement",
     "pages/applypaylist/applypaylist",
     "pages/orderpaylist/orderpaylist",
     "pages/my/my",
@@ -40,9 +41,13 @@
     "pages/orderdetails/orderdetails",
     "pages/tasklist/tasklist",
     "pages/noticeinfo/noticeinfo",
-    "pages/noticelist/noticelist",
-    "pages/agreement/agreement"
+    "pages/noticelist/noticelist"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "enablePullDownRefresh": true,

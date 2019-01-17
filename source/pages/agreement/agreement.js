@@ -13,9 +13,14 @@ class Content extends AppBase {
     super.onLoad(options);
   }
   onMyShow() {
-    var that = this;
+    var that = this; 
     wx.setNavigationBarTitle({
       title: "协议书",
+    })
+
+    var api = new InstApi();
+    api.agreement({}, (agreement) => {
+      this.Base.setMyData({ agreement });
     })
   }
 }

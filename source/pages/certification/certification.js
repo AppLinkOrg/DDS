@@ -71,11 +71,13 @@ class Content extends AppBase {
     var creditcode = this.Base.getMyData().creditcode;
     var photo = this.Base.getMyData().photo;
     var UserInfo = this.Base.getMyData().UserInfo;
+    var memberinfo = this.Base.getMyData().memberinfo;
     var that = this;
     var orderapi = new OrderApi();
     console.log(UserInfo.nickName);
     orderapi.authenticate({
        status: "I",
+       mobile: memberinfo.mobile,
        open_id: UserInfo.openid,
        enterprisename: enterprisename,
        creditcode: creditcode,

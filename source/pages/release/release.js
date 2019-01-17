@@ -10,7 +10,10 @@ import {
 } from "../../apis/inst.api.js";
 import {
   OrderApi
-} from "../../apis/order.api.js";
+} from "../../apis/order.api.js"; 
+import {
+  WechatApi
+} from "../../apis/wechat.api.js";
 
 class Content extends AppBase {
   constructor() {
@@ -564,6 +567,7 @@ class Content extends AppBase {
 
 
   confirm(e) {
+    var that=this;
     var data = e.detail.value;
     var errinfo = this.Base.getMyData().errinfo;
     if (errinfo == null || errinfo.status != "A") {
@@ -745,35 +749,36 @@ class Content extends AppBase {
       // end_id:end_id,
       remark: remark,
       enterprise_id: companyname
-    }, (create) => {
-      //if(ret.code==0){
+    }, (ret) => {
+      if(ret.code==0){
 
         wx.reLaunch({
           url: '/pages/home/home'
         })
-        this.onMyShow();
+
+        that.onMyShow();
         wx.showToast({
           title: '发布成功',
           duration: 1000
         });
-      //} else if (ret.code == 0) {
-        //var api = new WechatApi();
-       // api.prepayc({id:ret.return
-      //  },
-         // (ret) => {
-          //  ret.success = function () {
-          //    wx.reLaunch({
-          //      url: '/pages/home/home'
-          //    })
-          //    this.onMyShow();
-          //    wx.showToast({
-         //       title: '发布成功',
-         //       duration: 1000
-         //     });
-         //   }
-         //   wx.requestPayment(ret);
-         // });
-     // }
+      } else if (ret.code == 1) {
+        var api = new WechatApi();
+        api.prepayc({id:ret.return
+        },
+          (ret) => {
+            ret.success = function () {
+              wx.reLaunch({
+                url: '/pages/home/home'
+              })
+              that.onMyShow();
+              wx.showToast({
+                title: '发布成功',
+                duration: 1000
+              });
+            }
+            wx.requestPayment(ret);
+          });
+      }
     })
   }
 

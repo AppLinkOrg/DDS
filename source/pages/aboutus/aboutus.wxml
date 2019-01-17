@@ -1,8 +1,9 @@
 <!--pages/aboutus/aboutus.wxml-->
 <view class='flex-row flex-column '>
 <image class='icon_top' src='{{uploadpath}}resource/{{res.enterprise_bg}}'></image>
-<view class='h4 txt-black txt-bold margin-top'>大德森</view>
+<view class='h4 txt-black txt-bold margin-top'>大得森</view>
 </view>
+
 
 <!-- <view class='margin-40 bg-white border-radius'  >
 <view class='txt-primary padding-30 h4-5 ' style='border-bottom:1rpx dashed #e5e4e7'>官方微信</view>
