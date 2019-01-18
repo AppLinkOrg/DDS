@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/youke/youke",
+    "pages/aboutus/aboutus",
     "pages/agreement/agreement",
     "pages/applypaylist/applypaylist",
     "pages/orderpaylist/orderpaylist",
@@ -25,7 +26,6 @@
     "pages/team/team",
     "pages/taskhistory/taskhistory",
     "pages/commontasks/commontasks",
-    "pages/aboutus/aboutus",
     "pages/historydetail/historydetail",
     "pages/driverlist/driverlist",
     "pages/certification/certification",

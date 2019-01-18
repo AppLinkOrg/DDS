@@ -360,6 +360,7 @@ class Content extends AppBase {
     orderapi.addapply({
       status: "A",
       mobile: info.member_mobile,
+      orderstus:"A",
       transport: "Y",
       contype: "B",
       orderid: orderid,
@@ -424,22 +425,24 @@ class Content extends AppBase {
                     title: '报名成功',
                     duration: 1000
                   });
+
+                var orderno = this.Base.getMyData().orderno;
+                var member_mobile = this.Base.getMyData().member_mobile;
+               // console.log("lllllllllllllllllllllllll" + orderno);
+                var certificateapi = new CertificateApi();
+                var instinfo = that.Base.getMyData().instinfo;
+                var sms = instinfo["sms7"];
+                sms = sms.replace("$", orderno);
+                certificateapi.sendsms({
+                  mobile: member_mobile,
+                  content: sms
+                });
+
               }
               wx.requestPayment(ret)
             });
 
-          var orderno = this.Base.getMyData().orderno;
-          var member_mobile = this.Base.getMyData().member_mobile;
-          console.log("lllllllllllllllllllllllll" + orderno);
-          var certificateapi = new CertificateApi();
-          var instinfo = that.Base.getMyData().instinfo;
-          var sms = instinfo["sms7"];
-          sms = sms.replace("$", orderno);
-
-          certificateapi.sendsms({
-            mobile: member_mobile,
-            content: sms
-          });
+         
 
 
         }

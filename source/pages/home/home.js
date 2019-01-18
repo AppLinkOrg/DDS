@@ -59,6 +59,7 @@ class Content extends AppBase {
     var num = [];
     var all = [];
     var UserInfo = this.Base.getMyData().UserInfo;
+    var memberinfo = this.Base.getMyData().memberinfo;
     var orderapi = new OrderApi();
     // orderapi.enterpriselist({
     //   open_id: UserInfo.openid
@@ -73,6 +74,13 @@ class Content extends AppBase {
         errinfo
       })
     })
+
+    orderapi.applylist({ transport: "Y", company_id: memberinfo.id, order_status:"B" }, (mlist) => {
+      this.Base.setMyData({
+        mlist
+      });
+    })
+
     orderapi.list({
       orderby: "r_main.created_date desc",
       getall: "Y",
@@ -103,16 +111,13 @@ class Content extends AppBase {
     });
 
     orderapi.list({open_id: UserInfo.openid,orderby: "r_main.created_date desc",taskstatus: "1,2,3,5,"}, (minelist) => {
-      var memberinfo=this.Base.getMyData().memberinfo;
+      
       
 
       //for (var i = 0; i < minelist.length; i++) {
-      orderapi.applylist({ transport: "Y", company_id: memberinfo.id }, (mlist) => {
-          this.Base.setMyData({
-            mlist
-          });
-        })
-      //}
+      
+        
+     // }
 
       this.Base.setMyData({
         minelist

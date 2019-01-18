@@ -15,3 +15,6 @@ Page{
 .mid{
   border-top: 10rpx solid #e5e4e7;
 }
+.border_top{
+border-top: 1rpx solid #e5e4e7;
+}

@@ -200,6 +200,7 @@ class Content extends AppBase {
             var orderapi = new OrderApi();
             orderapi.updataorder({
               id: that.Base.options.id,
+              orderid: that.Base.options.id,
               formid: e.detail.formId
             }, (updataorder) => {
               console.log(updataorder);
