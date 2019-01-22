@@ -3,7 +3,7 @@
 
   <cover-view style='margin-top:55vh;' >
     <cover-view class='box-shadow routerbox padding-20'>
-      <cover-view wx:if="{{route[0]!=null&&route[1]!=null}}" class='padding-20 h6 text-right txt-gray'>行程大约{{distance}}，需要{{duration}}
+      <cover-view wx:if="{{route[0]!=null&&route[1]!=null}}" class='padding-20 h6 text-right txt-gray'>行程大约{{distance}}，大约需要{{duration}}
       </cover-view>
       <block wx:for="{{route}}" wx:key="key" wx:for-index="idx">
         <cover-view class='flex-row flex-center padding-20'>
@@ -35,7 +35,7 @@
       </cover-view> -->
     </cover-view>
 
-    <button class='btnConfirm' bindtap='confirm' >
+    <button class='btnConfirm'  bindtap='confirm' >
       确认路线
     </button>
 

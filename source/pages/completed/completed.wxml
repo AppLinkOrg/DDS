@@ -5,7 +5,7 @@
 
 <view wx:if='{{applylist.length>0}}'>
 
-  <navigator url='/pages/driverhistory/driverhistory?id={{item.id}}' wx:for='{{applylist}}' wx:key='k' class="nr1  flex-center flex-wrap margin-top-20">
+  <navigator url='/pages/driverhistory/driverhistory?id={{item.id}}' wx:for='{{applylist}}' wx:key='k' class="nr1  flex-center flex-wrap margin-top-20" wx:if='{{item.orderstus=="B"||item.transport=="L"}}'>
     <view class="asd flex-1  " style='width:95%'>
 
       <view class="flex-center flex-row margin-top-20">
@@ -69,6 +69,9 @@
         <view class="flex-1 margin-left-20">货运类型</view>
         <view class="margin-right-20">{{item.order_stuff_type_id}}</view>
       </view>
+    </view>
+    <view class='h5 padding-20 text-center txt-white' wx:if='{{item.orderstus=="B"}}' style='background:#F25C5B;width:90%'>
+    已取消运输单
     </view>
   </navigator>
 </view>

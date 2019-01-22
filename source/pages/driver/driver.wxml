@@ -233,7 +233,9 @@
           <view class="margin-left-20 " id="z2" style='margin-top:30rpx'></view>
           <view class="margin-left-20 margin-top-10">{{ybm[idx].order_end_company}}</view>
         </view>
-        <view class="margin-left-30 h5 margin-top-10 txt-gray" style=' margin-left:60rpx'>总里程：{{ybm[idx].order_distance}}</view>
+        <view class="margin-left-30 h5 margin-top-10 txt-gray" wx:if='{{ybm[idx].order_distance!=""||ybm[idx].order_distance!="undefined"}}' style=' margin-left:60rpx'>总里程：{{ybm[idx].order_distance}}</view>
+<view class="margin-left-30 h5 margin-top-10 txt-gray" wx:if='{{ybm[idx].order_distance==""||ybm[idx].order_distance=="undefined"}}' style=' margin-left:60rpx'>总里程：距离未成功获取</view>
+
       </view>
 
     </view>

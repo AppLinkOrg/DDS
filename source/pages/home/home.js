@@ -75,7 +75,7 @@ class Content extends AppBase {
       })
     })
 
-    orderapi.applylist({ transport: "Y", company_id: memberinfo.id, order_status:"B" }, (mlist) => {
+    orderapi.applylist({ transport: "Y", company_id: memberinfo.id, orderstus:"A" }, (mlist) => {
       this.Base.setMyData({
         mlist
       });

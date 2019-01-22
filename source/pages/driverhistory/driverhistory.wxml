@@ -127,7 +127,7 @@
     </view>
   </view>
 
-<view class="asd " style='width:100%' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
+  <view class="asd " style='width:100%' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
     <view class="flex-row flex-center margin-top-20 " style=' margin-bottom:30rpx'>
       <view class="margin-left-20">
         <image class='icon-25' src='{{uploadpath}}resource/{{res.yunshudunshu}}'></image>
@@ -209,7 +209,7 @@
 
             <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo8}}' class='startimg margin-5 {{applyinfo.photo8=="undefined"||applyinfo.photo8==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo8}}'></image>
 
-            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo9}}' class='startimg margin-5 {{applyinfo.photo9=="undefined"||applyinfo.photo9==""?"null_img":""}}'  mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo9}}'></image>
+            <image bindtap='viewPhoto' id='{{uploadpath}}photo/{{applyinfo.photo9}}' class='startimg margin-5 {{applyinfo.photo9=="undefined"||applyinfo.photo9==""?"null_img":""}}' mode='aspectFill' src='{{uploadpath}}photo/{{applyinfo.photo9}}'></image>
 
           </view>
 
@@ -235,23 +235,11 @@
       </view>
 
 
-      <!-- <view class='btn'>
-        <view class="flex-wrap" wx:if='{{applyinfo.photo==""&&applyinfo.p1!=""}}'>
-          <button class="h4 bm" style='margin-top:118rpx' id="anniu" form-type='submit'>确认到达目的地</button>
-        </view>
-      </view> -->
-
-      <!-- <view>
-        <view class="flex-wrap" wx:if='{{applyinfo.photo==""}}'>
-          <button class="h4 bm" style='margin-top:118rpx' id="anniu" form-type='submit'>确认到达目的地</button>
-        </view>
-      </view> -->
-
-
-
-
     </view>
 
   </form>
 
 </view>
+<form bindsubmit="Deleteorder" wx:if='{{applyinfo.orderstus=="B"}}' bindreset="formReset" report-submit="{{true}}">
+  <button form-type='submit' class="h4 bm" style='margin-top:118rpx;border-radius:0' id="anniu">取消报名</button>
+</form>

@@ -213,6 +213,39 @@ class Content extends AppBase {
     })
   }
 
+  Deleteorder(e) {
+    console.log(e);
+    var that = this;
+    var applyinfo = this.Base.getMyData().applyinfo;
+    wx.showModal({
+      title: '',
+      content: '您是否需要取消本次报名？',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#EE2222',
+      confirmText: '确定',
+      confirmColor: '#2699EC',
+      success: function (res) {
+        if (res.confirm) {
+          var orderapi = new OrderApi();
+          orderapi.deleteapply({
+            idlist: applyinfo.id,
+            formid: e.detail.formId
+          }, (deleteapply) => {
+            //that.Base.info(deleteapply.return);
+            that.Base.setMyData({
+              deleteapply
+            });
+            wx.navigateBack({
+
+            })
+            that.onMyShow();
+          });
+        }
+      }
+    })
+  }
+
 }
 var tab = null;
 var content = new Content();
@@ -227,4 +260,5 @@ body.photo2 = content.photo2;
 body.photo3 = content.photo3;
 body.photo4 = content.photo4;
 body.Getover = content.Getover;
+body.Deleteorder = content.Deleteorder;
 Page(body)

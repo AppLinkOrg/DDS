@@ -1,74 +1,90 @@
  //pages/driver/driver.js
-import { AppBase } from "../../appbase";
-import { ApiConfig } from "../../apis/apiconfig";
-import { InstApi } from "../../apis/inst.api.js";
-import { OrderApi } from "../../apis/order.api.js";
-import { date } from "../../apis/order.api.js";
-import { CertificateApi } from "../../apis/certificate.api.js";
+ import {
+   AppBase
+ } from "../../appbase";
+ import {
+   ApiConfig
+ } from "../../apis/apiconfig";
+ import {
+   InstApi
+ } from "../../apis/inst.api.js";
+ import {
+   OrderApi
+ } from "../../apis/order.api.js";
+ import {
+   date
+ } from "../../apis/order.api.js";
+ import {
+   CertificateApi
+ } from "../../apis/certificate.api.js";
 
-class Content extends AppBase {
-  constructor() {
-    super();
-  }
-  onLoad(options) {
-    this.Base.Page = this;
-    //options.id=5;
-    this.Base.setMyData({
-    })
+ class Content extends AppBase {
+   constructor() {
+     super();
+   }
+   onLoad(options) {
+     this.Base.Page = this;
+     //options.id=5;
+     this.Base.setMyData({
 
-    this.setData({
-      array: ['所有', '离我最近', '费用最高'],
-      objectArray: [
-        {
-          id: 0,
-          name: '所有'
-        },
-        {
-          id: 1,
-          name: '离我最近'
-        },
-        {
-          id: 2,
-          name: '费用最高'
-        }
+     })
 
-      ],
-      index: 0,
-      tab: 0,
+     this.setData({
+       array: ['所有', '离我最近', '费用最高'],
+       objectArray: [{
+           id: 0,
+           name: '所有'
+         },
+         {
+           id: 1,
+           name: '离我最近'
+         },
+         {
+           id: 2,
+           name: '费用最高'
+         }
 
-
-    })
-    super.onLoad(options);
-  }
-
-
-  //界面标题
-  setPageTitle() {
-    wx.setNavigationBarTitle({
-      title: '报名详情',
-
-    });
-  }
+       ],
+       index: 0,
+       tab: 0,
 
 
-  onMyShow() {
-    var that=this;
-    var api = new CertificateApi();
-    var orderapi = new OrderApi();
-    var UserInfo=this.Base.getMyData().UserInfo;
-    //  api.riverlist({ openid: UserInfo.openid }, (list) => {
-    //    that.Base.setMyData({
-    //      list
-    //    });
-    //  })
-    orderapi.info({ id: 16}, (info) => {
-      that.Base.setMyData({
-        info
-      });
-    })
-    
-    orderapi.applyinfo({id:this.Base.options.id}, (applyinfo) => {
-      var year2 = new Array();
+     })
+     super.onLoad(options);
+   }
+
+
+   //界面标题
+   setPageTitle() {
+     wx.setNavigationBarTitle({
+       title: '报名详情',
+
+     });
+   }
+
+
+   onMyShow() {
+     var that = this;
+     var api = new CertificateApi();
+     var orderapi = new OrderApi();
+     var UserInfo = this.Base.getMyData().UserInfo;
+     //  api.riverlist({ openid: UserInfo.openid }, (list) => {
+     //    that.Base.setMyData({
+     //      list
+     //    });
+     //  })
+     orderapi.info({
+       id: 16
+     }, (info) => {
+       that.Base.setMyData({
+         info
+       });
+     })
+
+     orderapi.applyinfo({
+       id: this.Base.options.id
+     }, (applyinfo) => {
+       var year2 = new Array();
        var month2 = new Array();
        var day2 = new Array();
        var hh2 = new Array();
@@ -78,8 +94,8 @@ class Content extends AppBase {
        var day1 = new Array();
        var hh1 = new Array();
        var mm1 = new Array();
-      var myDate1 = new Date(Date.parse(applyinfo.order_start_time.replace(/-/g, "/")));
-      var myDate2 = new Date(Date.parse(applyinfo.order_end_time.replace(/-/g, "/")));
+       var myDate1 = new Date(Date.parse(applyinfo.order_start_time.replace(/-/g, "/")));
+       var myDate2 = new Date(Date.parse(applyinfo.order_end_time.replace(/-/g, "/")));
        year1 = myDate1.getFullYear();
        month1 = myDate1.getMonth() + 1;
        day1 = myDate1.getDate();
@@ -112,7 +128,7 @@ class Content extends AppBase {
        if (hh2 < 10) {
          hh2 = '0' + hh2;
        }
-       if (mm2< 10) {
+       if (mm2 < 10) {
          mm2 = '0' + mm2;
        }
        this.Base.setMyData({
@@ -130,31 +146,43 @@ class Content extends AppBase {
        });
 
 
-      orderapi.memberinfo({ id: applyinfo.order_enroll_id }, (enrollinfo) => {
-        this.Base.setMyData({ enrollinfo });
-      });
-      orderapi.memberinfo({ id: applyinfo.order_start_id }, (startinfo) => {
-        this.Base.setMyData({ startinfo });
-      });
-      orderapi.memberinfo({ id: applyinfo.order_end_id }, (endinfo) => {
-        this.Base.setMyData({ endinfo });
-      });
+       orderapi.memberinfo({
+         id: applyinfo.order_enroll_id
+       }, (enrollinfo) => {
+         this.Base.setMyData({
+           enrollinfo
+         });
+       });
+       orderapi.memberinfo({
+         id: applyinfo.order_start_id
+       }, (startinfo) => {
+         this.Base.setMyData({
+           startinfo
+         });
+       });
+       orderapi.memberinfo({
+         id: applyinfo.order_end_id
+       }, (endinfo) => {
+         this.Base.setMyData({
+           endinfo
+         });
+       });
 
-    })
+     })
 
-  //  var orderapi = new OrderApi();
-  //    orderapi.applylist({}, (list1) => {
-  //  })
+     //  var orderapi = new OrderApi();
+     //    orderapi.applylist({}, (list1) => {
+     //  })
 
-  }
+   }
 
-  Deleteorder(e) {
-    console.log(e);
-    var that = this;
-    var applyinfo = this.Base.getMyData().applyinfo;
-    // var id = this.Base.getMyData().applyinfo.orderid;
-    //this.Base.info(e.detail.formId);
-    //return;
+   Deleteorder(e) {
+     console.log(e);
+     var that = this;
+     var applyinfo = this.Base.getMyData().applyinfo;
+     // var id = this.Base.getMyData().applyinfo.orderid;
+     //this.Base.info(e.detail.formId);
+     //return;
 
      wx.showModal({
        title: '',
@@ -164,19 +192,20 @@ class Content extends AppBase {
        cancelColor: '#EE2222',
        confirmText: '确定',
        confirmColor: '#2699EC',
-       success: function (res) {
+       success: function(res) {
          if (res.confirm) {
            var orderapi = new OrderApi();
            orderapi.deleteapply({
              idlist: applyinfo.id,
-       formid: e.detail.formId }, (deleteapply) => {
+             formid: e.detail.formId
+           }, (deleteapply) => {
              //that.Base.info(deleteapply.return);
              that.Base.setMyData({
                deleteapply
              });
-              wx.navigateBack({
-                
-              })
+             wx.navigateBack({
+
+             })
              that.onMyShow();
            });
          }
@@ -184,11 +213,11 @@ class Content extends AppBase {
      })
    }
 
-}
-var tab = null;
-var content = new Content();
-var body = content.generateBodyJson();
-body.onLoad = content.onLoad;
-body.onMyShow = content.onMyShow;
-body.Deleteorder = content.Deleteorder;
-Page(body)
+ }
+ var tab = null;
+ var content = new Content();
+ var body = content.generateBodyJson();
+ body.onLoad = content.onLoad;
+ body.onMyShow = content.onMyShow;
+ body.Deleteorder = content.Deleteorder;
+ Page(body)

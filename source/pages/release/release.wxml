@@ -23,6 +23,7 @@
           <picker mode='date' bindchange="bindstartdate" start='{{today}}'>
             <input placeholder-style="font-size:35rpx;" bindinput='startcontactdate' name='scdate' class='h3 txt-black margin-top-10  text-center' disabled='true' placeholder='请选择开始日期' value='{{startdate}}'></input>
           </picker>
+          
           <view class='flex-row flex-center margin-top-20'>
             <!-- <view class='h4-5'>周三</view> -->
             <picker mode='time' bindchange="bindstarttime" disabled='{{startdate==""}}'>

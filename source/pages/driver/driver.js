@@ -294,7 +294,7 @@ class Content extends AppBase {
               
               if (list[a].id == list1[b].order_id && UserInfo.openid == list1[b].openid && list1[b].transport == "Y" && list1[b].contype == "B"  ) {
                 list[a].status = "O";
-              } 
+              }
               if (list[a].id == list1[b].order_id && UserInfo.openid == list1[b].openid && list1[b].transport == "N" && list1[b].contype == "B") {
                 list[a].status = "M";
               }

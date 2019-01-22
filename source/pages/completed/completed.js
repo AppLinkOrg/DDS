@@ -27,7 +27,7 @@ class Content extends AppBase {
         driverinfo
       });
 
-      orderapi.applylist({ transport: "L", carriage_driver: driverinfo.id }, (applylist) => {
+      orderapi.applylist({ carriage_driver: driverinfo.id }, (applylist) => {
         this.Base.setMyData({ applylist })
         //this.onMyShow();
       })

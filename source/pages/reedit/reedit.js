@@ -717,6 +717,7 @@ class Content extends AppBase {
     // var edcontact = this.Base.getMyData().edcontact;
     var remark = this.Base.getMyData().remark;
     var today = this.Base.getMyData().today;
+    
     var time = this.Base.getMyData().time;
     var check = this.Base.getMyData().check;
     var orderapi = new OrderApi();
@@ -725,9 +726,20 @@ class Content extends AppBase {
       var companyname = this.Base.getMyData().errinfo.id;
     }
     console.log(companyname);
+    
+    var timestamp = Date.parse(new Date()) / 1000;
+    var scdate = Date.parse(data.scdate) / 1000;
+    if (scdate > timestamp) {
+      this.Base.setMyData({ st: 3 })
+    }
+    else {
+      this.Base.setMyData({ st: 1 })
+    }
+    var st = this.Base.getMyData().st;
+
     orderapi.create({
       status: "A",
-      taskstatus: "3",
+      taskstatus: st,
       cmptask: check,
       open_id: UserInfo.openid,
       enroll_start: startdate + " " + starttime,

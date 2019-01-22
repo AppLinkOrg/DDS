@@ -23,6 +23,10 @@ class Content extends AppBase {
     }
   }
   onMyShow() {
+    wx.showLoading({
+      title: '数据加载中',
+      mask:true
+    })
     var that = this;
     var mylocation = this.Base.getMyData().mylocation;
     if (mylocation == undefined) {
@@ -35,6 +39,7 @@ class Content extends AppBase {
     if (route[0] != null && route[1] != null) {
       this.makePloyline();
     }
+    wx.hideLoading();
   }
   selectAddress(e) {
 
@@ -61,6 +66,10 @@ class Content extends AppBase {
     });
   }
   removeAddress(e) {
+    wx.showLoading({
+      title: '数据加载中',
+      mask: true
+    });
     var that = this;
     var seq = e.currentTarget.id;
     var route = that.Base.getMyData().route;
@@ -160,16 +169,22 @@ class Content extends AppBase {
         }
       })
     }
-
+    wx.hideLoading();
   }
   confirm(e) {
     var data = this.Base.getMyData();
+    var duration = this.Base.getMyData().duration;
+    var distance=this.Base.getMyData().distance;
     if (data.route[0] == null) {
       this.Base.info("请选择起点");
       return;
     }
     if (data.route[1] == null) {
       this.Base.info("请选择终点");
+      return;
+    }
+    if (duration == null || distance==null) {
+      this.Base.info("正在计算时间和距离...");
       return;
     }
     var ret = {

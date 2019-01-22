@@ -660,14 +660,7 @@ class Content extends AppBase {
       this.Base.info("请选择报名联系人");
       return;
     }
-    //  if (data.stcontact == "") {
-    //    this.Base.info("请选择起点联系人");
-    //    return;
-    //  }
-    //  if (data.edcontact == "") {
-    //    this.Base.info("请选择终点联系人");
-    //    return;
-    //  }
+    
 
     var startdate = this.Base.getMyData().startdate;
     var starttime = this.Base.getMyData().starttime;
@@ -678,31 +671,22 @@ class Content extends AppBase {
     var tstendtime = this.Base.getMyData().tstendtime;
     var tstenddate = this.Base.getMyData().tstenddate;
     var carnum = this.Base.getMyData().carnum;
-
     var start_company = data.start_company;
     var end_company = data.end_company;
-
     var startaddress = this.Base.getMyData().startaddress;
     var targetaddress = this.Base.getMyData().targetaddress;
     var startlat = this.Base.getMyData().startlat;
     var startlng = this.Base.getMyData().startlng;
-
     var targetlat = this.Base.getMyData().targetlat;
     var targetlng = this.Base.getMyData().targetlng;
-
     var distance = this.Base.getMyData().distance;
     var duration = this.Base.getMyData().duration;
     var etptime = this.Base.getMyData().etptime;
     var gdsweight = this.Base.getMyData().gdsweight;
     var goodstype = this.Base.getMyData().goodstype;
     var tstcost = this.Base.getMyData().tstcost;
-
     var elcontact = this.Base.getMyData().elcontact;
     var enroll_id = this.Base.getMyData().enroll_id;
-    // var stcontact = this.Base.getMyData().stcontact;
-    // var start_id = this.Base.getMyData().startcontact_id;
-    // var end_id = this.Base.getMyData().endcontact_id; 
-    // var edcontact = this.Base.getMyData().edcontact;
     var remark = this.Base.getMyData().remark;
     var today = this.Base.getMyData().today;
     var time = this.Base.getMyData().time;
@@ -713,9 +697,22 @@ class Content extends AppBase {
       var companyname = this.Base.getMyData().errinfo.id;
     }
     console.log(companyname);
+
+
+    var timestamp = Date.parse(new Date()) / 1000;
+    var scdate = Date.parse(data.scdate) / 1000;
+    if (scdate > timestamp) {
+      this.Base.setMyData({ st: 3 })
+    }
+    else {
+      this.Base.setMyData({ st: 1 })
+    }
+    var st = this.Base.getMyData().st;
+
+
     orderapi.create({
       status: "A",
-      taskstatus: "3",
+      taskstatus: st,
       cmptask: check,
       open_id: UserInfo.openid,
       enroll_start: startdate + " " + starttime,
