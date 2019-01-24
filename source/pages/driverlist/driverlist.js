@@ -115,8 +115,8 @@ class Content extends AppBase {
         if (res.confirm) {
           var orderapi = new OrderApi();
           var applylist = that.Base.getMyData().applylist;
-          
-          orderapi.deleteapply({ idlist:applylist[0].id}, (deleteapply) => {
+          var id = e.currentTarget.id;
+          orderapi.deleteapply({ idlist:id}, (deleteapply) => {
             that.Base.setMyData({
               deleteapply
             });

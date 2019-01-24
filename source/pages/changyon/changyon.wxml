@@ -166,5 +166,6 @@
     </view>
 
     <view class='bottom padding-30 txt-white bg-bck_ble text-center' id='{{orderinfo.id}}' wx:if='{{orderinfo.cmptask=="E"}}' bindtap='toreedit'>再次发布</view>
+    
   </view>
 </view>

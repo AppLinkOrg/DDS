@@ -125,9 +125,6 @@ class Content extends AppBase {
       
     });
 
-    
-
-
   }
   bindall(e) {
     console.log(e);
@@ -210,6 +207,7 @@ class Content extends AppBase {
   }
   one(e) {
     var errinfo = this.Base.getMyData().errinfo;
+
     if (errinfo == null || errinfo.status != "A") {
       wx.showModal({
         title: '未认证',
@@ -238,6 +236,7 @@ class Content extends AppBase {
       // & all='+{{all[idx]}}
     }
   }
+
   mine(e) {
      var orderapi=new OrderApi();
      var id=e.currentTarget.id;
@@ -283,4 +282,5 @@ body.bindpickerstate = content.bindpickerstate;
 body.bindminepickerstate = content.bindminepickerstate; 
 body.one = content.one;
 body.mine = content.mine;
+
 Page(body)

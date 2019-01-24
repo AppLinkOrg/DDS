@@ -27,12 +27,7 @@ class Content extends AppBase {
       today: this.Base.util.FormatDate(new Date()),
       todayspan: Date.parse(new Date()) / 1000
     })
-    var api = new CertificateApi();
-    api.certificatexq({}, (driverinfo) => {
-      this.Base.setMyData({
-        driverinfo
-      });
-    });
+    
 
     wx.setStorageSync("lastlogin", "D");
 
@@ -87,14 +82,21 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
-
     this.Base.getAddress((location) => {
       console.log(location);
-
       //查询所有列表 
       var orderapi = new OrderApi();
       var api = new CertificateApi();
       
+      var api = new CertificateApi();
+
+      api.certificatexq({}, (driverinfo) => {
+        this.Base.setMyData({
+          driverinfo
+        });
+      });
+
+
       orderapi.messagelist({
         orderby: 'r_main.seq'
       }, (messagelist) => {
@@ -272,7 +274,10 @@ class Content extends AppBase {
           var bm = [];
           var ybm = [];
           var dwc = [];
+
           var driverinfo=this.Base.getMyData().driverinfo;
+
+
           for (var a = 0; a < list.length; a++) {
             bm[a] = 0;
             for (var b = 0; b < list1.length; b++) {
@@ -280,15 +285,12 @@ class Content extends AppBase {
                 bm[a]++;
               }
               if (list[a].id == list1[b].order_id && list1[b].transport_name == "已报名"  ) {
-                console.log(list1[b])
                 
-                console.log(6666666);
                 ybm.push(list1[b]);
               }
               //&& driverinfo.name == list1[b].carriage_driver
               if (list[a].id == list1[b].order_id && list1[b].transport_name == "待完成" ) {
-                console.log(list1[b])
-                console.log(6666666);
+                
                 dwc.push(list1[b]);
               }
               
@@ -530,15 +532,15 @@ class Content extends AppBase {
           xs2: xs
         })
      
-
-      
+     
       // console.log(days2 + "mmm" + sj2 + "ssss" + xs2);
     }, 1000);
   }
 
   newtask(e) {
     var driverinfo = this.Base.getMyData().driverinfo;
-    console.log(driverinfo.status)
+    
+    //console.log(driverinfo.status)
     //return;
     if (driverinfo == null || driverinfo.status != "A") {
       wx.showModal({
@@ -567,6 +569,7 @@ class Content extends AppBase {
   }
   registered(e) {
     var driverinfo = this.Base.getMyData().driverinfo;
+    
     if (driverinfo == null || driverinfo.status != "A") {
       wx.showModal({
         title: '未认证',

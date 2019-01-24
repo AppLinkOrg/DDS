@@ -22,7 +22,15 @@ class Content extends AppBase {
     });
     this.Base.setMyData({ state: 0 });
 
-   
+    wx.showModal({
+      title: '',
+      content: '若拒绝授权手机号，小程序功能将受限，需删除小程序再进入授权',
+      showCancel: false,
+      cancelText: '否',
+      cancelColor: '#EE2222',
+      confirmText: '确定',
+      confirmColor: '#2699EC',
+    })
     
 
 
@@ -43,17 +51,7 @@ class Content extends AppBase {
             url: '/pages/home/home',
           })
         }
-        else{
-          wx.showModal({
-            title: '',
-            content: '若拒绝授权手机号，小程序功能将受限，需删除小程序再进入授权',
-            showCancel: false,
-            cancelText: '否',
-            cancelColor: '#EE2222',
-            confirmText: '确定',
-            confirmColor: '#2699EC',
-          })
-        }
+        
       },
     });
     var orderapi = new OrderApi();

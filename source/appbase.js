@@ -294,6 +294,24 @@ export class AppBase {
   getMyData() {
     return this.Page.data;
   }
+  // getPhoneNo(e) {
+  //   var that = this;
+  //   console.log(e);
+  //   var api = new WechatApi();
+  //   var data = this.Base.getMyData();
+  //   console.log(data);
+
+  //   e.detail.session_key = data.UserInfo.session_key;
+  //   e.detail.openid = data.UserInfo.openid;
+
+  //   console.log("edetail");
+  //   console.log(e.detail);
+  //   api.decrypteddata(e.detail, (ret) => {
+  //     console.log(ret);
+  //     that.phonenoCallback(ret.return.phoneNumber, e);
+  //   });
+  // }
+
   getPhoneNo(e) {
     var that = this;
     console.log(e);
@@ -301,16 +319,17 @@ export class AppBase {
     var data = this.Base.getMyData();
     console.log(data);
 
-    e.detail.session_key = data.UserInfo.session_key;
-    e.detail.openid = data.UserInfo.openid;
-
-    console.log("edetail");
+    e.detail.session_key = AppBase.session_key;
+    e.detail.openid = AppBase.openid;
     console.log(e.detail);
     api.decrypteddata(e.detail, (ret) => {
       console.log(ret);
       that.phonenoCallback(ret.return.phoneNumber, e);
     });
   }
+
+
+
   phonenoCallback(phoneno, e) {
     console.log("phone no callback");
     console.log(phoneno);

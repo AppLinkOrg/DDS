@@ -19,7 +19,7 @@ class Content extends AppBase {
     super.onLoad(options);
     this.Base.needauth = false;
     this.Base.setMyData({ isgrantuser: false });
-    this.Base.setMyData({ isgrantphonenumber: false,mobile:"" });
+    this.Base.setMyData({ isgrantphonenumber: false, mobile: "" });
   }
   onMyShow() {
     var that = this;
@@ -37,14 +37,14 @@ class Content extends AppBase {
   }
   phonenoCallback(phoneno, e) {
     console.log(phoneno);
-    this.Base.setMyData({ isgrantphonenumber: true,mobile:phoneno });
+    this.Base.setMyData({ isgrantphonenumber: true, mobile: phoneno });
   }
-  gotoLogin(){
-    var data=this.Base.getMyData();
+  gotoLogin() {
+    var data = this.Base.getMyData();
     var memberapi = new MemberApi();
-    memberapi.updatemobile({mobile:data.mobile},()=>{
+    memberapi.updatemobile({ mobile: data.mobile }, () => {
       wx.navigateBack({
-        
+
       })
     })
     //updatemobile
@@ -52,8 +52,8 @@ class Content extends AppBase {
 }
 var content = new Content();
 var body = content.generateBodyJson();
-body.onLoad = content.onLoad; 
-body.onMyShow = content.onMyShow; 
+body.onLoad = content.onLoad;
+body.onMyShow = content.onMyShow;
 body.getUserInfo = content.getUserInfo;
 body.gotoLogin = content.gotoLogin;
 Page(body)

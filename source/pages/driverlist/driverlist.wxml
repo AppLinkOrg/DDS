@@ -46,7 +46,7 @@
     </view>
 
     <view class='flex-row flex-center margin-20'>
-      <navigator class='flex-1 padding-10 bg-red text-center txt-white h5 margin-right-10' bindtap='Refuse' style='border-radius:10rpx;'>拒绝使用此车</navigator>
+      <navigator class='flex-1 padding-10 bg-red text-center txt-white h5 margin-right-10' bindtap='Refuse' id='{{item.id}}' style='border-radius:10rpx;'>拒绝使用此车</navigator>
       <navigator class='flex-1 padding-10 bg-green text-center txt-white h5 margin-left-10' id='{{item.id}}' bindtap='Determineduse' style='border-radius:10rpx;'>确定使用此车</navigator>
     </view>
 
