@@ -87,7 +87,7 @@ class Content extends AppBase {
       taskstatus:"1,2,3,5"
     }, (list) => {
       var memberinfo = this.Base.getMyData().memberinfo;
-
+      
       orderapi.applylist({ newstatus: "Y" }, (applylist) => {
         for (var i = 0; i < list.length; i++) {
           all[i] = 0;

@@ -96,6 +96,24 @@ class Content extends AppBase {
             that.Base.setMyData({ updatestatus });
             that.onMyShow();
           });
+          
+          var chepai = e.currentTarget.dataset.vehicle;
+          var phone = e.currentTarget.dataset.phone;
+          
+          var certificateapi = new CertificateApi();
+          var instinfo = that.Base.getMyData().instinfo;
+          var orderapi = new OrderApi();
+          var id = e.currentTarget.dataset.idx;
+          //console.log(id + "555555555");
+          var orderinfo = that.Base.getMyData().orderinfo;
+          var memberinfo = that.Base.getMyData().memberinfo;
+          
+          
+          var sms = instinfo["sms11"];
+          sms = sms.replace("$", chepai );
+          certificateapi.sendsms({ mobile: phone, content: sms });
+
+          
         }
       }
     })
@@ -122,6 +140,24 @@ class Content extends AppBase {
             });
             that.onMyShow();
           });
+
+          var chepai = e.currentTarget.dataset.vehicle;
+          var phone = e.currentTarget.dataset.phone;
+
+          var certificateapi = new CertificateApi();
+          var instinfo = that.Base.getMyData().instinfo;
+          var orderapi = new OrderApi();
+          var id = e.currentTarget.dataset.idx;
+          //console.log(id + "555555555");
+          var orderinfo = that.Base.getMyData().orderinfo;
+          var memberinfo = that.Base.getMyData().memberinfo;
+
+
+          var sms = instinfo["sms12"];
+          sms = sms.replace("$", chepai);
+          certificateapi.sendsms({ mobile: phone, content: sms });
+
+
         }
       }
     })
@@ -166,6 +202,7 @@ class Content extends AppBase {
 
             //  var tobecpdlist = this.Base.getMyData().tobecpdlist;
               var photo = e.currentTarget.dataset.index;
+              var phone = e.currentTarget.dataset.phone;
               var p1 = e.currentTarget.dataset.p1;
 
               if (photo == "" && p1 == ""){
@@ -173,18 +210,25 @@ class Content extends AppBase {
                 var instinfo = that.Base.getMyData().instinfo;
                 var orderapi = new OrderApi();
                 var id = e.currentTarget.dataset.idx;
-                console.log(id + "555555555");
+                //console.log(id + "555555555");
                 var orderinfo = that.Base.getMyData().orderinfo;
                 var memberinfo = that.Base.getMyData().memberinfo;
-                //console.log("22222222222222" + tobecpdlist[id].driver_phone)
                 
                 var sms = instinfo["sms6"];
                 sms = sms.replace("$", tobecpdlist[id].order_orderno);
                 console.log(memberinfo.mobile);
                 certificateapi.sendsms({ mobile: memberinfo.mobile, content: sms });
 
+
+                var sms10 = instinfo["sms10"];
+                sms10 = sms10.replace("$", tobecpdlist[id].order_orderno);
+                console.log(phone);
+                certificateapi.sendsms({ mobile: phone, content: sms10 });
+                
+                
                 //certificateapi.sendsms({ mobile: memberinfo.mobile, content: instinfo["sms6"] });
                 //return;
+
               }else{
                 var certificateapi = new CertificateApi();
                 var instinfo = that.Base.getMyData().instinfo;

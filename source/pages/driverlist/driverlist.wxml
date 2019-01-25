@@ -46,8 +46,8 @@
     </view>
 
     <view class='flex-row flex-center margin-20'>
-      <navigator class='flex-1 padding-10 bg-red text-center txt-white h5 margin-right-10' bindtap='Refuse' id='{{item.id}}' style='border-radius:10rpx;'>拒绝使用此车</navigator>
-      <navigator class='flex-1 padding-10 bg-green text-center txt-white h5 margin-left-10' id='{{item.id}}' bindtap='Determineduse' style='border-radius:10rpx;'>确定使用此车</navigator>
+      <navigator class='flex-1 padding-10 bg-red text-center txt-white h5 margin-right-10' data-phone='{{item.driver_phone}}' data-vehicle='{{item.vehicle}}' bindtap='Refuse' id='{{item.id}}' style='border-radius:10rpx;'>拒绝使用此车</navigator>
+      <navigator class='flex-1 padding-10 bg-green text-center txt-white h5 margin-left-10' data-phone='{{item.driver_phone}}' data-vehicle='{{item.vehicle}}'  id='{{item.id}}' bindtap='Determineduse' style='border-radius:10rpx;'>确定使用此车</navigator>
     </view>
 
   </view>
@@ -100,7 +100,7 @@
     <view class='flex-row flex-center margin-20'>
       <navigator id='{{item.id}}' bindtap='weightsheet' data-index='{{item.photo}}' data-p1='{{item.p1}}'  class='flex-1 padding-10 bg-red text-center txt-white h5 margin-right-10' style='border-radius:10rpx;'>查看过磅单</navigator>
       
-      <navigator class='flex-1 padding-10 bg-green text-center txt-white h5 margin-left-10' data-index='{{item.photo}}' data-p1='{{item.p1}}'  data-idx='{{idx}}'    style='border-radius:10rpx;' bindtap='addcompleted'>确认已到达</navigator>
+      <navigator class='flex-1 padding-10 bg-green text-center txt-white h5 margin-left-10' data-phone='{{item.driver_phone}}' data-index='{{item.photo}}' data-p1='{{item.p1}}'  data-idx='{{idx}}'    style='border-radius:10rpx;' bindtap='addcompleted'>确认已到达</navigator>
       
     </view>
 
