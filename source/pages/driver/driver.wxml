@@ -142,7 +142,7 @@
 
   <view wx:if='{{num==0}}' class='flex-row flex-column' hidden='{{tab!=0}}'>
     <image class='null_icon padding-40 ' src='{{uploadpath}}resource/{{res.nocontent_icon}}'></image>
-    <view class=''>暂无历史任务</view>
+    <view class=''>暂无新的任务</view>
   </view>
 
   <view wx:if='{{ybm.length==0}}' class='flex-row flex-column' hidden='{{tab!=1}}'>

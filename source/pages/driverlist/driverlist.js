@@ -205,7 +205,7 @@ class Content extends AppBase {
               var phone = e.currentTarget.dataset.phone;
               var p1 = e.currentTarget.dataset.p1;
 
-              if (photo == "" && p1 == ""){
+              if (photo == "" || p1 == ""){
                 var certificateapi = new CertificateApi();
                 var instinfo = that.Base.getMyData().instinfo;
                 var orderapi = new OrderApi();
