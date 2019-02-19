@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/youke/youke",
+    "pages/auth/auth",
     "pages/aboutus/aboutus",
     "pages/agreement/agreement",
     "pages/applypaylist/applypaylist",
@@ -20,7 +21,6 @@
     "pages/home/home",
     "pages/Addvehicle/Addvehicle",
     "pages/mine/mine",
-    "pages/auth/auth",
     "pages/usercategory/usercategory",
     "pages/release/release",
     "pages/team/team",
@@ -57,7 +57,7 @@
   "tabBar": {
     "color": "#bfbfbf",
     "selectedColor": "#4C556E",
-    "borderStyle": "#4C556E",
+    "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
       {

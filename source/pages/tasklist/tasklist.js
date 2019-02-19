@@ -260,11 +260,9 @@ class Content extends AppBase {
       confirmColor: '#2699EC',
       success: function(res) {
 
-        
+
         if (res.confirm) {
           var orderapi = new OrderApi();
-
-
 
           //  orderapi.updateorderstatus({ orderid: that.Base.options.id }, (updateorderstatus) => {
           //   that.Base.setMyData({ updateorderstatus });
@@ -272,11 +270,9 @@ class Content extends AppBase {
 
           //  return;
 
-
-
           orderapi.updatataskstatus({
             id: that.Base.options.id
-            
+
           }, (updatataskstatus) => {
             var certificateapi = new CertificateApi();
             var instinfo = that.Base.getMyData().instinfo;
@@ -296,14 +292,9 @@ class Content extends AppBase {
                 certificateapi.sendsms({ mobile: applylist[i].driver_phone, content: sms });
               }
 
-              
-              
-              
-
               wx.reLaunch({
                 url: '/pages/home/home',
               })
-
 
             });
             

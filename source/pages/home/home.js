@@ -44,6 +44,7 @@ class Content extends AppBase {
         id: "",
         odrstatusname: "所有发布"
       });
+
       this.Base.setMyData({
         statuslist
       })
@@ -54,6 +55,8 @@ class Content extends AppBase {
     })
 
   }
+
+
   onMyShow() {
     var that = this;
     var num = [];
@@ -61,14 +64,21 @@ class Content extends AppBase {
     var UserInfo = this.Base.getMyData().UserInfo;
     var memberinfo = this.Base.getMyData().memberinfo;
     var orderapi = new OrderApi();
+
     // orderapi.enterpriselist({
     //   open_id: UserInfo.openid
     // }, (errlist) => {
     //   this.Base.setMyData({
     //     errlist
     //   })
-
     // })
+
+    orderapi.updatataskstatus({}, (updatataskstatus) => {
+      this.Base.setMyData({ updatataskstatus})
+      console.log("更新任务状态");
+    });
+
+    //return;
     orderapi.enterpriseinfo({}, (errinfo) => {
       this.Base.setMyData({
         errinfo
@@ -87,7 +97,6 @@ class Content extends AppBase {
       taskstatus:"1,2,3,5"
     }, (list) => {
       var memberinfo = this.Base.getMyData().memberinfo;
-      
       orderapi.applylist({ newstatus: "Y" }, (applylist) => {
         for (var i = 0; i < list.length; i++) {
           all[i] = 0;
@@ -98,6 +107,7 @@ class Content extends AppBase {
             }
           }
         }
+        
         this.Base.setMyData({
           applylist,
           all: all
@@ -126,6 +136,9 @@ class Content extends AppBase {
     });
 
   }
+
+
+
   bindall(e) {
     console.log(e);
     this.Base.setMyData({
@@ -134,6 +147,7 @@ class Content extends AppBase {
     });
     //this.onMyShow();
   }
+
   bindmine(e) {
     console.log(e);
     this.Base.setMyData({
@@ -205,6 +219,7 @@ class Content extends AppBase {
     });
 
   }
+
   one(e) {
     var errinfo = this.Base.getMyData().errinfo;
 
