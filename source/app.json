@@ -79,5 +79,6 @@
         "selectedIconPath": "images/icons/a.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

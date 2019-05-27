@@ -68,7 +68,6 @@ class Content extends AppBase {
   setPageTitle() {
     wx.setNavigationBarTitle({
       title: '司机首页',
-
     });
   }
   sj(date) {
@@ -84,19 +83,19 @@ class Content extends AppBase {
     var that = this;
     this.Base.getAddress((location) => {
       console.log(location);
-      //查询所有列表 
+      //查询所有列表
       var orderapi = new OrderApi();
+
       var api = new CertificateApi();
       
       var api = new CertificateApi();
-
+      
       api.certificatexq({}, (driverinfo) => {
         this.Base.setMyData({
           driverinfo
         });
       });
-
-
+      
       orderapi.messagelist({
         orderby: 'r_main.seq'
       }, (messagelist) => {
@@ -383,7 +382,9 @@ class Content extends AppBase {
     if (i == 2) {
       orderby = " unitprice desc";
     }
+    
     console.log(i);
+
     this.setData({
       index: e.detail.value,
       orderby: orderby
@@ -597,7 +598,6 @@ class Content extends AppBase {
     }
   }
   tobecompleted(e) {
-
     var orderapi = new OrderApi();
     orderapi.updateton({}, (updateton) => {
       this.Base.setMyData({

@@ -37,6 +37,7 @@ class Content extends AppBase {
         errinfo
       })
     })
+    
     this.Base.setMyData({
       startdate: "",
       starttime: "",

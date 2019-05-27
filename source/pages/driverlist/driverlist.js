@@ -166,8 +166,6 @@ class Content extends AppBase {
   addcompleted(e){
     var that = this;
 
-    
-
     wx.showModal({
       title: '',
       content: '您是否确认该司机已完成？是否已查看过磅单？',
@@ -187,7 +185,7 @@ class Content extends AppBase {
           //   });
           // });
           var date = that.Base.getMyData().date;
-         
+          
           var tobecpdlist = that.Base.getMyData().tobecpdlist;
           var id = e.currentTarget.dataset.idx;
           console.log(id+"yyyyyyyyyyy");
@@ -219,16 +217,13 @@ class Content extends AppBase {
                 console.log(memberinfo.mobile);
                 certificateapi.sendsms({ mobile: memberinfo.mobile, content: sms });
 
-
                 var sms10 = instinfo["sms10"];
                 sms10 = sms10.replace("$", tobecpdlist[id].order_orderno);
                 console.log(phone);
                 certificateapi.sendsms({ mobile: phone, content: sms10 });
                 
-                
                 //certificateapi.sendsms({ mobile: memberinfo.mobile, content: instinfo["sms6"] });
                 //return;
-
               }else{
                 var certificateapi = new CertificateApi();
                 var instinfo = that.Base.getMyData().instinfo;

@@ -323,8 +323,7 @@
       <view class='flex-row flex-column margin-bottom-40'>
         <image bindtap='viewPhoto' id='http://cmsdev.app-link.org/alucard263096/dds/api/order/qrcode?id={{id}}&filename={{rand}}a.png' class='icon-100' src='http://cmsdev.app-link.org/alucard263096/dds/api/order/qrcode?id={{id}}&filename={{rand}}a.png'></image>
       </view>
-      
-      
+
       <view class='btn'>
         <view class="flex-wrap" wx:if='{{applyinfo.photo==""&&applyinfo.p1!=""}}'>
           <button class="h4 bm" style='margin-top:118rpx' id="anniu" form-type='submit'>确认到达目的地</button>

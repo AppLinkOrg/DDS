@@ -4,7 +4,6 @@
   <view class='flex-row flex-column  '>
     <view class='h4 txt-black margin-top'>{{orderinfo.companyname}}</view>
     <view class='flex-row flex-center margin-top-20'>
-
       <view class='h5'>报名截止时间：</view>
       <view class='h5'>{{orderinfo.enroll_deadline}}</view>
     </view>
@@ -13,15 +12,16 @@
   </view>
 
   <navigator url='/pages/driverlist/driverlist?id={{orderinfo.id}}&type=N' wx:if='{{mineshow=="2"}}' class='flex-row flex-column flex-1 padding-40   bor_btm'>
+
     <view>
       <image class='icon-30' src='{{uploadpath}}resource/{{res.driver}}'></image>
     </view>
+
     <view class='flex-1 margin-top-20 txt-bold' style='color:#1EBFAE;font-size:30rpx'>查看已报名司机列表</view>
     <!-- <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image> -->
   </navigator>
 
   <view class='flex-row flex-center margin-top-20'>
-
     <view class='flex-row flex-column flex-1' style='border-right:1rpx solid #CFCECF'>
       <view class='flex-row '>
         <view class='font-left padding-top-40'>{{orderinfo.applycount}}</view>

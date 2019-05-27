@@ -111,6 +111,7 @@ class Content extends AppBase {
     orderapi.addvehicle({
       openid: UserInfo.openid,
       status:"I",
+      member_id:this.Base.getMyData().memberinfo.id,
       carnumber: carnumber,
       vehicletype: vehicletype,
       carload: load,
@@ -119,29 +120,25 @@ class Content extends AppBase {
     }, (addvehicle) => {
 
 
-      var certificateapi = new CertificateApi();
-      var instinfo = this.Base.getMyData().instinfo;
-      var sms = instinfo["sms3"];
-      sms = sms.replace("$", carnumber);
-      certificateapi.sendsms({ content: sms });
-
-
-
-      var pages = getCurrentPages();
-      var beforePage = pages[pages.length - 2];
+       var certificateapi = new CertificateApi();
+       var instinfo = this.Base.getMyData().instinfo;
+       var sms = instinfo["sms3"];
+       sms = sms.replace("$", carnumber);
+       certificateapi.sendsms({ content: sms });
 
       if (addvehicle.code == 0) {
-        wx.navigateBack({
-          success() {
-            beforePage.onLoad();
-            wx.showToast({
-              title: '添加成功',
-              icon: 'success',
-              duration: 2000
-            })
-          }
-        })
-      } else {
+         wx.navigateBack({
+           success() {
+             beforePage.onLoad();
+             wx.showToast({
+               title: '添加成功',
+               icon: 'success',
+               duration: 2000
+             })
+           }
+         })
+      } 
+      else {
         this.Base.info(addvehicle.result);
       }
       

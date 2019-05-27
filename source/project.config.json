@@ -10,6 +10,8 @@
 	"projectname": "Dds",
 	"libVersion": "2.2.5",
 	"compileType": "miniprogram",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
