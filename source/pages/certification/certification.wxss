@@ -9,14 +9,14 @@
 }
 .btn{
   color: white;
-  background: #4C556E;
-  position: fixed;
+  background: #4ecad6;
+  margin-bottom: 25rpx;
   bottom:0rpx;
-  width: 100%;
+  width: 90vw;
 }
 .hover_btn{
   color: white;
-  background: rgb(128, 140, 173);
+  background: #84dce4;
 }
 .I_bottom{
   position: fixed;

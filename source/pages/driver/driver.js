@@ -342,7 +342,7 @@ class Content extends AppBase {
 
           });
           orderapi.applylist({
-            member_id: memberinfo.id,
+            member_id: this.Base.getMyData().memberinfo.id,
             transport: "N",
             drivernewstatus: "Y",
           }, () => {

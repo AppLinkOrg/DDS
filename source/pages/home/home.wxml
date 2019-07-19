@@ -1,9 +1,9 @@
 <view class='top'>
   <view class='flex-row flex-center bg-bck_ble'>
-    <view class='flex-1 text-center padding-20 txt-gray_white {{allshow==1?"txt-white":""}}' bindtap='bindall'>所有发布</view>
+    <view class='flex-1 text-center padding-20 txt-black {{allshow==1?"txt-white":""}}' bindtap='bindall'>所有发布</view>
     <view class='all_whiteblock' hidden='{{allshow!="1"}}'></view>
     <view class='mine_whiteblock'hidden='{{mineshow!="2"}}'></view>
-    <view class='flex-1 text-center padding-20 txt-gray_white {{mineshow==2?"txt-white":""}}' bindtap='bindmine'>我的发布</view>
+    <view class='flex-1 text-center padding-20 txt-black {{mineshow==2?"txt-white":""}}' bindtap='bindmine'>我的发布</view>
     
     <!-- <view class='num txt-white h6 text-center'>{{applylist.length}}</view> -->
     <!-- <image class='num' src='{{uploadpath}}resource/{{res.xiaoxitishi}}'></image> -->

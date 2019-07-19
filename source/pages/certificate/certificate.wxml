@@ -38,7 +38,7 @@
         <input hidden='true' name="idphoto" value="{{idphoto}}"></input>
       </view>
     </view>
-    <button form-type='submit' class="h4 txt-white" type='bak_ble' style='margin-top:20rpx;border-radius:0'>确定</button>
+    <button form-type='submit' class="h4 txt-white" type='bak_ble' style='margin-top:20rpx;'>确定</button>
   </view>
 </form>
 

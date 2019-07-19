@@ -116,7 +116,7 @@ view,navigator,input,text,textarea{
   background: #FBC02D;
 }
 .bg-bck_ble{
-  background:#4C556E; 
+  background:#2dd4e4; 
 }
 .white_primary{
   background: #2699EC;
@@ -224,7 +224,10 @@ button[type=primary]{
   background-color: #2699EC;
 }
 button[type=bak_ble]{
-  background-color: #4C556E;
+  background-color: #4ecad6;
+  margin-bottom: 25rpx;
+  
+  width: 90vw;
 }
 button.button-hover[type=primary]{
   
