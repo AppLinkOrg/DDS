@@ -34,7 +34,7 @@ border-radius:50rpx;
   margin-left: 20rpx;
   margin-right: 20rpx;
   box-shadow:1rpx 2rpx 25rpx 2rpx rgb(173, 173, 173);
-  /* border-radius: 10rpx; */
+  border-radius: 10rpx;
 }
 
 .line{
@@ -50,6 +50,7 @@ background: #CFCECF;
   font-size: 60rpx;
   font-weight:bold;
   color: #8A8A8A;
+ 
   
 }
 .font-right{
@@ -71,6 +72,8 @@ background: #CFCECF;
   margin-top:50rpx;
   height:100rpx; 
   line-height: 100rpx;
+  border-radius:12rpx;
+  width: 80vw;
 }
 
 checkbox .wx-checkbox-input {
@@ -94,3 +97,4 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked {
   bottom: 0;
   
 } */
+

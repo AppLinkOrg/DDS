@@ -1,7 +1,7 @@
 /* pages/addmembers/addmembers.wxss */
 .btn{
   color: white;
-  background: #4C556E;
+  background: #4ecad6;
 }
 .hover_btn{
   color: white;

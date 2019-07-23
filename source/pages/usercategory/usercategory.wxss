@@ -14,3 +14,25 @@
   border-top-right-radius: 20rpx;
   border-bottom-right-radius: 20rpx;
 }
+
+.nav{
+  margin-top: 10rpx;
+  margin-left: 350rpx;
+  
+}
+
+.navone{
+  margin-top: -340rpx;
+  margin-left: -350rpx;
+}
+.qwe{
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 8rpx;
+ 
+}
+
+.icon-120{
+  width: 250rpx;
+  height: 250rpx;
+}

@@ -1,10 +1,12 @@
 {
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false,
+		"checkInvalidKey": true
 	},
 	"appid": "wx90eea5032c3d6cc2",
 	"projectname": "Dds",
@@ -29,12 +31,47 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 5,
 			"list": [
 				{
 					"id": -1,
 					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide"
+					"pathName": "pages/databaseGuide/databaseGuide",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "qiehuan",
+					"pathName": "pages/mine/mine",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "qw",
+					"pathName": "pages/usercategory/usercategory",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "qwqw",
+					"pathName": "pages/release/release",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "mine",
+					"pathName": "pages/aboutus/aboutus",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "添加",
+					"pathName": "pages/team/team",
+					"scene": null
 				}
 			]
 		}

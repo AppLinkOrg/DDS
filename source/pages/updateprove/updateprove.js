@@ -72,7 +72,7 @@ class Content extends AppBase {
     console.log(UserInfo.nickName);
     orderapi.updateprove({
       member_id: memberinfo.id,
-      status: "I",
+      status: "A",
       enterprisename: enterprisename,
       creditcode: creditcode,
       authenticateimg: photo,

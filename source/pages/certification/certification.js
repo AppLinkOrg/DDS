@@ -51,7 +51,7 @@ class Content extends AppBase {
         that.Base.setMyData({
           photo: ret
         });
-    }, undefined, 1);
+    }, undefined);
   }
   confirm(e){
     var data = e.detail.value;
@@ -76,7 +76,7 @@ class Content extends AppBase {
     var orderapi = new OrderApi();
     console.log(UserInfo.nickName);
     orderapi.authenticate({
-       status: "I",
+       status: "A",
        mobile: memberinfo.mobile,
        open_id: UserInfo.openid,
        enterprisename: enterprisename,

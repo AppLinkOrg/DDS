@@ -22,6 +22,8 @@ height:50rpx;
 line-height:50rpx;
 border:4rpx solid red;
 border-radius:50rpx;
+margin-left: 480rpx;
+margin-top: -40rpx;
 }
 .swiper_container {
    height: 50rpx;
@@ -47,9 +49,9 @@ border-radius:50rpx;
 background: #CFCECF;
 }
 .font-left{
-  font-size: 100rpx;
+  font-size: 80rpx;
   font-weight:bold;
-  color: #26C48B;
+  color: #4ecad6;
   /* font-family: fantasy; */
 }
 .font-mid{
@@ -59,9 +61,9 @@ background: #CFCECF;
   /* font-family: fantasy; */
 }
 .font-right{
-  font-size: 100rpx;
+  font-size: 80rpx;
   font-weight:bold;
-  color: #486AB7;
+  color: rgb(47, 125, 214);
   /* font-family: fantasy; */
 }
 .font-bottom{

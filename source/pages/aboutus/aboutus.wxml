@@ -1,7 +1,9 @@
 <!--pages/aboutus/aboutus.wxml-->
 <view class='flex-row flex-column '>
-  <image class='icon_top' src='{{uploadpath}}resource/{{res.enterprise_bg}}'></image>
-  <view class='h4 txt-black txt-bold margin-top'>云易创运输</view>
+
+  <image class='icon_top' src='{{uploadpath}}resource/{{res.mineabout}}'></image>
+
+  <view class='h4-5 txt-black txt-bold margin-top'>云易创运输</view>
 </view>
 
 <view class='bg-white border-radius mid margin-top'>
@@ -13,18 +15,16 @@
     </view>
   </view> -->
 
-  <view  wx:for='{{abouts}}' wx:for-index='idx'  wx:key='k' class='padding-20 {{idx!=0?"border_top ":""}}' >
+  <view wx:for='{{abouts}}' wx:for-index='idx' wx:key='k' class='padding-20 {{idx!=0?"border_top ":""}}'>
     <view class='margin-20  flex-row flex-center  {{idx==0?"flex-row flex-column ":""}}'>
-      <view class='h4-5 txt-black flex-1 txt-bold'>{{item.title_name}}</view>
-      <view wx:if='{{item.title!=4&&item.title!=1}}'  class='txt-black margin-left-10 {{idx==0?"txt-gray margin-top-20":""}}'>{{item.aboutus_content}}</view>
+      <view class='h5 txt-black flex-1 txt-bold'>{{item.title_name}}</view>
+      <view wx:if='{{item.title!=4&&item.title!=1}}' class='h5 txt-black margin-left-10 {{idx==0?"txt-gray margin-top-20":""}}'>{{item.aboutus_content}}</view>
 
-<image  wx:if='{{item.title==4}}' class='icon-20' src='{{uploadpath}}resource/{{res.phone_icon}}'></image>
+      <image wx:if='{{item.title==4}}' class='icon-20' src='{{uploadpath}}resource/{{res.phone_icon}}'></image>
 
       <view wx:if='{{item.title==4}}' bindtap='phoneCall' id='{{item.aboutus_content}}' class='txt-primary margin-left-10 {{idx==0?"txt-gray margin-top-20":""}}'>{{item.aboutus_content}}</view>
 
-      <text decode= "{{true}}" space="nbsp" wx:if='{{item.title==1}}'  class='txt-primary  {{idx==0?"txt-gray margin-top-20":""}}'>{{item.aboutus_content}}</text>
-
-
+      <text decode="{{true}}" space="nbsp" wx:if='{{item.title==1}}' class='txt-primary  {{idx==0?"txt-gray margin-top-20":""}}'>{{item.aboutus_content}}</text>
 
     </view>
   </view>
