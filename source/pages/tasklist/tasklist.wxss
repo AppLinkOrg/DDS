@@ -43,23 +43,29 @@ background: #CFCECF;
 .font-left{
   font-size: 90rpx;
   font-weight:bold;
-  color: #4085ff;
+  color: #4ecad6;
 
 }
 .font-mid{
-  font-size: 90rpx;
+  font-size: 80rpx;
   font-weight:bold;
   color: #486AB7;
 }
 .font-right{
-  font-size: 90rpx;
+  font-size: 80rpx;
   font-weight:bold;
-  color: rgb(243, 188, 115);
+  color: rgb(52, 202, 97);
 }
 .font-bottom{
-  font-size: 35rpx;
+  font-size: 28rpx;
   font-weight: bold;
   color: rgb(177, 174, 174);
+}
+
+.font-bottomone{
+  font-size: 28rpx;
+  font-weight: bold;
+  
 }
 
 .bor_btm{

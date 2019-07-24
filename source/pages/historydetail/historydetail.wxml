@@ -1,17 +1,48 @@
 <!--pages/historydetail/historydetail.wxml-->
 <view class='mid margin-top margin-bottom-40'>
   <view class='flex-row flex-column  '>
-    <view class='h4 txt-black margin-top'>{{orderinfo.companyname}}</view>
+    <view class='text-center txt-red h5 signup margin-top-20'>{{orderinfo.taskstatus_name}}</view>
+  </view>
+  <view class='flex-row flex-column  '>
+    <view class='h4 txt-black '>{{orderinfo.companyname}}</view>
     <view class='flex-row flex-center margin-top-20'>
 
-      <view class='h5'>报名截止时间：</view>
+      <view class='h5'>报名截止时间： </view>
       <view class='h5'>{{orderinfo.enroll_deadline}}</view>
     </view>
-    <view class='text-center txt-red h5 signup margin-top-20'>{{orderinfo.taskstatus_name}}</view>
+    <!-- <view class='text-center txt-red h5 signup margin-top-20'>{{orderinfo.taskstatus_name}}</view> -->
     <!-- <view class='text-center txt-red h5 signup margin-top-20' wx:if='{{orderinfo.enroll_deadline_timespan<=timestamp}}'>报名截止</view> -->
   </view>
+  <view class='flex-row flex-center margin-left-20 margin-top-10'>
+    <image class='icon-20' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
+    <view class='txt-gray h5 margin-left-20 '>运输时间</view>
+  </view>
 
-  <navigator url='/pages/driverlist/driverlist?id={{orderinfo.id}}&type=N'  class='flex-row flex-column flex-1 padding-40   bor_btm'>
+  <view class='flex-row flex-center margin-top-10' style='border-bottom:'>
+    <view class='flex-row flex-column flex-1' style=''>
+      <view class='h3 txt-black'>{{month1}}-{{day1}}</view>
+      <view class='flex-row flex-center margin-top-20'>
+        <!-- <view class='h5'>周三</view> -->
+        <view class='margin-left-10 h5'>{{hh1}}:{{mm1}}</view>
+      </view>
+    </view>
+    <view class='flex-row flex-column flex-1'>
+      <!-- <view class='flex-row flex-center'>
+            <view class='h5'>1天</view>
+            <view class='h5'>0小时</view>
+          </view> -->
+      <image class='goto_icon' src='{{uploadpath}}resource/{{res.goto_icon}}'></image>
+    </view>
+    <view class='flex-row flex-column flex-1' style=''>
+      <view class='h3 txt-black'>{{month}}-{{day}}</view>
+      <view class='flex-row flex-center margin-top-20'>
+        <!-- <view class='h5'>周四</view> -->
+        <view class='margin-left-10 h5'>{{hh}}:{{mm}}</view>
+      </view>
+    </view>
+  </view>
+
+  <navigator url='/pages/driverlist/driverlist?id={{orderinfo.id}}&type=N' class='flex-row flex-column flex-1 padding-20   bor_btm'>
     <view>
       <image class='icon-30' src='{{uploadpath}}resource/{{res.driver}}'></image>
     </view>
@@ -23,124 +54,109 @@
 
     <view class='flex-row flex-column flex-1' style='border-right:1rpx solid #CFCECF'>
       <view class='flex-row '>
-        <view class='font-left padding-top-40'>{{orderinfo.applycount}}</view>
-        <view class='font-bottom ' style='padding-top:100rpx;color:#4085ff'>/{{orderinfo.carcount}}</view>
-        <view class='txt-bold   margin-left-10' style='padding-top:100rpx'>辆</view>
-      </view>
-    </view>
-  
-    <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
-      <view class='flex-row '>
-        <view class='font-mid padding-top-40'>{{orderinfo.unitprice}}</view>
-        <view class='txt-bold margin-left-10' style='padding-top:100rpx'>元/吨</view>
+        <view class='font-left h3'>{{orderinfo.applycount}}</view>
+        <view class='font-bottom h3' style='color:#4085ff'>/{{orderinfo.carcount}}</view>
+        <!-- <view class='   margin-left-10' style='padding-top:10rpx'>辆</view> -->
       </view>
     </view>
 
+    <view class='flex-row flex-column flex-1 ' style='border-right:1rpx solid #CFCECF'>
+      <view class='flex-row '>
+        <view class='font-mid h3'>{{orderinfo.unitprice}}</view>
+        <!-- <view class=' margin-left-10' style='padding-top:10rpx'>元/吨</view> -->
+      </view>
+    </view>
+
+
+    <view class='flex-row flex-column flex-1 '>
+      <view class='flex-row '>
+        <view class='h3 font-right '>{{orderinfo.totaldun}}/{{orderinfo.weight}}</view>
+        <!-- <view class=' margin-left-10' style='padding-top:10rpx'>吨</view> -->
+      </view>
+    </view>
+
+  </view>
+
+  <view class='flex-row flex-center padding-10'>
+    <view class='flex-1 text-center font-bottomone '>辆</view>
+    <view class='flex-1 text-center font-bottomone '>元/吨</view>
+    <view class='flex-1 text-center font-bottomone '>吨</view>
   </view>
 
   <view class='flex-row flex-center padding-10 bor_btm'>
     <view class='flex-1 text-center font-bottom margin-bottom-10'>已报名</view>
     <view class='flex-1 text-center font-bottom margin-bottom-10'>预计运费</view>
+    <view class='flex-1 text-center font-bottom margin-bottom-10'>已运吨数</view>
   </view>
 
-  <view class='flex-row flex-column  '>
+  <!-- <view class='flex-row flex-column  '>
     <view class='flex-row'>
-      <view class='font-right padding-top-40'>{{orderinfo.totaldun}}/{{orderinfo.weight}}</view>
-      <view class='txt-bold margin-left-10' style='padding-top:100rpx'>吨</view>
+      <view class='h3 font-right '>{{orderinfo.totaldun}}/{{orderinfo.weight}}</view>
+      <view class=' margin-left-10' style='padding-top:10rpx'>吨</view>
     </view>
-  </view>
+  </view> -->
+  <!-- 
+  <view class=' text-center font-bottom padding-bottom-20 margin-top-10' style='border-bottom:1rpx solid #E8E8E8'>已运吨数</view> -->
 
-  <view class=' text-center font-bottom padding-bottom-20 margin-top-10' style='border-bottom:1rpx solid #E8E8E8'>已运吨数</view>
+  <view class='padding-20 bor_btm'>
 
-  <view class='padding-40 bor_btm'>
-
-    <view class='flex-row column margin-left-20 '>
+    <!-- <view class='flex-row column margin-left-20 '>
       <view class='flex-row flex-center '>
         <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
         <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>起点企业名:</view>
       </view>
       <view class='h4 txt-black padding-top-10 padding-left-30'>{{orderinfo.start_company}}</view>
-    </view>
+    </view> -->
 
-    <view class='flex-row column margin-left-20 '>
+    <view class='flex-row column  '>
       <view class='flex-row flex-center '>
-        <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
+        <image class='icon-20' src='{{uploadpath}}resource/{{res.green}}'></image>
         <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>装车地址</view>
       </view>
-      <view class='h4 txt-black padding-top-10 padding-left-30'>{{orderinfo.startaddress}}</view>
+      <view class='h5 txt-black padding-top-10 padding-left-30'>{{orderinfo.startaddress}}</view>
     </view>
 
-    <view class='flex-row column margin-left-20 '>
+    <!-- <view class='flex-row column margin-left-20 '>
       <view class='flex-row flex-center '>
         <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
         <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>终点企业名:</view>
       </view>
       <view class='h4 txt-black padding-top-10 padding-left-30'>{{orderinfo.end_company}}</view>
     </view>
+ -->
 
-
-
-    <view class='flex-row column margin-left-20 margin-top-20'>
+    <view class='flex-row column  margin-top-20'>
       <view class='flex-row flex-center '>
-        <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
+        <image class='icon-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
         <view class=' h5 txt-gray margin-left-20' style='width:600rpx;'>目的地址</view>
       </view>
-      <view class='h4 txt-black padding-top-10 padding-left-30'>{{orderinfo.targetaddress}}</view>
+      <view class='h5 txt-black padding-top-10 padding-left-30'>{{orderinfo.targetaddress}}</view>
     </view>
   </view>
 
-  <view class='bor_btm padding-40'>
 
-    <view class='flex-row flex-center '>
-      <image class='icon-20' src='{{uploadpath}}resource/{{res.time_icon}}'></image>
-      <view class='txt-gray h5 margin-left-20'>运输时间</view>
-    </view>
-
-    <view class='flex-row flex-center margin-top' style='border-bottom:'>
-      <view class='flex-row flex-column flex-1' style=''>
-        <view class='h3 txt-black'>{{month1}}-{{day1}}</view>
-        <view class='flex-row flex-center margin-top-20'>
-          <!-- <view class='h5'>周三</view> -->
-          <view class='margin-left-10 h5'>{{hh1}}:{{mm1}}</view>
-        </view>
-      </view>
-      <view class='flex-row flex-column flex-1'>
-        <!-- <view class='flex-row flex-center'>
-            <view class='h5'>1天</view>
-            <view class='h5'>0小时</view>
-          </view> -->
-        <image class='goto_icon' src='{{uploadpath}}resource/{{res.goto_icon}}'></image>
-      </view>
-      <view class='flex-row flex-column flex-1' style=''>
-        <view class='h3 txt-black'>{{month}}-{{day}}</view>
-        <view class='flex-row flex-center margin-top-20'>
-          <!-- <view class='h5'>周四</view> -->
-          <view class='margin-left-10 h5'>{{hh}}:{{mm}}</view>
-        </view>
-      </view>
-    </view>
-
-  </view>
 
   <view class='flex-row column'>
 
-    <navigator class='flex-row flex-center flex-1 padding-40   bor_btm' bindtap='openRoute'>
+    <navigator class='flex-row flex-center flex-1 padding-20   bor_btm' bindtap='openRoute'>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.map_icon}}'></image>
       <view class='txt-gray h5 flex-1 margin-left-20'>地图</view>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
     </navigator>
 
-    <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
+    <view class='flex-row flex-center flex-1 padding-20   bor_btm'>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
       <view class='txt-gray h5 flex-1 margin-left-20'>货运类型</view>
       <view class='h5 txt-black'>{{orderinfo.stuff_type_id}}</view>
     </view>
 
-    <view class='flex-row flex-center flex-1 padding-40   bor_btm' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
+    <view class='flex-row flex-center flex-1 padding-20   bor_btm' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
       <image class='icon-20' src='{{uploadpath}}resource/{{res.baoming}}'></image>
       <view class='txt-black h5 flex-1 margin-left-20'>{{orderinfo.enroll_contact}}</view>
-      <view class='txt-black h5 flex-1 margin-left-20'>{{enrollinfo.member_phone}}</view>
-      <image class='icon-20' src='{{uploadpath}}resource/{{res.phone_icon}}'></image>
+      <view class='txt-black h5 margin-left-20'>{{enrollinfo.member_phone}}</view>
+      <view class='margin-left-20'>
+        <image class='icon-20' src='{{uploadpath}}resource/{{res.phone_icon}}'></image>
+      </view>
     </view>
 
     <!-- <view class='flex-row flex-center flex-1 padding-40   bor_btm' bindtap='phoneCall' id='{{startinfo.member_phone}}'>
@@ -157,10 +173,10 @@
       <image class='icon-20' src='{{uploadpath}}resource/{{res.phone_icon}}'></image>
     </view> -->
 
-    <view class='flex-row flex-center flex-1 padding-40   bor_btm'>
+    <view class='flex-row flex-center flex-1 padding-20   bor_btm'>
       <view class=' flex-row flex-center '>
         <image class='icon-20 ' src='{{uploadpath}}resource/{{res.remarks_icon}}'></image>
-        <view class='txt-gray h5 flex-1  margin-left-10'>备注</view>
+        <!-- <view class='txt-gray h5 flex-1  margin-left-10'>备注</view> -->
       </view>
 
       <view class='txt-black h5 flex-1 margin-left-20' wx:if='{{orderinfo.remark!="undefined"}}'>{{orderinfo.remark}}</view>

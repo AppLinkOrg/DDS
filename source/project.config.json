@@ -31,7 +31,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -71,6 +71,35 @@
 					"id": -1,
 					"name": "添加",
 					"pathName": "pages/team/team",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "home",
+					"pathName": "pages/home/home",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "历史任务",
+					"pathName": "pages/taskhistory/taskhistory",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "任务详情",
+					"pathName": "pages/tasklist/tasklist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "常用任务",
+					"pathName": "pages/commontasks/commontasks",
+					"query": "",
 					"scene": null
 				}
 			]

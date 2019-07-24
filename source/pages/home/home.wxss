@@ -23,7 +23,7 @@ line-height:50rpx;
 border:4rpx solid red;
 border-radius:50rpx;
 margin-left: 480rpx;
-margin-top: -40rpx;
+margin-top: -45rpx;
 }
 .swiper_container {
    height: 50rpx;
@@ -49,9 +49,11 @@ margin-top: -40rpx;
 background: #CFCECF;
 }
 .font-left{
-  font-size: 80rpx;
+  font-size: 50rpx;
   font-weight:bold;
   color: #4ecad6;
+  margin-left:20rpx;
+  margin-top:-20rpx;
   /* font-family: fantasy; */
 }
 .font-mid{
@@ -61,13 +63,13 @@ background: #CFCECF;
   /* font-family: fantasy; */
 }
 .font-right{
-  font-size: 80rpx;
+  font-size: 50rpx;
   font-weight:bold;
   color: rgb(47, 125, 214);
   /* font-family: fantasy; */
 }
 .font-bottom{
-  font-size: 40rpx;
+  font-size: 30rpx;
   font-weight: bold;
   color: rgb(177, 174, 174);
   /* font-family: fantasy; */
@@ -124,4 +126,30 @@ background: #CFCECF;
   height: 15rpx;
   width: 50%;
   background: white;
+}
+.you{
+  margin-left: 20rpx;
+
+  padding-top: 10rpx;
+
+}
+/* .xzz{
+  margin-left:292rpx;
+}
+.xz{
+  margin-left:120rpx;
+} */
+.yibao{
+  /* margin-left:412rpx; */
+  font-weight:bold;
+  color: #4ecad6;
+}
+.yuji{
+  /* margin-left:362rpx; */
+  font-weight:bold;
+  color:  rgb(47, 125, 214);
+}
+.yujione{
+    margin-left:362rpx;
+
 }
