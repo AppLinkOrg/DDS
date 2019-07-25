@@ -21,8 +21,6 @@
       <view class="margin-left-20 margin-top-10" style=' '>报名单编号:{{item.applyno}}</view>
 
 
-
-
       <view class=' flex-center margin-top-20  flex-row '>
         <view class="flex-1 flex-row flex-bottom" style='justify-content:center'>
           <view class=" " style='font-size:98rpx !important; color:#4B69BB'>{{item.order_unitprice}}</view>
@@ -34,7 +32,7 @@
           <view>吨</view>
         </view>
       </view>
-      
+
       <view class=' flex-center  margin-top-20    flex-row ' style='width:100%;  margin-bottom:30rpx;'>
         <view class="flex-1 h4-5 flex-row  " style='justify-content:center'>运输单价</view>
         <view class="flex-1  flex-row  h4-5" style='justify-content:center;'>运输吨数</view>
@@ -50,12 +48,12 @@
       <view class="flex-wrap" style=' margin-bottom:30rpx'>
         <view class="flex-row margin-top:10">
           <view class="margin-left-20  " id="z1" style='margin-top:15rpx'></view>
-          <view class="margin-left-20">{{item.order_start_company}}</view>
+          <view class="margin-left-20">{{item.order_startaddress}}</view>
         </view>
 
         <view class="flex-row">
           <view class="margin-left-20 " id="z2" style='margin-top:30rpx'></view>
-          <view class="margin-left-20 margin-top-10">{{item.order_end_company}}</view>
+          <view class="margin-left-20 margin-top-10">{{item.order_targetaddress}}</view>
         </view>
         <view class="margin-left-30 h5 margin-top-10 txt-gray" style=' margin-left:60rpx'>总里程{{item.order_distance}}</view>
       </view>
@@ -71,7 +69,7 @@
       </view>
     </view>
     <view class='h5 padding-20 text-center txt-white' wx:if='{{item.orderstus=="B"}}' style='background:#F25C5B;width:90%'>
-    已取消运输单
+      已取消运输单
     </view>
   </navigator>
 </view>

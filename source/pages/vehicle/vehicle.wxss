@@ -65,7 +65,8 @@ page {
   margin-bottom: 0rpx;
   position: fixed;
   bottom: 0;
-  background-color: #353a4d;
+  background-color: #4ecad6;
+  border-radius: 10prx;
 }
 
 image {

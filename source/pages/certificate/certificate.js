@@ -138,7 +138,7 @@ class Content extends AppBase {
     
     
     certificateapi.updetedriver({
-      status: "I",
+      status: "A",
       name: name,
       idcard: idcard,
       openid:openid,

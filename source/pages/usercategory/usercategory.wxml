@@ -1,6 +1,6 @@
 <!--pages/usercategory/usercategory.wxml-->
 <view class='padding-30'>
-<view class='h3 txt-black txt-blod margin-top margin-left-40 margin-right-40'>请选择您的身份</view>
+<view class='h3 txt-black txt-blod margin-top-20 margin-left-40 margin-right-40'>请选择您的身份</view>
 <view class='h4-5  margin-left-40 margin-right-40 margin-top-20'>为了更好的使用本平台，请正确选择</view>
 <view class='h4-5  margin-left-40 margin-right-40 margin-top-20'>您的身份</view>
 </view>

@@ -14,8 +14,8 @@ export class AppBase {
   static QQMAPKEY = "IDVBZ-TSAKD-TXG43-H442I-74KVK-6LFF5";
   static UserInfo = {};
   static InstInfo = {};
-  unicode = "dds";
-  needauth = true;
+  unicode = "yunshu";
+  needauth = false;
   pagetitle = null;
   app = null;
   options = null;
@@ -220,7 +220,7 @@ export class AppBase {
                 console.log(AppBase.UserInfo);
                 ApiConfig.SetToken(data.openid);
                 console.log("goto update info");
-
+                   console.log("123132111aaa");
 
                 //that.Base.gotoOpenUserInfoSetting();
                 if (this.Base.needauth == true) {
@@ -320,6 +320,7 @@ export class AppBase {
     e.detail.session_key = AppBase.UserInfo.session_key;
     e.detail.openid = AppBase.UserInfo.openid;
     console.log(e.detail);
+    console.log("asdasdasdsad");
     api.decrypteddata(e.detail, (ret) => {
       console.log(ret);
       that.phonenoCallback(ret.return.phoneNumber, e);

@@ -41,23 +41,18 @@
 
     </view>
 
-
     <view class="asd flex-1" style=' width:95%'>
       <view class="flex-wrap" style=' margin-bottom:30rpx'>
-
 
         <view class="" style=''>
           <view class="flex-row flex-center margin-top-10">
             <view class="flex-row column flex-1">
 
-
-
-
               <view class='flex-row flex-center'>
-                <image class='icon-10 margin-left-20 margin-right-20' src='{{uploadpath}}resource/{{res.green}}'></image>
-                <view class=''>起点企业：{{start_company}}</view>
+                <image class='icon-20 margin-left-20 margin-right-20' src='{{uploadpath}}resource/{{res.green}}'></image>
+                <view class=''>装车地址：{{startaddress}}</view>
               </view>
-              <view class="margin-left-60">{{startaddress}}</view>
+              <!-- <view class="margin-left-60">{{startaddress}}</view> -->
 
             </view>
 
@@ -74,11 +69,11 @@
             <view class="flex-row column flex-1">
 
               <view class='flex-row flex-center'>
-                <image class='icon-10 margin-left-20 margin-right-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
-                <view class=' margin-top-20'>终点企业：{{end_company}}</view>
+                <image class='icon-20 margin-left-20 margin-right-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
+                <view class=' margin-top-20'>目的地址：{{targetaddress}}</view>
               </view>
-              
-              <view class="margin-left-60">{{targetaddress}}</view>
+
+              <!-- <view class="margin-left-60">{{targetaddress}}</view> -->
 
               <view class=" margin-top-10 h5" style=' margin-left:60rpx'>总里程{{distance}}</view>
             </view>
@@ -97,7 +92,7 @@
     <view class="asd flex-1" style='width:95%'>
       <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
         <view class="margin-left-20">
-          <image class='icon-25' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
+          <image class='icon-20' src='{{uploadpath}}resource/{{res.cargotype}}'></image>
         </view>
         <view class="flex-1 margin-left-20">货运类型</view>
         <view class="margin-right-20">{{stuff_type_id}}</view>
@@ -107,7 +102,7 @@
     <view class="asd flex-1" style='width:95%' bindtap='phoneCall' id='{{enrollinfo.member_phone}}'>
       <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
         <view class="margin-left-20">
-          <image class='icon-25' src='{{uploadpath}}resource/{{res.baoming}}'></image>
+          <image class='icon-20' src='{{uploadpath}}resource/{{res.baoming}}'></image>
         </view>
         <view class="flex-1 margin-left-20">报名联系人</view>
         <view class="margin-right-20">{{enrollinfo.name}}</view>
@@ -136,7 +131,6 @@
         <view class="margin-right-20">{{endinfo.member_phone}}</view>
       </view>
     </view> -->
-
     <view class="asd flex-1" style='width:95%'>
       <view class="flex-row margin-top-20 " style=' margin-bottom:30rpx'>
         <view class="margin-left-20">
@@ -147,13 +141,17 @@
         <view class="margin-right-10" wx:if='{{remark!="undefined"}}'>{{remark}}</view>
         <view class="margin-right-10" wx:if='{{remark=="undefined"}}'></view>
       </view>
+    </view>
+
+    <view class="asd flex-1" style='width:95%'>
+
       <view>
         <view class="">
           <view class="" style='margin:30rpx'>报名资料</view>
 
           <picker wx:if="{{vehiclelist.length>0}}" range='{{vehiclelist}}' bindchange='bindenroll' range-key='carnumber'>
             <view class='flex-row flex-center flex-1 margin-left-20 margin-top-20   bor_btm'>
-              <image class='icon-25' src='{{uploadpath}}resource/{{res.huanche}}'></image>
+              <image class='icon-20' src='{{uploadpath}}resource/{{res.huanche}}'></image>
               <view class='txt-black  flex-1  margin-left-20'>选择车辆</view>
               <input class=' txt-black text-right' disabled='true' bindinput='enrollcontact' name='elcontact' placeholder='请选择车辆' value='{{elcontact}}'></input>
               <image class='icon-20' src='{{uploadpath}}resource/{{res.right_icon}}'></image>
@@ -175,30 +173,30 @@
 
 
           <view class="flex-row  flex-center margin-top-20">
-            <image class='margin-left-20  icon-25' src='{{uploadpath}}resource/{{res.yunshudunshu}}'></image>
+            <image class='margin-left-20  icon-20' src='{{uploadpath}}resource/{{res.yunshudunshu}}'></image>
             <view class="flex-1 txt-black margin-left-20">货运吨数</view>
             <input class='' placeholder='请输入货运吨数' type='number' bindinput='tonnage' name="tonnage" style='text-align:right;margin-right:20rpx'></input>
           </view>
 
 
           <view class="flex-row  flex-center margin-top-20">
-            <image class='margin-left-20  icon-25' src='{{uploadpath}}resource/{{res.hezaidunshu}}'></image>
+            <image class='margin-left-20  icon-20' src='{{uploadpath}}resource/{{res.hezaidunshu}}'></image>
             <view class="flex-1 txt-black margin-left-20">核载吨数</view>
             <input class='' disabled='false' type='number' value='{{enroll_carload}}' name="atonnage" style='text-align:right;margin-right:20rpx'></input>
           </view>
 
-          
+
 
           <view class="flex-row  flex-center margin-top-20">
-            <image class='margin-left-20  icon-25' src='{{uploadpath}}resource/{{res.sijidianhua}}'></image>
+            <image class='margin-left-20  icon-20' src='{{uploadpath}}resource/{{res.sijidianhua}}'></image>
             <view class="flex-1 txt-black margin-left-20">司机电话</view>
             <input class='' placeholder='请输入联系电话' bindgetphonenumber='getPhoneNo' open-type='getPhoneNumber' value='{{memberinfo.mobile}}' type='number' bindinput='binddriver' name="driverphone" style='text-align:right;margin-right:20rpx'></input>
             <!-- <button class='h6 margin-top-10' style='width:170rpx;' size='mini' bindgetphonenumber='getPhoneNo' open-type='getPhoneNumber'>获取手机</button> -->
           </view>
 
 
-          <button wx:if='{{totaldun < weight&&applycount < carcount}}' form-type='submit' style='margin-top:118rpx' class="h4 txt-white " type='bak_ble'>报名</button>
-          <button wx:if='{{totaldun>=weight||applycount >= carcount}}' bindtap='btnshowtost' style='margin-top:118rpx' class="h4 txt-white " type='bak_ble'>无法报名
+          <button wx:if='{{totaldun < weight&&applycount < carcount}}' form-type='submit' style='margin-top:58rpx' class="h4 txt-white " type='bak_ble'>报名</button>
+          <button wx:if='{{totaldun>=weight||applycount >= carcount}}' bindtap='btnshowtost' style='margin-top:58rpx' class="h4 txt-white " type='bak_ble'>无法报名
           </button>
           <!-- <button wx:if='{{applycount >= carcount}}' style='margin-top:118rpx' class="h4 txt-white " type='bak_ble'>报名人数已满</button> -->
 
@@ -207,6 +205,7 @@
       </view>
 
     </view>
+
 
 
   </view>

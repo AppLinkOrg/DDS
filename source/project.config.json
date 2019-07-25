@@ -31,7 +31,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 13,
 			"list": [
 				{
 					"id": -1,
@@ -57,13 +57,6 @@
 					"id": -1,
 					"name": "qwqw",
 					"pathName": "pages/release/release",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "mine",
-					"pathName": "pages/aboutus/aboutus",
 					"query": "",
 					"scene": null
 				},
@@ -99,6 +92,41 @@
 					"id": -1,
 					"name": "常用任务",
 					"pathName": "pages/commontasks/commontasks",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/mine/mine",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "身份",
+					"pathName": "pages/usercategory/usercategory",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "司机首页",
+					"pathName": "pages/driver/driver",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "选择身份",
+					"pathName": "pages/usercategory/usercategory",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "游客",
+					"pathName": "pages/youke/youke",
 					"query": "",
 					"scene": null
 				}

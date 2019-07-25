@@ -41,17 +41,23 @@
         <view class='flex-row'>
           <view class='font-left'>{{item.applycount}}</view>
           <view class='txt-bold h4 padding-top-60 margin-left-10'>/{{item.carcount}}</view>
-          <view class='txt-bold h4 padding-top-60 margin-left-10'>辆</view>
+          <!-- <view class='txt-bold h4 padding-top-60 margin-left-10'>辆</view> -->
         </view>
       </view>
 
       <view class='flex-row flex-column flex-1 '>
         <view class='flex-row '>
           <view class='font-right'>{{item.unitprice}}</view>
-          <view class='txt-bold padding-top-60 margin-left-10'>元/吨</view>
+          <!-- <view class='txt-bold padding-top-60 margin-left-10'>元/吨</view> -->
         </view>
       </view>
     </view>
+
+     <view class='flex-row flex-center padding-10'>
+      <view class='flex-1 text-center font-bottomone margin-bottom-10'>辆</view>
+      <view class='flex-1 text-center font-bottomone margin-bottom-10'>元/吨</view>
+    </view>
+
     <view class='flex-row flex-center padding-10 ' style='border-bottom:1rpx solid #CFCECF'>
       <view class='flex-1 text-center font-bottom margin-bottom-10'>已报名</view>
       <view class='flex-1 text-center font-bottom margin-bottom-10'>预计运费</view>
@@ -59,26 +65,26 @@
     <view class='padding-20'>
       <view class='flex-row  margin-top-20'>
         <view>
-          <image class='icon-10' src='{{uploadpath}}resource/{{res.green}}'></image>
+          <image class='icon-20' src='{{uploadpath}}resource/{{res.green}}'></image>
         </view>
         <view class='flex-row column margin-left-20'>
-          <view class='h4-5 txt-gray'>起点企业名</view>
-          <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.start_company}}</view>
+          <view class='h5 txt-gray'>装车地址</view>
+          <view class='h5  txt-black margin-top-10' style='width:600rpx;'>{{item.startaddress}}</view>
         </view>
       </view>
       <view class='flex-row  margin-top-20'>
         <view>
-          <image class='icon-10' src='{{uploadpath}}resource/{{res.orange}}'></image>
+          <image class='icon-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
         </view>
         <view class='flex-row column margin-left-20'>
-          <view class='h4-5 txt-gray'>终点企业名</view>
-          <view class='  txt-black margin-top-10' style='width:600rpx;'>{{item.end_company}}</view>
+          <view class='h5 txt-gray'>目的地址</view>
+          <view class='h5  txt-black margin-top-10' style='width:600rpx;'>{{item.targetaddress}}</view>
         </view>
       </view>
     </view>
     <view class='flex-row flex-center padding-20'>
-      <view class='txt-gray h4-5'>全程</view>
-      <view class='h4-5'>{{item.distance}}</view>
+      <view class='txt-gray h5'>全程</view>
+      <view class='h5'>{{item.distance}}</view>
     </view>
   </navigator>
 
