@@ -7,7 +7,7 @@ import { OrderApi } from "../../apis/order.api.js";
 class Content extends AppBase {
   constructor() {
     super();
-    this.needauth=false;
+    //this.needauth=false;
   }
   onLoad(options) {
     this.Base.Page = this;
@@ -22,15 +22,15 @@ class Content extends AppBase {
     });
     this.Base.setMyData({ state: 0 });
 
-    wx.showModal({
-      title: '',
-      content: '若拒绝授权手机号，小程序功能将受限，需删除小程序再进入授权',
-      showCancel: false,
-      cancelText: '否',
-      cancelColor: '#EE2222',
-      confirmText: '确定',
-      confirmColor: '#2699EC',
-    })
+    // wx.showModal({
+    //   title: '',
+    //   content: '若拒绝授权手机号，小程序功能将受限，需删除小程序再进入授权',
+    //   showCancel: false,
+    //   cancelText: '否',
+    //   cancelColor: '#EE2222',
+    //   confirmText: '确定',
+    //   confirmColor: '#2699EC',
+    // })
     
 
 

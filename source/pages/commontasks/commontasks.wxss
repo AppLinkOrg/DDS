@@ -61,10 +61,15 @@ background: #CFCECF;
   
 }
 .font-bottom{
-  font-size: 40rpx;
+  font-size: 28rpx;
   font-weight: bold;
   color: rgb(177, 174, 174);
-  
+}
+
+.font-bottomone{
+  font-size: 28rpx;
+  font-weight: bold;
+ 
 }
 .null_icon {
   height: 200rpx;
