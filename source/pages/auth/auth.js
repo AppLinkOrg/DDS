@@ -17,7 +17,7 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
-    //this.Base.needauth = false;
+    this.Base.needauth = false;
     this.Base.setMyData({ isgrantuser: false });
     this.Base.setMyData({ isgrantphonenumber: false, mobile: "" });
   }
@@ -43,11 +43,11 @@ class Content extends AppBase {
     var data = this.Base.getMyData();
     var memberapi = new MemberApi();
 
-    console.log(data.mobile,"地点")
-   // return;
+    console.log(data.mobile, "地点")
+    // return;
     memberapi.updatemobile({ mobile: data.mobile }, (updatemobile) => {
       wx.reLaunch({
-        url:'/pages/home/home'
+        url: '/pages/home/home'
       })
     })
     //updatemobile

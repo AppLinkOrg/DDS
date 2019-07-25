@@ -1,4 +1,3 @@
-
 /****
 import { MemberApi } from "../apis/member.api";
 import { WechatApi } from "../apis/wechat.api";
@@ -15,7 +14,7 @@ export class AppBase {
   static UserInfo = {};
   static InstInfo = {};
   unicode = "yunshu";
-  needauth = false;
+  needauth = true;
   pagetitle = null;
   app = null;
   options = null;
@@ -220,16 +219,17 @@ export class AppBase {
                 console.log(AppBase.UserInfo);
                 ApiConfig.SetToken(data.openid);
                 console.log("goto update info");
-                   console.log("123132111aaa");
 
-                //that.Base.gotoOpenUserInfoSetting();
-                if (this.Base.needauth == true) {
-                  wx.redirectTo({
-                    url: '/pages/auth/auth',
-                  })
-                } else {
-                  that.onMyShow();
-                }
+                memberapi.update(AppBase.UserInfo, () => {
+                  //that.Base.gotoOpenUserInfoSetting();
+                  if (this.Base.needauth == true) {
+                    wx.redirectTo({
+                      url: '/pages/auth/auth',
+                    })
+                  } else {
+                    that.onMyShow();
+                  }
+                });
               });
               //that.getAddress();
             }
@@ -312,7 +312,7 @@ export class AppBase {
   }
   getPhoneNo(e) {
     var that = this;
-    console.log(e);
+    console.log("vck", e);
     var api = new WechatApi();
     var data = this.Base.getMyData();
     console.log("aaa?");
@@ -320,7 +320,6 @@ export class AppBase {
     e.detail.session_key = AppBase.UserInfo.session_key;
     e.detail.openid = AppBase.UserInfo.openid;
     console.log(e.detail);
-    console.log("asdasdasdsad");
     api.decrypteddata(e.detail, (ret) => {
       console.log(ret);
       that.phonenoCallback(ret.return.phoneNumber, e);

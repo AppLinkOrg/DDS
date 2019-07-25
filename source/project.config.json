@@ -1,15 +1,13 @@
 {
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true,
-		"autoAudits": false,
-		"checkInvalidKey": true
+		"newFeature": true
 	},
-	"appid": "wx90eea5032c3d6cc2",
-	"projectname": "Dds",
+	"appid": "wx9bd705284e9af21e",
+	"projectname": "%E4%BA%91%E6%98%93%E5%88%9B%E8%BF%90%E8%BE%93",
 	"libVersion": "2.2.5",
 	"compileType": "miniprogram",
 	"simulatorType": "wechat",
@@ -31,104 +29,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 13,
+			"current": 0,
 			"list": [
 				{
 					"id": -1,
 					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "qiehuan",
-					"pathName": "pages/mine/mine",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "qw",
-					"pathName": "pages/usercategory/usercategory",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "qwqw",
-					"pathName": "pages/release/release",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "添加",
-					"pathName": "pages/team/team",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "home",
-					"pathName": "pages/home/home",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "历史任务",
-					"pathName": "pages/taskhistory/taskhistory",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "任务详情",
-					"pathName": "pages/tasklist/tasklist",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "常用任务",
-					"pathName": "pages/commontasks/commontasks",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的",
-					"pathName": "pages/mine/mine",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "身份",
-					"pathName": "pages/usercategory/usercategory",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "司机首页",
-					"pathName": "pages/driver/driver",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "选择身份",
-					"pathName": "pages/usercategory/usercategory",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "游客",
-					"pathName": "pages/youke/youke",
-					"query": "",
-					"scene": null
+					"pathName": "pages/databaseGuide/databaseGuide"
 				}
 			]
 		}

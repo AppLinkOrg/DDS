@@ -13,21 +13,21 @@
     <view class='flex-row column'>
       <view class='flex-row '>
         <view class='padding-20 flex-1'>
-          <view class='txt-black h4'>{{item.enterprise_id_name}}</view>
-          <view class='h4-5 margin-top-20'>运输单号：{{item.orderno}}</view>
+          <view class='txt-black h5'>{{item.enterprise_id_name}}</view>
+          <view class='h5 margin-top-20'>运输单号：{{item.orderno}}</view>
         </view>
 
         <!-- <image wx:if='{{item.enroll_deadline_timespan<=timestamp}}' class='icon-75 chaoshi' src='{{uploadpath}}resource/{{res.chaoshi}}'></image> -->
       </view>
       <view class='flex-row flex-center margin-left-20'>
-        <view class='h4-5'>报名开始时间：</view>
-        <view class='h4-5'>{{item.enroll_start}}</view>
+        <view class='h5'>报名开始时间：</view>
+        <view class='h5'>{{item.enroll_start}}</view>
       </view>
 
 
       <view class='flex-row flex-center margin-top-20 margin-left-20'>
-        <view class='h4-5'>报名截止时间：</view>
-        <view class='h4-5'>{{item.enroll_deadline}}</view>
+        <view class='h5'>报名截止时间：</view>
+        <view class='h5'>{{item.enroll_deadline}}</view>
       </view>
 
     </view>
