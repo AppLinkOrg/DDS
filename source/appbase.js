@@ -312,7 +312,7 @@ export class AppBase {
   }
   getPhoneNo(e) {
     var that = this;
-    console.log("vck", e);
+    console.log("vck",e);
     var api = new WechatApi();
     var data = this.Base.getMyData();
     console.log("aaa?");
