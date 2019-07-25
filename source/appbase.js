@@ -14,7 +14,7 @@ export class AppBase {
   static QQMAPKEY = "IDVBZ-TSAKD-TXG43-H442I-74KVK-6LFF5";
   static UserInfo = {};
   static InstInfo = {};
-  unicode = "dds";
+  unicode = "yunshu";
   needauth = true;
   pagetitle = null;
   app = null;
@@ -221,15 +221,16 @@ export class AppBase {
                 ApiConfig.SetToken(data.openid);
                 console.log("goto update info");
 
-
+                memberapi.update(AppBase.UserInfo, () => {
                 //that.Base.gotoOpenUserInfoSetting();
-                if (this.Base.needauth == true) {
-                  wx.redirectTo({
-                    url: '/pages/auth/auth',
-                  })
-                } else {
-                  that.onMyShow();
-                }
+                  if (this.Base.needauth == true) {
+                    wx.redirectTo({
+                      url: '/pages/auth/auth',
+                    })
+                  } else {
+                    that.onMyShow();
+                  }
+                });
               });
               //that.getAddress();
             }
@@ -312,7 +313,7 @@ export class AppBase {
   }
   getPhoneNo(e) {
     var that = this;
-    console.log(e);
+    console.log("vck",e);
     var api = new WechatApi();
     var data = this.Base.getMyData();
     console.log("aaa?");
