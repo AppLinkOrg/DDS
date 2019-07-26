@@ -78,7 +78,7 @@ class Content extends AppBase {
     }
     if (weicheck == 2) {
       wx.reLaunch({
-        url: '/pages/home/home',
+        url: '/pages/driver/driver',
       })
 
     }
