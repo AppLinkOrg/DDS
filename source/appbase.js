@@ -1,4 +1,3 @@
-
 /****
 import { MemberApi } from "../apis/member.api";
 import { WechatApi } from "../apis/wechat.api";
@@ -222,7 +221,7 @@ export class AppBase {
                 console.log("goto update info");
 
                 memberapi.update(AppBase.UserInfo, () => {
-                //that.Base.gotoOpenUserInfoSetting();
+                  //that.Base.gotoOpenUserInfoSetting();
                   if (this.Base.needauth == true) {
                     wx.redirectTo({
                       url: '/pages/auth/auth',

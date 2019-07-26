@@ -110,7 +110,7 @@ class Content extends AppBase {
 
     orderapi.addvehicle({
       openid: UserInfo.openid,
-      status:"I",
+      status:"A",
       member_id:this.Base.getMyData().memberinfo.id,
       carnumber: carnumber,
       vehicletype: vehicletype,

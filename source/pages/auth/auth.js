@@ -43,11 +43,11 @@ class Content extends AppBase {
     var data = this.Base.getMyData();
     var memberapi = new MemberApi();
 
-    console.log(data.mobile,"地点")
-   // return;
+    console.log(data.mobile, "地点")
+    // return;
     memberapi.updatemobile({ mobile: data.mobile }, (updatemobile) => {
       wx.reLaunch({
-        url:'/pages/home/home'
+        url: '/pages/home/home'
       })
     })
     //updatemobile

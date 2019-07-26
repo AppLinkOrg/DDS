@@ -101,14 +101,10 @@
           <view class="margin-left-20   " id="z1" style='margin-top:15rpx'></view>
           <view class="margin-left-20">{{item.startaddress}}</view>
         </view> -->
-
-
         <view class='flex-row flex-center margin-top-20'>
-          <image class='icon-10 margin-left-20 margin-right-20' src='{{uploadpath}}resource/{{res.green}}'></image>
-          <view class='  ' style='width:600rpx;'>{{item.start_company}}</view>
+          <image class='icon-20 margin-left-20 margin-right-20' src='{{uploadpath}}resource/{{res.green}}'></image>
+          <view class='  ' style='width:600rpx;'>{{item.startaddress}}</view>
         </view>
-
-
         <!-- <view class=" margin-top-10 h5 txt-gray" style='margin-left:60rpx'>起点距您206公里</view> -->
         <!-- <view class="flex-row">
           <view class="margin-left-20 " id="z2" style='margin-top:30rpx'></view>
@@ -116,8 +112,8 @@
         </view> -->
 
         <view class='flex-row flex-center margin-top-20'>
-          <image class='icon-10 margin-left-20 margin-right-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
-          <view class='  ' style='width:600rpx;'>{{item.end_company}}</view>
+          <image class='icon-20 margin-left-20 margin-right-20' src='{{uploadpath}}resource/{{res.orange}}'></image>
+          <view class='  ' style='width:600rpx;'>{{item.targetaddress}}</view>
         </view>
 
         <view class="margin-left-30 h5 margin-top-10 txt-gray" style=' margin-left:60rpx'>总里程{{item.distance}}</view>
@@ -218,7 +214,6 @@
         <!-- <view class="flex-1  flex-row column " wx:if='{{days1[idx]-1<=0||xs1[idx]<=0||sj1[idx]==0}}' style='text-algin:center'>
           <view class='margin-left-20' style='font-size:50rpx !important; color:#F9B725'>00:00:00</view>
         </view> -->
-
       </view>
     </view>
 
@@ -226,25 +221,18 @@
       <view class="flex-wrap" style=' margin-bottom:30rpx'>
         <view class="flex-row margin-top:10">
           <view class="margin-left-20  " id="z1" style='margin-top:15rpx'></view>
-          <view class="margin-left-20">{{ybm[idx].order_start_company}}</view>
+          <view class="margin-left-20">{{ybm[idx].order_startaddress}}</view>
         </view>
         <!-- <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>起点距您206公里</view> -->
         <view class="flex-row">
           <view class="margin-left-20 " id="z2" style='margin-top:30rpx'></view>
-          <view class="margin-left-20 margin-top-10">{{ybm[idx].order_end_company}}</view>
+          <view class="margin-left-20 margin-top-10">{{ybm[idx].order_targetaddress}}</view>
         </view>
         <view class="margin-left-30 h5 margin-top-10 txt-gray" wx:if='{{ybm[idx].order_distance!=""||ybm[idx].order_distance!="undefined"}}' style=' margin-left:60rpx'>总里程：{{ybm[idx].order_distance}}</view>
         <view class="margin-left-30 h5 margin-top-10 txt-gray" wx:if='{{ybm[idx].order_distance==""||ybm[idx].order_distance=="undefined"}}' style=' margin-left:60rpx'>总里程：距离未成功获取</view>
 
       </view>
-
     </view>
-
-
-
-
-
-
   </view>
 
 
@@ -316,12 +304,12 @@
       <view class="flex-wrap" style=' margin-bottom:30rpx'>
         <view class="flex-row margin-top:10">
           <view class="margin-left-20  " id="z1" style='margin-top:15rpx'></view>
-          <view class="margin-left-20">{{dwc[idx].order_start_company}}</view>
+          <view class="margin-left-20">{{dwc[idx].order_startaddress}}</view>
         </view>
         <!-- <view class=" margin-top-10 h5" style='color:#BBBBBB; margin-left:60rpx'>起点距您206公里</view> -->
         <view class="flex-row">
           <view class="margin-left-20 " id="z2" style='margin-top:30rpx'></view>
-          <view class="margin-left-20 margin-top-10">{{dwc[idx].order_end_company}}</view>
+          <view class="margin-left-20 margin-top-10">{{dwc[idx].order_targetaddress}}</view>
         </view>
         <view class="margin-left-30 h5 margin-top-10 txt-gray" style=' margin-left:60rpx'>总里程：{{dwc[idx].order_distance}}</view>
       </view>

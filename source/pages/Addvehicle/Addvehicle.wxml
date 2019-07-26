@@ -75,6 +75,7 @@
       <input hidden='true' name="carphoto" value="{{photo}}"></input>
     </view>
   </view>
+  <view class='margin-top-10 border-radius:10rpx'></view>
   <!-- <navigator url='/pages/updatecar/updatecar'  class="h4 txt-white"  style='margin-top:20rpx;border-radius:0'>重新审核</navigator> -->
   <navigator class='bottom padding-30 txt-white bg-bck_ble text-center' bindtap='againalter'>重新认证</navigator>
 </view>

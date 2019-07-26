@@ -72,7 +72,7 @@ page {
   color: white;
   line-height: 100rpx;
   margin-bottom: 0rpx;
-  position: fixed;
+  
   bottom: 0;
 }
 
